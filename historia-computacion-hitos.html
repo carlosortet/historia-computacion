@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Historia de la Computación — Hitos y Relaciones · 1837 → 2027 | 498 Advance</title>
+
+<!-- SEO -->
+<meta name="description" content="Línea temporal estructurada y verificada de la historia de la computación: 71 hitos desde el álgebra booleana de Boole (1847) hasta NVIDIA Vera Rubin Ultra (2027 esp.). Lógica, electrónica, software, POO, IA, GPUs, computación cuántica y supercomputación con sus relaciones causales explicadas. Por Carlos Ortet (498 Advance).">
+<meta name="keywords" content="historia de la computación, hitos computación, IBM System/23 Datamaster, Bill Lowe Boca Raton, Boole, Shannon, Turing, von Neumann, ENIAC, transistor, circuito integrado, FORTRAN, Unix, Simula, Smalltalk, IBM PC 5150, AlexNet, Transformer, Claude Opus, NVIDIA Rubin, CUDA, computación cuántica, IBM Quantum, Microsoft Majorana, Frontier, El Capitan, JUPITER exascale, Carlos Ortet, 498 Advance">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://zoopa.es/files/historia-computacion-hitos-20260423.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Historia de la Computación — Hitos y Relaciones · 1837 → 2027">
+<meta property="og:description" content="71 hitos verificados desde Boole hasta NVIDIA Rubin Ultra. Línea temporal interactiva con relaciones causales, en estilo IBM × Silicon Graphics. Apéndice especial: IBM System/23 Datamaster.">
+<meta property="og:url" content="https://zoopa.es/files/historia-computacion-hitos-20260423.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="498 Advance · The European Intrepid Lab">
+<meta property="article:author" content="Carlos Ortet">
+<meta property="article:published_time" content="2026-04-23">
+<meta property="article:section" content="Historia de la Tecnología">
+<meta property="article:tag" content="Historia de la Computación">
+<meta property="article:tag" content="Inteligencia Artificial">
+<meta property="article:tag" content="Computación Cuántica">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Historia de la Computación — Hitos y Relaciones">
+<meta name="twitter:description" content="71 hitos verificados desde Boole (1847) hasta 2027. Línea temporal interactiva con relaciones causales.">
+<meta name="twitter:creator" content="@carlosortet">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Historia de la Computación — Hitos y Relaciones",
+  "alternativeHeadline":"Línea temporal estructurada 1837 → 2027",
+  "description":"71 hitos estructurados y verificados de la historia de la computación, desde el álgebra booleana hasta NVIDIA Rubin y la computación cuántica tolerante a fallos.",
+  "image":"https://zoopa.es/files/historia-computacion-hitos-20260423.html",
+  "datePublished":"2026-04-23",
+  "dateModified":"2026-04-23",
+  "author":{"@type":"Person","name":"Carlos Ortet","url":"https://carlosortet.com","jobTitle":"Senior Innovation Engineer","affiliation":{"@type":"Organization","name":"498 Advance","url":"https://498advance.com"}},
+  "publisher":{"@type":"Organization","name":"498 Advance","url":"https://498advance.com","slogan":"The European Intrepid Lab"},
+  "mainEntityOfPage":"https://zoopa.es/files/historia-computacion-hitos-20260423.html",
+  "inLanguage":"es-ES",
+  "keywords":"historia computación, IBM, IA, GPU, deep learning, computación cuántica, supercomputación exascale",
+  "about":[
+    {"@type":"Thing","name":"Historia de la computación"},
+    {"@type":"Thing","name":"Inteligencia artificial"},
+    {"@type":"Thing","name":"IBM System/23 Datamaster"}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8DCC4;
+    --bg-paper:#F1E6CE;
+    --ink:#1A1A1A;
+    --ibm-blue:#1F70C1;
+    --ibm-red:#DA1E28;
+    --ibm-yellow:#F1C21B;
+    --ibm-green:#198038;
+    --ibm-purple:#8A3FFC;
+    --ibm-orange:#FF832B;
+    --ibm-pink:#EE5396;
+    --ibm-cyan:#33B1FF;
+    --ibm-magenta:#9F1853;
+    --ibm-teal:#005D5D;
+    --rule:#1A1A1A;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Mono',Courier,monospace;font-size:13px;line-height:1.55}
+  body{
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 23px, rgba(31,112,193,.04) 23px 24px),
+      repeating-linear-gradient(90deg, transparent 0 23px, rgba(31,112,193,.04) 23px 24px);
+  }
+  .page{max-width:1400px;margin:0 auto;padding:32px 24px 80px}
+  /* LINKS */
+  a{color:inherit;text-decoration:none}
+  a.brand-link{display:inline-block;cursor:pointer;transition:transform .12s}
+  a.brand-link:hover{transform:translate(-1px,-1px)}
+  a.brand-link:hover .digits{text-shadow:3px 3px 0 var(--ibm-blue)}
+  a.brand-link:hover .digits .a{text-shadow:3px 3px 0 var(--ibm-red)}
+  a.author-link{
+    color:var(--ibm-cyan);
+    text-decoration:none;
+    border-bottom:1px dotted var(--ibm-cyan);
+    cursor:pointer;
+    transition:color .12s, border-color .12s;
+  }
+  a.author-link:hover{color:var(--ibm-yellow);border-color:var(--ibm-yellow)}
+  /* 498ADVANCE HEADER (80s tech style) */
+  .ibm-header{
+    border:3px solid var(--ink);
+    background:var(--ink);
+    color:var(--bg);
+    padding:16px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .ibm-header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.025) 3px 4px);
+    pointer-events:none;
+  }
+  /* Brand logo — IBM (Paul Rand 1972 stripes) + Silicon Graphics (isometric cube) */
+  .brand-498{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+  .brand-498 .mark{flex-shrink:0;display:block}
+  .brand-498 .wordmark{display:block;flex-shrink:0}
+  .brand-498 .rule{
+    width:1px;align-self:stretch;
+    background:var(--bg);
+    opacity:.55;
+    margin:6px 6px;
+  }
+  .brand-498 .stack{display:flex;flex-direction:column;justify-content:center;gap:5px;max-width:380px}
+  .brand-498 .name{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:5px;
+    color:var(--bg);
+    line-height:1;
+    padding-right:4px;
+  }
+  .brand-498 .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px;
+    letter-spacing:2px;
+    color:var(--ibm-yellow);
+    text-transform:none;
+  }
+  .brand-498 .manifesto{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    font-style:italic;
+    font-weight:400;
+    color:rgba(232,220,196,.72);
+    line-height:1.5;
+    letter-spacing:.1px;
+    margin-top:3px;
+    padding-top:5px;
+    border-top:1px dotted rgba(232,220,196,.18);
+    max-width:380px;
+  }
+  .brand-498 .manifesto b{
+    color:var(--ibm-cyan);
+    font-weight:500;
+    font-style:italic;
+    display:block;
+    margin-top:4px;
+  }
+  .ibm-meta{font-size:11px;text-align:right;line-height:1.4;letter-spacing:.5px;position:relative;z-index:1}
+  .ibm-meta b{color:var(--ibm-yellow)}
+  /* TOOLTIP */
+  .tooltip{
+    position:fixed;
+    background:var(--ink);
+    color:var(--bg);
+    border:2px solid var(--ibm-yellow);
+    padding:10px 12px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    line-height:1.45;
+    max-width:340px;
+    pointer-events:none;
+    z-index:1000;
+    display:none;
+    box-shadow:4px 4px 0 rgba(0,0,0,.4);
+  }
+  .tooltip .tt-head{display:flex;justify-content:space-between;border-bottom:1px solid #444;padding-bottom:4px;margin-bottom:6px}
+  .tooltip .tt-year{color:var(--ibm-yellow);font-weight:700;font-size:13px}
+  .tooltip .tt-cat{color:var(--ibm-cyan);font-size:9px;letter-spacing:1.5px;align-self:center}
+  .tooltip .tt-title{font-weight:700;margin:0 0 6px;font-size:12px;color:#fff}
+  .tooltip .tt-desc{color:#ccc}
+  .tooltip .tt-rel{color:var(--ibm-orange);font-size:10px;margin-top:6px;padding-top:4px;border-top:1px dashed #444}
+  h1.title{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:32px;
+    font-weight:700;
+    margin:0 0 6px;
+    letter-spacing:-.5px;
+    border-bottom:3px solid var(--ink);
+    padding-bottom:8px;
+  }
+  .subtitle{font-size:13px;color:#444;margin:0 0 28px}
+  /* SECTION HEADERS */
+  h2{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:20px;
+    margin:38px 0 14px;
+    padding:6px 12px;
+    background:var(--ink);
+    color:var(--bg);
+    border-left:8px solid var(--ibm-blue);
+    letter-spacing:.5px;
+  }
+  h3{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:15px;
+    margin:24px 0 10px;
+    padding-bottom:4px;
+    border-bottom:1px dashed var(--ink);
+  }
+  /* TABLES */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0 20px;
+    background:var(--bg-paper);
+    border:2px solid var(--ink);
+    font-size:12px;
+  }
+  th{
+    background:var(--ink);
+    color:var(--bg);
+    text-align:left;
+    padding:8px 10px;
+    font-weight:500;
+    letter-spacing:.5px;
+    border-right:1px solid #444;
+  }
+  td{
+    padding:8px 10px;
+    border-top:1px solid var(--ink);
+    border-right:1px solid rgba(0,0,0,.15);
+    vertical-align:top;
+  }
+  tr td:first-child{font-weight:700;color:var(--ibm-blue);white-space:nowrap}
+  /* BLOCKS */
+  blockquote{
+    margin:14px 0;
+    padding:12px 16px;
+    background:var(--bg-paper);
+    border-left:6px solid var(--ibm-red);
+    font-style:normal;
+  }
+  blockquote::before{content:"▸ ";color:var(--ibm-red);font-weight:700}
+  code, pre{font-family:'IBM Plex Mono',Courier,monospace}
+  pre{
+    background:var(--ink);
+    color:#33ff66;
+    padding:14px 18px;
+    border:2px solid var(--ink);
+    overflow-x:auto;
+    font-size:11px;
+    line-height:1.4;
+  }
+  ul{padding-left:22px}
+  li{margin:4px 0}
+  /* GRAPH CONTAINER */
+  .graph-frame{
+    background:var(--bg-paper);
+    border:3px solid var(--ink);
+    margin:0 0 32px;
+    overflow:hidden;
+  }
+  .graph-bar{
+    background:var(--ink);
+    color:var(--bg);
+    padding:10px 14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11px;
+    letter-spacing:1px;
+  }
+  .graph-bar .legend{display:flex;gap:14px;flex-wrap:wrap}
+  .graph-bar .legend span{display:inline-flex;align-items:center;gap:6px}
+  .graph-bar .swatch{width:12px;height:12px;border:1px solid var(--bg)}
+  .graph-controls{font-size:11px;color:#999}
+  .graph-wrap{
+    overflow:auto;
+    max-height:78vh;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 39px, rgba(0,0,0,.05) 39px 40px),
+      var(--bg-paper);
+  }
+  svg.timeline{display:block;font-family:'IBM Plex Mono',monospace}
+  /* SVG NODE STYLES */
+  .col-header{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:11px;
+    font-weight:700;
+    fill:var(--bg);
+    text-anchor:middle;
+    letter-spacing:.5px;
+  }
+  .col-bg{fill:var(--ink)}
+  .year-label{font-size:10px;fill:#666;font-weight:500}
+  .year-line{stroke:rgba(0,0,0,.08);stroke-width:1;stroke-dasharray:2,2}
+  .year-decade{stroke:rgba(0,0,0,.25);stroke-width:1}
+  .node-rect{stroke:var(--ink);stroke-width:1.5;cursor:pointer;transition:transform .15s}
+  .node-rect:hover{stroke-width:2.5}
+  .node-label{font-size:10px;font-weight:500;fill:var(--ink);pointer-events:none;font-family:'IBM Plex Mono',monospace}
+  .node-year{font-size:9px;fill:#fff;font-weight:700;pointer-events:none}
+  .edge{fill:none;stroke-width:1.2;opacity:.55}
+  .edge:hover{stroke-width:2.5;opacity:1}
+  .edge.causal{stroke:var(--ink);stroke-dasharray:none}
+  .edge.enables{stroke:var(--ibm-blue);stroke-dasharray:none}
+  .edge.parallel{stroke:var(--ibm-magenta);stroke-dasharray:5,4}
+  .edge.continues{stroke:var(--ibm-green);stroke-dasharray:none}
+  .edge.bridges{stroke:var(--ibm-red);stroke-width:2}
+  .node-dot{r:3;fill:#fff;stroke:var(--ink);stroke-width:1}
+  /* HIGHLIGHTED */
+  .dim{opacity:.15}
+  .hl{opacity:1!important;stroke-width:3!important}
+  .hl-rect{stroke-width:3!important;filter:drop-shadow(2px 2px 0 var(--ink))}
+  /* DEDICATION */
+  .dedication{
+    background:#1a1a1a;
+    color:var(--bg);
+    padding:14px 18px;
+    border-left:6px solid var(--ibm-yellow);
+    margin:4px 0 0;
+    font-size:11.5px;
+    line-height:1.6;
+  }
+  .dedication::before{
+    content:"❤ DEDICATORIA";
+    display:block;
+    color:var(--ibm-yellow);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  .dedication b{color:var(--ibm-orange)}
+  /* DETAILS / EXPANDABLE */
+  .machine-details{
+    margin-top:6px;
+    border:2px solid var(--ink);
+    background:var(--bg);
+  }
+  .machine-details summary{
+    background:var(--ink);
+    color:var(--bg);
+    padding:10px 14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:2px;
+    cursor:pointer;
+    user-select:none;
+    font-weight:700;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .machine-details summary::-webkit-details-marker{display:none}
+  .machine-details summary::after{content:"▼ EXPANDIR";color:var(--ibm-yellow);font-size:9px}
+  .machine-details[open] summary::after{content:"▲ COLAPSAR"}
+  .machine-details summary:hover{background:#2A2A2A}
+  .machine-details summary:hover::after{color:var(--ibm-cyan)}
+  .machine-tech{padding:18px 20px;font-size:11.5px;line-height:1.55;color:var(--ink)}
+  .machine-tech .specs-grid{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:5px 14px;
+    background:var(--bg-paper);
+    padding:12px 16px;
+    border:1px solid var(--ink);
+    margin-bottom:18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+  }
+  .machine-tech .specs-grid b{
+    color:var(--ibm-blue);
+    letter-spacing:1.5px;
+    font-size:9.5px;
+    font-weight:700;
+  }
+  .machine-tech h4{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:13px;
+    margin:18px 0 6px;
+    color:var(--ibm-red);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:3px;
+    letter-spacing:.3px;
+  }
+  .machine-tech p{margin:0 0 12px}
+  .machine-tech .manual-link{
+    color:var(--ibm-blue);
+    border-bottom:1px solid var(--ibm-blue);
+    padding-bottom:1px;
+  }
+  .machine-tech .manual-link:hover{color:var(--ibm-red);border-color:var(--ibm-red)}
+  .machine-tech small{color:#666;font-size:10px}
+  .machine-tech small a{color:var(--ibm-blue);text-decoration:underline}
+  /* MACHINE CARD — IBM System/23 */
+  .machine-card{
+    margin:40px 0 30px;
+    border:3px solid var(--ink);
+    background:var(--bg-paper);
+    display:grid;
+    grid-template-columns:420px 1fr;
+    overflow:hidden;
+  }
+  .machine-art{background:#0f0f0f;display:flex;align-items:center;justify-content:center;padding:0}
+  .machine-art svg{display:block;width:100%;height:auto;max-height:380px}
+  .machine-content{padding:22px 26px;display:flex;flex-direction:column;gap:14px}
+  .machine-title{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:18px;font-weight:700;
+    letter-spacing:-.3px;
+    margin:0;line-height:1.2;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:8px;
+  }
+  .machine-title small{
+    display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:var(--ibm-blue);
+    letter-spacing:2px;
+    font-weight:500;
+    margin-top:3px;
+  }
+  .machine-specs{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    padding:10px 12px;background:var(--bg);border:1px solid var(--ink);
+  }
+  .machine-specs div{font-size:11px;line-height:1.3}
+  .machine-specs b{
+    display:block;color:var(--ibm-blue);font-size:9px;
+    letter-spacing:1.5px;margin-bottom:3px;font-weight:700;
+  }
+  .machine-history{font-size:12.5px;line-height:1.55;margin:0;color:var(--ink)}
+  .machine-history b{color:var(--ibm-red)}
+  .machine-personal{
+    background:#0a1f0a;
+    color:#33ff66;
+    padding:14px 18px;
+    margin:4px 0 0;
+    border:none;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    line-height:1.65;
+    font-style:normal;
+    position:relative;
+    box-shadow:inset 0 0 30px rgba(51,255,102,.06);
+  }
+  .machine-personal::before{
+    content:"▸ DIARIO PERSONAL · CARLOS ORTET";
+    color:#FFD600;font-size:9px;letter-spacing:2px;
+    display:block;margin-bottom:8px;font-weight:700;
+  }
+  .machine-personal::after{
+    content:"▮";color:#33ff66;
+    animation:cursor 1s steps(2) infinite;
+    margin-left:4px;
+  }
+  @keyframes cursor{50%{opacity:0}}
+  @media (max-width:900px){
+    .machine-card{grid-template-columns:1fr}
+  }
+  /* FOOTER */
+  .footer{
+    margin-top:60px;
+    border-top:3px solid var(--ink);
+    padding-top:20px;
+    font-size:10px;
+    color:#444;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    letter-spacing:.5px;
+    gap:24px;
+  }
+  .footer .ibm-mark{font-family:'IBM Plex Sans',sans-serif;font-weight:700;color:var(--ibm-blue);letter-spacing:1px}
+  .footer-brand{
+    background:var(--ink);
+    padding:10px 14px;
+    border:2px solid var(--ink);
+  }
+  .footer-brand .brand-498{gap:10px}
+  .footer-brand .brand-498 .name{font-size:10px;letter-spacing:5px}
+  .footer-brand .brand-498 .tag{font-size:8px;letter-spacing:2px}
+  /* COLLAPSIBLE SECTIONS */
+  .section-controls{
+    display:flex;
+    gap:8px;
+    margin:32px 0 10px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .section-controls .hint{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:#555;
+    letter-spacing:1.5px;
+    margin-right:auto;
+    text-transform:uppercase;
+  }
+  .section-controls button{
+    background:var(--bg-paper);
+    border:2px solid var(--ink);
+    color:var(--ink);
+    padding:7px 14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    cursor:pointer;
+    text-transform:uppercase;
+    transition:background .12s, color .12s;
+  }
+  .section-controls button:hover{
+    background:var(--ink);
+    color:var(--ibm-yellow);
+  }
+  .section-controls button.active{
+    background:var(--ink);
+    color:var(--ibm-cyan);
+  }
+  details.section{margin:10px 0}
+  details.section > summary{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:17px;
+    font-weight:400;
+    margin:0;
+    padding:10px 16px;
+    background:var(--ink);
+    color:var(--bg);
+    border-left:6px solid var(--ibm-blue);
+    letter-spacing:1.4px;
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    user-select:none;
+  }
+  details.section > summary::-webkit-details-marker{display:none}
+  details.section > summary::after{
+    content:"▼";
+    color:var(--ibm-yellow);
+    font-size:13px;
+    margin-left:14px;
+    transition:transform .2s;
+  }
+  details.section[open] > summary::after{transform:rotate(180deg)}
+  details.section > summary:hover{background:#2A2A2A}
+  details.section > summary:hover::after{color:var(--ibm-cyan)}
+  details.section[open] > summary{border-left-color:var(--ibm-cyan)}
+  details.section > *:not(summary){margin-top:14px}
+  @media (max-width:640px){
+    details.section > summary{font-size:13.5px;padding:8px 12px;letter-spacing:.8px;font-weight:400}
+    .section-controls{margin:22px 0 8px}
+    .section-controls .hint{font-size:9px}
+    .section-controls button{padding:6px 10px;font-size:9.5px}
+  }
+  /* PRINT */
+  @media print{
+    body{background:#fff}
+    .graph-wrap{max-height:none;overflow:visible}
+    h2{break-inside:avoid}
+    table{break-inside:avoid}
+    details.section{break-inside:avoid}
+    details.section[open] > summary::after,
+    details.section > summary::after{display:none}
+    details.section > summary{page-break-after:avoid}
+    details:not([open]) > *:not(summary){display:block!important}
+  }
+
+  /* ============== RESPONSIVE — preserva diseño, adapta tamaños ============== */
+  @media (max-width:1024px){
+    .page{padding:24px 18px 60px}
+    .machine-card{grid-template-columns:340px 1fr}
+  }
+  @media (max-width:900px){
+    .ibm-header{flex-direction:column;align-items:flex-start;gap:14px;padding:14px 16px}
+    .ibm-meta{text-align:left}
+    .brand-498{flex-wrap:wrap;gap:12px}
+    .brand-498 .stack{max-width:100%}
+    .footer{flex-direction:column;align-items:flex-start;gap:18px}
+    .machine-card{grid-template-columns:1fr}
+    .machine-art svg{max-height:340px}
+    /* tablas con scroll horizontal en pantallas medianas */
+    table{display:block;overflow-x:auto;white-space:nowrap;max-width:100%}
+    table tbody td:nth-child(3),
+    table tbody td:nth-child(4){white-space:normal;min-width:240px}
+  }
+  @media (max-width:640px){
+    body{font-size:12px}
+    .page{padding:16px 12px 50px}
+    h1.title{font-size:22px;line-height:1.15}
+    h2{font-size:15px;padding:6px 10px;letter-spacing:.3px}
+    h3{font-size:13px}
+    .ibm-header{padding:14px 14px}
+    .ibm-meta{font-size:10px}
+    .brand-498{gap:10px}
+    .brand-498 .mark{width:42px;height:42px}
+    .brand-498 .wordmark{width:170px;height:auto}
+    .brand-498 .name{font-size:11px;letter-spacing:3.5px}
+    .brand-498 .tag{font-size:8.5px;letter-spacing:1.5px}
+    .brand-498 .manifesto{font-size:9.5px}
+    .graph-frame{margin-bottom:24px}
+    .graph-wrap{max-height:65vh}
+    .graph-bar{padding:8px 10px;font-size:10px;flex-direction:column;align-items:flex-start;gap:6px}
+    .graph-bar .legend{gap:10px}
+    .graph-controls{font-size:9px}
+    pre{font-size:9px;padding:10px 12px}
+    blockquote{font-size:11px;padding:10px 12px}
+    .machine-content{padding:16px 14px;gap:12px}
+    .machine-title{font-size:16px}
+    .machine-title small{font-size:9px;letter-spacing:1.5px}
+    .machine-specs{grid-template-columns:1fr;gap:8px;padding:10px 12px}
+    .machine-specs div{font-size:11px}
+    .machine-history{font-size:12px}
+    .machine-personal{padding:12px 14px;font-size:10.5px}
+    .dedication{font-size:10.5px;padding:12px 14px}
+    .machine-details summary{padding:9px 12px;font-size:10px;letter-spacing:1.5px}
+    .machine-tech{padding:14px 14px;font-size:10.5px}
+    .machine-tech .specs-grid{grid-template-columns:110px 1fr;gap:5px 10px;padding:10px 12px;font-size:10px}
+    .machine-tech .specs-grid b{font-size:9px}
+    .machine-tech h4{font-size:12px}
+    .footer-brand{padding:8px 12px}
+    .footer-brand .brand-498 .digits{font-size:24px}
+    .tooltip{max-width:280px;font-size:10px;padding:8px 10px}
+    .footer{padding-top:16px;font-size:9.5px}
+  }
+  @media (max-width:420px){
+    h1.title{font-size:19px}
+    .brand-498 .digits{font-size:36px}
+    .brand-498 .name{font-size:10px;letter-spacing:2.5px}
+    .machine-specs{grid-template-columns:1fr}
+    .machine-art svg{max-height:260px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 498ADVANCE HEADER — IBM × Silicon Graphics -->
+  <header class="ibm-header">
+    <a href="https://498advance.com" target="_blank" rel="noopener" class="brand-link" title="498advance.com">
+      <div class="brand-498">
+        <!-- Isometric cube mark (Silicon Graphics inspiration) -->
+        <svg class="mark" viewBox="0 0 60 60" width="56" height="56" aria-hidden="true">
+          <g shape-rendering="geometricPrecision">
+            <polygon points="30,4 54,16 30,28 6,16"  fill="#5BC0EB"/>
+            <polygon points="6,16 30,28 30,56 6,44"  fill="#1F70C1"/>
+            <polygon points="54,16 30,28 30,56 54,44" fill="#0A2E5C"/>
+            <polyline points="6,16 30,4 54,16" fill="none" stroke="#E8DCC4" stroke-width=".6" opacity=".4"/>
+            <line x1="30" y1="28" x2="30" y2="56" stroke="#E8DCC4" stroke-width=".6" opacity=".25"/>
+          </g>
+        </svg>
+        <!-- IBM-style striped wordmark (Paul Rand 1972 inspiration) -->
+        <svg class="wordmark" viewBox="0 0 230 64" width="230" height="64" aria-hidden="true">
+          <defs>
+            <mask id="stripeMaskH" maskUnits="userSpaceOnUse">
+              <rect width="230" height="64" fill="white"/>
+              <g fill="black">
+                <rect x="0" y="3"  width="230" height="3"/>
+                <rect x="0" y="11" width="230" height="3"/>
+                <rect x="0" y="19" width="230" height="3"/>
+                <rect x="0" y="27" width="230" height="3"/>
+                <rect x="0" y="35" width="230" height="3"/>
+                <rect x="0" y="43" width="230" height="3"/>
+                <rect x="0" y="51" width="230" height="3"/>
+              </g>
+            </mask>
+          </defs>
+          <text x="0" y="56" mask="url(#stripeMaskH)"
+                font-family="'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif"
+                font-weight="900" font-size="68" letter-spacing="-3"
+                fill="#33B1FF">498A</text>
+        </svg>
+        <div class="rule"></div>
+        <div class="stack">
+          <div class="name">498 ADVANCE</div>
+          <div class="tag">The European Intrepid Lab.</div>
+          <div class="manifesto">El futuro será simulado antes de ser vivido. <b>Lo habitaremos antes de construirlo.</b></div>
+        </div>
+      </div>
+    </a>
+    <div class="ibm-meta">
+      <b>TECHNICAL REFERENCE</b><br>
+      DOC. NO. CO-2026-04-23<br>
+      REV. 1.1 &nbsp;|&nbsp; <a href="https://carlosortet.com" target="_blank" rel="noopener" class="author-link" title="carlosortet.com">CARLOS ORTET</a>
+    </div>
+  </header>
+  <div id="tooltip" class="tooltip"></div>
+
+  <h1 class="title">Historia de la Computación — Hitos y Relaciones</h1>
+  <p class="subtitle">Línea temporal estructurada y grafo de relaciones · 1837 → 2026 · Correcciones y aportaciones son bienvenidas: <a href="mailto:carlos.ortet@zoopa.es" class="author-link">carlos.ortet@zoopa.es</a></p>
+
+  <!-- ============================ GRAPH ============================ -->
+  <div class="graph-frame">
+    <div class="graph-bar">
+      <div class="legend">
+        <span><span class="swatch" style="background:#1A1A1A"></span>CAUSAL</span>
+        <span><span class="swatch" style="background:#1F70C1"></span>HABILITA</span>
+        <span><span class="swatch" style="background:#198038"></span>CONTINÚA</span>
+        <span><span class="swatch" style="background:#9F1853"></span>PARALELO</span>
+        <span><span class="swatch" style="background:#DA1E28"></span>PUENTE</span>
+      </div>
+      <div class="graph-controls">CLICK NODO = AISLAR · CLICK FONDO = RESET</div>
+    </div>
+    <div class="graph-wrap" id="graphWrap">
+      <svg id="timeline" class="timeline" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+  </div>
+
+  <!-- ============================ CONTENT ============================ -->
+
+  <div class="section-controls">
+    <span class="hint">▸ TABLAS COLAPSABLES · ESCANEA EL GRAFO Y PROFUNDIZA AQUÍ</span>
+    <button id="btnExpandAll" type="button">▼ EXPANDIR TODAS</button>
+    <button id="btnCollapseAll" type="button">▲ COLAPSAR TODAS</button>
+  </div>
+
+  <details class="section">
+    <summary>1 · LÓGICA FORMAL — La base matemática</summary>
+  <table>
+    <thead><tr><th style="width:90px">AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1847–1854</td><td>Álgebra booleana</td><td>Boole · <i>Mathematical Analysis of Logic</i> + <i>Laws of Thought</i></td><td>Habilita el siguiente salto → Shannon</td></tr>
+      <tr><td>1879</td><td><i>Begriffsschrift</i></td><td>Frege · lógica de predicados y cuantificadores</td><td>Influye en Russell, Hilbert, Turing</td></tr>
+      <tr><td>1928–1931</td><td>Crisis de fundamentos</td><td>Hilbert (<i>Entscheidungsproblem</i>) · Gödel (incompletitud)</td><td>Plantea el reto que Turing/Church responden en 1936</td></tr>
+      <tr><td>1937</td><td>Lógica → circuitos</td><td>Shannon · aplica Boole a circuitos eléctricos</td><td>Fusiona lógica + electrónica</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Boole → Frege → crisis de fundamentos → Turing/Church (1936) → Shannon traduce todo a circuitos.</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>2 · ARQUITECTURA — El concepto de "ordenador"</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1837</td><td>Máquina Analítica</td><td>Babbage · memoria, control, cálculo, programa</td><td>Primera arquitectura conceptual general</td></tr>
+      <tr><td>1843</td><td>Primer programa</td><td>Lovelace · notas sobre la Máquina Analítica</td><td>Inaugura la distinción <b>hardware/software</b></td></tr>
+      <tr><td>1936</td><td>Máquina universal</td><td>Turing · <i>On Computable Numbers</i></td><td>Base teórica del ordenador de propósito general</td></tr>
+      <tr><td>1945</td><td>Programa almacenado</td><td>Von Neumann · <i>First Draft EDVAC</i></td><td>Modelo dominante hasta hoy (CPU + memoria + bus)</td></tr>
+      <tr><td>1949</td><td>EDSAC</td><td>Wilkes · primer von Neumann plenamente operativo</td><td>Convierte la teoría en realidad práctica</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Babbage/Lovelace (concepto) → Turing (teoría) → Von Neumann (modelo) → Wilkes (realización).</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>3 · ELECTRÓNICA — De válvulas a chips</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1941</td><td>Z3</td><td>Zuse · primer ordenador programable y automático funcional</td><td>Viabilidad práctica antes que los aliados</td></tr>
+      <tr><td>1943–1944</td><td>Colossus</td><td>Flowers · computación electrónica con válvulas (criptoanálisis)</td><td>Primer ordenador electrónico programable</td></tr>
+      <tr><td>1945–1946</td><td>ENIAC</td><td>Eckert y Mauchly · ordenador electrónico de propósito general</td><td>Consolida el paradigma electrónico</td></tr>
+      <tr><td>1947</td><td>Transistor</td><td>Bardeen, Brattain, Shockley (Bell Labs)</td><td>Permite miniaturizar: sustituye válvulas</td></tr>
+      <tr><td>1958–1959</td><td>Circuito integrado</td><td>Kilby (TI) y Noyce (Fairchild)</td><td>Habilita Moore (1965) y la era del chip</td></tr>
+      <tr><td>1965</td><td>Ley de Moore</td><td>Gordon Moore · escala económica de los IC</td><td>Marco de planificación de la industria</td></tr>
+      <tr><td>2019</td><td>Project Silica · cristal 5D</td><td>Microsoft Research · láser de femtosegundos en cuarzo</td><td>Primer sustrato post-silicio creíble (cold storage)</td></tr>
+      <tr><td>2019</td><td><b>Fin Moore clásico</b></td><td>Jensen Huang declara "Moore's Law is dead" en GTC</td><td>Industria pivota a chiplet, 3D stacking, advanced packaging</td></tr>
+      <tr><td>2022</td><td>Transistor GAA</td><td>Samsung 3nm · Gate-All-Around (sucesor de FinFET)</td><td>Continúa Moore más allá de 5nm con nueva geometría</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Shannon habilita la lógica electrónica → Zuse/Colossus/ENIAC la materializan → transistor + IC inician la ley de Moore → 50 años después se rompe → la industria responde con chiplet (Ryzen) y nuevas geometrías (GAA).</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>4 · SOFTWARE E INGENIERÍA DEL SOFTWARE</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1952</td><td>Compilador A-0</td><td>Grace Hopper · primer compilador funcional</td><td>Acerca la programación al lenguaje humano</td></tr>
+      <tr><td>1957</td><td>FORTRAN</td><td>Backus (IBM) · primer lenguaje de alto nivel adoptado</td><td>Despega el software científico</td></tr>
+      <tr><td>1958</td><td>LISP</td><td>McCarthy · funcional y simbólico</td><td>Lengua franca de la IA simbólica</td></tr>
+      <tr><td>1960</td><td>ALGOL 60</td><td>Naur et al. · sintaxis estructurada</td><td>Padre de Pascal, C, Java…</td></tr>
+      <tr><td>1968</td><td>Programación estructurada</td><td>Dijkstra · <i>Go To Considered Harmful</i></td><td>Funda la ingeniería del software</td></tr>
+      <tr><td>1969–1973</td><td>Unix + C</td><td>Thompson y Ritchie (Bell Labs)</td><td>Sustrato de macOS, Linux, Android, iOS, servidores…</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Hopper abre los compiladores → FORTRAN/ALGOL/LISP definen los grandes paradigmas → Dijkstra disciplina → Unix+C como sustrato universal.</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>5 · PROGRAMACIÓN ORIENTADA A OBJETOS</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1967</td><td>Simula 67</td><td>Dahl y Nygaard (Oslo) · clases, objetos, herencia</td><td>Primer hito real de la POO</td></tr>
+      <tr><td>1972–1980</td><td>Smalltalk</td><td>Kay, Ingalls, Goldberg (Xerox PARC) · objetos + GUI</td><td>Inspira Mac, Objective-C, Java…</td></tr>
+      <tr><td>1985</td><td>C++</td><td>Stroustrup · POO sobre C</td><td>Lleva objetos al software de sistemas</td></tr>
+      <tr><td>1991</td><td>Python</td><td>Van Rossum · scripting + objetos</td><td>Hoy lengua franca de IA y data</td></tr>
+      <tr><td>1995</td><td>Java</td><td>Gosling (Sun) · "write once run anywhere"</td><td>Masifica POO en empresa</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Simula → Smalltalk (manifestación radical + GUI) → C++/Java (adopción industrial) → Python (puente a la era IA).</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>6 · MICROPROCESADOR Y PC</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1971</td><td>Intel 4004</td><td>Faggin, Hoff, Mazor, Shima · primer microprocesador comercial</td><td>Inicia la era del "ordenador en un chip"</td></tr>
+      <tr><td>1972</td><td>Intel 8008</td><td>Faggin et al. (Intel) · 8 bits</td><td>Antecesor directo de la familia x86</td></tr>
+      <tr><td>1974</td><td>Intel 8080</td><td>Equipo Intel</td><td>Hace viables los primeros microordenadores</td></tr>
+      <tr><td>1975</td><td>Altair 8800</td><td>MITS + Microsoft (Gates/Allen) · BASIC</td><td>Nace la industria del software para PC</td></tr>
+      <tr><td>1976–1977</td><td>Apple I y II</td><td>Wozniak (con Jobs)</td><td>Acerca el PC al gran público</td></tr>
+      <tr><td>1981</td><td>IBM PC 5150</td><td>IBM + MS-DOS (Microsoft)</td><td>Estandariza la arquitectura PC; explosión de clones</td></tr>
+      <tr><td>1984</td><td>Macintosh</td><td>Apple · GUI heredada de Xerox PARC</td><td>Lleva Smalltalk al mercado</td></tr>
+      <tr><td>1985</td><td>Intel 80386</td><td>Primer x86 de 32 bits + memoria protegida</td><td>Funda la era SO multitarea (Windows NT, Linux, OS/2)</td></tr>
+      <tr><td>1993</td><td>Intel Pentium</td><td>Arquitectura superescalar mainstream</td><td>Carrera del reloj hasta 1 GHz</td></tr>
+      <tr><td>2003</td><td>AMD Athlon 64</td><td>Primer x86 de 64 bits comercial · ISA AMD64</td><td>AMD se adelanta a Intel; obliga a la industria a migrar</td></tr>
+      <tr><td>2006</td><td>Intel Core 2 Duo</td><td>Multi-core mainstream para consumidores</td><td>Fin de la guerra de GHz; comienza la de núcleos</td></tr>
+      <tr><td>2007</td><td>iPhone · A4 (ARM)</td><td>Apple · cómputo personal en el bolsillo</td><td>Funda la dominación ARM en mobile</td></tr>
+      <tr><td>2017</td><td>AMD Ryzen / Zen</td><td>Renacimiento AMD · arquitectura chiplet</td><td>Chiplet se vuelve estándar industrial</td></tr>
+      <tr><td>2020</td><td>Apple M1</td><td>Primer SoC ARM en Mac tras 15 años de Intel</td><td>ARM llega al desktop con eficiencia disruptiva</td></tr>
+      <tr><td>2024</td><td>NPU mainstream</td><td>Apple A17 Pro · Snapdragon X Elite · Core Ultra · Ryzen AI</td><td>IA on-device deja de ser opción; "Copilot+ PC"</td></tr>
+      <tr><td>2026</td><td>Apple M5 + Intel 18A</td><td>N3P (TSMC) · backside power delivery + RibbonFET (Intel)</td><td>Carrera de procesos se reabre tras década de dominio TSMC</td></tr>
+      <tr><td>2027 (esp.)</td><td>Apple M6 + NVIDIA Vera</td><td>TSMC N2 (2nm) · Vera CPU acoplada a Rubin GPU</td><td>CPU+GPU+NPU convergen en un solo package</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: IC → 4004/8080 → Altair → Apple/IBM PC → Mac (GUI) → 386 (32 bits) → Pentium → Athlon 64 (64 bits) → Core 2 Duo (multi-core) → iPhone (mobile) → Ryzen (chiplet) → M1 (ARM en desktop) → NPU mainstream → carrera de procesos N3/N2/18A.</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>7 · INTELIGENCIA ARTIFICIAL</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1943</td><td>Neurona artificial</td><td>McCulloch y Pitts · modelo matemático</td><td>Semilla de las redes neuronales</td></tr>
+      <tr><td>1950</td><td>Test de Turing</td><td>Turing · <i>Computing Machinery and Intelligence</i></td><td>Marco filosófico de referencia</td></tr>
+      <tr><td>1956</td><td>Conferencia Dartmouth</td><td>McCarthy, Minsky, Shannon, Rochester</td><td>Acuña "Artificial Intelligence"</td></tr>
+      <tr><td>1958</td><td>Perceptrón</td><td>Rosenblatt · primera red neuronal entrenable</td><td>Primera ola conexionista</td></tr>
+      <tr><td>1965</td><td>ELIZA</td><td>Weizenbaum (MIT) · primer chatbot</td><td>60 años de IA conversacional + el "efecto ELIZA"</td></tr>
+      <tr><td>1969</td><td>Invierno IA</td><td>Minsky y Papert · <i>Perceptrons</i></td><td>Frena el conexionismo ~15 años</td></tr>
+      <tr><td>1980</td><td>Sistemas expertos</td><td>XCON, MYCIN, Prolog, FGCS japonés</td><td>Pico comercial de la IA simbólica</td></tr>
+      <tr><td>1986</td><td>Backpropagation</td><td>Rumelhart, Hinton, Williams</td><td>Resucita las redes neuronales</td></tr>
+      <tr><td>1997</td><td>Deep Blue</td><td>IBM vence a Kasparov</td><td>Hito simbólico de IA simbólica/búsqueda</td></tr>
+      <tr><td>2006</td><td>Deep Belief Networks</td><td>Hinton · pre-entrenamiento capa por capa</td><td>Eslabón entre backprop y AlexNet — resucita el deep learning</td></tr>
+      <tr><td>2009</td><td>ImageNet</td><td>Fei-Fei Li · 14M imágenes etiquetadas</td><td>El dataset que hace posible AlexNet</td></tr>
+      <tr><td>2012</td><td>AlexNet</td><td>Krizhevsky, Sutskever, Hinton (CNN + GPU)</td><td>Detona la revolución del deep learning</td></tr>
+      <tr><td>2014</td><td>GANs</td><td>Goodfellow · redes adversariales</td><td>Funda la IA generativa moderna</td></tr>
+      <tr><td>2016</td><td>AlphaGo</td><td>DeepMind vence a Lee Sedol</td><td>RL + redes profundas en juegos complejos</td></tr>
+      <tr><td>2017</td><td>Transformer</td><td>Vaswani et al. (Google) · <i>Attention Is All You Need</i></td><td>Base de todos los LLM actuales</td></tr>
+      <tr><td>2018</td><td>BERT + GPT-1</td><td>Google · OpenAI · pre-training masivo</td><td>Era del transfer learning en NLP</td></tr>
+      <tr><td>2020</td><td>GPT-3 · scaling</td><td>OpenAI · 175B parámetros · scaling laws</td><td>Cambia la estrategia: escalar es el camino</td></tr>
+      <tr><td>2021</td><td>AlphaFold 2</td><td>DeepMind · 200M+ proteínas plegadas</td><td>Mayor aplicación científica de IA · Nobel Química 2024</td></tr>
+      <tr><td>2022</td><td>ChatGPT</td><td>OpenAI · 100M usuarios en 2 meses</td><td>Inicia la era de IA generativa de consumo</td></tr>
+      <tr><td>2022</td><td>Diffusion</td><td>Stable Diffusion + DALL-E 2 + Midjourney</td><td>IA generativa visual democratizada</td></tr>
+      <tr><td>2023</td><td>GPT-4 + LLaMA</td><td>Multimodal (OpenAI) + open weights (Meta)</td><td>Bifurcación cerrado-élite vs open source</td></tr>
+      <tr><td>2024</td><td>o1 · reasoning</td><td>OpenAI · extended thinking en producción</td><td>Transición a paradigma de razonamiento explícito</td></tr>
+      <tr><td>2026</td><td>Claude Opus 4.7 · 1M ctx</td><td>Anthropic · ventana 1M tokens + razonamiento default</td><td>Era del agente con memoria + herramientas + ciclos de pensamiento</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Dartmouth → perceptrón → invierno → backprop → <b>GPU + AlexNet</b> (puente físico) → Transformer → LLMs.</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>8 · PARALELISMO — De GPUs a TPUs</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1999</td><td>GeForce 256</td><td>NVIDIA · primera GPU comercial con T&amp;L</td><td>Despega el cómputo gráfico programable</td></tr>
+      <tr><td>2001</td><td>Shaders programables</td><td>GeForce 3 · GPU vista como procesador genérico</td><td>Base para GPGPU</td></tr>
+      <tr><td>2006</td><td>CUDA</td><td>NVIDIA · GPU como plataforma de cómputo general</td><td>Habilita HPC + simulación + IA en GPU</td></tr>
+      <tr><td>2012</td><td>AlexNet en GPU</td><td>Primera "killer app" de IA sobre GPU</td><td>Confirma matrimonio GPU↔Deep Learning</td></tr>
+      <tr><td>2015</td><td><b>TPU v1 (Google)</b></td><td>Primer ASIC ML diseñado por hyperscaler · uso interno</td><td>Funda la era ASIC para ML; inspira integración vertical</td></tr>
+      <tr><td>2017</td><td><b>TPU v2 · cloud</b></td><td>Primer TPU público vía Google Cloud · capaz de entrenar</td><td>TPUs salen del datacenter privado y se vuelven producto</td></tr>
+      <tr><td>2017–2026</td><td>Volta → Blackwell (Tensor Cores)</td><td>NVIDIA · Tensor Cores, NVLink, HBM3/4</td><td>Hardware específico para entrenar LLMs</td></tr>
+      <tr><td>2019</td><td><b>Cerebras WSE-1</b></td><td>Wafer-scale chip · 462 cm² · 1.2T transistores</td><td>Paradigma radical: un chip = un cluster entero</td></tr>
+      <tr><td>2023</td><td><b>TPU v5p</b></td><td>Google · pods de 8.960 chips · backbone de Gemini</td><td>Hyperscaler compite con NVIDIA en su propia liga</td></tr>
+      <tr><td>2024</td><td><b>Hyperscaler Silicon</b></td><td>AWS Trainium 2 · MS Maia · Meta MTIA</td><td>Cada hyperscaler integra verticalmente: cloud+chip+modelo</td></tr>
+      <tr><td>2024</td><td><b>Etched Sohu</b></td><td>ASIC dedicado SOLO a Transformers · 10× perf vs GPU</td><td>Apuesta extrema al estancamiento arquitectural</td></tr>
+      <tr><td>2025</td><td><b>TPU v7 Ironwood</b></td><td>Google · ~5× perf vs v5p · optimizado para razonamiento</td><td>Diseñado para era post-pretraining (extended thinking)</td></tr>
+      <tr><td>2027 (esp.)</td><td><b>TPU v8 / Trainium 3</b></td><td>Co-Packaged Optics · sub-FP4 · más BW inter-chip</td><td>Cuello de botella se desplaza de cómputo a comunicación</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: GPU como gaming → CUDA convierte GPU en cómputo general → AlexNet (2012) demuestra IA en GPU → NVIDIA Tensor Cores y Google TPU bifurcan el camino → todos los hyperscalers diseñan silicio propio → ASICs dedicados a Transformers → próxima frontera: óptica + sub-FP4.</blockquote>
+  <h3>VRAM / HBM — subcomponente decisivo, no bloque fundacional</h3>
+  <ul>
+    <li><b>Función:</b> memoria de trabajo de alta velocidad (GDDR/HBM); almacena texturas, datos y <b>tensores</b>.</li>
+    <li><b>Por qué importa:</b> tamaño = qué modelos caben (cuello de botella en LLM local); ancho de banda = velocidad de alimentación.</li>
+    <li><b>Por qué no es fundacional:</b> es una optimización, no un cambio de paradigma.</li>
+  </ul>
+  </details>
+
+  <details class="section">
+    <summary>9 · COMPUTACIÓN CUÁNTICA</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1980</td><td>MT cuántica</td><td>Benioff · modelo cuántico de máquina de Turing</td><td>Primer ordenador cuántico teórico</td></tr>
+      <tr><td>1981–1982</td><td>Simulación cuántica</td><td>Feynman · simular física con ordenadores cuánticos</td><td>Motivación fundacional</td></tr>
+      <tr><td>1985</td><td>Computador universal</td><td>Deutsch · análogo cuántico de Turing</td><td>Marco teórico universal</td></tr>
+      <tr><td>1994</td><td>Algoritmo de Shor</td><td>Shor · factorización cuántica</td><td>Demuestra ventaja → reto a RSA</td></tr>
+      <tr><td>1996</td><td>Algoritmo de Grover</td><td>Grover · búsqueda en √N</td><td>Segundo algoritmo paradigmático</td></tr>
+      <tr><td>1998</td><td>2 qubits NMR</td><td>Chuang, Gershenfeld, Kubinec</td><td>Primera demostración experimental</td></tr>
+      <tr><td>2019</td><td>Sycamore</td><td>Google · 53 qubits, "supremacía cuántica"</td><td>Primer hito mediático</td></tr>
+      <tr><td>2024</td><td>Willow</td><td>Google · 105 qubits + corrección de errores</td><td>Hacia tolerancia a fallos</td></tr>
+      <tr><td>2025</td><td>Roadmap IBM Quantum</td><td>IBM · ruta a escala tolerante a fallos</td><td>Industrialización del campo</td></tr>
+    </tbody>
+  </table>
+  </details>
+
+  <details class="section">
+    <summary>10 · SUPERCOMPUTACIÓN</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1976</td><td>Cray-1</td><td>Referencia fundacional de la supercomputación vectorial</td><td>Define el género</td></tr>
+      <tr><td>1997</td><td>ASCI Red</td><td>Sandia/Intel · primer <b>teraflop</b></td><td>Clusters x86 lideran</td></tr>
+      <tr><td>2008</td><td>Roadrunner</td><td>LANL/IBM · primer <b>petaflop</b> (Cell + Opteron)</td><td>Primera arquitectura híbrida</td></tr>
+      <tr><td>2022</td><td>Frontier</td><td>ORNL/HPE+AMD · primer <b>exascale</b> oficial</td><td>Inicia era exascale (con GPUs)</td></tr>
+      <tr><td>2024</td><td>Aurora</td><td>Argonne/Intel · arquitectura GPU Intel</td><td>Diversifica proveedores</td></tr>
+      <tr><td>2024–2025</td><td>El Capitan</td><td>LLNL/HPE+AMD · Nº 1 TOP500</td><td>Consolida la era exascale</td></tr>
+      <tr><td>2025</td><td>JUPITER Booster</td><td>EuroHPC/Jülich · primer exascale europeo</td><td>Soberanía tecnológica europea</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Patrón: desde Roadrunner (2008) la supercomputación es <b>híbrida CPU+acelerador</b>; desde Frontier (2022) el acelerador es la <b>GPU</b>.</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>11 · BASES DE DATOS — De Codd a la memoria agéntica</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1970</td><td>Modelo relacional</td><td>Codd (IBM Research) · <i>A Relational Model of Data</i></td><td>Marco teórico que dominará 50 años</td></tr>
+      <tr><td>1974</td><td>IBM System R</td><td>Primer prototipo RDBMS · estrena SEQUEL → SQL</td><td>Demuestra que el modelo de Codd es implementable</td></tr>
+      <tr><td>1979</td><td>Oracle V2</td><td>Larry Ellison · primer RDBMS comercial</td><td>Oracle se adelanta a IBM en producto</td></tr>
+      <tr><td>1996</td><td>PostgreSQL · MySQL</td><td>RDBMS open source</td><td>Sustrato de la web 2.0 y todo SaaS posterior</td></tr>
+      <tr><td>2006–2009</td><td>NoSQL</td><td>BigTable (Google), Dynamo (Amazon), MongoDB</td><td>Escala web fuerza nuevos modelos: documento, columna, KV</td></tr>
+      <tr><td>2017</td><td>FAISS</td><td>Meta · librería de búsqueda vectorial</td><td>Habilita búsqueda semántica a millones de vectores</td></tr>
+      <tr><td>2019</td><td>Vector DBs</td><td>Pinecone, Weaviate, Milvus</td><td>Búsqueda semántica como producto, no como librería</td></tr>
+      <tr><td>2024</td><td>pgvector + Iceberg</td><td>Convergencia vector + lakehouse</td><td>Fin de la fragmentación OLAP/OLTP/vector</td></tr>
+      <tr><td>2024</td><td>MCP (Anthropic)</td><td>Model Context Protocol · estándar agente↔datos</td><td>"USB-C para IA" — adopción explosiva en 2025</td></tr>
+      <tr><td>2027 (esp.)</td><td>Agentic memory layer</td><td>Memoria episódica + vector + grafo + SQL para agentes</td><td>Próxima capa fundacional</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Codd (modelo) → System R (SQL) → Oracle (comercial) → PostgreSQL (open) → NoSQL (escala web) → FAISS / Vector DBs (semántica) → pgvector + MCP (convergencia) → memoria agéntica (era IA).</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>12 · INTERNET Y WEB — De ARPANET al edge</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1969</td><td>ARPANET</td><td>Primer envío de paquetes IP entre UCLA y Stanford (29 oct)</td><td>Origen físico de internet</td></tr>
+      <tr><td>1983</td><td>TCP/IP "flag day"</td><td>Cerf y Kahn · ARPANET migra a TCP/IP el 1 ene 1983</td><td>Estándar abierto que permite la inter-red moderna</td></tr>
+      <tr><td>1989–1991</td><td>WWW</td><td>Tim Berners-Lee (CERN) · HTTP, HTML, URL</td><td>Capa de aplicación que populariza internet</td></tr>
+      <tr><td>1993</td><td>Mosaic</td><td>NCSA · primer navegador gráfico de uso masivo</td><td>Web visual y comercial; Andreessen funda Netscape (1994)</td></tr>
+      <tr><td>1998</td><td>Google · PageRank</td><td>Page y Brin · grafo de hiperenlaces como descubrimiento</td><td>Capa que hace usable la web a escala mundial</td></tr>
+      <tr><td>2006</td><td>AWS · cloud pública</td><td>S3 (mar) + EC2 (ago) · infraestructura como servicio</td><td>Cambia la economía: hardware deja de ser barrera</td></tr>
+      <tr><td>2014</td><td>Kubernetes</td><td>Google libera el orquestador de contenedores (basado en Borg)</td><td>Sustrato cloud-native; abstracción multi-proveedor</td></tr>
+      <tr><td>2017–2020</td><td>Edge + Web3</td><td>Cloudflare/Vercel Workers, 5G, Ethereum + DeFi</td><td>Internet se desplaza del centro al borde</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: ARPANET → TCP/IP (estándar) → WWW (capa app) → Mosaic (navegador) → Google (descubrimiento) → AWS (cloud) → Kubernetes (orquestación) → Edge (descentralización).</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>13 · ROBÓTICA — De Unimate a los Foundation Models</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1961</td><td>Unimate</td><td>Devol y Engelberger · primer robot industrial (GM)</td><td>Funda 60 años de manipulación industrial</td></tr>
+      <tr><td>1972</td><td>Shakey · SRI</td><td>Primer robot móvil con razonamiento (planificador STRIPS)</td><td>Primera integración real IA + percepción + actuación</td></tr>
+      <tr><td>1978</td><td>PUMA 600</td><td>Unimation · brazo programable 6 DoF</td><td>Geometría que define todos los brazos modernos</td></tr>
+      <tr><td>2002</td><td>Roomba</td><td>iRobot · primer robot doméstico de éxito masivo</td><td>Robótica entra al hogar como producto</td></tr>
+      <tr><td>2007</td><td>DARPA Urban Challenge</td><td>Vehículos autónomos en tráfico urbano · Boss (CMU), Junior (Stanford)</td><td>Catapulta la conducción autónoma (Waymo, Cruise)</td></tr>
+      <tr><td>2015</td><td>Spot · Boston Dynamics</td><td>Cuadrúpedo eléctrico ágil; comercial 2019</td><td>Robótica móvil deja el laboratorio y entra en industria</td></tr>
+      <tr><td>2024</td><td>Humanoides comerciales</td><td>Figure 01, Tesla Optimus Gen 2, 1X NEO, Apptronik Apollo, Unitree H1</td><td>Servomotores eléctricos económicos + LLMs = humanoide útil</td></tr>
+      <tr><td>2027 (esp.)</td><td>Robot Foundation Models</td><td>RT-X, OpenVLA, π0 · modelos VLA generalistas cross-embodiment</td><td>Robótica deja de programarse tarea a tarea</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Unimate (industrial) → Shakey (autónomo + IA) → PUMA (estándar industrial) → Roomba (consumo) → DARPA UC (autónomo móvil) → Spot (móvil comercial) → Humanoides (forma humana viable) → Foundation Models (generalismo).</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>14 · SIMULACIÓN — De Monte Carlo a los World Models</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1947</td><td>Monte Carlo</td><td>Ulam y von Neumann (Manhattan Project) · aleatoriedad como compute</td><td>Funda la simulación numérica como disciplina</td></tr>
+      <tr><td>1955</td><td>Predicción meteorológica</td><td>Charney, Fjørtoft, von Neumann · ENIAC predice tiempo</td><td>Primer fenómeno físico complejo simulado con utilidad práctica</td></tr>
+      <tr><td>1973</td><td>SPICE</td><td>UC Berkeley · simulación de circuitos integrados open source</td><td>Sustrato técnico de TODA la microelectrónica posterior</td></tr>
+      <tr><td>1989</td><td>CFD industrial</td><td>Boeing 777 (1995): primer avión "100% diseñado en ordenador"</td><td>La simulación reemplaza el túnel de viento</td></tr>
+      <tr><td>2002</td><td><i>A New Kind of Science</i></td><td>Wolfram · reglas simples → complejidad arbitraria</td><td>Universo como autómata; cómputo como lenguaje de la naturaleza</td></tr>
+      <tr><td>2007</td><td>PhysX · Bullet</td><td>NVIDIA + Bullet · física en tiempo real</td><td>Game physics se vuelve infraestructura de propósito general</td></tr>
+      <tr><td>2021</td><td>NVIDIA Omniverse</td><td>Plataforma de gemelos digitales basada en USD (Pixar)</td><td>Funda los digital twins como producto industrial</td></tr>
+      <tr><td>2022</td><td>Digital Twins mainstream</td><td>BMW iFactory, Boeing, fábricas Foxconn, Singapore Virtual</td><td>"Simular antes de construir" como práctica predeterminada</td></tr>
+      <tr><td>2024</td><td>World Models · Sora · Genie</td><td>OpenAI Sora + DeepMind Genie · simulación generativa</td><td>La simulación deja de programarse y se aprende del video</td></tr>
+      <tr><td>2026</td><td>NVIDIA Cosmos · Genesis 2</td><td>"World foundation models" para entrenar robots/vehículos</td><td>Datos sintéticos de entrenamiento a escala industrial</td></tr>
+      <tr><td>2027 (esp.)</td><td>Foundation simulation</td><td>Un modelo simula cualquier entorno físico vía prompt</td><td>Realidad como query — cierra el ciclo del manifesto</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Monte Carlo (von Neumann) → meteorología → SPICE (chips) + CFD (industria pesada) → autómatas (NKS) → game physics → Omniverse (gemelos digitales) → World Models (simulación aprendida) → Foundation simulation. La simulación pasa de herramienta científica a sustrato del mundo: <i>el futuro será simulado antes de ser vivido</i>.</blockquote>
+  </details>
+
+  <details class="section">
+    <summary>15 · ALGORITMOS — De Minimax al razonamiento agéntico</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1928</td><td>Minimax</td><td>Von Neumann · <i>Zur Theorie der Gesellschaftsspiele</i> · funda teoría de juegos</td><td>Corazón de Deep Blue (1997); luego eclipsado por MCTS+NN</td></tr>
+      <tr><td>1956</td><td>Dijkstra · shortest path</td><td>Edsger Dijkstra · algoritmo de camino más corto en grafos</td><td>Sustrato de routing internet, GPS, redes neuronales como grafos</td></tr>
+      <tr><td>1962</td><td>Quicksort</td><td>C. A. R. Hoare · divide-and-conquer recursivo</td><td>Algoritmo de ordenación más usado del siglo XX</td></tr>
+      <tr><td>1968</td><td>Knuth · TAOCP Vol 1</td><td>Donald Knuth · análisis riguroso de algoritmos</td><td>Funda la disciplina; notación O() y análisis amortizado</td></tr>
+      <tr><td>1971</td><td>Cook-Levin · NP-completitud</td><td>Cook y Levin · SAT es NP-completo</td><td>Frontera P vs NP — pregunta abierta · premio Millennium</td></tr>
+      <tr><td>1976</td><td>Diffie-Hellman</td><td>Diffie y Hellman · primer intercambio de claves sin canal seguro</td><td>Funda criptografía de clave pública; sin esto no hay HTTPS</td></tr>
+      <tr><td>1977</td><td>RSA</td><td>Rivest, Shamir, Adleman · cifrado clave pública práctico</td><td>Sustrato de toda la web segura · bajo amenaza por Shor (1994)</td></tr>
+      <tr><td>1996</td><td><b>PageRank *<sup>1</sup></b></td><td>Page y Brin · importancia como eigenvector del grafo de enlaces</td><td>Algoritmo de grafos que organiza la web · funda Google</td></tr>
+      <tr><td>2004</td><td>MapReduce</td><td>Dean y Ghemawat (Google) · primitivas map+reduce distribuidas</td><td>Funda la era del big data; inspira Hadoop, Spark</td></tr>
+      <tr><td>2008</td><td>Nakamoto consensus</td><td>Satoshi Nakamoto · proof-of-work · resuelve consenso bizantino sin autoridad</td><td>Funda la era cripto/Web3; aplicaciones más allá de moneda</td></tr>
+      <tr><td>2017</td><td><b>Attention *<sup>2</sup></b></td><td>Vaswani et al. · scaled dot-product attention como primitiva</td><td>Unidad básica de cómputo de toda la IA generativa moderna</td></tr>
+      <tr><td>2024</td><td>Algoritmos agénticos</td><td>ReAct → ToT → MCTS sobre LLMs → tool use estructurado</td><td>IA reabraza la búsqueda algorítmica clásica con LLMs como heurística</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Minimax (juegos) → Dijkstra (grafos) → Quicksort (sorting) → Knuth (formalización) → Cook-Levin (complejidad) → criptografía (DH/RSA) → big data (MapReduce) → consenso distribuido (Nakamoto) → atención (sustrato IA) → agentes. La matemática pura del cómputo, atravesando 100 años, vuelve a ser primitiva en la era IA.</blockquote>
+  <p style="font-size:11px;color:#555;margin:14px 0 0;font-style:italic;border-top:1px dashed #aaa;padding-top:10px">
+    <b style="color:#222;font-style:normal">Nota sobre duplicidades conceptuales (*):</b> los nodos marcados con <b>*</b> aparecen también en otras columnas — el mismo hito visto desde un ángulo distinto, no un error.
+    <br><b>*<sup>1</sup> PageRank (1996)</b> ↔ Google en INTERNET — aquí como algoritmo de grafos, allí como producto de descubrimiento web.
+    <br><b>*<sup>2</sup> Attention (2017)</b> ↔ Transformer en IA — aquí como primitiva algorítmica abstracta, allí como modelo concreto que la encarna.
+  </p>
+  </details>
+
+  <h2>Mapa textual de relaciones</h2>
+<pre>LÓGICA  ──►  ARQUITECTURA  ──►  ELECTRÓNICA  ──►  MICRO+PC
+(Boole,        (Turing,            (Zuse,             (Intel 4004 → 386 → Pentium →
+Shannon)       von Neumann,        ENIAC,             Athlon 64 → Core 2 Duo →
+               autómatas auto-     transistor, IC,    iPhone → Ryzen → M1 →
+               replicantes)        Moore →            NPU → M5/18A → M6+Vera)
+                                   FIN MOORE 2019 →
+                                   chiplet + GAA + Silica)
+                                          │
+                                          ▼
+                                    SOFTWARE  ──►  POO/PARADIGMAS  ──►  IA
+                                   (Hopper,         (Simula,            (Dartmouth, perceptrón,
+                                   FORTRAN, C,      Smalltalk,          ELIZA, invierno,
+                                   Unix, GNU,       C++, Java, Python,  expertos, backprop,
+                                   Linux, Git,      microservicios,     DBN, ImageNet, AlexNet,
+                                   Docker,          vibe coding)        GANs, Transformer,
+                                   Copilot,                             BERT, GPT-3, AlphaFold,
+                                   coding agents)                       Diffusion, GPT-4, o1,
+                                                                        Opus 4.7, ...)
+                                                                              │
+                                                                              ▼
+                                              PARALELISMO ──► GPU+CUDA (2006) ──► AlexNet (2012)
+                                              (TPU 2015,                              │
+                                              Cerebras 2019,                          ▼
+                                              hyperscaler                Transformer (2017) ──► LLMs (2022→)
+                                              silicon 2024,                            │
+                                              TPU v7 2025)                             ▼
+                                                                          DATA: vector DBs + MCP + memoria agéntica
+                                                                                       │
+                                                                                       ▼
+                                              ROBÓTICA ──►  Humanoides (2024)  ──►  Robot Foundation Models (2027 esp.)
+                                              (Unimate,                              │
+                                              Shakey,                                ▼
+                                              PUMA, Roomba,             Supercomputación exascale (Frontier 2022 → JUPITER 2025)
+                                              DARPA UC, Spot)
+
+INTERNET   ──►  ARPANET → TCP/IP → WWW → Mosaic → Google → AWS → Kubernetes → Edge
+
+CUÁNTICA   ──►  Feynman/Deutsch → Shor/Grover → 2-qubits → Willow → Majorana → IBM Cockatoo (2027 esp.)
+
+LÓGICA     ──►  [eslabón moderno] Voevodsky HoTT (2013) → Lean 4 (2021) → AlphaProof (2024)
+                cierra el círculo Boole → Hilbert → Gödel → Turing → IA razonando en lógica formal</pre>
+
+  <h2>Conclusión</h2>
+  <p>La historia es <b>una sola línea</b> con <b>dos ramas finales paralelas</b> (cuántica y exascale clásica), y una <b>ola transversal</b> (la IA) que cruza casi todos los bloques.</p>
+  <ul>
+    <li><b>GPUs</b> son el puente físico que hace viable la IA moderna y la supercomputación actual.</li>
+    <li><b>VRAM</b> es subcomponente práctico: limita lo ejecutable localmente, pero no es un cambio de paradigma.</li>
+    <li><b>CUDA (2006)</b> y <b>AlexNet (2012)</b> son los dos puntos de inflexión que conectan hardware paralelo con la IA actual.</li>
+  </ul>
+
+  <h2>Apéndice · La máquina que me cambió la vida y quizás a ti también.</h2>
+  <article class="machine-card">
+    <div class="machine-art">
+      <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" aria-label="IBM System/23 Datamaster 5322 — corregido con drives verticales">
+        <defs>
+          <pattern id="kbKeys" x="0" y="0" width="14" height="11" patternUnits="userSpaceOnUse">
+            <rect x="1.5" y="1.5" width="11" height="8" fill="#D6C7A4" stroke="#5A4A30" stroke-width="0.4" rx="1"/>
+          </pattern>
+          <linearGradient id="bodyGrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#EEE0BD"/>
+            <stop offset="1" stop-color="#D2C3A0"/>
+          </linearGradient>
+          <linearGradient id="bodyGradTop" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#F4E8C8"/>
+            <stop offset="1" stop-color="#E0D1AC"/>
+          </linearGradient>
+          <filter id="phosphor"><feGaussianBlur stdDeviation="0.5"/></filter>
+        </defs>
+
+        <!-- Background -->
+        <rect width="440" height="400" fill="#0f0f0f"/>
+        <ellipse cx="220" cy="355" rx="190" ry="14" fill="#000" opacity="0.55"/>
+
+        <!-- Console body (wider, lower — like the real photo) -->
+        <rect x="40" y="30" width="360" height="240" fill="url(#bodyGrad)" stroke="#3A2E18" stroke-width="2"/>
+        <line x1="40" y1="32" x2="400" y2="32" stroke="#F4E8D0" stroke-width="1"/>
+        <line x1="40" y1="268" x2="400" y2="268" stroke="#5A4A30" stroke-width="1"/>
+
+        <!-- Monitor on LEFT half, slightly raised bezel -->
+        <rect x="60" y="58" width="190" height="170" fill="url(#bodyGrad)" stroke="#3A2E18" stroke-width="1"/>
+        <rect x="74" y="68" width="162" height="130" fill="#1A1A14" stroke="#3A2E18" stroke-width="1.2"/>
+        <!-- Screen (rounded CRT corners) -->
+        <rect x="80" y="74" width="150" height="118" fill="#062a0e" rx="10" ry="8"/>
+
+        <!-- Screen content -->
+        <g font-family="'IBM Plex Mono',monospace" fill="#33ff66" filter="url(#phosphor)">
+          <text x="86" y="88" font-size="7">IBM SYSTEM/23 DATAMASTER</text>
+          <text x="86" y="99" font-size="7">(C) IBM CORP. 1981</text>
+          <text x="86" y="114" font-size="7">READY</text>
+          <text x="86" y="128" font-size="7">10 INPUT "NOMBRE: ";N$</text>
+          <text x="86" y="139" font-size="7">20 PRINT "HOLA ";N$</text>
+          <text x="86" y="150" font-size="7">30 GOTO 10</text>
+          <text x="86" y="164" font-size="7">RUN</text>
+          <text x="86" y="175" font-size="7">NOMBRE: CARLOS</text>
+          <text x="86" y="186" font-size="7">HOLA CARLOS</text>
+        </g>
+        <rect x="86" y="189" width="5" height="2" fill="#33ff66" opacity="0.9"/>
+
+        <!-- Scanlines -->
+        <g opacity="0.18">
+          <line x1="80" y1="80"  x2="230" y2="80"  stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="88"  x2="230" y2="88"  stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="96"  x2="230" y2="96"  stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="104" x2="230" y2="104" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="112" x2="230" y2="112" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="120" x2="230" y2="120" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="128" x2="230" y2="128" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="136" x2="230" y2="136" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="144" x2="230" y2="144" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="152" x2="230" y2="152" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="160" x2="230" y2="160" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="168" x2="230" y2="168" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="176" x2="230" y2="176" stroke="#000" stroke-width="0.7"/>
+          <line x1="80" y1="184" x2="230" y2="184" stroke="#000" stroke-width="0.7"/>
+        </g>
+
+        <!-- Brightness knob (bottom-right of monitor bezel) -->
+        <circle cx="225" cy="207" r="4.5" fill="#C2B294" stroke="#3A2E18" stroke-width="0.6"/>
+        <line x1="225" y1="203" x2="225" y2="207" stroke="#3A2E18" stroke-width="1"/>
+
+        <!-- ===== FLOPPY DRIVES — VERTICAL SLOTS, side-by-side, on right ===== -->
+        <g>
+          <!-- Dark recessed inset frame -->
+          <rect x="265" y="58" width="120" height="170" fill="#2E261A" stroke="#3A2E18" stroke-width="1.2"/>
+          <!-- Inner frame (lighter dark tan) -->
+          <rect x="272" y="64" width="106" height="158" fill="#5A4A30" stroke="#3A2E18" stroke-width="0.8"/>
+
+          <!-- LEFT vertical slot (Drive A) -->
+          <g>
+            <!-- channel groove -->
+            <rect x="288" y="74" width="14" height="118" fill="#0a0a06" stroke="#1A1A1A" stroke-width="0.5" rx="1"/>
+            <!-- diskette slot opening (top portion, slightly wider) -->
+            <rect x="285" y="72" width="20" height="6" fill="#0a0a06" stroke="#1A1A1A" stroke-width="0.4" rx="1"/>
+            <!-- black plastic latch/lever at bottom -->
+            <rect x="284" y="178" width="22" height="18" fill="#1a1a1a" stroke="#000" stroke-width="0.5" rx="1.5"/>
+            <!-- latch grip indent -->
+            <rect x="290" y="183" width="10" height="3" fill="#3a3a3a" rx="0.5"/>
+            <!-- LED indicator -->
+            <circle cx="295" cy="208" r="1.8" fill="#FF3030"/>
+          </g>
+
+          <!-- RIGHT vertical slot (Drive B) -->
+          <g>
+            <rect x="345" y="74" width="14" height="118" fill="#0a0a06" stroke="#1A1A1A" stroke-width="0.5" rx="1"/>
+            <rect x="342" y="72" width="20" height="6" fill="#0a0a06" stroke="#1A1A1A" stroke-width="0.4" rx="1"/>
+            <rect x="341" y="178" width="22" height="18" fill="#1a1a1a" stroke="#000" stroke-width="0.5" rx="1.5"/>
+            <rect x="347" y="183" width="10" height="3" fill="#3a3a3a" rx="0.5"/>
+            <circle cx="352" cy="208" r="1.8" fill="#3a3a3a"/>
+          </g>
+
+          <!-- drive labels -->
+          <text x="295" y="218" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5" fill="#D2C3A0">A</text>
+          <text x="352" y="218" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5" fill="#D2C3A0">B</text>
+        </g>
+
+        <!-- IBM nameplate (striped, Paul Rand) below screen on LEFT side -->
+        <g transform="translate(120,236)">
+          <defs>
+            <mask id="ibmStripes2" maskUnits="userSpaceOnUse">
+              <rect width="56" height="20" fill="white"/>
+              <g fill="black">
+                <rect y="2"  width="56" height="1.4"/>
+                <rect y="5.5" width="56" height="1.4"/>
+                <rect y="9"   width="56" height="1.4"/>
+                <rect y="12.5" width="56" height="1.4"/>
+                <rect y="16"   width="56" height="1.4"/>
+              </g>
+            </mask>
+          </defs>
+          <text x="0" y="17" font-family="'IBM Plex Sans',sans-serif" font-weight="900" font-size="20" fill="#1F70C1" mask="url(#ibmStripes2)" letter-spacing="-1">IBM</text>
+        </g>
+
+        <!-- Keyboard tray (extends in front of body, slight perspective) -->
+        <g transform="translate(60,275)">
+          <polygon points="0,0 320,0 336,50 -16,50" fill="url(#bodyGrad)" stroke="#3A2E18" stroke-width="2"/>
+          <!-- keys area -->
+          <rect x="14" y="6" width="270" height="38" fill="url(#kbKeys)" opacity="0.95"/>
+          <!-- spacebar -->
+          <rect x="100" y="34" width="120" height="7" fill="#D6C7A4" stroke="#3A2E18" stroke-width="0.4" rx="1"/>
+          <!-- Power switch on right of keyboard tray (red rocker, like the photo) -->
+          <rect x="294" y="14" width="22" height="22" fill="#1A1A1A" stroke="#3A2E18" stroke-width="0.6" rx="2"/>
+          <rect x="298" y="18" width="14" height="14" fill="#C53030" stroke="#7A1818" stroke-width="0.5" rx="1"/>
+          <text x="305" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5" fill="#3A2E18" letter-spacing="1">PWR</text>
+        </g>
+
+        <text x="220" y="392" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#666" letter-spacing="3">IBM 5322 · SYSTEM/23 · 1981</text>
+      </svg>
+    </div>
+    <div class="machine-content">
+      <h3 class="machine-title">
+        IBM System/23 Datamaster
+        <small>EL ESLABÓN OLVIDADO ANTES DEL PC</small>
+      </h3>
+      <div class="machine-specs">
+        <div><b>ANUNCIADO</b>28 de julio de 1981</div>
+        <div><b>CPU</b>Intel 8085 (no 8086)</div>
+        <div><b>SISTEMA</b>Propietario IBM · BASIC en ROM</div>
+      </div>
+      <p class="machine-history">
+        Fue el <b>precursor directo del IBM PC</b>: el equipo del System/23 (dirigido por <b>Bill Lowe en Boca Raton</b>) fue el mismo que pocos meses después diseñaría el IBM PC 5150 en apenas un año, aprovechando todas las lecciones aprendidas con el S/23 — equipo pequeño, componentes off-the-shelf, decisiones rápidas.
+      </p>
+      <blockquote class="machine-personal">Fue la primera máquina que sentí que controlaba como si fuese una extensión de mí en el centro de formación de IBM. Le dediqué tantas horas programando esta máquina que creía adivinar los colores en el fósforo verde de la pantalla. Todavía busco una de estas máquinas para volver a oír el altavoz que emitía un pitido cada vez que pulsabas una tecla. Eran máquinas tan simples que tras algunos cientos de horas podías sentir cómo funcionaban; unos meses después llegaría el PC y el mundo cambió para siempre.</blockquote>
+      <div class="dedication">
+        Gracias a mi padre <b>José Ortet</b>, técnico de IBM durante décadas, por ser el único padre que entregaba <b>placas madre inservibles</b> a su hijo en lugar de balones de fútbol. Creo que intuyó que había nacido para explorar erráticamente los nuevos mundos digitales en lugar de meter goles.
+      </div>
+      <details class="machine-details">
+        <summary>FICHA TÉCNICA Y CONTEXTO HISTÓRICO COMPLETO</summary>
+        <div class="machine-tech">
+          <div class="specs-grid">
+            <b>MANUFACTURER</b><span>IBM</span>
+            <b>MODELS</b><span>5322, 5324</span>
+            <b>CPU</b><span>Intel 8085 @ 6.14 MHz (efectivo 3.07 MHz)</span>
+            <b>DMA</b><span>Intel 8257</span>
+            <b>CRTC</b><span>Intel 8275</span>
+            <b>DISPLAY</b><span>80 × 24 caracteres, MDA-like</span>
+            <b>FDC</b><span>NEC 765</span>
+            <b>RAM</b><span>32 KB / 64 KB / 96 KB / 128 KB</span>
+            <b>ROM</b><span>112 KB / 128 KB – 272 KB</span>
+          </div>
+
+          <h4>Commercial Failure</h4>
+          <p>The scarcity of those systems is the result of high prices (it was marketed at <b>USD 9,000</b> at the time), delayed availability, poor marketing and the release of in-house competing systems such as the Displaywriter and the PC. This made the computer fail to be adopted by the market, which had a plethora of competing systems at much more competitive price and performance. Therefore the System/23 quickly became a niche in the market and was soon forgotten as the technology improved quickly in the mid-80s.</p>
+
+          <h4>Influence over the 5120</h4>
+          <p>The long development time of the IBM Datamaster made its case a model for the IBM 5120, which adopted a variant. While it is acknowledged that both units have related cases, it is usually wrongly stated that the 5120 influenced the System/23 — when in reality it was the Datamaster that influenced the 5120.</p>
+
+          <h4>Usage of standard parts</h4>
+          <p>The IBM Datamaster is the <b>first IBM computer to rely on then-industry-standard components</b> including microprocessor, memories, peripheral devices and logic integrated circuits. This approach would be reused in the Displaywriter (which has a mix of both standard components and IBM SLTs) and later developments, such as the PC family of computers. However, the references were changed to avoid third parties from tampering with the machine.</p>
+
+          <h4>Creation of the IBM PC</h4>
+          <p>It is often said that IBM had a rushed development of the PC with a single year in development. Whereas the statement is partially true, it is also forgotten how close both systems are and how the same engineers that worked in the Datamaster later worked in the PC, bringing the required expertise. Also, the chosen CPU was the <b>Intel 8088</b> due to its hardware similarity with the Intel 8085, and this way most of the peripherals were maintained in the transition from the Datamaster. The character set and its format were also brought from the System/23 to the 5150. Also, the expansion bus is nearly untouched in that evolution. Finally, from pictures of early prototypes it can be seen that the power connectors were the same as the one in the Datamaster. <b>As a conclusion, it might be stated that the early life of the IBM PC started as modifications on the Datamaster.</b></p>
+
+          <h4>Documentación original</h4>
+          <p>📄 <a href="https://zoopa.es/files/SY34-0241-1_IBM_5324_Service_Manual.pdf" target="_blank" rel="noopener" class="manual-link"><b>IBM 5324 Computer Service Manual</b> (SY34-0241-1, May 1982)</a> — Manual técnico oficial de IBM, 17 MB · PDF.<br>
+          <small>Fuente original: <a href="https://bitsavers.org/pdf/ibm/system23/fe/SY34-0241-1_IBM_5324_Computer_Service_Manual_May82.pdf" target="_blank" rel="noopener">bitsavers.org</a> — preservación digital del legado IBM. Copia espejo en zoopa.es para acceso permanente.</small></p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div>
+      HISTORIA DE LA COMPUTACIÓN · 1837 → 2026<br>
+      © 2026 · <a href="https://carlosortet.com" target="_blank" rel="noopener" class="author-link" title="carlosortet.com">CARLOS ORTET</a>
+    </div>
+    <a href="https://498advance.com" target="_blank" rel="noopener" class="brand-link footer-brand" title="498advance.com">
+      <div class="brand-498">
+        <svg class="mark" viewBox="0 0 60 60" width="36" height="36" aria-hidden="true">
+          <g shape-rendering="geometricPrecision">
+            <polygon points="30,4 54,16 30,28 6,16"  fill="#5BC0EB"/>
+            <polygon points="6,16 30,28 30,56 6,44"  fill="#1F70C1"/>
+            <polygon points="54,16 30,28 30,56 54,44" fill="#0A2E5C"/>
+          </g>
+        </svg>
+        <svg class="wordmark" viewBox="0 0 230 64" width="140" height="40" aria-hidden="true">
+          <defs>
+            <mask id="stripeMaskF" maskUnits="userSpaceOnUse">
+              <rect width="230" height="64" fill="white"/>
+              <g fill="black">
+                <rect x="0" y="3"  width="230" height="3"/>
+                <rect x="0" y="11" width="230" height="3"/>
+                <rect x="0" y="19" width="230" height="3"/>
+                <rect x="0" y="27" width="230" height="3"/>
+                <rect x="0" y="35" width="230" height="3"/>
+                <rect x="0" y="43" width="230" height="3"/>
+                <rect x="0" y="51" width="230" height="3"/>
+              </g>
+            </mask>
+          </defs>
+          <text x="0" y="56" mask="url(#stripeMaskF)"
+                font-family="'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif"
+                font-weight="900" font-size="68" letter-spacing="-3"
+                fill="#33B1FF">498A</text>
+        </svg>
+        <div class="rule"></div>
+        <div class="stack">
+          <div class="name">A D V A N C E</div>
+          <div class="tag">498ADVANCE.COM</div>
+        </div>
+      </div>
+    </a>
+  </footer>
+</div>
+
+<script>
+// ================== DATA ==================
+const COLS = [
+  {id:'LOG',  name:'LÓGICA',       color:'#1F70C1'},
+  {id:'ALG',  name:'ALGORITMOS',   color:'#002D9C'},
+  {id:'ARQ',  name:'ARQUITECTURA', color:'#DA1E28'},
+  {id:'ELE',  name:'ELECTRÓNICA',  color:'#F1C21B'},
+  {id:'SOF',  name:'SOFTWARE',     color:'#198038'},
+  {id:'POO',  name:'POO',          color:'#8A3FFC'},
+  {id:'PC',   name:'MICRO+PC',     color:'#FF832B'},
+  {id:'ROBOT',name:'ROBÓTICA',     color:'#BA4E00'},
+  {id:'NET',  name:'INTERNET',     color:'#0E6027'},
+  {id:'DATA', name:'DATA',         color:'#A56EFF'},
+  {id:'IA',   name:'IA',           color:'#EE5396'},
+  {id:'GPU',  name:'PARALELISMO',  color:'#33B1FF'},
+  {id:'CUA',  name:'CUÁNTICA',     color:'#9F1853'},
+  {id:'SUP',  name:'SUPERCOMP',    color:'#005D5D'},
+  {id:'SIM',  name:'SIMULACIÓN',   color:'#A66A0A'}
+];
+
+// nodes are MILESTONES (no people). desc = aportación · rel = relación clave
+const NODES = [
+  // LÓGICA
+  {id:'boole', cat:'LOG', year:1847, label:'Álgebra booleana',
+    desc:'Boole formaliza la lógica con operaciones algebraicas (AND/OR/NOT) en *Mathematical Analysis of Logic* (1847) y *Laws of Thought* (1854).',
+    rel:'Habilita el siguiente salto: Shannon (1937) la convertirá en circuitos.'},
+  {id:'frege', cat:'LOG', year:1879, label:'Lógica de predicados',
+    desc:'Frege publica *Begriffsschrift*: lógica de predicados y cuantificadores. Primera notación formal completa.',
+    rel:'Influye en Russell, Hilbert y Turing.'},
+  {id:'godel', cat:'LOG', year:1931, label:'Incompletitud · Entscheidungsproblem',
+    desc:'Hilbert plantea el Entscheidungsproblem (1928). Gödel publica los teoremas de incompletitud (1931).',
+    rel:'Plantea el reto que Turing y Church responden en 1936.'},
+  {id:'shannon37', cat:'LOG', year:1937, label:'Lógica → circuitos',
+    desc:'Shannon, en su tesis de máster (MIT), aplica el álgebra de Boole a circuitos eléctricos de relés.',
+    rel:'Fusiona lógica + electrónica → puente directo a Z3, Colossus y ENIAC.'},
+  // ARQUITECTURA
+  {id:'analytic', cat:'ARQ', year:1837, label:'Máquina Analítica',
+    desc:'Babbage diseña la Máquina Analítica: memoria, control, cálculo y programa en una sola máquina.',
+    rel:'Primera arquitectura conceptual general; nunca terminada en vida.'},
+  {id:'lovelace', cat:'ARQ', year:1843, label:'Primer programa',
+    desc:'Ada Lovelace publica el primer algoritmo destinado a una máquina (notas a Menabrea).',
+    rel:'Inaugura la distinción hardware / software.'},
+  {id:'turing36', cat:'ARQ', year:1936, label:'Máquina universal',
+    desc:'Turing formula la máquina universal en *On Computable Numbers*.',
+    rel:'Base teórica de todo ordenador de propósito general.'},
+  {id:'vonneu', cat:'ARQ', year:1945, label:'Programa almacenado',
+    desc:'Von Neumann describe la arquitectura de programa almacenado en *First Draft of a Report on the EDVAC*.',
+    rel:'Modelo dominante hasta hoy: CPU + memoria + bus.'},
+  {id:'edsac', cat:'ARQ', year:1949, label:'EDSAC operativo',
+    desc:'Wilkes pone en marcha el EDSAC en Cambridge: primer von Neumann plenamente operativo.',
+    rel:'Convierte la teoría de von Neumann en realidad práctica.'},
+  {id:'autoreplica', cat:'ARQ', year:1948, label:'Autómatas autoreplicantes',
+    desc:'Von Neumann formula la teoría de los autómatas autoreplicantes y diseña el constructor universal (publicado póstumamente en 1966 como *Theory of Self-Reproducing Automata*).',
+    rel:'Predice la lógica del ADN antes de su descubrimiento (1953); inspira autómatas celulares, vida artificial y algoritmos evolutivos.'},
+  // ELECTRÓNICA
+  {id:'z3', cat:'ELE', year:1941, label:'Z3',
+    desc:'Konrad Zuse construye el Z3: primer ordenador programable y automático funcional (relés electromecánicos).',
+    rel:'Demuestra viabilidad práctica antes que los aliados.'},
+  {id:'colossus', cat:'ELE', year:1944, label:'Colossus',
+    desc:'Tommy Flowers y Bletchley Park construyen Colossus para criptoanálisis (válvulas).',
+    rel:'Primer ordenador electrónico programable.'},
+  {id:'eniac', cat:'ELE', year:1946, label:'ENIAC',
+    desc:'Eckert y Mauchly entregan ENIAC en Penn: ordenador electrónico de propósito general.',
+    rel:'Consolida el paradigma electrónico.'},
+  {id:'transistor', cat:'ELE', year:1947, label:'Transistor',
+    desc:'Bardeen, Brattain y Shockley (Bell Labs) inventan el transistor de unión bipolar.',
+    rel:'Permite miniaturizar y sustituir las válvulas (Nobel 1956).'},
+  {id:'ic', cat:'ELE', year:1959, label:'Circuito integrado',
+    desc:'Kilby (TI, 1958) y Noyce (Fairchild, 1959) inventan el IC; Noyce con la versión planar fabricable.',
+    rel:'Habilita Moore (1965) y la era del chip.'},
+  {id:'moore', cat:'ELE', year:1965, label:'Ley de Moore',
+    desc:'Moore observa que el número de transistores por chip se duplica cada ~2 años.',
+    rel:'Marco económico de planificación de la industria semiconductora.'},
+  {id:'mooreDead', cat:'ELE', year:2019, label:'Fin Moore clásico',
+    desc:'Jensen Huang (NVIDIA) declara "Moore\'s Law is dead" en GTC 2019. La cadencia 2-años-doblado se ha roto: 14nm → 10nm de Intel tomó >5 años. Dennard scaling murió antes (~2006).',
+    rel:'Fin del escalado puro de nodos. Industria pivota a chiplet (Ryzen 2017), 3D stacking, advanced packaging (CoWoS). Cambia la economía del silicio.'},
+  {id:'silica', cat:'ELE', year:2019, label:'Project Silica · cristal 5D',
+    desc:'Microsoft Research demuestra Project Silica: almacenamiento óptico 5D en cristal de cuarzo escrito con láser de femtosegundos. Datos durables miles de años; demos comerciales con Hitachi (2023).',
+    rel:'Primer sustrato post-silicio creíble para almacenamiento de muy largo plazo (cold storage de archivo).'},
+  {id:'gaa', cat:'ELE', year:2022, label:'Transistor GAA',
+    desc:'Samsung lanza el primer chip con transistores Gate-All-Around (GAA) a 3nm. Sucesor estructural del FinFET (Intel 2011).',
+    rel:'Habilita la continuidad de la ley de Moore más allá de los 5nm: nueva geometría del canal.'},
+  // SOFTWARE
+  {id:'a0', cat:'SOF', year:1952, label:'Compilador A-0',
+    desc:'Grace Hopper desarrolla el compilador A-0 en UNIVAC: primer compilador funcional.',
+    rel:'Acerca la programación al lenguaje humano.'},
+  {id:'fortran', cat:'SOF', year:1957, label:'FORTRAN',
+    desc:'John Backus (IBM) lidera FORTRAN: primer lenguaje de alto nivel ampliamente adoptado.',
+    rel:'Despega el software científico y técnico.'},
+  {id:'lisp', cat:'SOF', year:1958, label:'LISP',
+    desc:'McCarthy diseña LISP: funcional y simbólico, basado en el cálculo lambda.',
+    rel:'Lengua franca de la IA simbólica durante décadas.'},
+  {id:'algol', cat:'SOF', year:1960, label:'ALGOL 60',
+    desc:'ALGOL 60 establece sintaxis estructurada (bloques, scopes) y notación BNF.',
+    rel:'Padre de Pascal, C, Java y casi todo lo que vino después.'},
+  {id:'dijkstra', cat:'SOF', year:1968, label:'Programación estructurada',
+    desc:'Dijkstra publica *Go To Statement Considered Harmful*; consolida la programación estructurada.',
+    rel:'Funda la ingeniería del software moderna.'},
+  {id:'unix', cat:'SOF', year:1969, label:'Unix',
+    desc:'Thompson y Ritchie crean Unix en Bell Labs: filosofía modular, archivos como interfaz universal.',
+    rel:'Sustrato de macOS, Linux, Android, iOS y servidores.'},
+  {id:'cLang', cat:'SOF', year:1973, label:'Lenguaje C',
+    desc:'Ritchie diseña C como lenguaje de implementación de Unix: portable y de bajo nivel.',
+    rel:'Lenguaje de sistemas dominante; padre de C++, Objective-C, Java, C#…'},
+  // POO
+  {id:'simula', cat:'POO', year:1967, label:'Simula 67',
+    desc:'Dahl y Nygaard (Universidad de Oslo) introducen clases, objetos y herencia con Simula 67.',
+    rel:'Primer hito real de la POO; Alan Kay acuñará después el término "object-oriented".'},
+  {id:'smalltalk', cat:'POO', year:1980, label:'Smalltalk-80',
+    desc:'Equipo de Alan Kay (Ingalls, Goldberg) en Xerox PARC consolida objetos, clases, paso de mensajes y GUI.',
+    rel:'Inspira Mac, Objective-C y Java.'},
+  {id:'cpp', cat:'POO', year:1985, label:'C++',
+    desc:'Stroustrup (Bell Labs) suma POO sobre C; primera edición comercial en 1985.',
+    rel:'Lleva los objetos al software de sistemas y alto rendimiento.'},
+  {id:'python', cat:'POO', year:1991, label:'Python',
+    desc:'Guido van Rossum diseña Python combinando scripting, POO y legibilidad.',
+    rel:'Hoy lengua franca de IA, data science y automatización.'},
+  {id:'java', cat:'POO', year:1995, label:'Java',
+    desc:'Gosling (Sun) lanza Java con la promesa "write once, run anywhere" sobre la JVM.',
+    rel:'Masifica la POO en empresa y backend.'},
+  // PC
+  {id:'i4004', cat:'PC', year:1971, label:'Intel 4004',
+    desc:'Faggin, Hoff, Mazor y Shima diseñan el Intel 4004 (4 bits, 2.300 transistores).',
+    rel:'Primer microprocesador comercial; inicia la era del "ordenador en un chip".'},
+  {id:'i8008', cat:'PC', year:1972, label:'Intel 8008',
+    desc:'Intel 8008: primer microprocesador de 8 bits.',
+    rel:'Antecesor directo de la familia x86.'},
+  {id:'i8080', cat:'PC', year:1974, label:'Intel 8080',
+    desc:'Intel 8080: 8 bits ampliado, 6.000 transistores.',
+    rel:'Hace viables los primeros microordenadores útiles (Altair, IMSAI).'},
+  {id:'altair', cat:'PC', year:1975, label:'Altair 8800 + BASIC',
+    desc:'MITS lanza el Altair 8800; Microsoft (Gates/Allen) escribe Altair BASIC.',
+    rel:'Nace la industria del software para PC.'},
+  {id:'apple1', cat:'PC', year:1976, label:'Apple I',
+    desc:'Wozniak diseña el Apple I (con Jobs como cofundador comercial).',
+    rel:'Primer paso hacia el PC orientado al usuario doméstico.'},
+  {id:'apple2', cat:'PC', year:1977, label:'Apple II',
+    desc:'Apple II: primer microordenador de éxito masivo, con color y software empresarial (VisiCalc).',
+    rel:'Convierte el PC en producto de consumo.'},
+  {id:'ibmpc', cat:'PC', year:1981, label:'IBM PC 5150',
+    desc:'IBM PC 5150 con MS-DOS (Microsoft). Arquitectura abierta.',
+    rel:'Estandariza la arquitectura PC; explosión de clones a nivel global.'},
+  {id:'mac', cat:'PC', year:1984, label:'Macintosh',
+    desc:'Apple Macintosh: primer PC de éxito masivo con GUI heredada de Xerox PARC.',
+    rel:'Lleva Smalltalk/PARC al mercado.'},
+  {id:'i386',     cat:'PC', year:1985, label:'Intel 80386',
+    desc:'Intel 386: primer x86 de 32 bits con memoria protegida y modo virtual. 275.000 transistores.',
+    rel:'Funda la era de los SO multitarea modernos (Windows NT, Linux, OS/2). Sin esto no hay servidores ni desktops modernos.'},
+  {id:'pentium',  cat:'PC', year:1993, label:'Intel Pentium',
+    desc:'Intel Pentium (P5): arquitectura superescalar con doble pipeline. 60–66 MHz iniciales, escala hasta 200 MHz.',
+    rel:'Inicia la carrera agresiva del reloj hasta 1 GHz; populariza el branding "Pentium" durante una década.'},
+  {id:'athlon64', cat:'PC', year:2003, label:'AMD Athlon 64',
+    desc:'AMD Opteron (abr 2003) y Athlon 64 (sep 2003): primer x86 de 64 bits comercial. AMD inventa el ISA AMD64.',
+    rel:'AMD se adelanta a Intel y obliga a toda la industria a migrar a 64 bits. Intel adopta AMD64 como "EM64T".'},
+  {id:'core2duo', cat:'PC', year:2006, label:'Intel Core 2 Duo',
+    desc:'Intel Core 2 Duo (Conroe): multi-core mainstream para consumidores. Fin de la guerra de GHz, comienza la de núcleos.',
+    rel:'Recupera el liderazgo para Intel; modelo dominante durante 5 años hasta Sandy Bridge.'},
+  {id:'iphone',   cat:'PC', year:2007, label:'iPhone · A4 (ARM)',
+    desc:'Apple iPhone (jun 2007): cómputo personal en el bolsillo. Apple A4 (ARM Cortex-A8, 2010) sella la era SoC móvil.',
+    rel:'Inflexión de plataforma — funda la dominación ARM en mobile y cambia para siempre la economía del software.'},
+  {id:'ryzen',    cat:'PC', year:2017, label:'AMD Ryzen / Zen',
+    desc:'AMD Zen 1 (Ryzen, mar 2017): renacimiento de AMD tras 10 años irrelevante. Estrena arquitectura chiplet (multi-die en un package).',
+    rel:'Romper de la complacencia de Intel. Chiplet se vuelve estándar industrial (Intel, NVIDIA, Apple lo adoptan).'},
+  {id:'m1',       cat:'PC', year:2020, label:'Apple M1 · ARM',
+    desc:'Apple M1 (nov 2020): primer SoC ARM en Mac tras 15 años de Intel. Eficiencia energética disruptiva (10W con rendimiento de chip de 35W).',
+    rel:'ARM llega al desktop. Desencadena Snapdragon X Elite (2024) y la nueva ola Windows-on-ARM.'},
+  {id:'npuEra',   cat:'PC', year:2024, label:'NPU mainstream',
+    desc:'Apple A17 Pro · Snapdragon X Elite · Intel Core Ultra · AMD Ryzen AI: las NPU se integran como bloque obligatorio del CPU. 40+ TOPS on-device.',
+    rel:'IA on-device deja de ser opción. Microsoft "Copilot+ PC" (2024) define la categoría.'},
+  {id:'m5',       cat:'PC', year:2026, label:'Apple M5 + Intel 18A',
+    desc:'Apple M5 series en N3P (TSMC) · Intel Panther Lake debuta el nodo 18A con backside power delivery (PowerVia) y RibbonFET (GAA).',
+    rel:'La carrera de procesos se reabre tras una década de dominio TSMC. Intel intenta recuperar liderazgo de fabricación.'},
+  {id:'m6vera',   cat:'PC', year:2027, label:'Apple M6 + Vera (esp.)',
+    desc:'Apple M6 esperado en TSMC N2 (2nm) · NVIDIA Vera CPU acoplada a Rubin GPU — primera CPU diseñada explícitamente como compañera de GPU para IA, con NVLink directo.',
+    rel:'Convergencia CPU+GPU+NPU: el "computer for AI" deja de ser un cluster y se vuelve un único package.'},
+  // IA
+  {id:'mcp', cat:'IA', year:1943, label:'Neurona artificial',
+    desc:'McCulloch y Pitts publican un modelo matemático de neurona artificial.',
+    rel:'Semilla de las redes neuronales.'},
+  {id:'turingTest', cat:'IA', year:1950, label:'Test de Turing',
+    desc:'Turing propone su test en *Computing Machinery and Intelligence*.',
+    rel:'Marco filosófico de referencia para la IA.'},
+  {id:'dartmouth', cat:'IA', year:1956, label:'Conferencia Dartmouth',
+    desc:'McCarthy, Minsky, Shannon y Rochester organizan la conferencia que acuña "Artificial Intelligence".',
+    rel:'Nace formalmente el campo.'},
+  {id:'perceptron', cat:'IA', year:1958, label:'Perceptrón',
+    desc:'Rosenblatt construye el Perceptrón: primera red neuronal entrenable.',
+    rel:'Primera ola conexionista.'},
+  {id:'winter', cat:'IA', year:1969, label:'Invierno IA',
+    desc:'Minsky y Papert publican *Perceptrons*, exponiendo limitaciones.',
+    rel:'Frena el conexionismo durante ~15 años (primer "invierno").'},
+  {id:'expertSys', cat:'IA', year:1980, label:'Sistemas expertos',
+    desc:'Pico comercial de la IA simbólica: XCON (DEC), MYCIN (Stanford), Prolog (Colmerauer 1972) y proyectos como el japonés Fifth Generation Computer System.',
+    rel:'Era dorada del GOFAI; colapsa hacia 1987–1993 (segundo invierno IA), justo cuando empieza a resurgir el conexionismo con backprop.'},
+  {id:'backprop', cat:'IA', year:1986, label:'Backpropagation',
+    desc:'Rumelhart, Hinton y Williams popularizan backpropagation (Werbos lo había formulado en 1974).',
+    rel:'Resucita las redes neuronales.'},
+  {id:'deepblue', cat:'IA', year:1997, label:'Deep Blue',
+    desc:'IBM Deep Blue vence a Garry Kasparov en match a 6 partidas.',
+    rel:'Hito simbólico de IA simbólica + búsqueda + hardware especializado.'},
+  {id:'alexnet', cat:'IA', year:2012, label:'AlexNet',
+    desc:'Krizhevsky, Sutskever y Hinton ganan ImageNet con CNNs entrenadas en 2× GTX 580.',
+    rel:'Detona la revolución del deep learning moderno.'},
+  {id:'alphago', cat:'IA', year:2016, label:'AlphaGo',
+    desc:'DeepMind AlphaGo vence a Lee Sedol al Go.',
+    rel:'Demuestra el poder de RL + redes profundas en juegos complejos.'},
+  {id:'transformer', cat:'IA', year:2017, label:'Transformer',
+    desc:'Vaswani et al. (Google) publican *Attention Is All You Need*: arquitectura Transformer.',
+    rel:'Base de todos los LLM actuales (GPT, Claude, Gemini, Llama).'},
+  {id:'eliza',     cat:'IA', year:1965, label:'ELIZA',
+    desc:'Joseph Weizenbaum (MIT) crea ELIZA, el primer chatbot. Simula a un psicoterapeuta rogeriano con simple pattern-matching, pero la gente proyecta inteligencia donde no hay.',
+    rel:'Abre 60 años de IA conversacional; demuestra el "efecto ELIZA" — antropomorfizamos cualquier interfaz que conversa.'},
+  {id:'dbn',       cat:'IA', year:2006, label:'Deep Belief Nets',
+    desc:'Hinton publica *A fast learning algorithm for deep belief nets*: pre-entrenamiento capa por capa de redes profundas. Resucita el deep learning tras dos décadas en el desierto.',
+    rel:'Eslabón perdido entre backprop (1986) y AlexNet (2012). Sin esto no hay revolución 2012.'},
+  {id:'imagenet',  cat:'IA', year:2009, label:'ImageNet',
+    desc:'Fei-Fei Li (Princeton/Stanford) presenta ImageNet: 14M de imágenes etiquetadas. La competición ILSVRC empieza en 2010.',
+    rel:'Sin este dataset gigante no hay AlexNet (2012). Cambia la cultura: data > algoritmo.'},
+  {id:'gans',      cat:'IA', year:2014, label:'GANs',
+    desc:'Ian Goodfellow propone Generative Adversarial Networks: dos redes (generador + discriminador) compitiendo. Demuestra que la IA puede CREAR, no solo clasificar.',
+    rel:'Funda la IA generativa moderna. Predecesor conceptual de los modelos de difusión.'},
+  {id:'bert',      cat:'IA', year:2018, label:'BERT + GPT-1',
+    desc:'Google libera BERT (bidireccional pre-trained transformer) · OpenAI lanza GPT-1. Era del pre-training masivo + fine-tuning.',
+    rel:'Convierte el Transformer (2017) en motor mainstream del NLP. Funda la era del transfer learning.'},
+  {id:'chatgpt', cat:'IA', year:2022, label:'ChatGPT',
+    desc:'OpenAI lanza ChatGPT (30 nov 2022). Producto masivo del primer LLM conversacional. 100M usuarios en 2 meses.',
+    rel:'Cambio cultural y económico a escala global. Abre la era IA generativa de consumo.'},
+  {id:'gpt3',      cat:'IA', year:2020, label:'GPT-3 · scaling',
+    desc:'OpenAI publica GPT-3 (175B parámetros). Demuestra "scaling laws": el rendimiento mejora predeciblemente con tamaño + datos + cómputo.',
+    rel:'Cambia la estrategia de la industria: escalar es el camino. Inicia la carrera billion-scale.'},
+  {id:'alphafold', cat:'IA', year:2021, label:'AlphaFold 2',
+    desc:'DeepMind resuelve el plegamiento de proteínas con precisión cristalográfica. Libera la base de datos con 200M+ estructuras predichas (julio 2022).',
+    rel:'Mayor aplicación científica de IA hasta la fecha. Transforma biología estructural; Premio Nobel de Química 2024 a Hassabis y Jumper.'},
+  {id:'diffusion', cat:'IA', year:2022, label:'Diffusion',
+    desc:'Stable Diffusion (Stability AI, ago 2022) + DALL-E 2 (OpenAI, abr 2022) + Midjourney. Difusión latente democratiza la IA generativa visual.',
+    rel:'Generación visual masiva. Cambia el mercado del arte digital y la publicidad de la noche a la mañana.'},
+  {id:'gpt4',      cat:'IA', year:2023, label:'GPT-4 + LLaMA',
+    desc:'OpenAI GPT-4 (mar 2023, multimodal) · Meta LLaMA (feb 2023, open weights) · Claude 1/2/3 (Anthropic). El campo se bifurca: cerrado de élite vs open source.',
+    rel:'Madurez técnica + apertura de pesos. Llama → Llama 2/3 → Llama 4 democratiza fundación masiva.'},
+  {id:'o1',        cat:'IA', year:2024, label:'o1 · reasoning',
+    desc:'OpenAI o1 (sep 2024) introduce el extended thinking en producción: el modelo "piensa" antes de responder, generando cadenas de razonamiento internas largas.',
+    rel:'Transición del paradigma "predicción de siguiente token" al de "razonamiento explícito". Antecede a Claude Opus 4.7.'},
+  // GPU
+  {id:'geforce', cat:'GPU', year:1999, label:'GeForce 256',
+    desc:'NVIDIA GeForce 256: primera GPU comercial con T&L acelerado por hardware.',
+    rel:'Despega el cómputo gráfico programable.'},
+  {id:'shaders', cat:'GPU', year:2001, label:'Shaders programables',
+    desc:'GeForce 3 y shaders programables: la GPU empieza a verse como procesador genérico.',
+    rel:'Base para GPGPU.'},
+  {id:'cuda', cat:'GPU', year:2006, label:'CUDA',
+    desc:'NVIDIA CUDA convierte la GPU en plataforma de cómputo general en C/C++.',
+    rel:'Habilita HPC, simulación científica e IA en GPU.'},
+  {id:'opencl', cat:'GPU', year:2009, label:'OpenCL',
+    desc:'Khronos Group publica OpenCL 1.0 (creado por Apple en 2008, donado al consorcio). Estándar abierto para cómputo paralelo cross-vendor: CPU + GPU + FPGA + DSP. Apoyado por Apple, AMD, Intel, IBM, ARM.',
+    rel:'Alternativa abierta a CUDA. CUDA gana la guerra del ecosistema, pero OpenCL mantiene viva la idea de paralelismo portable. Ancestro espiritual de SYCL, oneAPI, ROCm y los esfuerzos open-source actuales contra el lock-in de NVIDIA.'},
+  {id:'tensorcore', cat:'GPU', year:2017, label:'Tensor Cores',
+    desc:'NVIDIA Volta → Hopper → Blackwell: Tensor Cores, NVLink, HBM3.',
+    rel:'Hardware específico para entrenar e inferir LLMs.'},
+  {id:'tpu1',     cat:'GPU', year:2015, label:'TPU v1 (Google)',
+    desc:'Google diseña su primer ASIC para ML, inicialmente solo uso interno (Search, Translate, Photos). Inferencia 8-bit, custom para sus propios modelos.',
+    rel:'Funda la era ASIC para ML. Inspira a hyperscalers a integrar verticalmente silicio.'},
+  {id:'tpu2',     cat:'GPU', year:2017, label:'TPU v2 · cloud',
+    desc:'Google TPU v2: primer TPU público vía Google Cloud. Capaz de entrenar (no solo inferir). 180 TFLOPS bfloat16. Funda los "Cloud TPU pods".',
+    rel:'TPUs salen del datacenter privado y se vuelven producto. Compite directamente con NVIDIA en cloud training.'},
+  {id:'cerebras', cat:'GPU', year:2019, label:'Cerebras WSE-1',
+    desc:'Cerebras Wafer-Scale Engine: chip del tamaño de una oblea entera (462 cm², 1.2T transistores). Paradigma radical: un solo chip = lo que antes era un cluster de cientos.',
+    rel:'Demuestra que existen alternativas viables al modelo modular de NVIDIA. Apuesta por escalar el chip antes que el cluster.'},
+  {id:'tpu5',     cat:'GPU', year:2023, label:'TPU v5p',
+    desc:'Google TPU v5p: producción a escala con pods de 8.960 chips. Backbone del entrenamiento de Gemini.',
+    rel:'Demuestra que un hyperscaler puede competir con NVIDIA en su propia liga, con silicio propio + modelo propio.'},
+  {id:'hyperscalerSi', cat:'GPU', year:2024, label:'Hyperscaler Silicon',
+    desc:'AWS Trainium 2 · Microsoft Maia · Meta MTIA. Cada hyperscaler diseña sus propios chips para reducir dependencia de NVIDIA.',
+    rel:'Vertical integration extrema: cloud + chip + modelo + servicio = pila propia. Cambia la economía del entrenamiento.'},
+  {id:'etched',   cat:'GPU', year:2024, label:'Etched Sohu',
+    desc:'Etched Sohu: ASIC dedicado SOLO a Transformers. Sacrifica generalidad por ~10× rendimiento vs GPU. Apuesta arriesgada al estancamiento de la arquitectura.',
+    rel:'Si el Transformer dura, gana; si surge nueva arquitectura, queda obsoleto. Refleja la confianza extrema en la apuesta Transformer.'},
+  {id:'tpu7',     cat:'GPU', year:2025, label:'TPU v7 Ironwood',
+    desc:'Google TPU v7 (Ironwood): generación actual. ~5× rendimiento vs v5p, optimizado para inferencia de modelos de razonamiento extendido.',
+    rel:'TPU se diseña explícitamente para la era post-pretraining: extended thinking + agentes consumen mucha más inferencia.'},
+  {id:'tpu8',     cat:'GPU', year:2027, label:'TPU v8 / Trainium 3 (esp.)',
+    desc:'TPU v8 + AWS Trainium 3 esperados. Integración óptica (Co-Packaged Optics), precisión sub-FP4, mayor ancho de banda inter-chip.',
+    rel:'Próxima frontera: el cuello de botella se desplaza de cómputo bruto a comunicación entre chips.'},
+  // CUÁNTICA
+  {id:'benioff', cat:'CUA', year:1980, label:'Modelo cuántico',
+    desc:'Benioff propone un modelo cuántico de máquina de Turing.',
+    rel:'Primer ordenador cuántico teórico.'},
+  {id:'feynman', cat:'CUA', year:1982, label:'Simulación cuántica',
+    desc:'Feynman propone simular sistemas físicos con ordenadores cuánticos.',
+    rel:'Motivación fundacional del campo.'},
+  {id:'deutsch', cat:'CUA', year:1985, label:'Computador universal',
+    desc:'Deutsch formula el computador cuántico universal.',
+    rel:'Análogo cuántico de la máquina universal de Turing.'},
+  {id:'shor', cat:'CUA', year:1994, label:'Algoritmo de Shor',
+    desc:'Algoritmo de factorización en tiempo polinómico cuántico.',
+    rel:'Demuestra ventaja práctica → reto a RSA y a la criptografía clásica.'},
+  {id:'grover', cat:'CUA', year:1996, label:'Algoritmo de Grover',
+    desc:'Búsqueda cuántica no estructurada en √N.',
+    rel:'Segundo algoritmo cuántico paradigmático.'},
+  {id:'qbit2', cat:'CUA', year:1998, label:'2 qubits (NMR)',
+    desc:'Chuang, Gershenfeld y Kubinec demuestran un ordenador cuántico de 2 qubits con NMR.',
+    rel:'Primera demostración experimental relevante.'},
+  {id:'sycamore', cat:'CUA', year:2019, label:'Sycamore',
+    desc:'Google Sycamore (53 qubits) anuncia "supremacía cuántica" (disputada por IBM).',
+    rel:'Primer hito mediático del campo.'},
+  {id:'willow', cat:'CUA', year:2024, label:'Willow',
+    desc:'Google Willow (105 qubits): avance significativo en corrección de errores cuánticos.',
+    rel:'Primer signo serio hacia computación tolerante a fallos.'},
+  {id:'ibmq', cat:'CUA', year:2025, label:'IBM Q roadmap',
+    desc:'IBM Quantum publica una hoja de ruta detallada hacia computación cuántica tolerante a fallos a gran escala.',
+    rel:'Industrialización del campo.'},
+  // SUPERCOMP
+  {id:'cray1', cat:'SUP', year:1976, label:'Cray-1',
+    desc:'Cray-1: referencia fundacional de la supercomputación vectorial moderna.',
+    rel:'Define el género.'},
+  {id:'asci', cat:'SUP', year:1997, label:'ASCI Red · 1 TF',
+    desc:'ASCI Red (Sandia/Intel): primer superordenador en superar 1 teraflop.',
+    rel:'Demuestra que clusters x86 pueden liderar el TOP500.'},
+  {id:'roadrun', cat:'SUP', year:2008, label:'Roadrunner · 1 PF',
+    desc:'Roadrunner (LANL/IBM): primer superordenador en superar 1 petaflop.',
+    rel:'Primera arquitectura híbrida ganadora (Cell + Opteron).'},
+  {id:'frontier', cat:'SUP', year:2022, label:'Frontier · 1 EF',
+    desc:'Frontier (ORNL, HPE+AMD): primer superordenador exascale oficialmente confirmado (2022).',
+    rel:'Inicia la era exascale, con GPUs como acelerador dominante.'},
+  {id:'aurora', cat:'SUP', year:2024, label:'Aurora',
+    desc:'Aurora (Argonne, Intel): segundo exascale; arquitectura GPU Intel.',
+    rel:'Diversifica proveedores en la era exascale.'},
+  {id:'elcap', cat:'SUP', year:2024, label:'El Capitan',
+    desc:'El Capitan (LLNL, HPE+AMD): Nº 1 del TOP500 desde nov-2024 (>1.7 EF).',
+    rel:'Consolida la era exascale.'},
+  {id:'jupiter', cat:'SUP', year:2025, label:'JUPITER (EU)',
+    desc:'JUPITER Booster (EuroHPC/Jülich): primer exascale europeo (2025); 4º del TOP500.',
+    rel:'Soberanía tecnológica europea.'},
+  // 2025-2027 — frontera actual
+  {id:'majorana', cat:'CUA', year:2025, label:'MS Majorana 1',
+    desc:'Microsoft anuncia Majorana 1 (feb 2025): primer chip cuántico de qubits topológicos (modo Majorana cero) sobre InAs/Al.',
+    rel:'Vía radicalmente distinta al superconductor de Google/IBM — promete corrección de errores intrínseca.'},
+  {id:'rubin', cat:'GPU', year:2026, label:'NVIDIA Rubin',
+    desc:'NVIDIA Rubin (R100), anunciado en GTC 2024 y lanzado en producción a finales de 2026. HBM4, NVLink 6, sucesor de Blackwell.',
+    rel:'Continúa la cadencia anual NVIDIA: Hopper → Blackwell → Rubin.'},
+  {id:'opus47', cat:'IA', year:2026, label:'Claude Opus 4.7 · 1M',
+    desc:'Anthropic lanza Claude Opus 4.7 con ventana de 1M tokens y razonamiento extendido por defecto. Era de modelos de razonamiento masivos + agentes.',
+    rel:'Transición de "chat" a "agente": ciclos de pensamiento + herramientas + memoria persistente.'},
+  {id:'cockatoo', cat:'CUA', year:2027, label:'IBM Cockatoo (esp.)',
+    desc:'Hito intermedio del roadmap IBM Quantum: 2027 prevé Cockatoo, primer sistema multi-chip cuántico acoplado por enlaces L-band.',
+    rel:'Paso clave hacia Starling (2029) — primer ordenador cuántico tolerante a fallos a gran escala.'},
+  {id:'rubinUltra', cat:'GPU', year:2027, label:'Vera Rubin Ultra (esp.)',
+    desc:'NVIDIA Vera Rubin Ultra (2027 previsto): integra CPU Vera + GPU Rubin Ultra en una sola plataforma "AI factory" para entrenamiento billion-scale.',
+    rel:'Hardware diseñado específicamente para la nueva clase de modelos de razonamiento extendido.'},
+  // ====================== DATA ======================
+  {id:'codd',       cat:'DATA', year:1970, label:'Modelo relacional',
+    desc:'E.F. Codd (IBM Research) publica *A Relational Model of Data for Large Shared Data Banks*. Funda la teoría de bases de datos relacionales (tuplas + álgebra relacional).',
+    rel:'Marco teórico que dominará la gestión de datos durante 50 años.'},
+  {id:'systemR',    cat:'DATA', year:1974, label:'IBM System R',
+    desc:'IBM Research desarrolla System R: primer prototipo funcional de RDBMS. Estrena el lenguaje SEQUEL (luego SQL).',
+    rel:'Demuestra que el modelo de Codd es implementable. SQL nace aquí.'},
+  {id:'oracle',     cat:'DATA', year:1979, label:'Oracle V2',
+    desc:'Oracle V2 (Larry Ellison): primer RDBMS comercial. Curiosamente, Oracle adelanta a IBM en lanzar comercialmente la idea que IBM había inventado.',
+    rel:'Inicia la industria de bases de datos comercial; dominará empresa durante décadas.'},
+  {id:'opensql',    cat:'DATA', year:1996, label:'PostgreSQL · MySQL',
+    desc:'PostgreSQL (1996, sucesor de Postgres) y MySQL (1995) democratizan el RDBMS open source. Sustrato de la web 2.0 y prácticamente todo SaaS posterior.',
+    rel:'Bajan la barrera de entrada de las bases relacionales a coste cero.'},
+  {id:'nosql',      cat:'DATA', year:2007, label:'NoSQL · BigTable · Dynamo',
+    desc:'Google publica BigTable (2006) y Amazon Dynamo (2007). Surge el movimiento NoSQL (CouchDB, Cassandra, MongoDB 2009) para escalar más allá del modelo relacional.',
+    rel:'La escala web fuerza nuevos modelos de datos: documento, columna, clave-valor.'},
+  {id:'faiss',      cat:'DATA', year:2017, label:'FAISS (Meta)',
+    desc:'Meta (Facebook AI Research) abre FAISS: librería de búsqueda de similitud vectorial sobre embeddings. Hace prácticas búsquedas de similitud a millones de vectores.',
+    rel:'Tecnología que después permite las bases vectoriales y RAG.'},
+  {id:'vectorDB',   cat:'DATA', year:2019, label:'Vector DBs · Pinecone+',
+    desc:'Aparecen Pinecone, Weaviate, Milvus: bases vectoriales como producto. Habilitan búsqueda semántica a escala como infraestructura, no como librería.',
+    rel:'Sustrato técnico que más tarde alimentará el RAG con LLMs.'},
+  {id:'pgvector',   cat:'DATA', year:2024, label:'pgvector + Iceberg',
+    desc:'pgvector se vuelve estándar en PostgreSQL: las vector DBs aisladas dejan de ser obligatorias. Apache Iceberg gana la guerra de open table formats (Snowflake, Databricks, AWS lo adoptan).',
+    rel:'Convergencia: stacks OLAP/OLTP/vector en un solo motor. Fin de la fragmentación.'},
+  {id:'mcpProto',   cat:'DATA', year:2024, label:'MCP (Anthropic)',
+    desc:'Anthropic libera el Model Context Protocol (nov 2024): primer estándar abierto agente↔datos. Adopción explosiva en 2025 (OpenAI, Google, Microsoft, decenas de DBs).',
+    rel:'El "USB-C para IA" — equivalente al primer estándar que ata LLMs con cualquier fuente de datos.'},
+  {id:'agenticMem', cat:'DATA', year:2027, label:'Agentic memory (esp.)',
+    desc:'Convergencia esperada: vector + grafo + memoria episódica + SQL en plataformas pensadas para agentes (Mem0, Zep, próxima generación de Snowflake/Databricks/Mongo). Bases que se auto-indexan según uso agéntico.',
+    rel:'Próxima capa fundacional: memoria persistente compartida entre agentes.'},
+  // ====================== INTERNET / WEB ======================
+  {id:'arpanet',    cat:'NET', year:1969, label:'ARPANET',
+    desc:'Primer envío de paquetes IP entre UCLA y Stanford (29 oct 1969). Funda internet como red conmutada de paquetes.',
+    rel:'Origen físico de internet. Demuestra que la conmutación de paquetes funciona a escala.'},
+  {id:'tcpip',      cat:'NET', year:1983, label:'TCP/IP "flag day"',
+    desc:'1 de enero de 1983: ARPANET completa la migración a TCP/IP (especificado por Cerf y Kahn en 1973–78). Día oficial del nacimiento de internet moderno.',
+    rel:'Estándar abierto que permite la interoperación de redes heterogéneas. Funda la era inter-red.'},
+  {id:'www',        cat:'NET', year:1989, label:'WWW · Berners-Lee',
+    desc:'Tim Berners-Lee propone el WWW en CERN (1989) e implementa el primer servidor + navegador (1990–91). HTTP, HTML, URL.',
+    rel:'Capa de aplicación que populariza internet más allá de email/FTP.'},
+  {id:'mosaic',     cat:'NET', year:1993, label:'Mosaic browser',
+    desc:'NCSA Mosaic: primer navegador gráfico ampliamente adoptado. Marc Andreessen luego funda Netscape (1994).',
+    rel:'Web visual y comercial. Sin Mosaic no hay boom dotcom.'},
+  {id:'google',     cat:'NET', year:1998, label:'Google · PageRank',
+    desc:'Page y Brin lanzan Google con PageRank: organiza la web mediante grafo de hiperenlaces. Búsqueda + indexación masiva.',
+    rel:'Capa de descubrimiento que hace usable la web a escala mundial.'},
+  {id:'aws',        cat:'NET', year:2006, label:'AWS · cloud pública',
+    desc:'Amazon Web Services lanza S3 (mar 2006) y EC2 (ago 2006): infraestructura computacional como servicio. Funda la era cloud.',
+    rel:'Cambia la economía de la computación: el hardware deja de ser barrera de entrada.'},
+  {id:'k8s',        cat:'NET', year:2014, label:'Kubernetes',
+    desc:'Google libera Kubernetes (basado en Borg interno). Estándar de orquestación de contenedores. Sustrato del cloud-native moderno.',
+    rel:'Capa de abstracción que permite escalar sistemas distribuidos sin atarte a un proveedor.'},
+  {id:'edge',       cat:'NET', year:2020, label:'Edge + Web3',
+    desc:'Conjunto: edge computing (Cloudflare Workers 2017, Vercel Edge), 5G a escala (2019–21), Web3 stack (Ethereum smart contracts 2015 → DeFi 2020).',
+    rel:'Internet se desplaza del centro al borde; nuevas capas (descentralización, latencia mínima) emergen como infraestructura.'},
+  // ====================== ROBÓTICA ======================
+  {id:'unimate',    cat:'ROBOT', year:1961, label:'Unimate',
+    desc:'Devol y Engelberger instalan Unimate en General Motors: primer robot industrial. Manipula piezas calientes en línea de montaje.',
+    rel:'Funda la robótica industrial; 60 años de manipulación automática derivan de aquí.'},
+  {id:'shakey',     cat:'ROBOT', year:1972, label:'Shakey · SRI',
+    desc:'SRI construye Shakey: primer robot móvil con razonamiento (planificador STRIPS). Combina visión, planificación y movimiento.',
+    rel:'Primera integración real IA + percepción + actuación. Inspira décadas de robótica autónoma.'},
+  {id:'puma',       cat:'ROBOT', year:1978, label:'PUMA 600',
+    desc:'Unimation lanza el PUMA: brazo programable con 6 grados de libertad. Estándar industrial durante 30 años.',
+    rel:'Define la geometría que veremos en todos los brazos industriales modernos.'},
+  {id:'roomba',     cat:'ROBOT', year:2002, label:'Roomba',
+    desc:'iRobot lanza Roomba: primer robot doméstico de éxito masivo. Más de 50 millones de unidades vendidas.',
+    rel:'Primera vez que la robótica entra al hogar como producto, no como demostración.'},
+  {id:'darpaUC',    cat:'ROBOT', year:2007, label:'DARPA Urban Challenge',
+    desc:'DARPA Urban Challenge: vehículos autónomos circulan en tráfico urbano simulado. Ganan Boss (CMU) y Junior (Stanford).',
+    rel:'Catapulta la conducción autónoma — Waymo, Cruise, todos los demás salen de aquí.'},
+  {id:'spot',       cat:'ROBOT', year:2015, label:'Spot · Boston Dynamics',
+    desc:'Boston Dynamics presenta Spot: cuadrúpedo eléctrico ágil (Big Dog 2005 lo precede en era hidráulica). Comercializado en 2019.',
+    rel:'La robótica móvil deja de ser laboratorio y entra en industria.'},
+  {id:'humanoid',   cat:'ROBOT', year:2024, label:'Humanoides comerciales',
+    desc:'Ola comercial de humanoides: Figure 01, Tesla Optimus Gen 2, 1X NEO, Apptronik Apollo, Unitree H1. Servomotores eléctricos económicos + LLMs para razonamiento.',
+    rel:'Primer momento creíble de humanoide útil. Foundation models los hacen viables.'},
+  {id:'roboFM',     cat:'ROBOT', year:2027, label:'Robot Foundation Models (esp.)',
+    desc:'Modelos VLA (Vision-Language-Action) escalando: RT-X (Google), OpenVLA, π0 (Physical Intelligence). Robots controlados por modelos generalistas multi-tarea entrenados en datasets cross-embodiment.',
+    rel:'La robótica deja de programarse tarea a tarea. Modelo único = miles de tareas.'},
+  // ====================== SIMULACIÓN ======================
+  {id:'montecarlo',   cat:'SIM', year:1947, label:'Monte Carlo',
+    desc:'Stanislaw Ulam y John von Neumann desarrollan los métodos Monte Carlo en el Manhattan Project. Aleatoriedad como estrategia computacional para problemas físicos intratables.',
+    rel:'Funda la simulación numérica como disciplina. La aleatoriedad bien usada es tan poderosa como el determinismo.'},
+  {id:'enWeather',    cat:'SIM', year:1955, label:'Weather (ENIAC)',
+    desc:'Charney, Fjørtoft y von Neumann ejecutan la primera predicción meteorológica numérica en ENIAC (1950). En 1955 ya hay predicciones operacionales (Joint Numerical Weather Prediction Unit).',
+    rel:'Primer fenómeno físico complejo simulado con utilidad práctica diaria. Origen del modelado climático moderno.'},
+  {id:'spice',        cat:'SIM', year:1973, label:'SPICE',
+    desc:'Donald Pederson y equipo (UC Berkeley) crean SPICE: Simulation Program with Integrated Circuit Emphasis. Open source desde el inicio.',
+    rel:'Sustrato técnico de TODA la microelectrónica posterior — sin SPICE no se diseñan chips. La simulación se vuelve infraestructura industrial.'},
+  {id:'cfd',          cat:'SIM', year:1989, label:'CFD industrial',
+    desc:'Computational Fluid Dynamics se vuelve estándar industrial. Boeing 777 (1995): primer avión "100% diseñado en ordenador" sin maqueta física.',
+    rel:'La simulación reemplaza el túnel de viento. Inicia la era del producto diseñado-antes-de-fabricado.'},
+  {id:'nks',          cat:'SIM', year:2002, label:'A New Kind of Science',
+    desc:'Stephen Wolfram publica *A New Kind of Science*. Tesis: reglas computacionales simples generan complejidad arbitraria. Universo como autómata.',
+    rel:'Conecta los autómatas autoreplicantes (von Neumann 1948) con simulación moderna; expande la idea de que el cómputo es el lenguaje de la naturaleza.'},
+  {id:'physx',        cat:'SIM', year:2007, label:'PhysX · Bullet',
+    desc:'NVIDIA PhysX (2008, tras adquirir Ageia) y Bullet Physics (open source) democratizan la física en tiempo real para videojuegos y, más tarde, robótica.',
+    rel:'Game physics se convierte en infraestructura de propósito general — base de los simuladores que entrenan robots y vehículos autónomos.'},
+  {id:'omniverse',    cat:'SIM', year:2021, label:'NVIDIA Omniverse',
+    desc:'NVIDIA Omniverse: plataforma de gemelos digitales en tiempo real basada en USD (Universal Scene Description, Pixar). Multi-usuario, físicamente correcta, colaborativa.',
+    rel:'Funda los digital twins como producto. BMW, Boeing, fábricas Foxconn los adoptan como práctica predeterminada.'},
+  {id:'digitalTwins', cat:'SIM', year:2022, label:'Digital Twins mainstream',
+    desc:'Gemelos digitales se vuelven práctica industrial estándar: BMW iFactory, Boeing, Singapore Virtual, NVIDIA factories simuladas.',
+    rel:'Industria pesada empieza a "simular antes de construir" como práctica predeterminada — encarna literalmente el manifesto.'},
+  {id:'worldModels',  cat:'SIM', year:2024, label:'World Models · Sora',
+    desc:'OpenAI Sora (feb 2024) y DeepMind Genie (mar 2024): modelos generativos que aprenden la dinámica física al observar video. Sora genera vídeo 1-min físicamente consistente.',
+    rel:'La simulación deja de programarse y se aprende. El modelo entiende intuitivamente la física al ver suficiente mundo.'},
+  {id:'cosmos',       cat:'SIM', year:2026, label:'NVIDIA Cosmos · Genesis 2',
+    desc:'NVIDIA Cosmos (anunciado CES 2025): plataforma de "world foundation models" para entrenar robots y vehículos en entornos sintéticos. Genesis 2 (sucesor del simulador open source Genesis).',
+    rel:'Datos de entrenamiento se sintetizan: si la realidad no aporta suficientes ejemplos, la simulación los genera. Revoluciona robótica y conducción autónoma.'},
+  {id:'foundationSim',cat:'SIM', year:2027, label:'Foundation simulation (esp.)',
+    desc:'Convergencia esperada: un único modelo de fundación capaz de simular cualquier entorno físico (mecánico, fluido, biológico, social) con prompts en lenguaje natural. Sora + AlphaFold + Cosmos en una capa unificada.',
+    rel:'Cierra el ciclo: si puedes simular cualquier mundo, puedes habitarlo antes de construirlo. Realidad como query.'},
+  // ====================== ALGORITMOS ======================
+  {id:'minimax',     cat:'ALG', year:1928, label:'Minimax (von Neumann)',
+    desc:'Von Neumann publica *Zur Theorie der Gesellschaftsspiele*: teorema minimax. Funda la teoría de juegos. Décadas después se convierte en el corazón de la IA de juegos clásica.',
+    rel:'Sin minimax no hay Deep Blue (1997) ni la primera era de IA jugando ajedrez/damas.'},
+  {id:'dijkstra_alg',cat:'ALG', year:1956, label:'Dijkstra · shortest path',
+    desc:'Edsger Dijkstra publica el algoritmo de camino más corto en grafos (escrito en 20 minutos en un café de Amsterdam). Base de toda la algoritmia de grafos.',
+    rel:'Funda la disciplina de algoritmos sobre grafos; sustrato de routing internet, GPS, redes neuronales como grafos.'},
+  {id:'quicksort',   cat:'ALG', year:1962, label:'Quicksort (Hoare)',
+    desc:'C. A. R. Hoare publica Quicksort: divide-and-conquer recursivo, complejidad media O(n log n). El algoritmo de ordenación más usado del siglo XX.',
+    rel:'Define el patrón divide-and-conquer como técnica fundamental.'},
+  {id:'taocp',       cat:'ALG', year:1968, label:'Knuth · TAOCP Vol 1',
+    desc:'Donald Knuth publica *The Art of Computer Programming* Vol 1. Formaliza el análisis riguroso de algoritmos como disciplina académica. Notación O() y análisis amortizado.',
+    rel:'Inventa la disciplina del análisis algorítmico. Aún hoy referencia obligada (Vol 4B publicado en 2022).'},
+  {id:'cookLevin',   cat:'ALG', year:1971, label:'Cook-Levin · NP',
+    desc:'Stephen Cook y Leonid Levin (independientemente) demuestran el teorema Cook-Levin: SAT es NP-completo. Funda la teoría de la complejidad computacional.',
+    rel:'Define la frontera entre lo tratable (P) y lo intratable (NP). Pregunta P=NP sigue abierta — premio Millennium (1M USD).'},
+  {id:'diffie',      cat:'ALG', year:1976, label:'Diffie-Hellman',
+    desc:'Whitfield Diffie y Martin Hellman publican el primer protocolo de intercambio de claves sin canal seguro previo. Funda la criptografía de clave pública.',
+    rel:'Hace posible la web segura, banca online, mensajería cifrada. Sin esto no hay e-commerce ni HTTPS.'},
+  {id:'rsa',         cat:'ALG', year:1977, label:'RSA',
+    desc:'Rivest, Shamir y Adleman publican RSA: primer cifrado de clave pública práctico. Basado en la dificultad de factorizar enteros grandes.',
+    rel:'Sustrato de toda la criptografía web hasta que llegue la post-cuántica. Bajo amenaza directa por Shor (1994).'},
+  {id:'pageRankAlg', cat:'ALG', year:1996, label:'PageRank *1',
+    desc:'Larry Page y Sergey Brin (Stanford) inventan PageRank: importancia de una página = suma ponderada de la importancia de las páginas que enlazan a ella. Eigenvector del grafo web.',
+    rel:'Algoritmo de grafos que organiza la web. Fundamento de Google.'},
+  {id:'mapreduce',   cat:'ALG', year:2004, label:'MapReduce (Google)',
+    desc:'Jeffrey Dean y Sanjay Ghemawat (Google) publican el patrón MapReduce: distribuir cómputo masivo con dos primitivas (map + reduce). Inspira Hadoop, Spark, todo el big data.',
+    rel:'Funda la era del procesamiento distribuido masivo. Hace posible analizar la web entera en commodity hardware.'},
+  {id:'nakamoto',    cat:'ALG', year:2008, label:'Nakamoto consensus',
+    desc:'Satoshi Nakamoto publica el whitepaper de Bitcoin: primer consenso distribuido sin autoridad central (proof-of-work). Resuelve el problema bizantino a escala global.',
+    rel:'Funda toda la era cripto/Web3. Aplicaciones más allá de moneda: identidad, votación, supply chain.'},
+  {id:'attentionAlg',cat:'ALG', year:2017, label:'Attention *2',
+    desc:'Vaswani et al. proponen el mecanismo de atención escalado por producto-punto como primitiva algorítmica. Sin esto no hay Transformer.',
+    rel:'Algoritmo abstracto que se convierte en la unidad básica de cómputo de toda la IA generativa moderna.'},
+  {id:'algAgents',   cat:'ALG', year:2024, label:'Algoritmos agénticos',
+    desc:'ReAct (2022) → Tree-of-Thoughts (2023) → MCTS sobre LLMs → tool use estructurado → planning con verificación. Base operativa de los agentes IA.',
+    rel:'La inteligencia artificial vuelve a abrazar la búsqueda algorítmica clásica — pero con LLMs como heurística. Cierra el círculo Minimax → MCTS → Tree-of-Thoughts.'}
+];
+
+// edges between milestones
+// types: causal | enables | parallel | continues | bridges
+const EDGES = [
+  // LÓGICA chain
+  {a:'boole', b:'shannon37', t:'enables'},
+  {a:'frege', b:'godel',     t:'continues'},
+  {a:'godel', b:'turing36',  t:'enables'},
+  // ARQ chain
+  {a:'analytic',b:'lovelace',t:'continues'},
+  {a:'lovelace',b:'turing36',t:'enables'},
+  {a:'turing36',b:'vonneu',  t:'enables'},
+  {a:'vonneu',  b:'edsac',   t:'continues'},
+  {a:'vonneu',  b:'autoreplica',t:'parallel'},
+  {a:'autoreplica',b:'mcp',  t:'bridges'},
+  // SHANNON bridges to electronics
+  {a:'shannon37',b:'z3',     t:'bridges'},
+  {a:'shannon37',b:'colossus',t:'bridges'},
+  {a:'shannon37',b:'eniac',  t:'bridges'},
+  // ELE chain
+  {a:'z3',       b:'colossus',t:'continues'},
+  {a:'colossus', b:'eniac',   t:'continues'},
+  {a:'eniac',    b:'transistor',t:'enables'},
+  {a:'transistor',b:'ic',    t:'enables'},
+  {a:'ic',       b:'moore',  t:'continues'},
+  {a:'moore',    b:'mooreDead',t:'continues'},
+  {a:'mooreDead',b:'gaa',    t:'continues'},
+  {a:'mooreDead',b:'ryzen',  t:'bridges'},
+  {a:'ic',       b:'silica', t:'parallel'},
+  {a:'edsac',    b:'eniac',  t:'parallel'},
+  // ELE bridges to PC
+  {a:'ic',       b:'i4004',  t:'bridges'},
+  // PC chain
+  {a:'i4004',    b:'i8008',  t:'continues'},
+  {a:'i8008',    b:'i8080',  t:'continues'},
+  {a:'i8080',    b:'altair', t:'enables'},
+  {a:'altair',   b:'apple1', t:'continues'},
+  {a:'apple1',   b:'apple2', t:'continues'},
+  {a:'apple2',   b:'ibmpc',  t:'continues'},
+  {a:'ibmpc',    b:'mac',    t:'parallel'},
+  {a:'smalltalk',b:'mac',    t:'bridges'},
+  // PC modern processor chain
+  {a:'mac',      b:'i386',   t:'continues'},
+  {a:'i386',     b:'pentium',t:'continues'},
+  {a:'pentium',  b:'athlon64',t:'continues'},
+  {a:'athlon64', b:'core2duo',t:'continues'},
+  {a:'core2duo', b:'iphone', t:'parallel'},
+  {a:'core2duo', b:'ryzen',  t:'continues'},
+  {a:'iphone',   b:'m1',     t:'continues'},
+  {a:'ryzen',    b:'npuEra', t:'continues'},
+  {a:'m1',       b:'npuEra', t:'continues'},
+  {a:'npuEra',   b:'m5',     t:'continues'},
+  {a:'m5',       b:'m6vera', t:'continues'},
+  {a:'gaa',      b:'m5',     t:'bridges'},
+  {a:'rubin',    b:'m6vera', t:'bridges'},
+  // SOFTWARE chain
+  {a:'a0',       b:'fortran',t:'continues'},
+  {a:'fortran',  b:'lisp',   t:'parallel'},
+  {a:'fortran',  b:'algol',  t:'continues'},
+  {a:'algol',    b:'dijkstra',t:'continues'},
+  {a:'dijkstra', b:'unix',   t:'enables'},
+  {a:'unix',     b:'cLang',  t:'continues'},
+  {a:'edsac',    b:'a0',     t:'enables'},
+  // POO chain
+  {a:'simula',   b:'smalltalk',t:'continues'},
+  {a:'smalltalk',b:'cpp',    t:'continues'},
+  {a:'cLang',    b:'cpp',    t:'enables'},
+  {a:'cpp',      b:'java',   t:'continues'},
+  {a:'cpp',      b:'python', t:'parallel'},
+  // IA chain
+  {a:'mcp',        b:'perceptron',t:'enables'},
+  {a:'turingTest', b:'dartmouth', t:'enables'},
+  {a:'dartmouth',  b:'perceptron',t:'continues'},
+  {a:'perceptron', b:'winter',    t:'continues'},
+  {a:'dartmouth',  b:'expertSys', t:'continues'},
+  {a:'lisp',       b:'expertSys', t:'enables'},
+  {a:'expertSys',  b:'backprop',  t:'parallel'},
+  {a:'winter',     b:'backprop',  t:'continues'},
+  {a:'lisp',       b:'dartmouth', t:'bridges'},
+  {a:'backprop',   b:'alexnet',   t:'continues'},
+  {a:'cuda',       b:'alexnet',   t:'bridges'},
+  {a:'alexnet',    b:'alphago',   t:'continues'},
+  {a:'alexnet',    b:'transformer',t:'continues'},
+  {a:'transformer',b:'chatgpt',   t:'continues'},
+  {a:'deepblue',   b:'alphago',   t:'parallel'},
+  // GPU chain
+  {a:'geforce',  b:'shaders', t:'continues'},
+  {a:'shaders',  b:'cuda',    t:'continues'},
+  {a:'cuda',     b:'tensorcore',t:'continues'},
+  {a:'python',   b:'alexnet', t:'bridges'},
+  {a:'cuda',     b:'opencl',  t:'parallel'},
+  {a:'opencl',   b:'hyperscalerSi',t:'bridges'},
+  // SILICIO IA — TPUs y otros ASICs
+  {a:'cuda',     b:'tpu1',    t:'bridges'},
+  {a:'tpu1',     b:'tpu2',    t:'continues'},
+  {a:'tpu2',     b:'tpu5',    t:'continues'},
+  {a:'tpu2',     b:'hyperscalerSi',t:'parallel'},
+  {a:'tpu5',     b:'tpu7',    t:'continues'},
+  {a:'tpu7',     b:'tpu8',    t:'continues'},
+  {a:'transformer',b:'tpu5',  t:'bridges'},
+  {a:'transformer',b:'etched',t:'bridges'},
+  {a:'cerebras', b:'etched',  t:'parallel'},
+  {a:'tensorcore',b:'tpu1',   t:'parallel'},
+  // SUPERCOMP chain
+  {a:'cray1',    b:'asci',    t:'continues'},
+  {a:'asci',     b:'roadrun', t:'continues'},
+  {a:'roadrun',  b:'frontier',t:'continues'},
+  {a:'frontier', b:'aurora',  t:'parallel'},
+  {a:'frontier', b:'elcap',   t:'continues'},
+  {a:'elcap',    b:'jupiter', t:'continues'},
+  {a:'cuda',     b:'frontier',t:'bridges'},
+  // CUÁNTICA chain
+  {a:'benioff',  b:'feynman', t:'continues'},
+  {a:'feynman',  b:'deutsch', t:'continues'},
+  {a:'deutsch',  b:'shor',    t:'enables'},
+  {a:'shor',     b:'grover',  t:'parallel'},
+  {a:'shor',     b:'qbit2',   t:'enables'},
+  {a:'qbit2',    b:'sycamore',t:'continues'},
+  {a:'sycamore', b:'willow',  t:'continues'},
+  {a:'willow',   b:'ibmq',    t:'continues'},
+  {a:'willow',   b:'majorana',t:'parallel'},
+  {a:'ibmq',     b:'cockatoo',t:'continues'},
+  // 2026-2027 frontier
+  {a:'tensorcore',b:'rubin',  t:'continues'},
+  {a:'rubin',    b:'rubinUltra',t:'continues'},
+  {a:'chatgpt',  b:'opus47',  t:'continues'},
+  {a:'rubin',    b:'opus47',  t:'bridges'},
+  // VonNeumann bridges to ENIAC
+  {a:'vonneu',   b:'eniac',   t:'parallel'},
+  // Transformer bridges to GPU (via tensor cores)
+  {a:'transformer',b:'tensorcore',t:'bridges'},
+  // ====== DATA chain ======
+  {a:'codd',     b:'systemR', t:'continues'},
+  {a:'systemR',  b:'oracle',  t:'continues'},
+  {a:'oracle',   b:'opensql', t:'continues'},
+  {a:'opensql',  b:'nosql',   t:'continues'},
+  {a:'nosql',    b:'vectorDB',t:'parallel'},
+  {a:'faiss',    b:'vectorDB',t:'enables'},
+  {a:'vectorDB', b:'pgvector',t:'continues'},
+  {a:'pgvector', b:'agenticMem',t:'continues'},
+  {a:'mcpProto', b:'agenticMem',t:'continues'},
+  {a:'unix',     b:'codd',    t:'bridges'},
+  {a:'transformer',b:'faiss', t:'bridges'},
+  {a:'chatgpt',  b:'mcpProto',t:'bridges'},
+  {a:'opus47',   b:'agenticMem',t:'bridges'},
+  // ====== NET chain ======
+  {a:'arpanet',  b:'tcpip',   t:'continues'},
+  {a:'tcpip',    b:'www',     t:'continues'},
+  {a:'www',      b:'mosaic',  t:'continues'},
+  {a:'mosaic',   b:'google',  t:'continues'},
+  {a:'google',   b:'aws',     t:'continues'},
+  {a:'aws',      b:'k8s',     t:'continues'},
+  {a:'k8s',      b:'edge',    t:'continues'},
+  {a:'ic',       b:'arpanet', t:'bridges'},
+  {a:'mac',      b:'mosaic',  t:'bridges'},
+  {a:'unix',     b:'arpanet', t:'parallel'},
+  // ====== ROBOT chain ======
+  {a:'unimate',  b:'puma',    t:'continues'},
+  {a:'perceptron',b:'shakey', t:'bridges'},
+  {a:'shakey',   b:'puma',    t:'parallel'},
+  {a:'puma',     b:'roomba',  t:'continues'},
+  {a:'roomba',   b:'darpaUC', t:'parallel'},
+  {a:'darpaUC',  b:'spot',    t:'continues'},
+  {a:'spot',     b:'humanoid',t:'continues'},
+  {a:'transformer',b:'humanoid',t:'bridges'},
+  {a:'humanoid', b:'roboFM',  t:'continues'},
+  {a:'opus47',   b:'roboFM',  t:'bridges'},
+  {a:'autoreplica',b:'unimate',t:'parallel'},
+  // ====== SIMULACIÓN chain ======
+  {a:'feynman',     b:'montecarlo',  t:'parallel'},
+  {a:'montecarlo',  b:'enWeather',   t:'continues'},
+  {a:'enWeather',   b:'cfd',         t:'continues'},
+  {a:'spice',       b:'ic',          t:'bridges'},
+  {a:'cfd',         b:'physx',       t:'continues'},
+  {a:'autoreplica', b:'nks',         t:'continues'},
+  {a:'nks',         b:'physx',       t:'parallel'},
+  {a:'physx',       b:'omniverse',   t:'continues'},
+  {a:'omniverse',   b:'digitalTwins',t:'continues'},
+  {a:'digitalTwins',b:'worldModels', t:'continues'},
+  {a:'worldModels', b:'cosmos',      t:'continues'},
+  {a:'cosmos',      b:'foundationSim',t:'continues'},
+  {a:'transformer', b:'worldModels', t:'bridges'},
+  {a:'gpt4',        b:'worldModels', t:'bridges'},
+  {a:'alphafold',   b:'foundationSim',t:'bridges'},
+  {a:'cosmos',      b:'roboFM',      t:'bridges'},
+  {a:'foundationSim',b:'roboFM',     t:'parallel'},
+  // ====== ALGORITMOS chain + cross-bridges ======
+  {a:'minimax',      b:'quicksort',     t:'continues'},
+  {a:'quicksort',    b:'taocp',         t:'continues'},
+  {a:'taocp',        b:'cookLevin',     t:'continues'},
+  {a:'cookLevin',    b:'diffie',        t:'continues'},
+  {a:'diffie',       b:'rsa',           t:'continues'},
+  {a:'rsa',          b:'mapreduce',     t:'continues'},
+  {a:'mapreduce',    b:'nakamoto',      t:'continues'},
+  {a:'nakamoto',     b:'attentionAlg',  t:'continues'},
+  {a:'attentionAlg', b:'algAgents',     t:'continues'},
+  {a:'minimax',      b:'deepblue',      t:'bridges'},
+  {a:'minimax',      b:'alphago',       t:'bridges'},
+  {a:'dijkstra_alg', b:'arpanet',       t:'bridges'},
+  {a:'taocp',        b:'lean4',         t:'bridges'},
+  {a:'cookLevin',    b:'shor',          t:'bridges'},
+  {a:'rsa',          b:'shor',          t:'bridges'},
+  {a:'mapreduce',    b:'nosql',         t:'bridges'},
+  {a:'nakamoto',     b:'edge',          t:'bridges'},
+  {a:'attentionAlg', b:'transformer',   t:'parallel'},
+  {a:'pageRankAlg',  b:'google',        t:'parallel'},
+  {a:'algAgents',    b:'opus47',        t:'parallel'},
+  {a:'godel',        b:'cookLevin',     t:'continues'},
+  {a:'frege',        b:'minimax',       t:'bridges'},
+  // ====== Nuevos hitos IA y sus relaciones ======
+  {a:'dartmouth', b:'eliza',     t:'continues'},
+  {a:'eliza',     b:'expertSys', t:'parallel'},
+  {a:'backprop',  b:'dbn',       t:'continues'},
+  {a:'dbn',       b:'alexnet',   t:'continues'},
+  {a:'imagenet',  b:'alexnet',   t:'enables'},
+  {a:'alexnet',   b:'gans',      t:'continues'},
+  {a:'transformer',b:'bert',     t:'enables'},
+  {a:'bert',      b:'gpt3',      t:'continues'},
+  {a:'gpt3',      b:'chatgpt',   t:'continues'},
+  {a:'gpt3',      b:'alphafold', t:'parallel'},
+  {a:'gans',      b:'diffusion', t:'continues'},
+  {a:'diffusion', b:'gpt4',      t:'parallel'},
+  {a:'chatgpt',   b:'gpt4',      t:'continues'},
+  {a:'gpt4',      b:'o1',        t:'continues'},
+  {a:'o1',        b:'opus47',    t:'continues'}
+];
+
+// ================== LAYOUT ==================
+const COL_W = 150;
+const PAD_L = 70;
+const PAD_T = 60;
+const GRAPH_W = PAD_L + COLS.length * COL_W + 30;
+
+// non-linear time scale — compress sparse early years
+function yearToY(y){
+  // anchor pairs (year, y)
+  const anchors = [
+    [1837, 0],
+    [1860, 60],
+    [1900, 120],
+    [1930, 200],
+    [1940, 280],
+    [1950, 380],
+    [1960, 480],
+    [1970, 600],
+    [1980, 760],
+    [1990, 920],
+    [2000, 1080],
+    [2010, 1240],
+    [2015, 1370],
+    [2020, 1500],
+    [2022, 1620],
+    [2024, 1740],
+    [2026, 1860],
+    [2028, 1960]
+  ];
+  for(let i=0;i<anchors.length-1;i++){
+    const [y1,p1]=anchors[i],[y2,p2]=anchors[i+1];
+    if(y>=y1 && y<=y2){
+      const t=(y-y1)/(y2-y1);
+      return PAD_T + p1 + t*(p2-p1);
+    }
+  }
+  return PAD_T + anchors[anchors.length-1][1];
+}
+const GRAPH_H = yearToY(2028) + 80;
+
+function colX(catId){
+  const idx = COLS.findIndex(c=>c.id===catId);
+  return PAD_L + idx*COL_W + COL_W/2;
+}
+
+// ================== RENDER ==================
+const svg = document.getElementById('timeline');
+svg.setAttribute('width', GRAPH_W);
+svg.setAttribute('height', GRAPH_H);
+svg.setAttribute('viewBox', `0 0 ${GRAPH_W} ${GRAPH_H}`);
+
+function el(tag, attrs, parent){
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent||svg).appendChild(e);
+  return e;
+}
+
+// Year grid
+const decades = [];
+for(let y=1840;y<=2030;y+=10) decades.push(y);
+// add half-decade markers in the dense recent zone
+[2025].forEach(y=>decades.push(y));
+decades.forEach(y=>{
+  const yy = yearToY(y);
+  el('line',{x1:PAD_L-10,y1:yy,x2:GRAPH_W-10,y2:yy,class:'year-decade'});
+  el('text',{x:PAD_L-16,y:yy+3,'text-anchor':'end',class:'year-label'}).textContent = y;
+});
+// half-decade lines
+for(let y=1845;y<=2025;y+=10){
+  if(y<1930) continue;
+  const yy = yearToY(y);
+  el('line',{x1:PAD_L-4,y1:yy,x2:GRAPH_W-10,y2:yy,class:'year-line'});
+}
+// Anchored yearly tick marks for dense modern zone (2018-2028)
+for(let y=2018;y<=2028;y++){
+  if(y%5===0) continue;
+  const yy = yearToY(y);
+  el('line',{x1:PAD_L-2,y1:yy,x2:GRAPH_W-10,y2:yy,stroke:'rgba(0,0,0,.05)','stroke-width':1});
+  el('text',{x:PAD_L-16,y:yy+2.5,'text-anchor':'end','font-size':8,fill:'#999'}).textContent = y;
+}
+
+// Column headers (sticky-ish at top)
+COLS.forEach((c,i)=>{
+  const x = PAD_L + i*COL_W;
+  el('rect',{x:x+6,y:10,width:COL_W-12,height:36,class:'col-bg',fill:c.color,stroke:'#1A1A1A','stroke-width':'2'});
+  el('text',{x:x+COL_W/2,y:33,class:'col-header'}).textContent = c.name;
+});
+
+// faint vertical column separators
+COLS.forEach((c,i)=>{
+  const x = PAD_L + i*COL_W;
+  el('line',{x1:x,y1:50,x2:x,y2:GRAPH_H-20,stroke:'rgba(0,0,0,.06)','stroke-width':1});
+});
+el('line',{x1:PAD_L+COLS.length*COL_W,y1:50,x2:PAD_L+COLS.length*COL_W,y2:GRAPH_H-20,stroke:'rgba(0,0,0,.06)','stroke-width':1});
+
+// build node index
+const NIDX = Object.fromEntries(NODES.map(n=>[n.id,n]));
+
+// Compute node positions; collision: shift Y if same column overlap
+const NPOS = {};
+NODES.forEach(n=>{
+  NPOS[n.id] = {x: colX(n.cat), y: yearToY(n.year)};
+});
+
+// Resolve same-column collisions — distribución inteligente de clusters
+const NODE_W = 138, NODE_H = 24;
+const YEAR_TAB_W = 32;
+const LABEL_PAD = 6;
+const MAX_LABEL_CHARS = 14;
+const NODE_GAP = 2;
+const MIN_DIST = NODE_H + NODE_GAP;
+
+COLS.forEach(c=>{
+  const list = NODES.filter(n=>n.cat===c.id).sort((a,b)=>a.year-b.year);
+  if(list.length<2) return;
+
+  // Identifica clusters de nodos que se solapan en posición ideal
+  const ideal = list.map(n => yearToY(n.year));
+  let i = 0;
+  while(i < list.length){
+    let j = i;
+    // Avanza mientras los siguientes nodos colisionen con el grupo actual
+    while(j < list.length-1 && ideal[j+1] - (ideal[j] + (j>i?0:0)) < MIN_DIST){
+      // Recalcular si el grupo ya ha sido empujado
+      let groupBottom = ideal[i] + (j-i)*MIN_DIST;
+      if(ideal[j+1] - groupBottom < MIN_DIST) j++;
+      else break;
+    }
+    if(j > i){
+      // Grupo de i..j: distribuir centrado en el centroide del rango temporal
+      const centerIdeal = (ideal[i] + ideal[j]) / 2;
+      const groupSpan = (j - i) * MIN_DIST;
+      const startY = centerIdeal - groupSpan/2;
+      for(let k=i; k<=j; k++){
+        NPOS[list[k].id].y = startY + (k-i)*MIN_DIST;
+      }
+    }
+    i = j + 1;
+  }
+  // Pasada final: garantizar mínima separación (por si quedó algún solape residual)
+  for(let k=1; k<list.length; k++){
+    const prev = NPOS[list[k-1].id];
+    const cur  = NPOS[list[k].id];
+    if(cur.y - prev.y < MIN_DIST) cur.y = prev.y + MIN_DIST;
+  }
+});
+
+// ================== EDGES ==================
+const edgeGroup = el('g',{id:'edges'});
+const edgeEls = [];
+EDGES.forEach(e=>{
+  const a = NPOS[e.a], b = NPOS[e.b];
+  if(!a||!b) return;
+  const dx = b.x-a.x, dy = b.y-a.y;
+  const sameCol = a.x===b.x;
+  let d;
+  if(sameCol){
+    // straight short curve to the right then back
+    const off = 18;
+    d = `M ${a.x} ${a.y+NODE_H/2} C ${a.x+off} ${a.y+dy*0.3}, ${a.x+off} ${a.y+dy*0.7}, ${b.x} ${b.y-NODE_H/2}`;
+  } else {
+    const mx = (a.x+b.x)/2;
+    const c1y = a.y + Math.min(60, Math.abs(dy)*0.4);
+    const c2y = b.y - Math.min(60, Math.abs(dy)*0.4);
+    d = `M ${a.x} ${a.y+NODE_H/2} C ${mx} ${c1y}, ${mx} ${c2y}, ${b.x} ${b.y-NODE_H/2}`;
+  }
+  const p = el('path',{d,class:'edge '+e.t},edgeGroup);
+  p.dataset.from = e.a;
+  p.dataset.to = e.b;
+  edgeEls.push(p);
+});
+
+// ================== NODES ==================
+const nodeGroup = el('g',{id:'nodes'});
+const nodeEls = {};
+const tooltip = document.getElementById('tooltip');
+function truncate(s, n){ return s.length>n ? s.slice(0,n-1)+'…' : s; }
+
+NODES.forEach(n=>{
+  const p = NPOS[n.id];
+  const cat = COLS.find(c=>c.id===n.cat);
+  const g = el('g',{transform:`translate(${p.x-NODE_W/2},${p.y-NODE_H/2})`,style:'cursor:pointer'},nodeGroup);
+  // clipPath to ensure label never escapes the body
+  const clipId = 'clip-'+n.id;
+  const defs = el('defs',{},g);
+  const cp = el('clipPath',{id:clipId},defs);
+  el('rect',{x:YEAR_TAB_W,y:0,width:NODE_W-YEAR_TAB_W,height:NODE_H},cp);
+  // year tab (left)
+  el('rect',{x:0,y:0,width:YEAR_TAB_W,height:NODE_H,fill:'#1A1A1A',class:'node-rect'},g);
+  el('text',{x:YEAR_TAB_W/2,y:NODE_H/2+3,'text-anchor':'middle',class:'node-year'},g).textContent = n.year;
+  // body
+  el('rect',{x:YEAR_TAB_W,y:0,width:NODE_W-YEAR_TAB_W,height:NODE_H,fill:cat.color,class:'node-rect'},g);
+  // label (truncate + clip as belt-and-braces)
+  const lab = truncate(n.label, MAX_LABEL_CHARS);
+  el('text',{
+    x:YEAR_TAB_W+LABEL_PAD,
+    y:NODE_H/2+3,
+    class:'node-label',
+    fill:'#1A1A1A',
+    'clip-path':`url(#${clipId})`
+  },g).textContent = lab;
+  // accessible/native title fallback
+  el('title',{},g).textContent = `${n.year} · ${n.label} — ${n.desc||''}`;
+  nodeEls[n.id] = g;
+
+  g.addEventListener('click', (ev)=>{
+    ev.stopPropagation();
+    isolate(n.id);
+  });
+  g.addEventListener('mouseenter', (ev)=>showTip(ev, n, cat));
+  g.addEventListener('mousemove', moveTip);
+  g.addEventListener('mouseleave', hideTip);
+});
+
+// ================== TOOLTIP ==================
+function showTip(e, n, cat){
+  tooltip.innerHTML = `
+    <div class="tt-head">
+      <span class="tt-year">${n.year}</span>
+      <span class="tt-cat">${cat.name}</span>
+    </div>
+    <div class="tt-title">${n.label}</div>
+    <div class="tt-desc">${n.desc || ''}</div>
+    ${n.rel ? `<div class="tt-rel">▸ ${n.rel}</div>` : ''}
+  `;
+  tooltip.style.display = 'block';
+  moveTip(e);
+}
+function moveTip(e){
+  const pad = 14;
+  const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+  let x = e.clientX + pad, y = e.clientY + pad;
+  if(x + tw > window.innerWidth - 8)  x = e.clientX - tw - pad;
+  if(y + th > window.innerHeight - 8) y = e.clientY - th - pad;
+  tooltip.style.left = Math.max(4,x) + 'px';
+  tooltip.style.top  = Math.max(4,y) + 'px';
+}
+function hideTip(){ tooltip.style.display = 'none'; }
+
+// ================== INTERACTION ==================
+function isolate(id){
+  const keep = new Set([id]);
+  edgeEls.forEach(p=>{
+    if(p.dataset.from===id || p.dataset.to===id){
+      keep.add(p.dataset.from);
+      keep.add(p.dataset.to);
+    }
+  });
+  Object.entries(nodeEls).forEach(([nid,g])=>{
+    g.classList.toggle('dim', !keep.has(nid));
+  });
+  edgeEls.forEach(p=>{
+    const on = (p.dataset.from===id || p.dataset.to===id);
+    p.classList.toggle('hl', on);
+    p.classList.toggle('dim', !on);
+  });
+}
+function reset(){
+  Object.values(nodeEls).forEach(g=>g.classList.remove('dim'));
+  edgeEls.forEach(p=>{p.classList.remove('hl');p.classList.remove('dim')});
+}
+svg.addEventListener('click', reset);
+
+// ================== COLLAPSIBLE SECTIONS ==================
+(function(){
+  const expandBtn = document.getElementById('btnExpandAll');
+  const collapseBtn = document.getElementById('btnCollapseAll');
+  const sections = document.querySelectorAll('details.section');
+  if(!expandBtn || !collapseBtn || !sections.length) return;
+  function setAll(open){
+    sections.forEach(d => { d.open = open; });
+    expandBtn.classList.toggle('active', open);
+    collapseBtn.classList.toggle('active', !open);
+  }
+  expandBtn.addEventListener('click', () => setAll(true));
+  collapseBtn.addEventListener('click', () => setAll(false));
+  // Keep active state synced when user toggles individually
+  sections.forEach(d => d.addEventListener('toggle', () => {
+    const allOpen = Array.from(sections).every(s => s.open);
+    const allClosed = Array.from(sections).every(s => !s.open);
+    expandBtn.classList.toggle('active', allOpen);
+    collapseBtn.classList.toggle('active', allClosed);
+  }));
+})();
+</script>
+</body>
+</html>
