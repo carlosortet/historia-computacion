@@ -908,8 +908,8 @@
       <tr><td>1996</td><td>Algoritmo de Grover</td><td>Grover · búsqueda en √N</td><td>Segundo algoritmo paradigmático</td></tr>
       <tr><td>1998</td><td>2 qubits NMR</td><td>Chuang, Gershenfeld, Kubinec</td><td>Primera demostración experimental</td></tr>
       <tr><td>2019</td><td>Sycamore</td><td>Google · 53 qubits, "supremacía cuántica"</td><td>Primer hito mediático</td></tr>
+      <tr><td>2023</td><td><b>IBM Heron + System Two</b></td><td>156 qubits · primer sistema cuántico modular comercial de IBM</td><td>Materializa el roadmap IBM 2020; antecesor directo de Cockatoo</td></tr>
       <tr><td>2024</td><td>Willow</td><td>Google · 105 qubits + corrección de errores</td><td>Hacia tolerancia a fallos</td></tr>
-      <tr><td>2025</td><td>Roadmap IBM Quantum</td><td>IBM · ruta a escala tolerante a fallos</td><td>Industrialización del campo</td></tr>
     </tbody>
   </table>
   </details>
@@ -981,7 +981,8 @@
       <tr><td>2007</td><td>DARPA Urban Challenge</td><td>Vehículos autónomos en tráfico urbano · Boss (CMU), Junior (Stanford)</td><td>Catapulta la conducción autónoma (Waymo, Cruise)</td></tr>
       <tr><td>2015</td><td>Spot · Boston Dynamics</td><td>Cuadrúpedo eléctrico ágil; comercial 2019</td><td>Robótica móvil deja el laboratorio y entra en industria</td></tr>
       <tr><td>2024</td><td>Humanoides comerciales</td><td>Figure 01, Tesla Optimus Gen 2, 1X NEO, Apptronik Apollo, Unitree H1</td><td>Servomotores eléctricos económicos + LLMs = humanoide útil</td></tr>
-      <tr><td>2027 (esp.)</td><td>Robot Foundation Models</td><td>RT-X, OpenVLA, π0 · modelos VLA generalistas cross-embodiment</td><td>Robótica deja de programarse tarea a tarea</td></tr>
+      <tr><td><b>2024</b></td><td><b>Robot Foundation Models</b></td><td>Google RT-2 (2023) · Open X-Embodiment (2023) · OpenVLA (2024) · <b>π0 de Physical Intelligence</b> (Sergey Levine, nov 2024)</td><td>Primera generación VLA real: un modelo, miles de tareas</td></tr>
+      <tr><td>2027 (esp.)</td><td>Robot FM cross-embodiment</td><td>π2/π3 · RT-3 · sucesores escalando a billion+ trayectorias</td><td>Una IA física que opera en cualquier cuerpo sin fine-tuning</td></tr>
     </tbody>
   </table>
   <blockquote>Cadena causal: Unimate (industrial) → Shakey (autónomo + IA) → PUMA (estándar industrial) → Roomba (consumo) → DARPA UC (autónomo móvil) → Spot (móvil comercial) → Humanoides (forma humana viable) → Foundation Models (generalismo).</blockquote>
@@ -1477,8 +1478,8 @@ const NODES = [
   {id:'core2duo', cat:'PC', year:2006, label:'Intel Core 2 Duo',
     desc:'Intel Core 2 Duo (Conroe): multi-core mainstream para consumidores. Fin de la guerra de GHz, comienza la de núcleos.',
     rel:'Recupera el liderazgo para Intel; modelo dominante durante 5 años hasta Sandy Bridge.'},
-  {id:'iphone',   cat:'PC', year:2007, label:'iPhone · A4 (ARM)',
-    desc:'Apple iPhone (jun 2007): cómputo personal en el bolsillo. Apple A4 (ARM Cortex-A8, 2010) sella la era SoC móvil.',
+  {id:'iphone',   cat:'PC', year:2007, label:'iPhone (ARM mobile)',
+    desc:'Apple iPhone (jun 2007) con CPU Samsung S5L8900 (ARM11): cómputo personal en el bolsillo. El primer Apple Silicon (A4, ARM Cortex-A8) llegará en 2010 con iPad y iPhone 4.',
     rel:'Inflexión de plataforma — funda la dominación ARM en mobile y cambia para siempre la economía del software.'},
   {id:'ryzen',    cat:'PC', year:2017, label:'AMD Ryzen / Zen',
     desc:'AMD Zen 1 (Ryzen, mar 2017): renacimiento de AMD tras 10 años irrelevante. Estrena arquitectura chiplet (multi-die en un package).',
@@ -1627,9 +1628,9 @@ const NODES = [
   {id:'willow', cat:'CUA', year:2024, label:'Willow',
     desc:'Google Willow (105 qubits): avance significativo en corrección de errores cuánticos.',
     rel:'Primer signo serio hacia computación tolerante a fallos.'},
-  {id:'ibmq', cat:'CUA', year:2025, label:'IBM Q roadmap',
-    desc:'IBM Quantum publica una hoja de ruta detallada hacia computación cuántica tolerante a fallos a gran escala.',
-    rel:'Industrialización del campo.'},
+  {id:'ibmHeron', cat:'CUA', year:2023, label:'IBM Heron + System Two',
+    desc:'IBM presenta el procesador Heron (156 qubits, error de gate 3× mejor que su predecesor Eagle) integrado en IBM Quantum System Two: primer sistema modular de IBM que combina varios chips en una arquitectura unificada.',
+    rel:'Materialización del roadmap IBM (2020): primer sistema cuántico modular comercial. Antecesor directo de Cockatoo (2027 esp.).'},
   // SUPERCOMP
   {id:'cray1', cat:'SUP', year:1976, label:'Cray-1',
     desc:'Cray-1: referencia fundacional de la supercomputación vectorial moderna.',
@@ -1746,9 +1747,12 @@ const NODES = [
   {id:'humanoid',   cat:'ROBOT', year:2024, label:'Humanoides comerciales',
     desc:'Ola comercial de humanoides: Figure 01, Tesla Optimus Gen 2, 1X NEO, Apptronik Apollo, Unitree H1. Servomotores eléctricos económicos + LLMs para razonamiento.',
     rel:'Primer momento creíble de humanoide útil. Foundation models los hacen viables.'},
-  {id:'roboFM',     cat:'ROBOT', year:2027, label:'Robot Foundation Models (esp.)',
-    desc:'Modelos VLA (Vision-Language-Action) escalando: RT-X (Google), OpenVLA, π0 (Physical Intelligence). Robots controlados por modelos generalistas multi-tarea entrenados en datasets cross-embodiment.',
-    rel:'La robótica deja de programarse tarea a tarea. Modelo único = miles de tareas.'},
+  {id:'roboFM',     cat:'ROBOT', year:2024, label:'Robot Foundation Models',
+    desc:'Modelos VLA (Vision-Language-Action) materializados: Google RT-2 (jul 2023), Open X-Embodiment / RT-X (oct 2023), OpenVLA (jun 2024) y especialmente π0 de Physical Intelligence (Sergey Levine + equipo, nov 2024) — primer modelo generalista multi-tarea entrenado en datasets cross-embodiment.',
+    rel:'La robótica deja de programarse tarea a tarea. Un modelo único maneja miles de tareas en distintas plataformas físicas.'},
+  {id:'roboGeneral',cat:'ROBOT', year:2027, label:'Robot FM cross-embodiment (esp.)',
+    desc:'Próxima frontera esperada: modelos VLA verdaderamente generalistas que transfieren entre plataformas físicas radicalmente distintas (humanoide, brazo industrial, dron, vehículo) sin fine-tuning. π2/π3 + RT-3 + sucesores de OpenVLA escalando a billion+ trayectorias.',
+    rel:'Cierre de la promesa: una sola IA física que opera en cualquier cuerpo. Equivalente robótico de los LLMs generales.'},
   // ====================== SIMULACIÓN ======================
   {id:'montecarlo',   cat:'SIM', year:1947, label:'Monte Carlo',
     desc:'Stanislaw Ulam y John von Neumann desarrollan los métodos Monte Carlo en el Manhattan Project. Aleatoriedad como estrategia computacional para problemas físicos intratables.',
@@ -1940,9 +1944,9 @@ const EDGES = [
   {a:'shor',     b:'qbit2',   t:'enables'},
   {a:'qbit2',    b:'sycamore',t:'continues'},
   {a:'sycamore', b:'willow',  t:'continues'},
-  {a:'willow',   b:'ibmq',    t:'continues'},
+  {a:'willow',   b:'ibmHeron',t:'parallel'},
   {a:'willow',   b:'majorana',t:'parallel'},
-  {a:'ibmq',     b:'cockatoo',t:'continues'},
+  {a:'ibmHeron', b:'cockatoo',t:'continues'},
   // 2026-2027 frontier
   {a:'tensorcore',b:'rubin',  t:'continues'},
   {a:'rubin',    b:'rubinUltra',t:'continues'},
@@ -1986,8 +1990,10 @@ const EDGES = [
   {a:'darpaUC',  b:'spot',    t:'continues'},
   {a:'spot',     b:'humanoid',t:'continues'},
   {a:'transformer',b:'humanoid',t:'bridges'},
-  {a:'humanoid', b:'roboFM',  t:'continues'},
-  {a:'opus47',   b:'roboFM',  t:'bridges'},
+  {a:'humanoid', b:'roboFM',  t:'parallel'},
+  {a:'roboFM',   b:'roboGeneral',t:'continues'},
+  {a:'opus47',   b:'roboGeneral',t:'bridges'},
+  {a:'transformer',b:'roboFM',t:'bridges'},
   {a:'autoreplica',b:'unimate',t:'parallel'},
   // ====== SIMULACIÓN chain ======
   {a:'feynman',     b:'montecarlo',  t:'parallel'},
@@ -2005,8 +2011,8 @@ const EDGES = [
   {a:'transformer', b:'worldModels', t:'bridges'},
   {a:'gpt4',        b:'worldModels', t:'bridges'},
   {a:'alphafold',   b:'foundationSim',t:'bridges'},
-  {a:'cosmos',      b:'roboFM',      t:'bridges'},
-  {a:'foundationSim',b:'roboFM',     t:'parallel'},
+  {a:'cosmos',      b:'roboGeneral', t:'bridges'},
+  {a:'foundationSim',b:'roboGeneral',t:'parallel'},
   // ====== ALGORITMOS chain + cross-bridges ======
   {a:'minimax',      b:'quicksort',     t:'continues'},
   {a:'quicksort',    b:'taocp',         t:'continues'},
