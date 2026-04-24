@@ -284,6 +284,37 @@
   .graph-bar .legend span{display:inline-flex;align-items:center;gap:6px}
   .graph-bar .swatch{width:12px;height:12px;border:1px solid var(--bg)}
   .graph-controls{font-size:11px;color:#999}
+  .graph-extra{
+    background:#222;
+    color:var(--bg);
+    padding:8px 14px;
+    border-top:1px solid #444;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:1px;
+  }
+  .graph-extra .extra-label{color:var(--ibm-yellow);margin-right:6px}
+  .graph-extra .extra-link{
+    color:var(--ibm-cyan);
+    text-decoration:none;
+    border:1px solid var(--ibm-cyan);
+    padding:3px 9px;
+    transition:all .12s;
+    letter-spacing:1.5px;
+    font-weight:500;
+  }
+  .graph-extra .extra-link:hover{
+    background:var(--ibm-cyan);
+    color:var(--ink);
+  }
+  @media (max-width:640px){
+    .graph-extra{font-size:9px;padding:6px 10px;gap:6px}
+    .graph-extra .extra-link{padding:2px 6px}
+  }
   .graph-wrap{
     overflow:auto;
     max-height:78vh;
@@ -715,6 +746,14 @@
       </div>
       <div class="graph-controls">CLICK NODO = AISLAR · CLICK FONDO = RESET</div>
     </div>
+    <div class="graph-extra">
+      <span class="extra-label">📋 TABLAS COMPLEMENTARIAS · NO EN GRAFO:</span>
+      <a href="#sec-storage" class="extra-link">STORAGE</a>
+      <a href="#sec-opensource" class="extra-link">OPEN SOURCE</a>
+      <a href="#sec-security" class="extra-link">CIBERSEGURIDAD</a>
+      <a href="#sec-mobile" class="extra-link">MOBILE</a>
+      <a href="#sec-crypto" class="extra-link">CRIPTOGRAFÍA</a>
+    </div>
     <div class="graph-wrap" id="graphWrap">
       <svg id="timeline" class="timeline" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
@@ -737,9 +776,12 @@
       <tr><td>1879</td><td><i>Begriffsschrift</i></td><td>Frege · lógica de predicados y cuantificadores</td><td>Influye en Russell, Hilbert, Turing</td></tr>
       <tr><td>1928–1931</td><td>Crisis de fundamentos</td><td>Hilbert (<i>Entscheidungsproblem</i>) · Gödel (incompletitud)</td><td>Plantea el reto que Turing/Church responden en 1936</td></tr>
       <tr><td>1937</td><td>Lógica → circuitos</td><td>Shannon · aplica Boole a circuitos eléctricos</td><td>Fusiona lógica + electrónica</td></tr>
+      <tr><td>2013</td><td>HoTT (Voevodsky)</td><td>Homotopy Type Theory · alternativa a teoría de conjuntos</td><td>Reabre el debate fundacional · conecta lógica con topología</td></tr>
+      <tr><td>2021</td><td>Lean 4 + mathlib</td><td>Microsoft Research · biblioteca colaborativa de matemática formalizada</td><td>Matemáticos vivos formalizan resultados ganadores de Fields</td></tr>
+      <tr><td>2024</td><td>AlphaProof / AlphaGeometry</td><td>DeepMind · medalla de plata IMO 2024</td><td>Cierra el círculo Boole → Hilbert → Gödel → Turing → IA razonando en lógica formal</td></tr>
     </tbody>
   </table>
-  <blockquote>Cadena causal: Boole → Frege → crisis de fundamentos → Turing/Church (1936) → Shannon traduce todo a circuitos.</blockquote>
+  <blockquote>Cadena causal: Boole → Frege → crisis de fundamentos → Turing/Church (1936) → Shannon traduce todo a circuitos → 80 años después la IA cierra el ciclo razonando en lógica formal a nivel élite.</blockquote>
   </details>
 
   <details class="section">
@@ -787,13 +829,19 @@
       <tr><td>1960</td><td>ALGOL 60</td><td>Naur et al. · sintaxis estructurada</td><td>Padre de Pascal, C, Java…</td></tr>
       <tr><td>1968</td><td>Programación estructurada</td><td>Dijkstra · <i>Go To Considered Harmful</i></td><td>Funda la ingeniería del software</td></tr>
       <tr><td>1969–1973</td><td>Unix + C</td><td>Thompson y Ritchie (Bell Labs)</td><td>Sustrato de macOS, Linux, Android, iOS, servidores…</td></tr>
+      <tr><td>1983</td><td>GNU Project</td><td>Stallman · SO libre + manifesto · GPL (1989)</td><td>Funda el movimiento del software libre / open source</td></tr>
+      <tr><td>1991</td><td>Linux kernel</td><td>Linus Torvalds</td><td>Junto con GNU = sustrato del 90% de servidores y de Android</td></tr>
+      <tr><td>2005</td><td>Git</td><td>Linus Torvalds · VCS distribuido tras conflicto con BitKeeper</td><td>Cambia para siempre la colaboración en software · GitHub (2008) lo masifica</td></tr>
+      <tr><td>2013</td><td>Docker</td><td>Solomon Hykes · contenedores Linux como modelo de despliegue</td><td>Funda la era cloud-native · sin Docker no hay Kubernetes</td></tr>
+      <tr><td>2021</td><td>GitHub Copilot</td><td>GitHub + OpenAI · primer AI pair programmer masivo (Codex)</td><td>Cambia la práctica de programación · ancestro de Cursor, Aider, Claude Code</td></tr>
+      <tr><td>2024</td><td>Coding agents</td><td>Cursor, Aider, Claude Code, Devin, Cline · IDEs habitados por agentes IA</td><td>Programación como diálogo con agente · antecede el "vibe coding"</td></tr>
     </tbody>
   </table>
-  <blockquote>Cadena causal: Hopper abre los compiladores → FORTRAN/ALGOL/LISP definen los grandes paradigmas → Dijkstra disciplina → Unix+C como sustrato universal.</blockquote>
+  <blockquote>Cadena causal: Hopper → FORTRAN/ALGOL/LISP → Dijkstra disciplina → Unix+C como sustrato → GNU/Linux democratizan → Git distribuye colaboración → Docker contenedores → Copilot trae IA → coding agents redefinen la práctica.</blockquote>
   </details>
 
   <details class="section">
-    <summary>5 · PROGRAMACIÓN ORIENTADA A OBJETOS</summary>
+    <summary>5 · PARADIGMAS DE PROGRAMACIÓN</summary>
   <table>
     <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
     <tbody>
@@ -802,9 +850,15 @@
       <tr><td>1985</td><td>C++</td><td>Stroustrup · POO sobre C</td><td>Lleva objetos al software de sistemas</td></tr>
       <tr><td>1991</td><td>Python</td><td>Van Rossum · scripting + objetos</td><td>Hoy lengua franca de IA y data</td></tr>
       <tr><td>1995</td><td>Java</td><td>Gosling (Sun) · "write once run anywhere"</td><td>Masifica POO en empresa</td></tr>
+      <tr><td>1999–2001</td><td>TDD + Manifiesto Ágil</td><td>Kent Beck · Snowbird Agile Manifesto (feb 2001)</td><td>Desplaza waterfall · funda XP, Scrum, agile mainstream</td></tr>
+      <tr><td>2007</td><td>Renacimiento funcional</td><td>Clojure (Hickey 2007) + Scala (Odersky 2004)</td><td>Influye en JS (React/Redux), Java (lambdas), Python</td></tr>
+      <tr><td>2010</td><td>Go + Rust</td><td>Concurrencia nativa (Go) + memory safety sin GC (Rust)</td><td>Sucesores prácticos del C/C++ para infraestructura cloud</td></tr>
+      <tr><td>2014</td><td>Swift + TypeScript</td><td>Apple Swift sucesor de Obj-C · Microsoft TS tipos sobre JS</td><td>Modernización de iOS apps + estándar web frontend</td></tr>
+      <tr><td>2014</td><td>Microservicios</td><td>Martin Fowler + James Lewis popularizan el término</td><td>Habilita desarrollo paralelo · encaja con Docker + K8s</td></tr>
+      <tr><td>2025</td><td>Vibe Coding</td><td>Andrej Karpathy acuña el término (feb 2025)</td><td>Programar describiendo intención · agente IA escribe código</td></tr>
     </tbody>
   </table>
-  <blockquote>Cadena causal: Simula → Smalltalk (manifestación radical + GUI) → C++/Java (adopción industrial) → Python (puente a la era IA).</blockquote>
+  <blockquote>Cadena causal: Simula → Smalltalk (objetos+GUI) → C++/Java (industrial) → Python (puente IA) → TDD/Ágil (proceso) → funcional (inmutabilidad) → Go/Rust (sistemas modernos) → Swift/TS (plataformas) → microservicios (descomposición) → vibe coding (intención + agente).</blockquote>
   </details>
 
   <details class="section">
@@ -820,6 +874,8 @@
       <tr><td>1981</td><td>IBM PC 5150</td><td>IBM + MS-DOS (Microsoft)</td><td>Estandariza la arquitectura PC; explosión de clones</td></tr>
       <tr><td>1984</td><td>Macintosh</td><td>Apple · GUI heredada de Xerox PARC</td><td>Lleva Smalltalk al mercado</td></tr>
       <tr><td>1985</td><td>Intel 80386</td><td>Primer x86 de 32 bits + memoria protegida</td><td>Funda la era SO multitarea (Windows NT, Linux, OS/2)</td></tr>
+      <tr><td>2008</td><td>Android 1.0</td><td>Google · SO móvil open source basado en Linux (HTC Dream)</td><td>Funda el duopolio iOS/Android · 70%+ smartphones del mundo</td></tr>
+      <tr><td>2012</td><td>Raspberry Pi</td><td>Eben Upton · SBC Linux a 35 USD para educación</td><td>Democratiza compute embedded · 50M+ unidades vendidas</td></tr>
       <tr><td>1993</td><td>Intel Pentium</td><td>Arquitectura superescalar mainstream</td><td>Carrera del reloj hasta 1 GHz</td></tr>
       <tr><td>2003</td><td>AMD Athlon 64</td><td>Primer x86 de 64 bits comercial · ISA AMD64</td><td>AMD se adelanta a Intel; obliga a la industria a migrar</td></tr>
       <tr><td>2006</td><td>Intel Core 2 Duo</td><td>Multi-core mainstream para consumidores</td><td>Fin de la guerra de GHz; comienza la de núcleos</td></tr>
@@ -854,6 +910,7 @@
       <tr><td>2014</td><td>GANs</td><td>Goodfellow · redes adversariales</td><td>Funda la IA generativa moderna</td></tr>
       <tr><td>2016</td><td>AlphaGo</td><td>DeepMind vence a Lee Sedol</td><td>RL + redes profundas en juegos complejos</td></tr>
       <tr><td>2017</td><td>Transformer</td><td>Vaswani et al. (Google) · <i>Attention Is All You Need</i></td><td>Base de todos los LLM actuales</td></tr>
+      <tr><td>2018</td><td>AlphaFold 1</td><td>DeepMind · gana CASP13</td><td>Predecesor de AlphaFold 2 · IA ataca problemas científicos duros</td></tr>
       <tr><td>2018</td><td>BERT + GPT-1</td><td>Google · OpenAI · pre-training masivo</td><td>Era del transfer learning en NLP</td></tr>
       <tr><td>2020</td><td>GPT-3 · scaling</td><td>OpenAI · 175B parámetros · scaling laws</td><td>Cambia la estrategia: escalar es el camino</td></tr>
       <tr><td>2021</td><td>AlphaFold 2</td><td>DeepMind · 200M+ proteínas plegadas</td><td>Mayor aplicación científica de IA · Nobel Química 2024</td></tr>
@@ -861,6 +918,8 @@
       <tr><td>2022</td><td>Diffusion</td><td>Stable Diffusion + DALL-E 2 + Midjourney</td><td>IA generativa visual democratizada</td></tr>
       <tr><td>2023</td><td>GPT-4 + LLaMA</td><td>Multimodal (OpenAI) + open weights (Meta)</td><td>Bifurcación cerrado-élite vs open source</td></tr>
       <tr><td>2024</td><td>o1 · reasoning</td><td>OpenAI · extended thinking en producción</td><td>Transición a paradigma de razonamiento explícito</td></tr>
+      <tr><td>2024</td><td><b>Nobel Hopfield + Hinton</b></td><td>Premio Nobel de Física por redes neuronales (oct 2024)</td><td>Reconocimiento institucional supremo del paradigma conexionista</td></tr>
+      <tr><td>2025</td><td><b>DeepSeek-R1</b></td><td>DeepSeek (China) · primer reasoning model open-weights competitivo</td><td>Recalibra estrategia global · NVIDIA cae 16% en un día</td></tr>
       <tr><td>2026</td><td>Claude Opus 4.7 · 1M ctx</td><td>Anthropic · ventana 1M tokens + razonamiento default</td><td>Era del agente con memoria + herramientas + ciclos de pensamiento</td></tr>
     </tbody>
   </table>
@@ -1034,6 +1093,118 @@
     <br><b>*<sup>1</sup> PageRank (1996)</b> ↔ Google en INTERNET — aquí como algoritmo de grafos, allí como producto de descubrimiento web.
     <br><b>*<sup>2</sup> Attention (2017)</b> ↔ Transformer en IA — aquí como primitiva algorítmica abstracta, allí como modelo concreto que la encarna.
   </p>
+  </details>
+
+  <details class="section" id="sec-storage">
+    <summary>16 · STORAGE (tabla extra · no en grafo)</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1956</td><td>IBM RAMAC 305</td><td>Primer disco duro · 5 MB · 50 platos de 24"</td><td>Funda el almacenamiento aleatorio en máquinas comerciales</td></tr>
+      <tr><td>1971</td><td>Floppy de 8" (IBM)</td><td>Disco extraíble · 79 KB</td><td>Distribución de software portable</td></tr>
+      <tr><td>1980</td><td>Sony 3.5" floppy</td><td>1.44 MB · estándar mundial durante 25 años</td><td>Sustrato de la era PC personal</td></tr>
+      <tr><td>1982</td><td>CD-ROM (Sony+Philips)</td><td>650 MB ópticos en disco de 12 cm</td><td>Distribución de software/multimedia masiva</td></tr>
+      <tr><td>1995</td><td>DVD spec</td><td>4.7 GB · vídeo digital de consumo</td><td>Funda la era multimedia masiva</td></tr>
+      <tr><td>2000</td><td>USB flash drive (Trek/IBM)</td><td>Almacenamiento sólido extraíble</td><td>Reemplaza floppies y CDs en pocos años</td></tr>
+      <tr><td>2007</td><td>SATA SSDs</td><td>SSDs como producto consumer · NAND flash</td><td>Inicio del fin de los HDDs en consumer</td></tr>
+      <tr><td>2013</td><td>NVMe spec</td><td>SSDs directos sobre PCIe · sin cuellos de botella SATA</td><td>SSDs alcanzan 7 GB/s · sustrato de servidores y workstations</td></tr>
+      <tr><td>2019</td><td>Project Silica (Microsoft)</td><td>Cristal de cuarzo · femtosegundo láser</td><td>Cold storage durable miles de años</td></tr>
+      <tr><td>2024</td><td>Petabit optical disk</td><td>Investigación: 1.6 PB en disco de tamaño Blu-ray</td><td>Próxima generación de archivo masivo</td></tr>
+      <tr><td>2024</td><td>DNA storage commercial</td><td>Twist Bioscience · Catalog · escritura/lectura ADN como datos</td><td>Densidad teórica 1 EB por gramo · cold storage del futuro</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: HDD (1956) → floppy → CD → DVD → flash → SSD → NVMe → cristal/DNA. La densidad se multiplica por billones; el sustrato cambia varias veces (magnético → óptico → eléctrico → fotónico → biológico).</blockquote>
+  </details>
+
+  <details class="section" id="sec-opensource">
+    <summary>17 · OPEN SOURCE (tabla extra · no en grafo)</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1983</td><td>GNU Project</td><td>Stallman anuncia el proyecto · manifesto</td><td>Funda el movimiento del software libre</td></tr>
+      <tr><td>1989</td><td>GNU GPL v1</td><td>Licencia copyleft · obliga a redistribuir el código</td><td>Define el modelo legal del software libre</td></tr>
+      <tr><td>1991</td><td>Linux kernel</td><td>Linus Torvalds publica el primer Linux</td><td>Junto con GNU = SO libre completo</td></tr>
+      <tr><td>1995</td><td>Apache HTTP Server</td><td>NCSA HTTPd fork · domina la web durante 20 años</td><td>Sustrato de la web abierta</td></tr>
+      <tr><td>1998</td><td>"Open Source" + Mozilla</td><td>Christine Peterson acuña término · Netscape libera Mozilla</td><td>Open Source Initiative se funda · marca rebrand del software libre</td></tr>
+      <tr><td>2001</td><td>Wikipedia</td><td>Knowledge open · CC-BY-SA</td><td>Demuestra que el modelo open puede crear contenido a escala global</td></tr>
+      <tr><td>2005</td><td>Git</td><td>Linus Torvalds · VCS distribuido</td><td>Habilita la colaboración masiva descentralizada</td></tr>
+      <tr><td>2008</td><td>GitHub</td><td>Plataforma social sobre Git</td><td>Hace el open source mainstream y "fun"</td></tr>
+      <tr><td>2014</td><td>Kubernetes (Google)</td><td>Orquestador de contenedores liberado</td><td>Estándar cloud-native open source</td></tr>
+      <tr><td>2017</td><td>PyTorch + TensorFlow open</td><td>Frameworks ML open source dominantes</td><td>Sin esto no hay AlexNet → Transformer → LLMs</td></tr>
+      <tr><td>2023</td><td>LLaMA open weights</td><td>Meta libera pesos de LLaMA · luego LLaMA 2/3</td><td>Bifurca la era LLM en cerrado vs abierto</td></tr>
+      <tr><td>2024</td><td>Hugging Face ecosystem</td><td>1M+ modelos open · datasets · spaces</td><td>Hub central del open source AI</td></tr>
+      <tr><td>2025</td><td>DeepSeek-R1 open</td><td>Reasoning model open-weights competitivo</td><td>Open source ya no queda atrás · presiona a OpenAI/Anthropic</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: GNU (ideología) → Linux (kernel) → Apache (web) → Mozilla (browser) → Wikipedia (contenido) → Git/GitHub (colaboración) → Kubernetes (cloud) → PyTorch (ML) → LLaMA + Hugging Face + DeepSeek (IA generativa).</blockquote>
+  </details>
+
+  <details class="section" id="sec-security">
+    <summary>18 · CIBERSEGURIDAD (tabla extra · no en grafo)</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1971</td><td>Creeper + Reaper</td><td>Bob Thomas (BBN) · primer "virus" + primer "antivirus" en ARPANET</td><td>Inicio formal del juego del gato y el ratón</td></tr>
+      <tr><td>1988</td><td>Morris Worm</td><td>Robert Morris · 6.000 máquinas Unix afectadas (10% de internet)</td><td>Primer incidente de seguridad masivo · cambia la conciencia</td></tr>
+      <tr><td>1995</td><td>SSL 2.0 (Netscape)</td><td>Primer protocolo de cifrado en navegador</td><td>Habilita e-commerce · sustrato de la web segura</td></tr>
+      <tr><td>2003</td><td>Slammer worm</td><td>Infecta 75.000 servers en 10 min · explota MS-SQL</td><td>Demuestra velocidad de propagación de exploits modernos</td></tr>
+      <tr><td>2010</td><td>Stuxnet</td><td>Cyberweapon estado-nación (USA + Israel) contra Irán</td><td>Funda la era de la guerra cibernética</td></tr>
+      <tr><td>2013</td><td>Snowden / NSA revelations</td><td>Filtración masiva de programas de vigilancia (PRISM, XKeyscore)</td><td>Cambia para siempre la cripto y la conciencia de privacidad</td></tr>
+      <tr><td>2016</td><td>Mirai botnet</td><td>Ataca con dispositivos IoT comprometidos · DDoS récord</td><td>Demuestra el peligro de IoT inseguro a escala</td></tr>
+      <tr><td>2017</td><td>WannaCry ransomware</td><td>Explota EternalBlue (NSA-leaked) · 200.000 sistemas en 150 países</td><td>Inicia la era de ransomware como plaga global</td></tr>
+      <tr><td>2020</td><td>SolarWinds</td><td>Supply-chain attack a 18.000 organizaciones via Orion</td><td>Demuestra vulnerabilidad de la cadena de suministro de software</td></tr>
+      <tr><td>2021</td><td>Log4Shell</td><td>RCE en Apache Log4j · "internet roto" durante semanas</td><td>Demuestra la fragilidad de las dependencias open source críticas</td></tr>
+      <tr><td>2024</td><td>NIST PQC standards</td><td>Estándares oficiales de criptografía post-cuántica (FIPS 203/204/205)</td><td>Defensa preventiva contra Shor cuando los ordenadores cuánticos escalen</td></tr>
+      <tr><td>2024</td><td>LLM jailbreaking research</td><td>Universal jailbreaks (LLM Attacks paper, etc.) · prompt injection</td><td>Nueva superficie de ataque: alineamiento del modelo como vulnerabilidad</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Creeper (juego) → Morris (mass incident) → SSL (defensa civil) → Stuxnet (estado-nación) → Snowden (vigilancia) → ransomware (extorsión masiva) → LLM jailbreaks (nueva frontera). El defensor siempre va detrás.</blockquote>
+  </details>
+
+  <details class="section" id="sec-mobile">
+    <summary>19 · MOBILE / CONSUMO (tabla extra · no en grafo)</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1973</td><td>Motorola DynaTAC</td><td>Martin Cooper · primera llamada por móvil (NYC)</td><td>Funda la telefonía celular · 10 años hasta producto comercial</td></tr>
+      <tr><td>1992</td><td>IBM Simon</td><td>Primer "smartphone" reconocido · pantalla táctil + email</td><td>Concepto adelantado 15 años</td></tr>
+      <tr><td>1996</td><td>Nokia 9000 Communicator</td><td>Smartphone de Nokia con teclado físico + email</td><td>Primer smartphone de éxito comercial</td></tr>
+      <tr><td>1999</td><td>BlackBerry email</td><td>RIM popularizó email push en bolsillo</td><td>Cambia hábitos profesionales · era pre-iPhone</td></tr>
+      <tr><td>2001</td><td>iPod (Apple)</td><td>"1.000 canciones en tu bolsillo" · click wheel</td><td>Reposiciona Apple antes del iPhone</td></tr>
+      <tr><td>2007</td><td>iPhone</td><td>Apple · pantalla multi-táctil capacitiva sin teclado físico</td><td>Inflexión total: cómputo personal en bolsillo · funda app economy</td></tr>
+      <tr><td>2008</td><td>Android 1.0 + App Store</td><td>HTC Dream · App Store de Apple (jul 2008)</td><td>Funda el duopolio iOS/Android + el modelo app</td></tr>
+      <tr><td>2010</td><td>iPad</td><td>Tablet capacitiva masiva · iOS</td><td>Reactiva la categoría tablet (que IBM había lanzado en 1992)</td></tr>
+      <tr><td>2014</td><td>Apple Watch</td><td>Wearable computing como categoría masiva</td><td>Lleva el cómputo a la muñeca · health tracking</td></tr>
+      <tr><td>2016</td><td>Pokémon Go</td><td>AR mobile a escala global · 500M descargas</td><td>Demuestra AR como producto de consumo · primer hit AR</td></tr>
+      <tr><td>2017</td><td>Apple A11 Bionic · Neural Engine</td><td>Primera NPU en mobile (2 cores · 600 GOPS)</td><td>IA on-device se vuelve viable en smartphones</td></tr>
+      <tr><td>2020</td><td>5G global rollout</td><td>3GPP Release 16 · gigabit móvil</td><td>Sustrato de IoT, AR, vehículos conectados</td></tr>
+      <tr><td>2024</td><td>Apple Vision Pro</td><td>Spatial computing · 23M píxeles · eye tracking</td><td>Apuesta de Apple por XR como sucesor del smartphone</td></tr>
+      <tr><td>2024</td><td>Smartphones con LLM on-device</td><td>Apple Intelligence (M+A18 Pro) · Pixel con Gemini Nano</td><td>IA generativa en el bolsillo · sin nube</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: DynaTAC (voz) → Nokia/BlackBerry (datos) → iPod (consumo digital) → iPhone (revolución total) → Android (duopolio) → wearables → AR/VR (Vision Pro) → IA on-device. Cada salto multiplica el cómputo accesible al ciudadano normal.</blockquote>
+  </details>
+
+  <details class="section" id="sec-crypto">
+    <summary>20 · CRIPTOGRAFÍA (tabla extra · no en grafo)</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1976</td><td>Diffie-Hellman</td><td>Primer intercambio de claves sin canal seguro</td><td>Funda la cripto de clave pública (también en ALGORITMOS)</td></tr>
+      <tr><td>1977</td><td>RSA</td><td>Rivest, Shamir, Adleman · cifrado pública práctico</td><td>Sustrato de toda la web segura (también en ALGORITMOS)</td></tr>
+      <tr><td>1985</td><td>ECC (Elliptic Curve Crypto)</td><td>Koblitz y Miller (independientemente)</td><td>Misma seguridad que RSA con claves más cortas · sustrato de TLS moderno</td></tr>
+      <tr><td>1991</td><td>PGP (Phil Zimmermann)</td><td>Cifrado de email accesible al usuario común</td><td>Lleva la cripto fuerte fuera de gobiernos · Zimmermann investigado por exportar criptografía</td></tr>
+      <tr><td>1995</td><td>SSL 2.0 (Netscape)</td><td>Cripto en navegador · base de HTTPS</td><td>Habilita e-commerce y banca online</td></tr>
+      <tr><td>2001</td><td>AES (Rijndael) estándar</td><td>NIST adopta Rijndael (Daemen + Rijmen) como AES</td><td>Sustituye DES como cifrado simétrico estándar</td></tr>
+      <tr><td>2008</td><td>Bitcoin / Nakamoto</td><td>Proof-of-Work · consenso distribuido sin autoridad</td><td>Cripto aplicada a moneda (también en ALGORITMOS)</td></tr>
+      <tr><td>2013</td><td>Snowden → wakeup</td><td>Revelaciones empujan la adopción de E2EE</td><td>Signal, WhatsApp, iMessage adoptan E2EE en años siguientes</td></tr>
+      <tr><td>2014</td><td>Signal protocol</td><td>Open Whisper Systems · Double Ratchet</td><td>Adoptado por WhatsApp (1B+ usuarios), Facebook Messenger, Skype</td></tr>
+      <tr><td>2016</td><td>NIST PQC competition</td><td>Inicio del concurso para cripto post-cuántica</td><td>Defensa contra Shor (1994) cuando los QC escalen</td></tr>
+      <tr><td>2024</td><td>NIST PQC standards (FIPS 203/204/205)</td><td>Kyber + Dilithium + SPHINCS+ adoptados</td><td>Migración global comienza · "harvest now, decrypt later"</td></tr>
+      <tr><td>2025+</td><td>Migración PQC empresarial</td><td>Apple iMessage PQ3 (2024), Signal PQXDH, navegadores adoptan</td><td>Defensa preventiva ante futuros ataques cuánticos</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: DH/RSA (clave pública) → ECC (eficiente) → PGP (consumer) → SSL (web) → AES (simétrico) → Bitcoin (consenso) → Signal (E2EE) → PQC (post-cuántico). El campo evoluciona en función de las amenazas, especialmente la futura amenaza cuántica.</blockquote>
   </details>
 
   <h2>Mapa textual de relaciones</h2>
@@ -1329,7 +1500,7 @@ const COLS = [
   {id:'ARQ',  name:'ARQUITECTURA', color:'#DA1E28'},
   {id:'ELE',  name:'ELECTRÓNICA',  color:'#F1C21B'},
   {id:'SOF',  name:'SOFTWARE',     color:'#198038'},
-  {id:'POO',  name:'POO',          color:'#8A3FFC'},
+  {id:'POO',  name:'PARADIGMAS',   color:'#8A3FFC'},
   {id:'PC',   name:'MICRO+PC',     color:'#FF832B'},
   {id:'ROBOT',name:'ROBÓTICA',     color:'#BA4E00'},
   {id:'NET',  name:'INTERNET',     color:'#0E6027'},
@@ -1356,6 +1527,15 @@ const NODES = [
   {id:'shannon37', cat:'LOG', year:1937, label:'Lógica → circuitos',
     desc:'Shannon, en su tesis de máster (MIT), aplica el álgebra de Boole a circuitos eléctricos de relés.',
     rel:'Fusiona lógica + electrónica → puente directo a Z3, Colossus y ENIAC.'},
+  {id:'hott', cat:'LOG', year:2013, label:'HoTT · Voevodsky',
+    desc:'Vladimir Voevodsky publica el *HoTT Book* (Homotopy Type Theory · Univalent Foundations). Alternativa a la teoría de conjuntos como cimiento de las matemáticas.',
+    rel:'Reabre el debate fundacional. Conecta lógica con topología; aspirante a sustituir ZFC.'},
+  {id:'lean4', cat:'LOG', year:2021, label:'Lean 4 + mathlib',
+    desc:'Lean 4 (Microsoft Research, Leonardo de Moura) + biblioteca colaborativa mathlib. Matemáticos vivos formalizan resultados ganadores de Fields Medal (Scholze\'s liquid tensor experiment, etc.).',
+    rel:'La formalización del razonamiento matemático se vuelve práctica colaborativa a escala.'},
+  {id:'alphaproof', cat:'LOG', year:2024, label:'AlphaProof / AlphaGeometry',
+    desc:'DeepMind AlphaProof + AlphaGeometry logran medalla de plata en la IMO 2024 resolviendo problemas formales nivel olimpiada matemática.',
+    rel:'Cierra el círculo Boole → Hilbert → Gödel → Turing → IA razonando en lógica formal a nivel élite.'},
   // ARQUITECTURA
   {id:'analytic', cat:'ARQ', year:1837, label:'Máquina Analítica',
     desc:'Babbage diseña la Máquina Analítica: memoria, control, cálculo y programa en una sola máquina.',
@@ -1425,6 +1605,24 @@ const NODES = [
   {id:'cLang', cat:'SOF', year:1973, label:'Lenguaje C',
     desc:'Ritchie diseña C como lenguaje de implementación de Unix: portable y de bajo nivel.',
     rel:'Lenguaje de sistemas dominante; padre de C++, Objective-C, Java, C#…'},
+  {id:'gnu', cat:'SOF', year:1983, label:'GNU Project',
+    desc:'Richard Stallman anuncia GNU: SO libre + manifesto. Funda el movimiento del software libre. La GPL (1989) define el copyleft.',
+    rel:'Crea la base ideológica y técnica del open source.'},
+  {id:'linux', cat:'SOF', year:1991, label:'Linux kernel',
+    desc:'Linus Torvalds publica el primer kernel Linux. Junto con GNU forma el sustrato del 90% de servidores actuales y de Android.',
+    rel:'Permite que el ecosistema GNU sea funcional como SO completo. Funda la era de servidores open source.'},
+  {id:'git', cat:'SOF', year:2005, label:'Git',
+    desc:'Linus Torvalds escribe Git tras conflicto con BitKeeper. VCS distribuido, branches baratas, modelo de snapshots.',
+    rel:'Cambia el modelo de colaboración en software. GitHub (2008) lo populariza globalmente.'},
+  {id:'docker', cat:'SOF', year:2013, label:'Docker',
+    desc:'Solomon Hykes (dotCloud) populariza los contenedores Linux como modelo de empaquetado. Reusa namespaces + cgroups del kernel.',
+    rel:'Funda la era cloud-native moderna. Sin Docker no hay Kubernetes (2014).'},
+  {id:'copilot', cat:'SOF', year:2021, label:'GitHub Copilot',
+    desc:'GitHub + OpenAI lanzan Copilot: primer AI pair programmer masivo basado en Codex (descendiente de GPT-3).',
+    rel:'Cambia la práctica de programación. Ancestro de Cursor, Aider, Claude Code.'},
+  {id:'codingAgents', cat:'SOF', year:2024, label:'Coding agents',
+    desc:'Cursor (2023), Aider, Claude Code, Devin (Cognition), Cline. IDEs habitados por agentes IA que entienden codebase completa, ejecutan, iteran.',
+    rel:'Programación como diálogo con agente. Antecede el "vibe coding" (Karpathy 2025).'},
   // POO
   {id:'simula', cat:'POO', year:1967, label:'Simula 67',
     desc:'Dahl y Nygaard (Universidad de Oslo) introducen clases, objetos y herencia con Simula 67.',
@@ -1441,6 +1639,24 @@ const NODES = [
   {id:'java', cat:'POO', year:1995, label:'Java',
     desc:'Gosling (Sun) lanza Java con la promesa "write once, run anywhere" sobre la JVM.',
     rel:'Masifica la POO en empresa y backend.'},
+  {id:'tdd', cat:'POO', year:2001, label:'TDD + Manifiesto Ágil',
+    desc:'Kent Beck *Test-Driven Development* (1999); Manifiesto Ágil (feb 2001, Snowbird). Tests primero, iteración corta.',
+    rel:'Desplaza el waterfall. Funda XP, Scrum, agile mainstream.'},
+  {id:'funcional', cat:'POO', year:2007, label:'Renacimiento funcional',
+    desc:'Clojure (Rich Hickey, 2007) + Scala (Martin Odersky, 2004). Inmutabilidad y FP como respuesta a la complejidad de OOP en sistemas concurrentes.',
+    rel:'Influye en JavaScript (React/Redux), Java (lambdas 2014), Python (functools).'},
+  {id:'goRust', cat:'POO', year:2010, label:'Go + Rust',
+    desc:'Go (Google, 2009) y Rust (Mozilla, 2010). Concurrencia nativa (goroutines) + memory safety sin GC (ownership).',
+    rel:'Sucesores prácticos del C/C++ para infraestructura cloud. Docker/K8s en Go; Firefox, Cloudflare workers en Rust.'},
+  {id:'swiftTs', cat:'POO', year:2014, label:'Swift + TypeScript',
+    desc:'Apple Swift (jun 2014) sucesor de Objective-C · Microsoft TypeScript (2012, mainstream 2014) tipos opcionales sobre JavaScript.',
+    rel:'Modernización de plataformas masivas (iOS apps, web frontend). TypeScript se vuelve estándar de facto.'},
+  {id:'micro', cat:'POO', year:2014, label:'Microservicios',
+    desc:'Martin Fowler y James Lewis popularizan el término "microservices" (mar 2014). Descomposición de monolitos en servicios pequeños desplegables independientemente.',
+    rel:'Habilita desarrollo paralelo de equipos grandes; encaja con cloud + Docker + Kubernetes.'},
+  {id:'vibeCoding', cat:'POO', year:2025, label:'Vibe Coding',
+    desc:'Andrej Karpathy acuña *vibe coding* (feb 2025). Programar describiendo intención en lenguaje natural, dejando que un agente IA escriba/itere el código.',
+    rel:'Última fase: del compilador (Hopper 1952) al agente que entiende intención.'},
   // PC
   {id:'i4004', cat:'PC', year:1971, label:'Intel 4004',
     desc:'Faggin, Hoff, Mazor y Shima diseñan el Intel 4004 (4 bits, 2.300 transistores).',
@@ -1463,6 +1679,12 @@ const NODES = [
   {id:'ibmpc', cat:'PC', year:1981, label:'IBM PC 5150',
     desc:'IBM PC 5150 con MS-DOS (Microsoft). Arquitectura abierta.',
     rel:'Estandariza la arquitectura PC; explosión de clones a nivel global.'},
+  {id:'android', cat:'PC', year:2008, label:'Android 1.0',
+    desc:'Google libera Android 1.0 (sep 2008) en el HTC Dream. SO móvil open source basado en Linux. Adquirido por Google en 2005 (Andy Rubin).',
+    rel:'Funda el duopolio iOS/Android. Hoy 70%+ de smartphones del mundo. Demuestra que open source puede liderar en consumo masivo.'},
+  {id:'rpi', cat:'PC', year:2012, label:'Raspberry Pi',
+    desc:'Eben Upton lanza Raspberry Pi (feb 2012): single-board computer Linux a 35 USD. Pensado para educación, adoptado masivamente por makers, IoT, retro-gaming.',
+    rel:'Democratiza el cómputo embedded. Más de 50M unidades vendidas; estándar para prototipos hardware/software.'},
   {id:'mac', cat:'PC', year:1984, label:'Macintosh',
     desc:'Apple Macintosh: primer PC de éxito masivo con GUI heredada de Xerox PARC.',
     rel:'Lleva Smalltalk/PARC al mercado.'},
@@ -1551,6 +1773,9 @@ const NODES = [
   {id:'gpt3',      cat:'IA', year:2020, label:'GPT-3 · scaling',
     desc:'OpenAI publica GPT-3 (175B parámetros). Demuestra "scaling laws": el rendimiento mejora predeciblemente con tamaño + datos + cómputo.',
     rel:'Cambia la estrategia de la industria: escalar es el camino. Inicia la carrera billion-scale.'},
+  {id:'alphafold1', cat:'IA', year:2018, label:'AlphaFold 1',
+    desc:'DeepMind AlphaFold 1 gana CASP13 (dic 2018). Primer salto cualitativo de IA en plegamiento de proteínas, predecesor directo de AlphaFold 2.',
+    rel:'Demuestra que el deep learning puede atacar problemas científicos duros. Lanza la trayectoria que culmina en el Nobel 2024.'},
   {id:'alphafold', cat:'IA', year:2021, label:'AlphaFold 2',
     desc:'DeepMind resuelve el plegamiento de proteínas con precisión cristalográfica. Libera la base de datos con 200M+ estructuras predichas (julio 2022).',
     rel:'Mayor aplicación científica de IA hasta la fecha. Transforma biología estructural; Premio Nobel de Química 2024 a Hassabis y Jumper.'},
@@ -1563,6 +1788,12 @@ const NODES = [
   {id:'o1',        cat:'IA', year:2024, label:'o1 · reasoning',
     desc:'OpenAI o1 (sep 2024) introduce el extended thinking en producción: el modelo "piensa" antes de responder, generando cadenas de razonamiento internas largas.',
     rel:'Transición del paradigma "predicción de siguiente token" al de "razonamiento explícito". Antecede a Claude Opus 4.7.'},
+  {id:'nobel2024', cat:'IA', year:2024, label:'Nobel Hopfield+Hinton',
+    desc:'Premio Nobel de Física 2024 a John Hopfield y Geoffrey Hinton "por descubrimientos fundamentales que permiten el aprendizaje automático con redes neuronales artificiales" (oct 2024).',
+    rel:'Reconocimiento institucional supremo del paradigma conexionista. Cierre simbólico del arco perceptrón → backprop → deep learning.'},
+  {id:'deepseek',  cat:'IA', year:2025, label:'DeepSeek-R1',
+    desc:'DeepSeek (China) libera R1 (ene 2025): primer reasoning model open-weights competitivo con OpenAI o1. Demuestra que el extended thinking se puede entrenar con presupuesto modesto.',
+    rel:'Recalibra la estrategia global: open-weights ya no quedan atrás. Provoca caída del 16% de NVIDIA en un día.'},
   // GPU
   {id:'geforce', cat:'GPU', year:1999, label:'GeForce 256',
     desc:'NVIDIA GeForce 256: primera GPU comercial con T&L acelerado por hardware.',
@@ -2036,6 +2267,44 @@ const EDGES = [
   {a:'algAgents',    b:'opus47',        t:'parallel'},
   {a:'godel',        b:'cookLevin',     t:'continues'},
   {a:'frege',        b:'minimax',       t:'bridges'},
+  // ====== LOG modern: HoTT, Lean, AlphaProof ======
+  {a:'godel',        b:'hott',          t:'continues'},
+  {a:'hott',         b:'lean4',         t:'parallel'},
+  {a:'taocp',        b:'lean4',         t:'bridges'},
+  {a:'lean4',        b:'alphaproof',    t:'continues'},
+  {a:'transformer',  b:'alphaproof',    t:'bridges'},
+  {a:'opus47',       b:'alphaproof',    t:'parallel'},
+  // ====== SOFTWARE modern: GNU, Linux, Git, Docker, Copilot, agents ======
+  {a:'unix',         b:'gnu',           t:'parallel'},
+  {a:'gnu',          b:'linux',         t:'continues'},
+  {a:'linux',        b:'docker',        t:'continues'},
+  {a:'linux',        b:'android',       t:'bridges'},
+  {a:'cLang',        b:'git',           t:'parallel'},
+  {a:'git',          b:'docker',        t:'parallel'},
+  {a:'docker',       b:'k8s',           t:'continues'},
+  {a:'transformer',  b:'copilot',       t:'bridges'},
+  {a:'copilot',      b:'codingAgents',  t:'continues'},
+  {a:'opus47',       b:'codingAgents',  t:'bridges'},
+  // ====== PARADIGMAS modern ======
+  {a:'java',         b:'tdd',           t:'continues'},
+  {a:'tdd',          b:'micro',         t:'continues'},
+  {a:'lisp',         b:'funcional',     t:'continues'},
+  {a:'funcional',    b:'goRust',        t:'parallel'},
+  {a:'cLang',        b:'goRust',        t:'continues'},
+  {a:'java',         b:'swiftTs',       t:'parallel'},
+  {a:'micro',        b:'k8s',           t:'bridges'},
+  {a:'python',       b:'vibeCoding',    t:'parallel'},
+  {a:'codingAgents', b:'vibeCoding',    t:'bridges'},
+  // ====== IA: AlphaFold 1 + Nobel + DeepSeek ======
+  {a:'dbn',          b:'alphafold1',    t:'parallel'},
+  {a:'alphafold1',   b:'alphafold',     t:'continues'},
+  {a:'backprop',     b:'nobel2024',     t:'continues'},
+  {a:'o1',           b:'deepseek',      t:'parallel'},
+  {a:'deepseek',     b:'opus47',        t:'parallel'},
+  // ====== PC: Android, Raspberry Pi ======
+  {a:'iphone',       b:'android',       t:'parallel'},
+  {a:'apple2',       b:'rpi',           t:'parallel'},
+  {a:'rpi',          b:'humanoid',      t:'bridges'},
   // ====== Nuevos hitos IA y sus relaciones ======
   {a:'dartmouth', b:'eliza',     t:'continues'},
   {a:'eliza',     b:'expertSys', t:'parallel'},
@@ -2331,6 +2600,21 @@ svg.addEventListener('click', reset);
   }
   expandBtn.addEventListener('click', () => setAll(true));
   collapseBtn.addEventListener('click', () => setAll(false));
+  // Auto-expand details when navigating from extra-link anchors
+  document.querySelectorAll('.graph-extra a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (ev) => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(target && target.tagName.toLowerCase() === 'details'){
+        target.open = true;
+      }
+    });
+  });
+  // Also handle anchor on initial load (e.g., direct URL with #sec-storage)
+  if(window.location.hash){
+    const target = document.getElementById(window.location.hash.slice(1));
+    if(target && target.tagName.toLowerCase() === 'details') target.open = true;
+  }
   // Keep active state synced when user toggles individually
   sections.forEach(d => d.addEventListener('toggle', () => {
     const allOpen = Array.from(sections).every(s => s.open);
