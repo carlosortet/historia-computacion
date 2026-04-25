@@ -825,6 +825,7 @@
     <tbody>
       <tr><td>1952</td><td>Compilador A-0</td><td>Grace Hopper · primer compilador funcional</td><td>Acerca la programación al lenguaje humano</td></tr>
       <tr><td>1957</td><td>FORTRAN</td><td>Backus (IBM) · primer lenguaje de alto nivel adoptado</td><td>Despega el software científico</td></tr>
+      <tr><td><b>1959</b></td><td><b>COBOL</b></td><td>CODASYL (Hopper como influencia) · sintaxis casi en inglés · negocio</td><td>70% de transacciones bancarias mundiales · 200B+ líneas en producción</td></tr>
       <tr><td>1958</td><td>LISP</td><td>McCarthy · funcional y simbólico</td><td>Lengua franca de la IA simbólica</td></tr>
       <tr><td>1960</td><td>ALGOL 60</td><td>Naur et al. · sintaxis estructurada</td><td>Padre de Pascal, C, Java…</td></tr>
       <tr><td>1968</td><td>Programación estructurada</td><td>Dijkstra · <i>Go To Considered Harmful</i></td><td>Funda la ingeniería del software</td></tr>
@@ -968,6 +969,7 @@
       <tr><td>1981–1982</td><td>Simulación cuántica</td><td>Feynman · simular física con ordenadores cuánticos</td><td>Motivación fundacional</td></tr>
       <tr><td>1985</td><td>Computador universal</td><td>Deutsch · análogo cuántico de Turing</td><td>Marco teórico universal</td></tr>
       <tr><td>1994</td><td>Algoritmo de Shor</td><td>Shor · factorización cuántica</td><td>Demuestra ventaja → reto a RSA</td></tr>
+      <tr><td><b>1995–1997</b></td><td><b>QEC · qubit lógico</b></td><td>Shor codes (1995) · Steane (1996) · Kitaev surface codes (1997-2003)</td><td><b>Concepto crítico:</b> qubit lógico = N qubits físicos + corrección. Hoy se mide el progreso en qubits LÓGICOS, no físicos</td></tr>
       <tr><td>1996</td><td>Algoritmo de Grover</td><td>Grover · búsqueda en √N</td><td>Segundo algoritmo paradigmático</td></tr>
       <tr><td>1998</td><td>2 qubits NMR</td><td>Chuang, Gershenfeld, Kubinec</td><td>Primera demostración experimental</td></tr>
       <tr><td>2019</td><td>Sycamore</td><td>Google · 53 qubits, "supremacía cuántica"</td><td>Primer hito mediático</td></tr>
@@ -976,6 +978,7 @@
       <tr><td>2025</td><td><b>MS Majorana 1</b></td><td>Microsoft · primer chip de qubits topológicos (feb 2025)</td><td>Vía radicalmente distinta al superconductor</td></tr>
       <tr><td>2025</td><td><b>IBM Loon + Nighthawk</b></td><td>IBM (12 nov 2025) · Loon: componentes para FTQC · Nighthawk: 120 qubits</td><td>Pieza siguiente del roadmap IBM tras Heron</td></tr>
       <tr><td>2027 (esp.)</td><td><b>IBM Cockatoo</b></td><td>Roadmap IBM · módulos Kookaburra acoplados con L-couplers</td><td>Paso clave hacia Starling (2029) FTQC a gran escala</td></tr>
+      <tr><td><b>2024</b></td><td><b>Estim. ruptura RSA</b></td><td>Gidney (2024) · ~1.300 qubits LÓGICOS · 1 semana para RSA-2048 / ECC-256</td><td>Métrica concreta · justifica migrar a PQC ya ("harvest now, decrypt later")</td></tr>
     </tbody>
   </table>
   </details>
@@ -1598,6 +1601,9 @@ const NODES = [
   {id:'fortran', cat:'SOF', year:1957, label:'FORTRAN',
     desc:'John Backus (IBM) lidera FORTRAN: primer lenguaje de alto nivel ampliamente adoptado.',
     rel:'Despega el software científico y técnico.'},
+  {id:'cobol', cat:'SOF', year:1959, label:'COBOL',
+    desc:'CODASYL (con Grace Hopper como influencia clave) define COBOL: lenguaje orientado al negocio, sintaxis casi en inglés. Primer compilador 1960.',
+    rel:'Funda el software empresarial. Hoy aún corre el 70% de transacciones bancarias y muchos sistemas COBOL siguen activos en mainframes (>200 mil millones de líneas en producción).'},
   {id:'lisp', cat:'SOF', year:1958, label:'LISP',
     desc:'McCarthy diseña LISP: funcional y simbólico, basado en el cálculo lambda.',
     rel:'Lengua franca de la IA simbólica durante décadas.'},
@@ -1699,6 +1705,12 @@ const NODES = [
   {id:'mac', cat:'PC', year:1984, label:'Macintosh',
     desc:'Apple Macintosh: primer PC de éxito masivo con GUI heredada de Xerox PARC.',
     rel:'Lleva Smalltalk/PARC al mercado.'},
+  {id:'risc',     cat:'PC', year:1980, label:'RISC',
+    desc:'IBM 801 (John Cocke, ~1980) + Berkeley RISC (David Patterson 1980, acuña el término) + Stanford MIPS (John Hennessy 1981). Reduced Instruction Set Computer: pocas instrucciones simples, pipeline más rápido, mejor para compiladores.',
+    rel:'Paradigma rival al CISC (x86). Da origen a SPARC (Sun 1987), MIPS, PowerPC, ARM (1985), Alpha. Hoy ARM domina mobile y empieza desktop con M1.'},
+  {id:'riscv',    cat:'PC', year:2010, label:'RISC-V',
+    desc:'Berkeley RISC-V (Krste Asanović + David Patterson, proyecto desde 2010 · ratificado 2014). Open ISA libre de royalties · sin dependencia de propietarios.',
+    rel:'Alternativa abierta a ARM y x86. Adoptado por SiFive, Western Digital, Alibaba, NVIDIA (microcontroladores). Apuesta estratégica europea + china por soberanía tecnológica.'},
   {id:'i386',     cat:'PC', year:1985, label:'Intel 80386',
     desc:'Intel 386: primer x86 de 32 bits con memoria protegida y modo virtual. 275.000 transistores.',
     rel:'Funda la era de los SO multitarea modernos (Windows NT, Linux, OS/2). Sin esto no hay servidores ni desktops modernos.'},
@@ -1867,6 +1879,12 @@ const NODES = [
   {id:'shor', cat:'CUA', year:1994, label:'Algoritmo de Shor',
     desc:'Algoritmo de factorización en tiempo polinómico cuántico.',
     rel:'Demuestra ventaja práctica → reto a RSA y a la criptografía clásica.'},
+  {id:'qec', cat:'CUA', year:1995, label:'QEC · qubit lógico',
+    desc:'Peter Shor (1995) publica los primeros códigos de corrección de errores cuánticos · Andrew Steane (1996) los códigos CSS · Alexei Kitaev (1997-2003) propone los surface codes. Nace el concepto de qubit lógico = N qubits físicos entrelazados + corrección de errores que se comporta como un qubit "perfecto".',
+    rel:'Hace teóricamente viable la computación cuántica útil. Sin QEC no hay FTQC. Métrica clave del campo: cuántos qubits lógicos demuestra cada chip.'},
+  {id:'rsaThreat', cat:'CUA', year:2024, label:'Estim. ruptura RSA',
+    desc:'Craig Gidney + Martin Ekerå (2019) estimaron ~20M qubits físicos para romper RSA-2048 en 8h. Optimizaciones de Gidney (2024) reducen a ~1.300 qubits lógicos · ~1 semana para RSA-2048 o ECC-256.',
+    rel:'Métrica concreta del "cuándo cae la cripto clásica". Mientras los chips actuales tienen <100 qubits lógicos demostrados, la amenaza efectiva está a años. Pero "harvest now, decrypt later" justifica migrar a PQC ya.'},
   {id:'grover', cat:'CUA', year:1996, label:'Algoritmo de Grover',
     desc:'Búsqueda cuántica no estructurada en √N.',
     rel:'Segundo algoritmo cuántico paradigmático.'},
@@ -2345,6 +2363,22 @@ const EDGES = [
   {a:'lenet',    b:'alexnet',  t:'continues'},
   {a:'lisp',     b:'word2vec', t:'bridges'},
   {a:'word2vec', b:'transformer',t:'enables'},
+  // ====== Quantum: QEC + RSA threat ======
+  {a:'shor',     b:'qec',      t:'continues'},
+  {a:'qec',      b:'qbit2',    t:'enables'},
+  {a:'qec',      b:'willow',   t:'continues'},
+  {a:'qec',      b:'ibmHeron', t:'continues'},
+  {a:'shor',     b:'rsaThreat',t:'continues'},
+  {a:'rsa',      b:'rsaThreat',t:'bridges'},
+  // ====== COBOL ======
+  {a:'fortran',  b:'cobol',    t:'parallel'},
+  {a:'a0',       b:'cobol',    t:'continues'},
+  // ====== RISC + RISC-V ======
+  {a:'i8080',    b:'risc',     t:'parallel'},
+  {a:'risc',     b:'riscv',    t:'continues'},
+  {a:'risc',     b:'iphone',   t:'bridges'},
+  {a:'risc',     b:'m1',       t:'bridges'},
+  {a:'riscv',    b:'tpu7',     t:'bridges'},
   // ====== Nuevos hitos IA y sus relaciones ======
   {a:'dartmouth', b:'eliza',     t:'continues'},
   {a:'eliza',     b:'expertSys', t:'parallel'},
