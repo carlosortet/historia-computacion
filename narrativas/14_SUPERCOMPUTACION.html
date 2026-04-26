@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SUPERCOMPUTACIÓN · Del teraflop al exaflop en 26 años · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Cada salto de un orden de magnitud en potencia de cómputo abre una nueva clase de problemas: predicción climática, diseño nuclear, simulación de proteínas, entrenamiento de modelos">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-supercomputacion.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #005D5D;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">SUPERCOMP</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-14</span>
+  </header>
+  <h1 class="page-title">SUPERCOMPUTACIÓN · Del teraflop al exaflop en 26 años</h1>
+  <p class="page-subtitle">Cada salto de un orden de magnitud en potencia de cómputo abre una nueva clase de problemas: predicción climática, diseño nuclear, simulación de proteínas, entrenamiento de modelos de IA a escala.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>La supercomputación tiene un patrón claro: cada 10-15 años un nuevo hito de velocidad (tera → peta → exa) y con él una nueva tecnología de aceleración (vectorial → escalar cluster → híbrido CPU+GPU → GPU dominante). El Cray-1 define el género en 1976. El ASCI Red en 1997 demuestra que los clusters de chips de PC pueden desplazar a la arquitectura vectorial propietaria. El Roadrunner en 2008 introduce la arquitectura híbrida. Frontier en 2022 confirma que la GPU ya no es accesoria sino la columna vertebral. El nodo con Folding@home es singular: un superordenador distribuido de 500 petaflops construido con millones de PCs domésticos voluntarios, que demuestra que la centralización no es la única vía. La columna conecta directamente con el paralelismo masivo de GPUs y con la simulación, que es su aplicación más importante.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1976-cray-1-seymour-cray">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1976</span>
+        <h3 class="chain-title">Cray-1&nbsp;<span class="chain-person">— Seymour Cray</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Seymour Cray</strong> diseña el Cray-1 (instalado en Los Alamos National Laboratory, mar 1976): arquitectura vectorial, 80 MHz, 160 MFLOPS (160 millones de operaciones de coma flotante por segundo). Refrigeración por freón. Diseño circular con asientos de cuero bordeando el chasis — Cray quería que los cables fueran lo más cortos posible.</p><p>El Cray-1 define el concepto moderno de supercomputadora: hardware propietario, diseño radicalmente diferente al hardware comercial, propósito científico específico. <strong>Seymour Cray</strong> fundó Cray Research en 1972 tras años en Control Data Corporation.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> ASCI Red (1997)</div>
+    </div>
+    <div class="chain-item" id="2000-folding-home-vijay-pande">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">2000</span>
+        <h3 class="chain-title">Folding@home&nbsp;<span class="chain-person">— Vijay Pande</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Vijay Pande</strong> (Stanford) lanza Folding@home (oct 2000): cómputo distribuido voluntario para simulación molecular de plegamiento de proteínas. Cualquier persona puede instalar el cliente y ceder ciclos de CPU/GPU inactivos. En marzo 2020, durante el pico de COVID-19, Folding@home alcanza 470 petaflops — más potente que el número 1 del TOP500 en ese momento.</p><p>El proyecto funciona durante 21 años en paralelo a AlphaFold — el mismo problema del plegamiento de proteínas atacado con fuerza bruta distribuida frente a IA.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Frontier (2022) en paralelo conceptual — centralizado vs distribuido · <strong>Depende de:</strong> ningún nodo de la columna; es entrada lateral desde la simulación distribuida</div>
+    </div>
+    <div class="chain-item" id="1997-asci-red-1-tf-intel-sandia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1997</span>
+        <h3 class="chain-title">ASCI Red · 1 TF&nbsp;<span class="chain-person">— Intel / Sandia</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Intel</strong> construye el ASCI Red para <strong>Sandia National Laboratories</strong> (entregado dic 1996, operativo 1997): 9.152 nodos con procesadores Pentium Pro interconectados. Primer superordenador en superar 1 teraflop (1.06 TFLOPS Linpack). Coste: 55 millones de dólares.</p><p>La lección estratégica: el hardware de PC en cluster supera a las arquitecturas vectoriales propietarias en coste/rendimiento. El paradigma "clusters de x86" gana la guerra del TOP500 durante 20 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Roadrunner (2008) · <strong>Depende de:</strong> Cray-1 (1976) como punto de partida del género</div>
+    </div>
+    <div class="chain-item" id="2008-roadrunner-1-pf-ibm-los-alamos">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">2008</span>
+        <h3 class="chain-title">Roadrunner · 1 PF&nbsp;<span class="chain-person">— IBM / Los Alamos</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>IBM</strong> construye Roadrunner para <strong>Los Alamos National Laboratory</strong>: 6.480 nodos cada uno con un procesador AMD Opteron + dos chips IBM Cell (el procesador del PS3). Primer superordenador en superar 1 petaflop (1.026 PFLOPS, jun 2008). Primer uso masivo de arquitectura heterogénea: CPU de propósito general + acelerador especializado.</p><p>El Cell processor fue diseñado por IBM, Sony y Toshiba para el PlayStation 3. Roadrunner reutilizó hardware de consumo masivo como acelerador científico — exactamente la misma lógica que llevará a las GPUs a dominar el campo.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Fugaku (2020) · <strong>Depende de:</strong> ASCI Red (1997)</div>
+    </div>
+    <div class="chain-item" id="2020-fugaku-riken-fujitsu">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">2020</span>
+        <h3 class="chain-title">Fugaku&nbsp;<span class="chain-person">— RIKEN / Fujitsu</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>RIKEN</strong> (instituto japonés de ciencias) y <strong>Fujitsu</strong> construyen Fugaku: 158.976 nodos con procesadores Fujitsu A64FX (ARM, 48 núcleos cada uno). Número 1 del TOP500 desde junio 2020 hasta noviembre 2021: 442 petaflops Linpack. Primer sistema ARM en lo más alto del ranking.</p><p>El A64FX incluye High Bandwidth Memory (HBM) integrada. La clave de rendimiento no es la velocidad de reloj sino el ancho de banda memoria-cómputo. En aplicaciones de simulación climática y molecular, Fugaku supera a sistemas nominalmente más rápidos.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Frontier (2022) · <strong>Depende de:</strong> Roadrunner (2008)</div>
+    </div>
+    <div class="chain-item" id="2022-frontier-1-ef-hpe-amd-ornl">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">2022</span>
+        <h3 class="chain-title">Frontier · 1 EF&nbsp;<span class="chain-person">— HPE / AMD / ORNL</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Oak Ridge National Laboratory</strong> (ORNL, Tennessee) en colaboración con <strong>HPE</strong> y <strong>AMD</strong>: Frontier es el primer superordenador exascale oficialmente confirmado. 1.102 exaflops (1.1 exaflops) en Linpack (nov 2022). Arquitectura: 9.408 nodos AMD EPYC 7A53 (CPU, 64 núcleos) + 4× AMD Instinct MI250X (GPU) por nodo. Total: 37.632 GPUs AMD.</p><p>El salto del petaflop al exaflop tarda 14 años (2008-2022) — el mismo tiempo que del teraflop al petaflop. Pero la composición cambia radicalmente: en Roadrunner, los aceleradores eran el 15% del rendimiento total. En Frontier, las GPUs aportan el 90%.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> El Capitan (2024) · <strong>Depende de:</strong> Fugaku (2020), <a href="12_PARALELISMO.html#2006-cuda">12_PARALELISMO#2006 · CUDA</a> (como tecnología habilitadora de GPU en HPC)</div>
+    </div>
+    <div class="chain-item" id="2024-aurora-intel-argonne">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Aurora&nbsp;<span class="chain-person">— Intel / Argonne</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Argonne National Laboratory</strong> (Illinois) con <strong>Intel</strong> y <strong>HPE</strong>: Aurora es el segundo sistema exascale. 1.012 exaflops Linpack (jun 2024, tras múltiples retrasos). Arquitectura: 10.624 nodos Intel Xeon Max (Sapphire Rapids HBM) + 6× Intel Ponte Vecchio GPU por nodo. Total: 63.744 Intel GPUs.</p><p>Aurora demuestra que Intel puede construir GPUs competitivas en HPC, aunque los retrasos (estaba previsto para 2021) lo entregaron casi 2 años después de Frontier.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TPU v7 (2025) en GPU via <a href="12_PARALELISMO.html">12_PARALELISMO</a> en paralelo de arquitecturas aceleradas · <strong>Depende de:</strong> Frontier (2022)</div>
+    </div>
+    <div class="chain-item" id="2024-el-capitan-hpe-amd-llnl">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">El Capitan&nbsp;<span class="chain-person">— HPE / AMD / LLNL</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Lawrence Livermore National Laboratory</strong> (California) con <strong>HPE</strong> y <strong>AMD</strong>: El Capitan toma el número 1 del TOP500 desde noviembre 2024. Rendimiento: &gt;1.7 exaflops Linpack (estimado final: ~2 exaflops). Diseñado para simulaciones de armas nucleares sin pruebas físicas — programa de Stockpile Stewardship.</p><p>Arquitectura similar a Frontier pero con AMD Instinct MI300A: la primera APU (CPU + GPU en un mismo chip, con memoria unificada HBM) en un superordenador de primer nivel. Elimina el cuello de botella de la transferencia de datos entre CPU y GPU separados.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> JUPITER Europa (2025) · <strong>Depende de:</strong> Frontier (2022)</div>
+    </div>
+    <div class="chain-item" id="2025-jupiter-eu-eurohpc-j-lich">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2025</span>
+        <h3 class="chain-title">JUPITER (EU)&nbsp;<span class="chain-person">— EuroHPC / Jülich</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>EuroHPC Joint Undertaking</strong> instala JUPITER en el <strong>Forschungszentrum Jülich</strong> (Alemania): primer sistema exascale europeo. 4º en el TOP500 (jun 2025). Arquitectura modular: JUPITER Booster (nodos GPU para IA y HPC intensivo) + JUPITER Cluster (nodos CPU para trabajos con más comunicación que cómputo).</p><p>JUPITER es parte de la estrategia europea de soberanía tecnológica: no depender de infraestructura USA para investigación científica clasificada o sensible. El coste supera 500M EUR entre hardware e infraestructura.</p></div>
+      <div class="chain-rel"><strong>Depende de:</strong> Frontier (2022) y El Capitan (2024) como referencia de diseño</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1976</td>
+          <td>Seymour Cray</td>
+          <td>Diseñó el Cray-1 y fundó el concepto de supercomputadora</td>
+          <td>Cray Research / USA</td>
+        </tr>
+        <tr>
+          <td>2000</td>
+          <td>Vijay Pande</td>
+          <td>Lanzó Folding@home, cómputo distribuido voluntario</td>
+          <td>Stanford / USA</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="12_PARALELISMO.html#2006-cuda">12_PARALELISMO#2006 · CUDA</a> → tecnología que convierte la GPU en acelerador dominante de HPC (Frontier, El Capitan, Aurora)</li>
+      <li><span class="arrow">↗</span>De <a href="12_PARALELISMO.html#2009-opencl">12_PARALELISMO#2009 · OpenCL</a> → base tecnológica de las GPUs Intel en Aurora</li>
+      <li><span class="arrow">↗</span>De <a href="12_PARALELISMO.html#tpu-v7-ironwood">12_PARALELISMO#TPU v7 Ironwood</a> → en paralelo: arquitecturas exascale y ASICs de IA convergen en demanda energética</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De Frontier/Aurora/El Capitan → capacidad de entrenamiento a escala para <a href="11_IA.html">11_IA</a> (modelos frontier)</li>
+      <li><span class="arrow">↘</span>De Folding@home → precede conceptualmente a <a href="15_SIMULACION.html#alphafold">15_SIMULACION#AlphaFold</a> en 21 años</li>
+      <li><span class="arrow">↘</span>De JUPITER (2025) → paralelo con <a href="12_PARALELISMO.html#tpu-v8">12_PARALELISMO#TPU v8</a> como frontera de hardware 2025-2027</li>
+      <li><span class="arrow">↘</span>De toda la columna → habilita las simulaciones científicas de <a href="15_SIMULACION.html">15_SIMULACION</a> (CFD, gemelos digitales, física nuclear)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa el hardware que impulsa estos sistemas → <a href="12_PARALELISMO.html">12_PARALELISMO</a></li>
+      <li>Si te interesa lo que simulan → <a href="15_SIMULACION.html">15_SIMULACION</a></li>
+      <li>Si quieres ver el horizonte cuántico de la supercomputación → <a href="13_CUANTICA.html">13_CUANTICA</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 14</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="13_CUANTICA.html" title="Capítulo anterior">◄</a>
+      <a href="15_SIMULACION.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>14-1</span>
+  </footer>
+</article>
+</body>
+</html>

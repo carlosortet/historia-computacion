@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MICRO+PC · Del chip de 4 bits al paquete CPU+GPU+NPU · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="La columna PC narra cómo el transistor se convirtió en microprocesador, el microprocesador en ordenador personal y el ordenador personal en el dispositivo que cabe en el bolsillo y">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-micro_pc.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #FF832B;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">MICRO+PC</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-07</span>
+  </header>
+  <h1 class="page-title">MICRO+PC · Del chip de 4 bits al paquete CPU+GPU+NPU</h1>
+  <p class="page-subtitle">La columna PC narra cómo el transistor se convirtió en microprocesador, el microprocesador en ordenador personal y el ordenador personal en el dispositivo que cabe en el bolsillo y razona con IA on-device.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>El relato empieza con un lápiz óptico sobre una pantalla en el MIT en 1963 y termina en 2027 con un paquete de silicio que integra CPU, GPU y NPU en una sola pieza para servir modelos de IA de miles de millones de parámetros. Entre ambos extremos: el circuito integrado como detonador, la GUI como interfaz que lleva el cómputo a no-técnicos, la arquitectura RISC como modelo de eficiencia, ARM como paradigma móvil y Apple Silicon como su culminación. La columna recibe la lógica de los transistores de ELECTRÓNICA y alimenta SOFTWARE, IA y INTERNET.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1963-sketchpad-ivan-sutherland">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1963</span>
+        <h3 class="chain-title">Sketchpad&nbsp;<span class="chain-person">— Ivan Sutherland</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ivan Sutherland</strong> presenta su tesis doctoral en el MIT en 1963: Sketchpad, el primer sistema gráfico interactivo de la historia. Un lápiz óptico sobre el ordenador TX-2 (22 bits, transistores, Instituto Lincoln) permite dibujar figuras, aplicar restricciones geométricas y agrupar objetos en jerarquías.</p><p>Sketchpad inventa la GUI, las restricciones declarativas, la herencia visual y la programación interactiva en un solo trabajo. Sutherland recibe el Turing Award en 1988. Sin Sketchpad no existe el concepto de interacción visual con ordenadores.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1968-mother-of-all-demos">#1968 · Mother of All Demos</a> · <strong>Depende de:</strong> <a href="02_ELE.html#1959-circuito-integrado">02_ELE#1959 · Circuito integrado</a> (hardware que hace posible el TX-2)</div>
+    </div>
+    <div class="chain-item" id="1968-mother-of-all-demos-douglas-engelbart">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1968</span>
+        <h3 class="chain-title">Mother of All Demos&nbsp;<span class="chain-person">— Douglas Engelbart</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Douglas Engelbart</strong> (SRI Stanford) presenta el 9 de diciembre de 1968 en el Civic Auditorium de San Francisco, ante 1.000 ingenieros, en 90 minutos: el ratón, el hipertexto, la edición colaborativa en tiempo real, la videoconferencia, las ventanas en pantalla y el control por voz. Todo operativo, todo en una sola demo.</p><p>El sistema NLS (oN-Line System) corre en un SDS 940 en Menlo Park; la conexión al escenario va por una línea de telecomunicaciones especial. Engelbart lleva 10 años trabajando en estas ideas. La audiencia aplaude de pie. Xerox PARC se fundará al año siguiente para continuar esta visión.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1973-xerox-alto">#1973 · Xerox Alto</a> · <strong>Depende de:</strong> <a href="#1963-sketchpad">#1963 · Sketchpad</a> (la cadena de visión de la interfaz gráfica)</div>
+    </div>
+    <div class="chain-item" id="1971-intel-4004-federico-faggin-ted-hoff-stan-mazor-masatoshi-shima">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1971</span>
+        <h3 class="chain-title">Intel 4004&nbsp;<span class="chain-person">— Federico Faggin, Ted Hoff, Stan Mazor, Masatoshi Shima</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Federico Faggin</strong>, <strong>Ted Hoff</strong> (Marcian Hoff), <strong>Stan Mazor</strong> y <strong>Masatoshi Shima</strong> diseñan el Intel 4004: 4 bits, 2.300 transistores, 740 kHz, fabricado en 10 micrones. Lanzado el 15 de noviembre de 1971. El encargo original era un chipset para calculadoras de escritorio de Busicom; Hoff propuso integrar todo en un chip programable de propósito general.</p><p>Primer microprocesador comercial. Inaugura el modelo "ordenador en un chip" y la posibilidad de que cualquier dispositivo tenga lógica programable. La factura de diseño la paga Busicom; Intel negocia quedarse los derechos para otros usos.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1972-intel-8008">#1972 · Intel 8008</a> · <strong>Depende de:</strong> <a href="02_ELE.html#1959-circuito-integrado">02_ELE#1959 · Circuito integrado</a> (el IC es la condición de posibilidad del micro)</div>
+    </div>
+    <div class="chain-item" id="1972-intel-8008-intel">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1972</span>
+        <h3 class="chain-title">Intel 8008&nbsp;<span class="chain-person">— Intel</span></h3>
+      </div>
+      <div class="chain-body"><p>Intel lanza el <strong>8008</strong>: primer microprocesador de 8 bits. 3.500 transistores, 200 kHz a 800 kHz. Diseñado originalmente para un terminal CRT (Datapoint 2200); Intel lo adquiere y lo generaliza.</p><p>El salto de 4 a 8 bits parece pequeño pero es cualitativo: 8 bits permiten codificar caracteres ASCII directamente, abrir la puerta al procesamiento de texto.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1974-intel-8080">#1974 · Intel 8080</a></div>
+    </div>
+    <div class="chain-item" id="1973-xerox-alto-equipo-xerox-parc">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1973</span>
+        <h3 class="chain-title">Xerox Alto&nbsp;<span class="chain-person">— Equipo Xerox PARC</span></h3>
+      </div>
+      <div class="chain-body"><p>Xerox PARC construye el <strong>Alto</strong>: primer ordenador personal con GUI completa, ethernet, ratón, editor WYSIWYG, pantalla de mapa de bits. El equipo incluye a <strong>Butler Lampson</strong>, <strong>Charles Thacker</strong>, <strong>Alan Kay</strong>, <strong>Dan Ingalls</strong> y <strong>Adele Goldberg</strong>, entre otros. Se fabrican aproximadamente 2.000 unidades; ninguna se comercializa.</p><p>Steve Jobs visita PARC en diciembre de 1979 con un grupo de Apple. Ve el ratón y la interfaz gráfica. Lo que no ve —o no entiende entonces— es el modelo de objetos de Smalltalk que corre sobre el Alto. La metáfora del escritorio nace en PARC, no en Apple.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1984-macintosh">#1984 · Macintosh</a> · <a href="06_PARADIGMAS.html#1980-smalltalk-80">06_PARADIGMAS#1980 · Smalltalk-80</a> (paralelo, mismo equipo)</div>
+    </div>
+    <div class="chain-item" id="1974-intel-8080-intel">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">1974</span>
+        <h3 class="chain-title">Intel 8080&nbsp;<span class="chain-person">— Intel</span></h3>
+      </div>
+      <div class="chain-body"><p>El <strong>Intel 8080</strong>: 8 bits ampliado, 6.000 transistores, 2 MHz. Primer microprocesador con bus de 8 bits separado de datos y direcciones. Digital Research escribe CP/M para él.</p><p>Con el 8080 arrancan los primeros microordenadores útiles: el IMSAI 8080 (1975) y, sobre todo, el Altair 8800. Es también el antecesor arquitectónico del 8086 (1978) y de toda la familia x86.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1975-altair-8800-basic">#1975 · Altair 8800 + BASIC</a> · <a href="#1980-risc">#1980 · RISC</a> (paralelo, crítica al CISC)</div>
+    </div>
+    <div class="chain-item" id="1975-altair-8800-basic-ed-roberts-bill-gates-paul-allen">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">1975</span>
+        <h3 class="chain-title">Altair 8800 + BASIC&nbsp;<span class="chain-person">— Ed Roberts / Bill Gates, Paul Allen</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ed Roberts</strong> (MITS, Albuquerque) lanza el Altair 8800 en portada de <em>Popular Electronics</em> en enero de 1975: kit de 397 USD, sin teclado, sin pantalla, sin software. <strong>Bill Gates</strong> y <strong>Paul Allen</strong> leen el artículo en Harvard y escriben un intérprete BASIC para él en 8 semanas, desde cero, sin haber visto el hardware. Lo prueban por primera vez en el Altair real el día que lo entregan.</p><p>La transacción funda Microsoft y lanza la industria del software para PC. Antes del Altair, el software venía con el hardware. Después, el software es un negocio independiente.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1976-apple-i">#1976 · Apple I</a></div>
+    </div>
+    <div class="chain-item" id="1976-apple-i-steve-wozniak-steve-jobs">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">1976</span>
+        <h3 class="chain-title">Apple I&nbsp;<span class="chain-person">— Steve Wozniak, Steve Jobs</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Steve Wozniak</strong> diseña el Apple I en el garaje de Jobs (Los Altos, California): placa con CPU MOS 6502, 4 KB RAM (ampliable), video de texto. Jobs actúa como cofundador comercial: convence al Homebrew Computer Club y vende 200 unidades a 666,66 USD.</p><p>El Apple I es rudimentario pero elegante en su arquitectura mínima. Wozniak hace todo con menos chips de los que la competencia creía posible.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1977-apple-ii">#1977 · Apple II</a></div>
+    </div>
+    <div class="chain-item" id="1977-apple-ii-steve-wozniak-steve-jobs">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">1977</span>
+        <h3 class="chain-title">Apple II&nbsp;<span class="chain-person">— Steve Wozniak, Steve Jobs</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Apple II</strong> (junio 1977): color (6 colores en modo hi-res), sonido, 8 slots de expansión, 4 KB a 48 KB RAM. El primer microordenador pensado para el usuario no técnico. <strong>VisiCalc</strong> (1979, Dan Bricklin y Bob Frankston) lo convierte en herramienta empresarial y vende la plataforma a directivos de empresa que no habían tocado un ordenador.</p><p>Más de 5 millones de unidades vendidas entre 1977 y 1993. Primer producto de consumo masivo de la categoría.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1981-ibm-pc-5150">#1981 · IBM PC 5150</a> · <a href="#2012-raspberry-pi">#2012 · Raspberry Pi</a> (paralelo)</div>
+    </div>
+    <div class="chain-item" id="1980-risc-john-cocke-david-patterson-john-hennessy">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">1980</span>
+        <h3 class="chain-title">RISC&nbsp;<span class="chain-person">— John Cocke, David Patterson, John Hennessy</span></h3>
+      </div>
+      <div class="chain-body"><p>Tres grupos en paralelo: <strong>IBM 801</strong> (<strong>John Cocke</strong>, ~1975-1980), <strong>Berkeley RISC</strong> (<strong>David Patterson</strong>, 1980 —acuña el término—) y <strong>Stanford MIPS</strong> (<strong>John Hennessy</strong>, 1981). La tesis: pocas instrucciones simples, ejecutadas en un solo ciclo, son más rápidas que muchas instrucciones complejas porque el compilador puede optimizarlas mejor.</p><p>RISC da origen a SPARC (Sun, 1987), MIPS, PowerPC y ARM (1985). Treinta años después, ARM domina el móvil y empieza el desktop con M1. Patterson y Hennessy reciben el Turing Award en 2017.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2007-iphone-arm-mobile">#2007 · iPhone (ARM mobile)</a> · <a href="#2020-apple-m1-arm">#2020 · Apple M1 · ARM</a> · <a href="#2010-risc-v">#2010 · RISC-V</a></div>
+    </div>
+    <div class="chain-item" id="1981-ibm-pc-5150-ibm-microsoft">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">1981</span>
+        <h3 class="chain-title">IBM PC 5150&nbsp;<span class="chain-person">— IBM / Microsoft</span></h3>
+      </div>
+      <div class="chain-body"><p>IBM lanza el <strong>PC 5150</strong> el 12 de agosto de 1981: CPU Intel 8088, hasta 640 KB RAM, MS-DOS (Microsoft compra QDOS a Seattle Computer Products por 75.000 USD). La decisión de IBM de usar componentes estándar y publicar los esquemas crea la arquitectura abierta.</p><p>Los clones llegan en 1982 (Compaq, con un IBM PC portátil). En 1984 hay ya cientos de fabricantes. IBM cede el control del estándar a Intel (chips) y Microsoft (sistema operativo) sin saberlo. La arquitectura x86 domina el ordenador personal durante 40 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1984-macintosh">#1984 · Macintosh</a> (paralelo)</div>
+    </div>
+    <div class="chain-item" id="1984-macintosh-steve-jobs-jef-raskin-andy-hertzfeld">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">L</span>
+        <span class="chain-year">1984</span>
+        <h3 class="chain-title">Macintosh&nbsp;<span class="chain-person">— Steve Jobs, Jef Raskin, Andy Hertzfeld</span></h3>
+      </div>
+      <div class="chain-body"><p>El <strong>Macintosh</strong> (24 de enero de 1984, presentado con el anuncio "1984" de Ridley Scott en la Super Bowl) es el primer ordenador con GUI de éxito masivo. <strong>Jef Raskin</strong> concibió el proyecto; <strong>Steve Jobs</strong> tomó el control y lo reorientó hacia lo que había visto en Xerox PARC; <strong>Andy Hertzfeld</strong> y el equipo de software lo implementaron. Motorola 68000 a 8 MHz, 128 KB RAM, pantalla de 512×342 píxeles.</p><p>Llevar Smalltalk/PARC al mercado de consumo. El sistema de ficheros, el Finder y el sistema de fuentes tipográficas de calidad imprenta que Jobs impone (tras su clase de caligrafía en Reed College) cambian la comunicación visual en pantalla.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1985-intel-80386">#1985 · Intel 80386</a> · <a href="#1993-mosaic-browser">#1993 · Mosaic browser</a> (dependencia cruzada)</div>
+    </div>
+    <div class="chain-item" id="1985-intel-80386-intel">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">M</span>
+        <span class="chain-year">1985</span>
+        <h3 class="chain-title">Intel 80386&nbsp;<span class="chain-person">— Intel</span></h3>
+      </div>
+      <div class="chain-body"><p>Intel lanza el <strong>386</strong> (17 de octubre de 1985): primer x86 de 32 bits, 275.000 transistores, memoria protegida, modo virtual 8086. Permite ejecutar múltiples tareas en sistemas operativos multitarea (Windows NT, OS/2, Linux).</p><p>Sin el 386 no hay desktops ni servidores modernos. Es el hito que transforma el PC de "juguete sofisticado" en "máquina de trabajo seria".</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1993-intel-pentium">#1993 · Intel Pentium</a></div>
+    </div>
+    <div class="chain-item" id="1993-intel-pentium-intel">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">N</span>
+        <span class="chain-year">1993</span>
+        <h3 class="chain-title">Intel Pentium&nbsp;<span class="chain-person">— Intel</span></h3>
+      </div>
+      <div class="chain-body"><p>Intel <strong>Pentium</strong> (P5, 22 de marzo de 1993): arquitectura superescalar con doble pipeline. 60–66 MHz iniciales; llega a 200 MHz en 1996. La marca "Pentium" domina durante una década. El famoso bug del FPU (noviembre 1994, <strong>Thomas Nicely</strong>, Lynchburg College) obliga a IBM a suspender las ventas y a Intel a asumir 475 M USD en reemplazos.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2003-amd-athlon-64">#2003 · AMD Athlon 64</a></div>
+    </div>
+    <div class="chain-item" id="2003-amd-athlon-64-dirk-meyer-fred-weber">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">O</span>
+        <span class="chain-year">2003</span>
+        <h3 class="chain-title">AMD Athlon 64&nbsp;<span class="chain-person">— Dirk Meyer, Fred Weber</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>AMD</strong> lanza el Opteron (abril 2003) y el Athlon 64 (septiembre 2003): primer x86 de 64 bits comercial. <strong>Dirk Meyer</strong> y <strong>Fred Weber</strong> lideran la arquitectura K8/AMD64. AMD se adelanta a Intel en el salto a 64 bits y obliga a toda la industria a migrar. Intel adopta el ISA AMD64 bajo el nombre "EM64T".</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2006-intel-core-2-duo">#2006 · Intel Core 2 Duo</a></div>
+    </div>
+    <div class="chain-item" id="2006-intel-core-2-duo-intel">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">P</span>
+        <span class="chain-year">2006</span>
+        <h3 class="chain-title">Intel Core 2 Duo&nbsp;<span class="chain-person">— Intel</span></h3>
+      </div>
+      <div class="chain-body"><p>Intel lanza el <strong>Core 2 Duo</strong> (Conroe, julio 2006): multi-core mainstream. 65nm, dos núcleos físicos, 4 MB L2 compartida. Fin de la guerra de GHz (el Pentium 4 a 3,8 GHz consumía 115 W); empieza la guerra de núcleos.</p><p>Recupera el liderazgo para Intel y define el modelo dominante durante 5 años, hasta Sandy Bridge (2011).</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2007-iphone-arm-mobile">#2007 · iPhone (ARM mobile)</a> (paralelo) · <a href="#2017-amd-ryzen-zen">#2017 · AMD Ryzen / Zen</a></div>
+    </div>
+    <div class="chain-item" id="2007-iphone-arm-mobile-steve-jobs-tony-fadell-scott-forstall">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">Q</span>
+        <span class="chain-year">2007</span>
+        <h3 class="chain-title">iPhone (ARM mobile)&nbsp;<span class="chain-person">— Steve Jobs, Tony Fadell, Scott Forstall</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Apple</strong> lanza el iPhone el 29 de junio de 2007. La CPU es la Samsung S5L8900 (ARM11 a 412 MHz). Jobs lo presenta en enero como "iPod + teléfono + internet communicator". El primer Apple Silicon propio (A4, ARM Cortex-A8) llega en 2010 con el iPad y el iPhone 4.</p><p>El iPhone es la inflexión de plataforma más grande desde el IBM PC. ARM pasa a dominar el móvil en 18 meses. <strong>Tony Fadell</strong> (hardware) y <strong>Scott Forstall</strong> (software iOS) son las piezas clave del equipo.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2020-apple-m1-arm">#2020 · Apple M1 · ARM</a> · <a href="08_ROBOTICA.html#2024-humanoides-comerciales">08_ROBOTICA#2024 · Humanoides comerciales</a> (vía Raspberry Pi como puente)</div>
+    </div>
+    <div class="chain-item" id="2008-android-1-0-andy-rubin-google">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">R</span>
+        <span class="chain-year">2008</span>
+        <h3 class="chain-title">Android 1.0&nbsp;<span class="chain-person">— Andy Rubin, Google</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> libera Android 1.0 en septiembre de 2008 en el HTC Dream. Sistema operativo móvil open source basado en el kernel Linux. Google adquiere la empresa de <strong>Andy Rubin</strong> en 2005 por 50 millones de USD.</p><p>Android funda el duopolio iOS/Android. En 2024 supera el 70% del mercado global de smartphones. Demuestra que open source puede liderar en consumo masivo. La decisión de liberarlo sin royalties obliga a todos los fabricantes a abandonar Symbian y Windows Mobile.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2024-npu-mainstream">#2024 · NPU mainstream</a> · <strong>Depende de:</strong> <a href="04_SOFTWARE.html#1991-linux-kernel">04_SOFTWARE#1991 · Linux kernel</a></div>
+    </div>
+    <div class="chain-item" id="2010-risc-v-krste-asanovi-david-patterson">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">S</span>
+        <span class="chain-year">2010</span>
+        <h3 class="chain-title">RISC-V&nbsp;<span class="chain-person">— Krste Asanović, David Patterson</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Berkeley RISC-V</strong>: proyecto iniciado en 2010 por <strong>Krste Asanović</strong> y <strong>David Patterson</strong>; especificación ratificada en 2014. ISA abierto y libre de royalties. Sin dependencia de propietarios.</p><p>SiFive, Western Digital, Alibaba y NVIDIA (en microcontroladores de GPU) lo adoptan. La Unión Europea lo usa como apuesta estratégica de soberanía tecnológica. En 2024, el parque de chips RISC-V supera los 10.000 millones de unidades.</p></div>
+      <div class="chain-rel"><strong>Depende de:</strong> <a href="#1980-risc">#1980 · RISC</a> (es su heredero arquitectónico directo)</div>
+    </div>
+    <div class="chain-item" id="2012-raspberry-pi-eben-upton">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">T</span>
+        <span class="chain-year">2012</span>
+        <h3 class="chain-title">Raspberry Pi&nbsp;<span class="chain-person">— Eben Upton</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Eben Upton</strong> (Universidad de Cambridge) lanza la Raspberry Pi en febrero de 2012: single-board computer con Linux, 35 USD. Pensado para educación en países con poco presupuesto, adoptado masivamente por makers, IoT y retro-gaming.</p><p>Más de 50 millones de unidades vendidas en 2024. Estándar de facto para prototipos hardware/software. La placa base más vendida de la historia en su categoría de precio.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="08_ROBOTICA.html#2024-humanoides-comerciales">08_ROBOTICA#2024 · Humanoides comerciales</a> (puente: hardware barato democratiza robótica amateur)</div>
+    </div>
+    <div class="chain-item" id="2017-amd-ryzen-zen-lisa-su-mike-clark">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">U</span>
+        <span class="chain-year">2017</span>
+        <h3 class="chain-title">AMD Ryzen / Zen&nbsp;<span class="chain-person">— Lisa Su, Mike Clark</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>AMD Zen 1</strong> (Ryzen, marzo 2017): renacimiento de AMD tras una década de irrelevancia. Arquitectura chiplet: múltiples dies en un solo package conectados por Infinity Fabric. <strong>Lisa Su</strong> (CEO) y <strong>Mike Clark</strong> (arquitecto jefe de Zen) lideran el turnaround.</p><p>El chiplet rompe la lógica del die monolítico y baja el coste de fabricación al permitir mezclar nodos de proceso para distintos componentes. Intel, NVIDIA y Apple lo adoptan en los años siguientes.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2024-npu-mainstream">#2024 · NPU mainstream</a></div>
+    </div>
+    <div class="chain-item" id="2020-apple-m1-arm-johny-srouji">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">V</span>
+        <span class="chain-year">2020</span>
+        <h3 class="chain-title">Apple M1 · ARM&nbsp;<span class="chain-person">— Johny Srouji</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Apple M1</strong> (noviembre 2020): primer SoC ARM en Mac, tras 15 años de Intel. 5nm TSMC, 8 núcleos CPU, GPU unificada, Neural Engine. Eficiencia disruptiva: 10 W con rendimiento de chips de escritorio de 35 W. <strong>Johny Srouji</strong> lidera el equipo de silicio de Apple desde 2008.</p><p>ARM llega al desktop. Desencadena Snapdragon X Elite de Qualcomm (2024) y la nueva ola de Windows-on-ARM. Intel pierde el contrato de Apple después de 15 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2024-npu-mainstream">#2024 · NPU mainstream</a></div>
+    </div>
+    <div class="chain-item" id="2024-npu-mainstream-multiples-fabricantes">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">W</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">NPU mainstream&nbsp;<span class="chain-person">— múltiples fabricantes</span></h3>
+      </div>
+      <div class="chain-body"><p>Apple A17 Pro (iPhone 15 Pro, sep 2023), <strong>Snapdragon X Elite</strong> (Qualcomm, 2024), <strong>Intel Core Ultra</strong> (Meteor Lake, dic 2023), <strong>AMD Ryzen AI</strong> (Hawk Point, 2024): las NPU (Neural Processing Units) pasan a ser un bloque obligatorio en todo SoC de consumo. 40+ TOPS on-device.</p><p>Microsoft define la categoría "Copilot+ PC" (mayo 2024) exigiendo 40 TOPS mínimos. Modelos de lenguaje pequeños (Phi-3, Llama 3.2 de 1B) corren localmente sin conexión a cloud.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2026-apple-m5-intel-18a">#2026 · Apple M5 + Intel 18A</a></div>
+    </div>
+    <div class="chain-item" id="2026-apple-m5-intel-18a-apple-intel">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">X</span>
+        <span class="chain-year">2026</span>
+        <h3 class="chain-title">Apple M5 + Intel 18A&nbsp;<span class="chain-person">— Apple / Intel</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Apple M5</strong> en nodo N3P de TSMC · <strong>Intel Panther Lake</strong> debuta el nodo 18A con backside power delivery (PowerVia) y RibbonFET (GAA, equivalente al transistor Gate-All-Around). Primera vez en una década que Intel compite en fabricación con TSMC.</p><p>La carrera de nodos se reabre. Apple mantiene la ventaja en eficiencia energética; Intel apuesta por recuperar el liderazgo de fabricación.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2027-apple-m6-vera-esp">#2027 · Apple M6 + Vera (esp.)</a></div>
+    </div>
+    <div class="chain-item" id="2027-apple-m6-vera-esp-apple-nvidia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">Y</span>
+        <span class="chain-year">2027</span>
+        <h3 class="chain-title">Apple M6 + Vera (esp.)&nbsp;<span class="chain-person">— Apple / NVIDIA</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Apple M6</strong> esperado en TSMC N2 (2 nm). <strong>NVIDIA Vera CPU</strong>: primera CPU diseñada explícitamente como compañera de GPU para IA, con NVLink directo al chip Rubin. Vera+Rubin en un solo package.</p><p>Convergencia CPU+GPU+NPU: el "computer for AI" deja de ser un cluster de racks y se convierte en un único package que cabe en un servidor de 1U.</p></div>
+      <div class="chain-rel"><strong>Depende de:</strong> <a href="05_GPU.html#2026-nvidia-rubin">05_GPU#2026 · NVIDIA Rubin</a> (Rubin GPU es la pareja de Vera CPU)</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1963</td>
+          <td>Ivan Sutherland</td>
+          <td>Sketchpad: primera GUI e interacción gráfica</td>
+          <td>MIT, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1968</td>
+          <td>Douglas Engelbart</td>
+          <td>Mother of All Demos: ratón, hipertexto, colaboración</td>
+          <td>SRI Stanford, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1971</td>
+          <td>Federico Faggin</td>
+          <td>Diseño físico del Intel 4004</td>
+          <td>Intel, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1971</td>
+          <td>Ted Hoff (Marcian Hoff)</td>
+          <td>Arquitectura del Intel 4004</td>
+          <td>Intel, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1971</td>
+          <td>Stan Mazor</td>
+          <td>Diseño del Intel 4004</td>
+          <td>Intel, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1971</td>
+          <td>Masatoshi Shima</td>
+          <td>Diseño del Intel 4004</td>
+          <td>Intel / Busicom, Japón</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>Butler Lampson</td>
+          <td>Arquitectura del Xerox Alto</td>
+          <td>Xerox PARC, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>Charles Thacker</td>
+          <td>Hardware del Xerox Alto</td>
+          <td>Xerox PARC, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>Alan Kay</td>
+          <td>Visión del Xerox Alto y Smalltalk</td>
+          <td>Xerox PARC, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1975</td>
+          <td>Ed Roberts</td>
+          <td>Creador del Altair 8800</td>
+          <td>MITS, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1975</td>
+          <td>Bill Gates</td>
+          <td>Altair BASIC, cofundador Microsoft</td>
+          <td>Microsoft, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1975</td>
+          <td>Paul Allen</td>
+          <td>Altair BASIC, cofundador Microsoft</td>
+          <td>Microsoft, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1976</td>
+          <td>Steve Wozniak</td>
+          <td>Diseñador del Apple I y Apple II</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1976</td>
+          <td>Steve Jobs</td>
+          <td>Cofundador comercial de Apple, visión de producto</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1979</td>
+          <td>Dan Bricklin</td>
+          <td>VisiCalc (junto con Frankston)</td>
+          <td>Software Arts, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1979</td>
+          <td>Bob Frankston</td>
+          <td>VisiCalc (junto con Bricklin)</td>
+          <td>Software Arts, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>John Cocke</td>
+          <td>IBM 801, RISC precursor</td>
+          <td>IBM Research, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>David Patterson</td>
+          <td>Berkeley RISC, acuña el término, RISC-V</td>
+          <td>UC Berkeley, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1981</td>
+          <td>John Hennessy</td>
+          <td>Stanford MIPS, RISC</td>
+          <td>Stanford, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1984</td>
+          <td>Jef Raskin</td>
+          <td>Concepto original del Macintosh</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1984</td>
+          <td>Andy Hertzfeld</td>
+          <td>Software del Macintosh</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2003</td>
+          <td>Dirk Meyer</td>
+          <td>Arquitectura AMD K8/Athlon 64</td>
+          <td>AMD, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2003</td>
+          <td>Fred Weber</td>
+          <td>Codiseñador AMD K8</td>
+          <td>AMD, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2008</td>
+          <td>Andy Rubin</td>
+          <td>Fundador Android</td>
+          <td>Android Inc. / Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2010</td>
+          <td>Krste Asanović</td>
+          <td>RISC-V, cofundador</td>
+          <td>UC Berkeley, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td>Eben Upton</td>
+          <td>Creador de Raspberry Pi</td>
+          <td>Universidad de Cambridge, UK</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Lisa Su</td>
+          <td>CEO AMD, turnaround Zen/Ryzen</td>
+          <td>AMD, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Mike Clark</td>
+          <td>Arquitecto jefe de Zen</td>
+          <td>AMD, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td>Johny Srouji</td>
+          <td>Liderazgo equipo Apple Silicon</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>Tony Fadell</td>
+          <td>Hardware del iPhone</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>Scott Forstall</td>
+          <td>Software iOS del iPhone</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="02_ELE.html#1959-circuito-integrado">02_ELE#1959 · Circuito integrado</a> → habilita el Intel 4004 (el IC es condición de posibilidad del microprocesador)</li>
+      <li><span class="arrow">↗</span>De <a href="06_PARADIGMAS.html#1980-smalltalk-80">06_PARADIGMAS#1980 · Smalltalk-80</a> → habilita el Macintosh (la GUI de Mac hereda Smalltalk/PARC)</li>
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#1991-linux-kernel">04_SOFTWARE#1991 · Linux kernel</a> → habilita Android (Android es Linux para móvil)</li>
+      <li><span class="arrow">↗</span>De <a href="05_GPU.html#2026-nvidia-rubin">05_GPU#2026 · NVIDIA Rubin</a> → habilita Apple M6 + Vera (convergencia CPU+GPU en un paquete)</li>
+      <li><span class="arrow">↗</span>De <a href="02_ELE.html#2022-transistor-gaa">02_ELE#2022 · Transistor GAA</a> → habilita Apple M5 + Intel 18A (nuevo nodo de proceso)</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>Macintosh → habilita <a href="09_INTERNET.html#1993-mosaic-browser">09_INTERNET#1993 · Mosaic browser</a> (Mac populariza la metáfora visual que Mosaic adopta)</li>
+      <li><span class="arrow">↘</span>iPhone → habilita <a href="08_ROBOTICA.html#2024-humanoides-comerciales">08_ROBOTICA#2024 · Humanoides comerciales</a> (plataforma ARM barata y sensores maduros)</li>
+      <li><span class="arrow">↘</span>Raspberry Pi → habilita <a href="08_ROBOTICA.html#2024-humanoides-comerciales">08_ROBOTICA#2024 · Humanoides comerciales</a> (hardware educativo → prototipado robótico)</li>
+      <li><span class="arrow">↘</span>Android → habilita <a href="#2024-npu-mainstream">#2024 · NPU mainstream</a> (Android pioneer en NPU móvil con chips Kirin/Exynos)</li>
+      <li><span class="arrow">↘</span>RISC → habilita <a href="#2007-iphone">#2007 · iPhone</a> y <a href="#2020-apple-m1">#2020 · Apple M1</a> (arquitectura que hace eficiente el silicio móvil)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa la evolución de los chips aceleradores de IA (GPU, TPU) → <a href="05_GPU.html">05_GPU</a></li>
+      <li>Si quieres seguir la capa de software que corre sobre este hardware → <a href="04_SOFTWARE.html">04_SOFTWARE</a></li>
+      <li>Si quieres ver cómo este hardware alimenta la robótica → <a href="08_ROBOTICA.html">08_ROBOTICA</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 7</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="06_PARADIGMAS.html" title="Capítulo anterior">◄</a>
+      <a href="08_ROBOTICA.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>7-1</span>
+  </footer>
+</article>
+</body>
+</html>

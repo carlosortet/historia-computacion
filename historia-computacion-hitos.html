@@ -948,6 +948,36 @@
     .machine-specs{grid-template-columns:1fr}
     .machine-art svg{max-height:260px}
   }
+
+  /* NARRATIVA LINKS — enlace a ensayos largos por columna */
+  .narrativa-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:6px 0 0;
+    padding:10px 14px;
+    background:#1A1A1A;
+    color:#33ff66;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid #1A1A1A;
+    text-shadow:0 0 6px rgba(51,255,102,.45);
+    transition:all .15s;
+  }
+  .narrativa-link:hover{
+    background:#33ff66;
+    color:#1A1A1A;
+    text-shadow:none;
+  }
+  .narrativa-link::after{
+    content:" ▮";
+    color:inherit;
+    margin-left:8px;
+    animation:cursor 1.1s steps(2) infinite;
+  }
 </style>
 </head>
 <body>
@@ -1075,6 +1105,7 @@
   <table>
     <thead><tr><th style="width:90px">AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
     <tbody>
+      <tr><td>1673–1679</td><td>Leibniz · binario + Stepped Reckoner</td><td>Gottfried Leibniz formaliza el sistema binario (<i>Explication de l'Arithmétique Binaire</i>, 1679) y construye la primera calculadora mecánica con las 4 operaciones</td><td>Sin notación binaria no hay álgebra de Boole (1847) ni circuitos de Shannon (1937)</td></tr>
       <tr><td>1847–1854</td><td>Álgebra booleana</td><td>Boole · <i>Mathematical Analysis of Logic</i> + <i>Laws of Thought</i></td><td>Habilita el siguiente salto → Shannon</td></tr>
       <tr><td>1879</td><td><i>Begriffsschrift</i></td><td>Frege · lógica de predicados y cuantificadores</td><td>Influye en Russell, Hilbert, Turing</td></tr>
       <tr><td>1928–1931</td><td>Crisis de fundamentos</td><td>Hilbert (<i>Entscheidungsproblem</i>) · Gödel (incompletitud)</td><td>Plantea el reto que Turing/Church responden en 1936</td></tr>
@@ -1085,6 +1116,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Boole → Frege → crisis de fundamentos → Turing/Church (1936) → Shannon traduce todo a circuitos → 80 años después la IA cierra el ciclo razonando en lógica formal a nivel élite.</blockquote>
+  <a class="narrativa-link" href="narrativas/01_LOGICA.html" title="Lee la narrativa completa de LÓGICA">► LEE LA NARRATIVA COMPLETA · LÓGICA</a>
   </details>
 
   <details class="section">
@@ -1092,6 +1124,8 @@
   <table>
     <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
     <tbody>
+      <tr><td>1642</td><td>Pascalina</td><td>Blaise Pascal (con 19 años) · primera calculadora mecánica de la historia · ~50 unidades fabricadas para su padre, recaudador de impuestos</td><td>Funda la categoría "máquina de calcular". Inspira a Leibniz (1673) y Babbage (1837)</td></tr>
+      <tr><td>1804</td><td>Telar de Jacquard</td><td>Joseph Marie Jacquard automatiza el telar mediante tarjetas perforadas</td><td>Primer "programa almacenado" de la historia. Babbage lo cita como inspiración. Eslabón directo a Hollerith → IBM</td></tr>
       <tr><td>1837</td><td>Máquina Analítica</td><td>Babbage · memoria, control, cálculo, programa</td><td>Primera arquitectura conceptual general</td></tr>
       <tr><td>1843</td><td>Primer programa</td><td>Lovelace · notas sobre la Máquina Analítica</td><td>Inaugura la distinción <b>hardware/software</b></td></tr>
       <tr><td>1936</td><td>Máquina universal</td><td>Turing · <i>On Computable Numbers</i></td><td>Base teórica del ordenador de propósito general</td></tr>
@@ -1100,6 +1134,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Babbage/Lovelace (concepto) → Turing (teoría) → Von Neumann (modelo) → Wilkes (realización).</blockquote>
+  <a class="narrativa-link" href="narrativas/03_ARQUITECTURA.html" title="Lee la narrativa completa de ARQUITECTURA">► LEE LA NARRATIVA COMPLETA · ARQUITECTURA</a>
   </details>
 
   <details class="section">
@@ -1119,6 +1154,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Shannon habilita la lógica electrónica → Zuse/Colossus/ENIAC la materializan → transistor + IC inician la ley de Moore → 50 años después se rompe → la industria responde con chiplet (Ryzen) y nuevas geometrías (GAA).</blockquote>
+  <a class="narrativa-link" href="narrativas/04_ELECTRONICA.html" title="Lee la narrativa completa de ELECTRÓNICA">► LEE LA NARRATIVA COMPLETA · ELECTRÓNICA</a>
   </details>
 
   <details class="section">
@@ -1142,6 +1178,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Hopper → FORTRAN/ALGOL/LISP → Dijkstra disciplina → Unix+C como sustrato → GNU/Linux democratizan → Git distribuye colaboración → Docker contenedores → Copilot trae IA → coding agents redefinen la práctica.</blockquote>
+  <a class="narrativa-link" href="narrativas/05_SOFTWARE.html" title="Lee la narrativa completa de SOFTWARE">► LEE LA NARRATIVA COMPLETA · SOFTWARE</a>
   </details>
 
   <details class="section">
@@ -1164,6 +1201,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Simula → Smalltalk (objetos+GUI) → C++/Java (industrial) → Python (puente IA) → TDD/Ágil (proceso) → funcional (inmutabilidad) → Go/Rust (sistemas modernos) → Swift/TS (plataformas) → microservicios (descomposición) → vibe coding (intención + agente).</blockquote>
+  <a class="narrativa-link" href="narrativas/06_PARADIGMAS.html" title="Lee la narrativa completa de PARADIGMAS">► LEE LA NARRATIVA COMPLETA · PARADIGMAS</a>
   </details>
 
   <details class="section">
@@ -1195,6 +1233,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: IC → 4004/8080 → Altair → Apple/IBM PC → Mac (GUI) → 386 (32 bits) → Pentium → Athlon 64 (64 bits) → Core 2 Duo (multi-core) → iPhone (mobile) → Ryzen (chiplet) → M1 (ARM en desktop) → NPU mainstream → carrera de procesos N3/N2/18A.</blockquote>
+  <a class="narrativa-link" href="narrativas/07_MICRO_PC.html" title="Lee la narrativa completa de MICRO+PC">► LEE LA NARRATIVA COMPLETA · MICRO+PC</a>
   </details>
 
   <details class="section">
@@ -1233,6 +1272,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Dartmouth → perceptrón → invierno → backprop → <b>GPU + AlexNet</b> (puente físico) → Transformer → LLMs.</blockquote>
+  <a class="narrativa-link" href="narrativas/11_IA.html" title="Lee la narrativa completa de IA">► LEE LA NARRATIVA COMPLETA · IA</a>
   </details>
 
   <details class="section">
@@ -1276,6 +1316,7 @@
     <li><b>Por qué importa:</b> tamaño = qué modelos caben (cuello de botella en LLM local); ancho de banda = velocidad de alimentación.</li>
     <li><b>Por qué no es fundacional:</b> es una optimización, no un cambio de paradigma.</li>
   </ul>
+  <a class="narrativa-link" href="narrativas/12_PARALELISMO.html" title="Lee la narrativa completa de PARALELISMO">► LEE LA NARRATIVA COMPLETA · PARALELISMO</a>
   </details>
 
   <details class="section">
@@ -1312,6 +1353,7 @@
       <tr><td><b>2024</b></td><td><b>Estim. ruptura RSA</b></td><td>Gidney (2024) · ~1.300 qubits LÓGICOS · 1 semana para RSA-2048 / ECC-256</td><td>Métrica concreta · justifica migrar a PQC ya ("harvest now, decrypt later")</td></tr>
     </tbody>
   </table>
+  <a class="narrativa-link" href="narrativas/13_CUANTICA.html" title="Lee la narrativa completa de CUÁNTICA">► LEE LA NARRATIVA COMPLETA · CUÁNTICA</a>
   </details>
 
   <details class="section">
@@ -1330,6 +1372,7 @@
     </tbody>
   </table>
   <blockquote>Patrón: desde Roadrunner (2008) la supercomputación es <b>híbrida CPU+acelerador</b>; desde Frontier (2022) el acelerador es la <b>GPU</b>.</blockquote>
+  <a class="narrativa-link" href="narrativas/14_SUPERCOMPUTACION.html" title="Lee la narrativa completa de SUPERCOMPUTACIÓN">► LEE LA NARRATIVA COMPLETA · SUPERCOMPUTACIÓN</a>
   </details>
 
   <details class="section">
@@ -1350,6 +1393,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Codd (modelo) → System R (SQL) → Oracle (comercial) → PostgreSQL (open) → NoSQL (escala web) → FAISS / Vector DBs (semántica) → pgvector + MCP (convergencia) → memoria agéntica (era IA).</blockquote>
+  <a class="narrativa-link" href="narrativas/10_DATA.html" title="Lee la narrativa completa de DATA">► LEE LA NARRATIVA COMPLETA · DATA</a>
   </details>
 
   <details class="section">
@@ -1368,6 +1412,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: ARPANET → TCP/IP (estándar) → WWW (capa app) → Mosaic (navegador) → Google (descubrimiento) → AWS (cloud) → Kubernetes (orquestación) → Edge (descentralización).</blockquote>
+  <a class="narrativa-link" href="narrativas/09_INTERNET.html" title="Lee la narrativa completa de INTERNET">► LEE LA NARRATIVA COMPLETA · INTERNET</a>
   </details>
 
   <details class="section">
@@ -1387,6 +1432,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Unimate (industrial) → Shakey (autónomo + IA) → PUMA (estándar industrial) → Roomba (consumo) → DARPA UC (autónomo móvil) → Spot (móvil comercial) → Humanoides (forma humana viable) → Foundation Models (generalismo).</blockquote>
+  <a class="narrativa-link" href="narrativas/08_ROBOTICA.html" title="Lee la narrativa completa de ROBÓTICA">► LEE LA NARRATIVA COMPLETA · ROBÓTICA</a>
   </details>
 
   <details class="section">
@@ -1408,6 +1454,7 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: Monte Carlo (von Neumann) → meteorología → SPICE (chips) + CFD (industria pesada) → autómatas (NKS) → game physics → Omniverse (gemelos digitales) → World Models (simulación aprendida) → Foundation simulation. La simulación pasa de herramienta científica a sustrato del mundo: <i>el futuro será simulado antes de ser vivido</i>.</blockquote>
+  <a class="narrativa-link" href="narrativas/15_SIMULACION.html" title="Lee la narrativa completa de SIMULACIÓN">► LEE LA NARRATIVA COMPLETA · SIMULACIÓN</a>
   </details>
 
   <details class="section">
@@ -1435,6 +1482,7 @@
     <br><b>*<sup>1</sup> PageRank (1996)</b> ↔ Google en INTERNET — aquí como algoritmo de grafos, allí como producto de descubrimiento web.
     <br><b>*<sup>2</sup> Attention (2017)</b> ↔ Transformer en IA — aquí como primitiva algorítmica abstracta, allí como modelo concreto que la encarna.
   </p>
+  <a class="narrativa-link" href="narrativas/02_ALGORITMOS.html" title="Lee la narrativa completa de ALGORITMOS">► LEE LA NARRATIVA COMPLETA · ALGORITMOS</a>
   </details>
 
   </details><!-- /group-main -->

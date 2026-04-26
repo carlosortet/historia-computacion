@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROBÓTICA · Del brazo de soldadura al agente físico generalista · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="La robótica empieza como automatización industrial ciega y termina como plataforma física para modelos de fundación: el mismo arco que la IA, pero en el espacio físico.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-robotica.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #BA4E00;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">ROBÓTICA</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-08</span>
+  </header>
+  <h1 class="page-title">ROBÓTICA · Del brazo de soldadura al agente físico generalista</h1>
+  <p class="page-subtitle">La robótica empieza como automatización industrial ciega y termina como plataforma física para modelos de fundación: el mismo arco que la IA, pero en el espacio físico.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>En 1961, un brazo hidráulico mueve piezas calientes en una cadena de montaje de GM en New Jersey. En 2027, se espera el primer modelo de fundación robótica capaz de habitar cualquier cuerpo físico —humanoide, brazo industrial, dron, vehículo— sin reentrenamiento. Entre ambos extremos, la columna ROBÓTICA narra tres transiciones: de manipulación programada a percepción autónoma, de laboratorio a producto de consumo, y de programación por tarea a aprendizaje generalista. La columna recibe de IA (el perceptrón, el Transformer) y de PC (Raspberry Pi, iPhone) sus habilitadores clave.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1961-unimate-george-devol-joseph-engelberger">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1961</span>
+        <h3 class="chain-title">Unimate&nbsp;<span class="chain-person">— George Devol, Joseph Engelberger</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>George Devol</strong> patenta el concepto en 1954; <strong>Joseph Engelberger</strong> (llamado "padre de la robótica industrial") negocia la implementación con General Motors. Unimate se instala en la planta de GM en Ewing Township, New Jersey, en 1961: manipula piezas metálicas calientes (die castings) en la línea de montaje, una tarea peligrosa para humanos.</p><p>El robot pesa 1.800 kg, tiene 6 grados de libertad hidráulicos y sigue instrucciones almacenadas en un tambor magnético. Sin sensores de visión, sin IA: pura programación de trayectoria. Las fábricas de automóviles de GM, Ford y Chrysler lo adoptan en los años 60 y 70. Es la fundación de 60 años de robótica industrial.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1978-puma-600">#1978 · PUMA 600</a> · <strong>Depende de:</strong> <a href="02_ARQ.html#1948-aut-matas-autoreplicantes">02_ARQ#1948 · Autómatas autoreplicantes</a> (paralelo conceptual: la idea de máquinas que se replican en fábricas)</div>
+    </div>
+    <div class="chain-item" id="1972-shakey-sri-charles-rosen-nils-nilsson-bertram-raphael">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1972</span>
+        <h3 class="chain-title">Shakey · SRI&nbsp;<span class="chain-person">— Charles Rosen, Nils Nilsson, Bertram Raphael</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>SRI International</strong> construye Shakey entre 1966 y 1972. El equipo, liderado por <strong>Charles Rosen</strong> y con contribuciones de <strong>Nils Nilsson</strong> y <strong>Bertram Raphael</strong>, combina por primera vez tres capacidades en un solo sistema: visión por computador (cámara de TV), planificación simbólica (planificador STRIPS — Stanford Research Institute Problem Solver) y movimiento físico autónomo.</p><p>Shakey se mueve a ~1 m/min, tarda minutos en planificar cada acción y solo opera en un entorno de bloques simples. Pero demuestra que un robot puede razonar sobre su entorno antes de actuar. STRIPS influye en toda la planificación en IA durante décadas. El nombre viene del temblor que producían sus motores.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1978-puma-600">#1978 · PUMA 600</a> (paralelo) · <strong>Depende de:</strong> <a href="03_IA.html#1958-perceptr-n">03_IA#1958 · Perceptrón</a> (el conexionismo temprano habilita la visión)</div>
+    </div>
+    <div class="chain-item" id="1978-puma-600-victor-scheinman-unimation">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1978</span>
+        <h3 class="chain-title">PUMA 600&nbsp;<span class="chain-person">— Victor Scheinman, Unimation</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Victor Scheinman</strong> diseña el PUMA (Programmable Universal Machine for Assembly): brazo eléctrico con 6 grados de libertad, encoder en cada articulación, controlado por minicomputador PDP-11. Unimation lo comercializa desde 1978.</p><p>PUMA define la geometría de brazo articulado que veremos en prácticamente todos los robots industriales de los 40 años siguientes: KUKA, Fanuc, ABB. La programación por teach-pendant (guiar el brazo con el operador) se convierte en estándar. Más de 100.000 unidades instaladas en los años 80.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2002-roomba">#2002 · Roomba</a></div>
+    </div>
+    <div class="chain-item" id="2002-roomba-irobot-colin-angle-helen-greiner-rodney-brooks">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">2002</span>
+        <h3 class="chain-title">Roomba&nbsp;<span class="chain-person">— iRobot (Colin Angle, Helen Greiner, Rodney Brooks)</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>iRobot</strong> lanza el Roomba en septiembre de 2002. <strong>Colin Angle</strong> (CEO), <strong>Helen Greiner</strong> (presidenta) y <strong>Rodney Brooks</strong> (director técnico, también fundador de la empresa y profesor en MIT) llevan 10 años trabajando en robótica móvil. El precio inicial es 199 USD.</p><p>El Roomba no usa un mapa del hogar: navega con una combinación de sensores de infrarrojos, contacto y algoritmos probabilísticos que cubren el suelo de forma estadística. Es suficiente para limpiar. Más de 50 millones de unidades vendidas hasta 2024. Primera vez que la robótica entra al hogar como producto de serie, no como demostración de laboratorio.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2007-darpa-urban-challenge">#2007 · DARPA Urban Challenge</a> (paralelo) · <strong>Depende de:</strong> <a href="#1978-puma-600">#1978 · PUMA 600</a></div>
+    </div>
+    <div class="chain-item" id="2007-darpa-urban-challenge-sebastian-thrun-chris-urmson">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">2007</span>
+        <h3 class="chain-title">DARPA Urban Challenge&nbsp;<span class="chain-person">— Sebastian Thrun, Chris Urmson</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>DARPA Urban Challenge</strong> (Victorville, California, 3 de noviembre de 2007): 11 equipos de universidades y empresas compiten con vehículos que deben circular 60 millas en un entorno urbano simulado con tráfico real, señales y aparcamiento.</p><p>Ganadores: <strong>Boss</strong> (CMU, liderado por <strong>Chris Urmson</strong>) y <strong>Junior</strong> (Stanford, liderado por <strong>Sebastian Thrun</strong>). Boss completa el curso en 4h 10min. Los 6 primeros equipos lo terminan. Thrun funda Google Street View ese mismo año; en 2009 arranca Google Self-Driving Car (después Waymo). Urmson funda Aurora Innovation en 2017. Todos los proyectos de conducción autónoma actuales tienen raíces directas en este evento.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2015-spot-boston-dynamics">#2015 · Spot · Boston Dynamics</a> · <strong>Depende de:</strong> <a href="#2002-roomba">#2002 · Roomba</a> (paralelo: robótica autónoma entra a espacios no industriales)</div>
+    </div>
+    <div class="chain-item" id="2015-spot-boston-dynamics-marc-raibert">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">2015</span>
+        <h3 class="chain-title">Spot · Boston Dynamics&nbsp;<span class="chain-person">— Marc Raibert</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Boston Dynamics</strong> presenta Spot (2015), sucesor eléctrico del hidráulico BigDog (2005). <strong>Marc Raibert</strong> fundó Boston Dynamics como spin-off del MIT Leg Lab en 1992. Spot pesa 32 kg, sube escaleras, se recupera de empujones y corre a 1,6 m/s. Se comercializa en 2019 a 74.500 USD.</p><p>El salto de BigDog (hidráulico, ruidoso, 109 kg) a Spot (eléctrico, silencioso, 32 kg) es posible por los avances en servomotores sin escobillas y en baterías de litio: la misma tecnología que habilita el dron y el coche eléctrico. Boston Dynamics es adquirida por Hyundai en 2021.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2024-humanoides-comerciales">#2024 · Humanoides comerciales</a></div>
+    </div>
+    <div class="chain-item" id="2024-humanoides-comerciales-multiples-empresas">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Humanoides comerciales&nbsp;<span class="chain-person">— múltiples empresas</span></h3>
+      </div>
+      <div class="chain-body"><p>Primera ola comercial de robots humanoides: <strong>Figure 01</strong> (Figure AI, Brett Adcock), <strong>Tesla Optimus Gen 2</strong> (Elon Musk, liderazgo de ingeniería por <strong>Milan Kovac</strong>), <strong>1X NEO</strong> (Halodi Robotics, Norway), <strong>Apptronik Apollo</strong> (Jeff Cardenas, University of Texas), <strong>Unitree H1</strong> (Wang Xingxing, China).</p><p>El habilitador común: servomotores eléctricos económicos (costes caídos 10× en una década por la industria de los drones y los VEs) más modelos de lenguaje grandes que permiten razonamiento de sentido común. Amazon contrata 750 robots Figure para sus almacenes en 2024. BMW integra Figure en su planta de Spartanburg, Carolina del Sur.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2024-robot-foundation-models">#2024 · Robot Foundation Models</a> · <strong>Depende de:</strong> <a href="03_IA.html#2017-transformer">03_IA#2017 · Transformer</a> · <a href="07_MICRO_PC.html#2012-raspberry-pi">07_MICRO_PC#2012 · Raspberry Pi</a> (hardware barato como puente)</div>
+    </div>
+    <div class="chain-item" id="2024-robot-foundation-models-sergey-levine-equipo-physical-intelligence">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Robot Foundation Models&nbsp;<span class="chain-person">— Sergey Levine, equipo Physical Intelligence</span></h3>
+      </div>
+      <div class="chain-body"><p>Los modelos VLA (Vision-Language-Action) se materializan en 2023-2024. Hitos: - <strong>Google RT-2</strong> (julio 2023): primer modelo que combina lenguaje + visión + acción. - <strong>Open X-Embodiment / RT-X</strong> (octubre 2023): dataset de 22 robots diferentes con 527 skills. - <strong>OpenVLA</strong> (junio 2024, <strong>Moo Jin Kim</strong> et al., Stanford): modelo open source VLA. - <strong>π0</strong> de Physical Intelligence (31 octubre 2024, <strong>Sergey Levine</strong> + <strong>Chelsea Finn</strong> + equipo): primer modelo generalista multi-tarea entrenado en datasets cross-embodiment. Maneja doblar ropa, cargar lavavajillas, montar cajas.</p><p>La robótica deja de programarse tarea a tarea. Un modelo único maneja miles de tareas en distintas plataformas físicas.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2027-robot-fm-cross-embodiment-esp">#2027 · Robot FM cross-embodiment (esp.)</a> · <strong>Depende de:</strong> <a href="03_IA.html#2017-transformer">03_IA#2017 · Transformer</a></div>
+    </div>
+    <div class="chain-item" id="2027-robot-fm-cross-embodiment-esp-expectativa-industria">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2027</span>
+        <h3 class="chain-title">Robot FM cross-embodiment (esp.)&nbsp;<span class="chain-person">— expectativa industria</span></h3>
+      </div>
+      <div class="chain-body"><p>Próxima frontera esperada: modelos VLA verdaderamente generalistas que transfieren entre plataformas físicas radicalmente distintas (humanoide, brazo industrial, dron, vehículo) sin fine-tuning. Los candidatos son los sucesores de π0 (π2/π3), RT-3 y sucesores de OpenVLA escalando a billion+ trayectorias de entrenamiento.</p><p>El paralelismo con los LLMs es explícito en la industria: un único modelo de lenguaje entiende inglés, francés y código; un único modelo robótico debería entender Spot, Figure y un brazo KUKA.</p></div>
+      <div class="chain-rel"><strong>Depende de:</strong> <a href="#2024-robot-foundation-models">#2024 · Robot Foundation Models</a> · <a href="03_IA.html#2025-nvidia-cosmos-genesis-2">03_IA#2025 · NVIDIA Cosmos · Genesis 2</a> (simulación sintética de datos de entrenamiento) · <a href="03_IA.html#2026-claude-opus-4-7-1m">03_IA#2026 · Claude Opus 4.7 · 1M</a> (razonamiento de alto nivel para planificación)</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1954</td>
+          <td>George Devol</td>
+          <td>Patente del concepto Unimate</td>
+          <td>EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1961</td>
+          <td>Joseph Engelberger</td>
+          <td>Comercialización de Unimate, "padre robótica industrial"</td>
+          <td>Unimation, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1966</td>
+          <td>Charles Rosen</td>
+          <td>Director del proyecto Shakey en SRI</td>
+          <td>SRI International, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1968</td>
+          <td>Nils Nilsson</td>
+          <td>Planificador STRIPS, Shakey</td>
+          <td>SRI International, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1968</td>
+          <td>Bertram Raphael</td>
+          <td>Contribución a Shakey</td>
+          <td>SRI International, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1978</td>
+          <td>Victor Scheinman</td>
+          <td>Diseñador del PUMA 600</td>
+          <td>Unimation / Stanford, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1992</td>
+          <td>Marc Raibert</td>
+          <td>Fundador Boston Dynamics, BigDog, Spot</td>
+          <td>MIT / Boston Dynamics, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2002</td>
+          <td>Colin Angle</td>
+          <td>CEO y cofundador de iRobot / Roomba</td>
+          <td>iRobot, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2002</td>
+          <td>Helen Greiner</td>
+          <td>Cofundadora de iRobot</td>
+          <td>iRobot, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2002</td>
+          <td>Rodney Brooks</td>
+          <td>Cofundador iRobot, director técnico</td>
+          <td>MIT / iRobot, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>Sebastian Thrun</td>
+          <td>Equipo Junior (Stanford), funda Google Self-Driving Car</td>
+          <td>Stanford / Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>Chris Urmson</td>
+          <td>Equipo Boss (CMU), funda Aurora Innovation</td>
+          <td>CMU / Aurora, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Brett Adcock</td>
+          <td>CEO y fundador de Figure AI</td>
+          <td>Figure AI, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Milan Kovac</td>
+          <td>Liderazgo ingenieril de Tesla Optimus</td>
+          <td>Tesla, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Wang Xingxing</td>
+          <td>Fundador de Unitree Robotics</td>
+          <td>Unitree, China</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Jeff Cardenas</td>
+          <td>CEO Apptronik</td>
+          <td>Apptronik / UT Austin, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Sergey Levine</td>
+          <td>Physical Intelligence, π0</td>
+          <td>UC Berkeley / Physical Intelligence, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Chelsea Finn</td>
+          <td>Physical Intelligence, meta-learning robótico</td>
+          <td>Stanford / Physical Intelligence, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Moo Jin Kim</td>
+          <td>OpenVLA, Stanford</td>
+          <td>Stanford, EE.UU.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="03_IA.html#1958-perceptr-n">03_IA#1958 · Perceptrón</a> → habilita Shakey (visión temprana y razonamiento conexionista)</li>
+      <li><span class="arrow">↗</span>De <a href="02_ARQ.html#1948-aut-matas-autoreplicantes">02_ARQ#1948 · Autómatas autoreplicantes</a> → paralelo conceptual con Unimate (máquinas que replican tareas humanas en fábricas)</li>
+      <li><span class="arrow">↗</span>De <a href="03_IA.html#2017-transformer">03_IA#2017 · Transformer</a> → habilita Humanoides comerciales y Robot Foundation Models (el LLM como cerebro del robot)</li>
+      <li><span class="arrow">↗</span>De <a href="07_MICRO_PC.html#2012-raspberry-pi">07_MICRO_PC#2012 · Raspberry Pi</a> → habilita Humanoides comerciales (hardware barato como puente para prototipado)</li>
+      <li><span class="arrow">↗</span>De <a href="10_SIM.html#2025-nvidia-cosmos-genesis-2">10_SIM#2025 · NVIDIA Cosmos · Genesis 2</a> → habilita Robot FM cross-embodiment (datos sintéticos de entrenamiento)</li>
+      <li><span class="arrow">↗</span>De <a href="03_IA.html#2026-claude-opus-4-7-1m">03_IA#2026 · Claude Opus 4.7 · 1M</a> → habilita Robot FM cross-embodiment (razonamiento de alto nivel)</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>No hay aristas salientes hacia otras columnas principales en el grafo: la robótica es receptora neta de habilitadores de IA, PC y simulación.</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa la IA que hace razonar a los robots → <a href="03_IA.html">03_IA</a></li>
+      <li>Si quieres ver los entornos de simulación donde se entrenan → <a href="10_SIM.html">10_SIM</a></li>
+      <li>Si te interesa el hardware de bajo coste que democratiza la robótica → <a href="07_MICRO_PC.html">07_MICRO_PC</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 8</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="07_MICRO_PC.html" title="Capítulo anterior">◄</a>
+      <a href="09_INTERNET.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>8-1</span>
+  </footer>
+</article>
+</body>
+</html>

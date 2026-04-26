@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELECTRÓNICA · De los relés a los transistores de 3 nm · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Ochenta años de una misma pregunta: ¿cómo hacer el interruptor más pequeño, más rápido y más barato?">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-electronica.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #F1C21B;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">ELECTRÓNICA</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-04</span>
+  </header>
+  <h1 class="page-title">ELECTRÓNICA · De los relés a los transistores de 3 nm</h1>
+  <p class="page-subtitle">Ochenta años de una misma pregunta: ¿cómo hacer el interruptor más pequeño, más rápido y más barato?</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>La columna ELECTRÓNICA convierte los modelos teóricos en máquinas físicas. Arranca en la Segunda Guerra Mundial con tres proyectos independientes — Zuse en Berlín, Atanasoff en Iowa, y Flowers en Bletchley — que todos alcanzan el mismo punto desde ángulos distintos: el circuito electrónico como elemento de cómputo. ENIAC en 1946 consolida el paradigma. Entonces llega el transistor (1947), que elimina las válvulas de vacío. El circuito integrado (1959) pone miles de transistores en un solo chip. Moore (1965) observa la tasa de duplicación y la convierte en hoja de ruta industrial. Durante 50 años, la ley de Moore es la fuerza organizadora de toda la industria tecnológica. En 2019 se declara muerta en su forma clásica. La respuesta: nuevas geometrías del transistor (GAA), nuevos sustratos (cristal óptico 5D), nuevos enfoques de packging. La electrónica nunca se detiene; solo cambia de palanca.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1938-zuse-z1-konrad-zuse">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1938</span>
+        <h3 class="chain-title">Zuse Z1&nbsp;<span class="chain-person">— Konrad Zuse</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Konrad Zuse</strong> construye el Z1 en el salón de su casa en Berlin-Kreuzberg entre 1935 y 1938, sin financiación oficial, con apoyo de amigos y familia. El Z1 es la primera máquina mecánica programable binaria con representación de coma flotante. Tiene 30.000 piezas metálicas cortadas a mano por Zuse. Funcionaba mal — las tolerancias mecánicas eran demasiado estrechas — pero el diseño era correcto. Las instrucciones se leían de cinta de película perforada de 35 mm. Zuse trabajaba como ingeniero aeronáutico y usaba la máquina para cálculos de ingeniería. No conocía a Turing ni a Atanasoff; llegó al mismo punto de forma independiente. En 1944, los bombardeos aliados destruyen el Z1 en Berlín.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Z3 (1941) · <strong>Depende de:</strong> Shannon 1937 — aunque Zuse no conocía el paper de Shannon, reinventa el mismo principio de lógica binaria para circuitos.</div>
+    </div>
+    <div class="chain-item" id="1939-atanasoff-berry-abc-john-atanasoff-clifford-berry">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1939</span>
+        <h3 class="chain-title">Atanasoff-Berry (ABC)&nbsp;<span class="chain-person">— John Atanasoff / Clifford Berry</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>John Atanasoff</strong> (Iowa State College) empieza el diseño de la ABC en invierno de 1937-38 durante un viaje en coche de cuatro horas de Des Moines a Illinois, según su relato. En 1939, con la ayuda de su doctorando <strong>Clifford Berry</strong>, construyen el prototipo. La ABC (<em>Atanasoff-Berry Computer</em>) usa tubos de vacío para la lógica y condensadores rotatorios como memoria. Puede resolver sistemas de ecuaciones lineales simultáneas — un único propósito, no programable. En 1973, el juez Earl Larson dictamina en el caso <em>Honeywell Inc. v. Sperry Rand Corp.</em> que la ABC fue el primer ordenador electrónico, invalidando la patente de ENIAC. El fallo sigue siendo controvertido — Berry había muerto en 1963 y no pudo testificar.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> ENIAC (1946) — paralelo en tecnología; el fallo legal vincula directamente ambas máquinas · <strong>Depende de:</strong> Shannon 1937 — misma lógica de circuitos binarios.</div>
+    </div>
+    <div class="chain-item" id="1941-z3-konrad-zuse">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1941</span>
+        <h3 class="chain-title">Z3&nbsp;<span class="chain-person">— Konrad Zuse</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Konrad Zuse</strong> completa el Z3 el 12 de mayo de 1941, de nuevo en Berlín. A diferencia del Z1 mecánico, el Z3 usa 2.600 relés electromecánicos. Es el primer ordenador programable y automático que funciona de forma confiable. Lee el programa de cinta perforada de película. Aritmética de coma flotante binaria. Velocidad: 3-4 operaciones por segundo. Zuse lo usa para calcular deflexiones de superficies alas de avión para la empresa Henschel. El gobierno nazi no financia el proyecto adecuadamente — no comprenden su potencial. Destruido en los bombardeos de Berlín en 1943. Una reconstrucción funciona hoy en el Deutsches Technikmuseum de Berlín.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Colossus (1944) — cadena de máquinas funcionales; demuestra viabilidad práctica antes que los aliados · <strong>Depende de:</strong> Z1 (1938) — versión anterior; Shannon 1937 — lógica binaria.</div>
+    </div>
+    <div class="chain-item" id="1944-colossus-tommy-flowers">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1944</span>
+        <h3 class="chain-title">Colossus&nbsp;<span class="chain-person">— Tommy Flowers</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Tommy Flowers</strong>, ingeniero de telecomunicaciones de la GPO (General Post Office) británica, diseña y construye Colossus en Bletchley Park para el criptoanálisis de los mensajes Lorenz de los alemanes. El Colossus Mark 1 opera en febrero de 1944; el Mark 2 (con 5× más velocidad) está listo para el D-Day en junio de 1944. Usa 1.500 válvulas de vacío (el Mark 2, 2.400). Es el primer ordenador electrónico programable de la historia, pero "programable" de forma limitada: el operador cambia cables y conmutadores, no ejecuta un programa almacenado. Diez unidades se construyen en total. Churchill ordena destruirlos todos en 1945; el trabajo de Bletchley permanece clasificado hasta los 70. Flowers murió sin el reconocimiento que merecía.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> ENIAC (1946) — siguiente escalón en ordenadores electrónicos · <strong>Depende de:</strong> Shannon 1937 — lógica de circuitos; Z3 (1941) — cadena de máquinas funcionales.</div>
+    </div>
+    <div class="chain-item" id="1946-eniac-j-presper-eckert-john-mauchly">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1946</span>
+        <h3 class="chain-title">ENIAC&nbsp;<span class="chain-person">— J. Presper Eckert / John Mauchly</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>J. Presper Eckert</strong> y <strong>John Mauchly</strong> (Universidad de Pensilvania) presentan el ENIAC (<em>Electronic Numerical Integrator and Computer</em>) el 14 de febrero de 1946. 17.468 válvulas de vacío. 27 toneladas. 167 m². Consume 150 kW. Realiza 5.000 adiciones por segundo — 1.000 veces más rápido que cualquier calculadora electromecánica. El primer problema que calcula: tablas de artillería para el ejército americano. En la demostración pública, también ejecuta un cálculo del proyecto Manhattan. El ENIAC no tiene programa almacenado — se "programa" recableando paneles físicos — pero consolida definitivamente el paradigma electrónico sobre el electromecánico. El debate legal con Atanasoff sobre la prioridad se resuelve en 1973 contra Eckert y Mauchly.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Transistor (1947) — el ENIAC hace visible el cuello de botella de las válvulas · <strong>Depende de:</strong> Shannon 1937 — justificación teórica; Z3, Colossus — antecedentes funcionales.</div>
+    </div>
+    <div class="chain-item" id="1947-transistor-john-bardeen-walter-brattain-william-shockley">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">1947</span>
+        <h3 class="chain-title">Transistor&nbsp;<span class="chain-person">— John Bardeen / Walter Brattain / William Shockley</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>John Bardeen</strong>, <strong>Walter Brattain</strong> y <strong>William Shockley</strong> (Bell Labs, Murray Hill, New Jersey) demuestran el transistor de punto de contacto el 16 de diciembre de 1947. El transistor de unión bipolar, más robusto, llega en 1948. El principio: una pequeña corriente en la base controla una corriente mucho mayor entre colector y emisor. Mismo comportamiento lógico que una válvula de vacío, pero sin filamento que calentar, sin fragilidad de vidrio, sin tiempo de calentamiento. Un transistor ocupa 1 cm³ en 1947; el chip de 3 nm de Samsung en 2022 tiene 40 millones de transistores por milímetro cuadrado. Bardeen, Brattain y Shockley reciben el Nobel de Física en 1956. Shockley funda Shockley Semiconductor Laboratory en 1956 en Mountain View, California — el primer eslabón del Silicon Valley.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Circuito integrado (1959) · <strong>Depende de:</strong> ENIAC (1946) — la escala de las válvulas hace urgente la miniaturización.</div>
+    </div>
+    <div class="chain-item" id="1959-circuito-integrado-jack-kilby-robert-noyce">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">1959</span>
+        <h3 class="chain-title">Circuito integrado&nbsp;<span class="chain-person">— Jack Kilby / Robert Noyce</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Jack Kilby</strong> (Texas Instruments) demuestra el primer circuito integrado en germanio en julio de 1958 — múltiples componentes en un mismo sustrato. <strong>Robert Noyce</strong> (Fairchild Semiconductor) patenta independientemente en enero de 1959 la versión planar sobre silicio, fabricable industrialmente con fotolitografía. Kilby recibe el Nobel de Física en 2000 (Noyce había muerto en 1990). La versión de Noyce es la que industrializa el IC. Noyce cofundará Intel con <strong>Gordon Moore</strong> en 1968. El primer IC de Kilby: 4 transistores y 1 resistencia. El chip M3 de Apple en 2023: 35.000 millones de transistores.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Ley de Moore (1965); Intel 4004 (1971) y toda la cadena de microprocesadores · <strong>Depende de:</strong> Transistor (1947) — el componente que el IC integra a escala.</div>
+    </div>
+    <div class="chain-item" id="1965-ley-de-moore-gordon-moore">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">1965</span>
+        <h3 class="chain-title">Ley de Moore&nbsp;<span class="chain-person">— Gordon Moore</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Gordon Moore</strong> (cofundador de Fairchild, futuro cofundador de Intel) publica un artículo en <em>Electronics</em> en abril de 1965. Observación: el número de transistores por chip se había duplicado cada año desde 1959. Predice que la tendencia continuará durante al menos 10 años. En 1975, revisa la predicción a duplicación cada 2 años. Lo que empieza como observación empírica se convierte en objetivo industrial: la industria semiconductora planifica inversiones, ciclos de producto y obsolescencia programada sobre la base de que la duplicación ocurrirá, porque si no ocurre, el competidor que sí la logre te desplaza. La ley de Moore no es una ley física — es una profecía autocumplida sostenida por inversión coordinada durante 50 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Fin de la ley de Moore clásica (2019) · <strong>Depende de:</strong> Circuito integrado (1959) — el hecho empírico que Moore observa.</div>
+    </div>
+    <div class="chain-item" id="2019-fin-moore-clasico-jensen-huang">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2019</span>
+        <h3 class="chain-title">Fin Moore clásico&nbsp;<span class="chain-person">— Jensen Huang</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Jensen Huang</strong> (NVIDIA) declara "Moore's Law is dead" en la GTC 2019. La cadencia de 2 años para doblar transistores se rompe: Intel tardó más de 5 años en pasar de 14 nm a 10 nm. El <em>Dennard scaling</em> — la otra mitad de la ecuación, que garantizaba que un transistor más pequeño consumía menos energía — había muerto antes, alrededor de 2006. La industria pivota: chiplets (múltiples dies en un mismo package, AMD Ryzen 2017), apilado 3D (Samsung HBM, TSMC SoIC), <em>advanced packaging</em> (CoWoS de TSMC). El nodo "nm" deja de ser una medida física real — es una marca de marketing que distintos fabricantes usan de forma inconsistente.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Transistor GAA (2022) — respuesta tecnológica · <strong>Depende de:</strong> Ley de Moore (1965) — lo que se declara terminado; AMD Ryzen/chiplets (2017) — la alternativa que ya está en marcha.</div>
+    </div>
+    <div class="chain-item" id="2019-project-silica-cristal-5d-microsoft-research">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">2019</span>
+        <h3 class="chain-title">Project Silica · cristal 5D&nbsp;<span class="chain-person">— Microsoft Research</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Microsoft Research</strong> (Cambridge) demuestra Project Silica: almacenamiento óptico en cristal de cuarzo usando pulsos láser de femtosegundos que escriben datos en estructuras tridimensionales internas (5 dimensiones: 3 espaciales + polarización + intensidad). Los datos son durables durante miles de años en condiciones normales. En 2023, colaboración con Hitachi para demostración comercial: almacenar el archivo completo de <em>Superman</em> (1978) en un chip de cristal del tamaño de un posavasos. Sin partes móviles, inmune a campos electromagnéticos, no requiere energía para mantener los datos.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Memoria agéntica a largo plazo (DATA) · <strong>Depende de:</strong> Circuito integrado (1959) — cadena de sustratos alternativos al silicio; DNA computing (Adleman 1994) — exploración de sustratos no convencionales.</div>
+    </div>
+    <div class="chain-item" id="2022-transistor-gaa-samsung">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">2022</span>
+        <h3 class="chain-title">Transistor GAA&nbsp;<span class="chain-person">— Samsung</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Samsung</strong> lanza en 2022 el primer chip producido en masa con transistores <strong>Gate-All-Around</strong> (GAA) a 3 nm. El FinFET (que Intel introdujo en 2011 a 22 nm) tiene la puerta del transistor en tres lados del canal. El GAA la tiene en los cuatro — mayor control del canal, mejor eficiencia energética, mejor comportamiento a escala sub-5 nm. La geometría del canal pasa de aleta (FinFET) a nanohoja (<em>nanosheet</em> o <em>nanoribbon</em>). TSMC adopta GAA en su nodo N2 (2 nm) en 2025. Intel lo llama "RibbonFET" en su nodo 18A.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Apple M5 (2026) — primer chip de consumo en nodo GAA masivo · <strong>Depende de:</strong> Fin Moore clásico (2019) — GAA es la respuesta a que el FinFET ya no escala.</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1938</td>
+          <td>Konrad Zuse</td>
+          <td>Z1, Z3; primeras máquinas programables binarias</td>
+          <td>Alemania / Berlín</td>
+        </tr>
+        <tr>
+          <td>1939</td>
+          <td>John Atanasoff</td>
+          <td>ABC; primer ordenador electrónico (fallo legal 1973)</td>
+          <td>EE.UU. / Iowa State</td>
+        </tr>
+        <tr>
+          <td>1939</td>
+          <td>Clifford Berry</td>
+          <td>Construcción de la ABC; colaborador de Atanasoff</td>
+          <td>EE.UU. / Iowa State</td>
+        </tr>
+        <tr>
+          <td>1944</td>
+          <td>Tommy Flowers</td>
+          <td>Colossus; primer ordenador electrónico programable</td>
+          <td>Reino Unido / GPO / Bletchley Park</td>
+        </tr>
+        <tr>
+          <td>1946</td>
+          <td>J. Presper Eckert</td>
+          <td>ENIAC; primer ordenador electrónico de propósito general</td>
+          <td>EE.UU. / Universidad de Pensilvania</td>
+        </tr>
+        <tr>
+          <td>1946</td>
+          <td>John Mauchly</td>
+          <td>ENIAC</td>
+          <td>EE.UU. / Universidad de Pensilvania</td>
+        </tr>
+        <tr>
+          <td>1947</td>
+          <td>John Bardeen</td>
+          <td>Transistor de punto de contacto</td>
+          <td>EE.UU. / Bell Labs</td>
+        </tr>
+        <tr>
+          <td>1947</td>
+          <td>Walter Brattain</td>
+          <td>Transistor de punto de contacto</td>
+          <td>EE.UU. / Bell Labs</td>
+        </tr>
+        <tr>
+          <td>1947</td>
+          <td>William Shockley</td>
+          <td>Transistor de unión bipolar; fundador Shockley Semiconductor</td>
+          <td>EE.UU. / Bell Labs → Silicon Valley</td>
+        </tr>
+        <tr>
+          <td>1958</td>
+          <td>Jack Kilby</td>
+          <td>Primer circuito integrado (germanio); Nobel 2000</td>
+          <td>EE.UU. / Texas Instruments</td>
+        </tr>
+        <tr>
+          <td>1959</td>
+          <td>Robert Noyce</td>
+          <td>IC planar fabricable; cofundador de Intel</td>
+          <td>EE.UU. / Fairchild Semiconductor</td>
+        </tr>
+        <tr>
+          <td>1965</td>
+          <td>Gordon Moore</td>
+          <td>Observación de la ley de Moore; cofundador de Intel</td>
+          <td>EE.UU. / Fairchild → Intel</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>Jensen Huang</td>
+          <td>Declaración del fin de la ley de Moore clásica</td>
+          <td>EE.UU. / NVIDIA (GTC 2019)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="01_LOGICA.html#1937-l-gica-circuitos">01_LOGICA#1937 · Lógica → circuitos</a> → Shannon demuestra que la lógica booleana se implementa en relés — esto es la licencia teórica de Z3, Colossus y ENIAC</li>
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1945-programa-almacenado">03_ARQUITECTURA#1945 · Programa almacenado</a> → Von Neumann proporciona la arquitectura que ENIAC parcialmente precede y que el Manchester Baby implementa</li>
+      <li><span class="arrow">↗</span>De <a href="02_ALGORITMOS.html#2017-amd-ryzen-zen">02_ALGORITMOS#2017 · AMD Ryzen / Zen</a> (PC) → chiplet architecture que influye en el pivote post-Moore</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De ENIAC (1946) → habilita Monte Carlo (simulación), backpropagation práctica, y toda la computación científica</li>
+      <li><span class="arrow">↘</span>De IC (1959) → habilita <a href="PC.html">PC</a> completo — Intel 4004, la cadena de microprocesadores</li>
+      <li><span class="arrow">↘</span>De IC (1959) → habilita <a href="NET.html#1969-arpanet">NET#1969 · ARPANET</a> — el circuito integrado hace factible la miniaturización de routers</li>
+      <li><span class="arrow">↘</span>De IC (1959) → habilita SPICE (simulación de circuitos integrados)</li>
+      <li><span class="arrow">↘</span>De Transistor (1947) → habilita toda la industria semiconductora; sustrato de GPU, CPU, TPU</li>
+      <li><span class="arrow">↘</span>De GAA (2022) → habilita <a href="PC.html">PC</a> — Apple M5 (2026), Intel 18A</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo los circuitos integrados se convierten en microprocesadores y PCs → PC en el grafo</li>
+      <li>Si quieres ver la GPU como extensión de la electrónica hacia el cómputo paralelo → GPU en el grafo</li>
+      <li>Si quieres la lógica teórica que precede a los circuitos → <a href="01_LOGICA.html">01_LOGICA</a></li>
+      <li>Si quieres ver cómo la electrónica se convierte en software de sistemas → <a href="05_SOFTWARE.html">05_SOFTWARE</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 4</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="03_ARQUITECTURA.html" title="Capítulo anterior">◄</a>
+      <a href="05_SOFTWARE.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>4-1</span>
+  </footer>
+</article>
+</body>
+</html>

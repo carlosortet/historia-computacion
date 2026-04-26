@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PARALELISMO · De los píxeles al silicio de la inteligencia · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="La GPU nació para dibujar triángulos; en 25 años se convirtió en el motor de toda la IA moderna, y los hyperscalers empezaron a diseñar sus propios chips para no depender de NVIDIA">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-paralelismo.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #33B1FF;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">PARALELISMO</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-12</span>
+  </header>
+  <h1 class="page-title">PARALELISMO · De los píxeles al silicio de la inteligencia</h1>
+  <p class="page-subtitle">La GPU nació para dibujar triángulos; en 25 años se convirtió en el motor de toda la IA moderna, y los hyperscalers empezaron a diseñar sus propios chips para no depender de NVIDIA.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>El paralelismo masivo tiene una prehistoria en la supercomputación vectorial (Cray, 1976), pero esta columna arranca en 1999 con la GPU comercial y sigue hasta los chips especializados de 2027. El patrón es siempre el mismo: un hardware diseñado para un propósito (gráficos, luego IA, luego modelos de lenguaje) se generaliza hasta dominar el cómputo científico. CUDA (2006) es el bisagra: convierte la GPU de acelerador gráfico a plataforma de cómputo general. Desde ahí, la cadena produce Tensor Cores para entrenamiento, TPUs para los propios modelos de Google, ASICs de todos los hyperscalers, y arquitecturas especializadas al límite (Etched Sohu, diseñado solo para Transformers). Lo que resuelve esta columna: el problema de la latencia frente al throughput — cuando procesas en paralelo millones de operaciones simultáneas, el tiempo total cae aunque cada operación individual sea más lenta.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1999-geforce-256-nvidia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1999</span>
+        <h3 class="chain-title">GeForce 256&nbsp;<span class="chain-person">— NVIDIA</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> lanza la GeForce 256 (ago 1999): primera GPU comercial con Transform and Lighting (T&amp;L) acelerado por hardware. Antes, la CPU calculaba la posición y color de cada vértice 3D; ahora lo hace el chip gráfico. 23 millones de transistores. 15M vértices/segundo.</p><p><strong>Jensen Huang</strong> (co-fundador y CEO de NVIDIA desde 1993) apuesta por el término "GPU" para distinguirse de las tarjetas de vídeo anteriores. La apuesta: si el hardware de juegos crece, NVIDIA crece con él.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Shaders programables (2001)</div>
+    </div>
+    <div class="chain-item" id="2001-shaders-programables-nvidia-geforce-3">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">2001</span>
+        <h3 class="chain-title">Shaders programables&nbsp;<span class="chain-person">— NVIDIA GeForce 3</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> lanza la GeForce 3 (feb 2001): introduce vertex shaders y pixel shaders programables. El programador puede escribir código arbitrario que se ejecuta en la GPU para cada vértice o pixel.</p><p>Investigadores de cómputo científico observan la GeForce 3 y ven algo diferente: un procesador paralelo de propósito general disfrazado de acelerador gráfico. Los primeros experimentos GPGPU (General-Purpose Computing on GPU) usan shaders para resolver ecuaciones diferenciales.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> CUDA (2006) · <strong>Depende de:</strong> GeForce 256 (1999)</div>
+    </div>
+    <div class="chain-item" id="2006-cuda-nvidia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">2006</span>
+        <h3 class="chain-title">CUDA&nbsp;<span class="chain-person">— NVIDIA</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> lanza CUDA (Compute Unified Device Architecture) en noviembre 2006 con la arquitectura Tesla. <strong>Ian Buck</strong> (previamente en Stanford con el proyecto Brook) lidera el desarrollo. CUDA expone la GPU como plataforma de cómputo general en C/C++: memoria del dispositivo, kernels, threads organizados en bloques y grids.</p><p>El primer paper significativo usando CUDA es de <strong>John Owens</strong> y equipo. El impacto real llega cuando los grupos de IA descubren que pueden entrenar redes neuronales: lo que tardaba semanas en CPU tarda días en GPU.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Tensor Cores (2017), AlexNet (2012 en IA), Frontier (2022 en supercomp), TPU v1 (2015) · <strong>Depende de:</strong> Shaders programables (2001)</div>
+    </div>
+    <div class="chain-item" id="2009-opencl-khronos-group">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">2009</span>
+        <h3 class="chain-title">OpenCL&nbsp;<span class="chain-person">— Khronos Group</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Apple</strong> diseña OpenCL en 2008 y lo dona al <strong>Khronos Group</strong>, que publica la especificación 1.0 (dic 2008). Estándar abierto para cómputo paralelo cross-vendor: funciona en CPU + GPU + FPGA + DSP de cualquier fabricante. Apoyado por Apple, AMD, Intel, IBM, ARM.</p><p>OpenCL pierde la guerra del ecosistema frente a CUDA. Las razones: CUDA tiene compilador propio maduro, debugging, profiling, y una comunidad de investigación consolidada. OpenCL es más portable pero más difícil de optimizar.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Hyperscaler Silicon (2024) como motivación de independencia de NVIDIA · <strong>Depende de:</strong> CUDA (2006) como rival</div>
+    </div>
+    <div class="chain-item" id="2015-tpu-v1-google">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">2015</span>
+        <h3 class="chain-title">TPU v1&nbsp;<span class="chain-person">— Google</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> diseña en secreto el TPU v1 (Tensor Processing Unit) y lo despliega en sus propios datacenters en 2015. El chip está diseñado exclusivamente para inferencia: operaciones de multiplicación de matrices en 8 bits. Seis veces más eficiente energéticamente que una GPU de gama alta para redes neuronales. Lo usan internamente en Search, Translate y Photos.</p><p>La decisión de fabricarlo viene de <strong>Jeff Dean</strong> y <strong>Norm Jouppi</strong>: un cálculo de back-of-the-envelope muestra que si los usuarios de Google usan reconocimiento de voz 3 minutos/día, necesitarían el doble de los datacenters existentes con CPUs.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TPU v2 (2017) · <strong>Depende de:</strong> CUDA (2006) como motivación para construir alternativa; Tensor Cores (2017) en paralelo como rival</div>
+    </div>
+    <div class="chain-item" id="2017-tensor-cores-nvidia-volta">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">2017</span>
+        <h3 class="chain-title">Tensor Cores&nbsp;<span class="chain-person">— NVIDIA Volta</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> lanza la arquitectura Volta (V100, ago 2017) con los primeros Tensor Cores: unidades de hardware diseñadas para multiplicaciones de matrices en precisión mixta (FP16 × FP16 = FP32). 640 Tensor Cores en el V100. Throughput de 120 TFLOPS en operaciones tensor vs 15 TFLOPS FP32 convencionales.</p><p>Las arquitecturas posteriores escalan el concepto: Turing (2018) añade RT Cores, Ampere (2020) multiplica los Tensor Cores, Hopper (2022) introduce FP8 y el Transformer Engine, Blackwell (2024) añade NVLink 5 y HBM3e.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> NVIDIA Rubin (2026) · <strong>Depende de:</strong> CUDA (2006), Transformer (2017 en IA)</div>
+    </div>
+    <div class="chain-item" id="2017-tpu-v2-cloud-google">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2017</span>
+        <h3 class="chain-title">TPU v2 · cloud&nbsp;<span class="chain-person">— Google</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> lanza TPU v2 como producto público en Google Cloud (may 2017). Primer TPU capaz de entrenar, no solo inferir. 180 TFLOPS en bfloat16. Los TPU pods combinan 64 chips con interconexión de alta velocidad propia.</p><p>bfloat16 es una innovación de Google: el mismo rango de exponentes que FP32 pero con menos bits de mantisa. Más estable para entrenamiento que FP16. La industria lo adopta masivamente después.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TPU v5p (2023) · <strong>Depende de:</strong> TPU v1 (2015), Tensor Cores (2017) en competencia</div>
+    </div>
+    <div class="chain-item" id="2019-cerebras-wse-1-cerebras-systems">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2019</span>
+        <h3 class="chain-title">Cerebras WSE-1&nbsp;<span class="chain-person">— Cerebras Systems</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Cerebras Systems</strong> (fundada por <strong>Andrew Feldman</strong> y <strong>Gary Lauterbach</strong>) anuncia el Wafer-Scale Engine (WSE-1): un chip del tamaño de una oblea de silicio completa (462 cm², 1.2 billones de transistores, 400.000 núcleos). La comparación: el mayor chip anterior de NVIDIA era ~815 mm².</p><p>El diseño sacrifica el yield (probabilidad de que un chip funcione sin defectos) a cambio de densidad de memoria on-chip: 18 GB de SRAM directamente en el chip. Para LLMs, el cuello de botella es mover pesos entre memoria y cómputo. WSE-1 lo minimiza.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Etched Sohu (2024) como variante del concepto · <strong>Depende de:</strong> CUDA (2006) como contexto de mercado</div>
+    </div>
+    <div class="chain-item" id="2023-tpu-v5p-google">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2023</span>
+        <h3 class="chain-title">TPU v5p&nbsp;<span class="chain-person">— Google</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> lanza TPU v5p (nov 2023): producción a escala para el entrenamiento de Gemini. Pods de 8.960 chips interconectados con ICI (Inter-Chip Interconnect) de alta velocidad. Cada chip: 459 TFLOPS bfloat16.</p><p>El TPU v5p es el sustrato del entrenamiento de Gemini Ultra. Google no necesita NVIDIA para entrenar su modelo más grande. La pila completa: datos → TPU → modelo → servicio.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TPU v6 Trillium (2024) · <strong>Depende de:</strong> TPU v2 (2017)</div>
+    </div>
+    <div class="chain-item" id="2024-tpu-v6-trillium-google">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">TPU v6 Trillium&nbsp;<span class="chain-person">— Google</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> anuncia TPU v6 "Trillium" (may 2024): 4.7× el rendimiento por chip respecto a v5e (la variante eficiente del v5). Backbone de Gemini 1.5 y Gemini 2.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TPU v7 Ironwood (2025) · <strong>Depende de:</strong> TPU v5p (2023)</div>
+    </div>
+    <div class="chain-item" id="2024-hyperscaler-silicon-aws-microsoft-meta">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Hyperscaler Silicon&nbsp;<span class="chain-person">— AWS, Microsoft, Meta</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>AWS Trainium 2</strong> · <strong>Microsoft Maia</strong> · <strong>Meta MTIA</strong> (Meta Training and Inference Accelerator). Los tres principales competidores de Google diseñan sus propios chips de IA para reducir dependencia de NVIDIA.</p><p>La lógica económica: a escala de hyperscaler, ahorrar 30% en cómputo representa miles de millones de dólares anuales. Diseñar el chip propio tarda 3-4 años y cuesta cientos de millones — pero la amortización se consigue en 1-2 años de operación.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TPU v8 (2027) · <strong>Depende de:</strong> OpenCL (2009) como precedente de independencia de NVIDIA, TPU v2 (2017) como modelo de referencia</div>
+    </div>
+    <div class="chain-item" id="2024-etched-sohu-etched">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">L</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Etched Sohu&nbsp;<span class="chain-person">— Etched</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Etched</strong> (startup californiana, fundada por <strong>Gavin Uberti</strong> y <strong>Chris Zhu</strong>) lanza Sohu: ASIC diseñado exclusivamente para ejecutar Transformers. Sin generalidad. Sin soporte para otras arquitecturas. La apuesta: si el Transformer es la arquitectura dominante indefinidamente, este chip es ~10× más eficiente que una GPU de propósito general para inferencia de LLMs.</p><p>El riesgo es simétrico: si emerge una arquitectura alternativa (SSMs, Mamba, etc.), el chip queda obsoleto. Etched apuesta a que no pasa.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> diseño de chips especializados como tendencia · <strong>Depende de:</strong> Cerebras WSE-1 (2019) como precedente de especialización radical, Transformer (2017 en IA) como arquitectura objetivo</div>
+    </div>
+    <div class="chain-item" id="2025-tpu-v7-ironwood-google">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">M</span>
+        <span class="chain-year">2025</span>
+        <h3 class="chain-title">TPU v7 Ironwood&nbsp;<span class="chain-person">— Google</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> anuncia TPU v7 "Ironwood" (2025): ~5× rendimiento respecto a v5p. Diseñado explícitamente para la era de extended thinking: los modelos de razonamiento como o1 y Gemini 2.5 consumen 10-100× más cómputo en inferencia que los modelos generativos anteriores.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TPU v8 (2027) · <strong>Depende de:</strong> TPU v6 Trillium (2024), o1 (2024 en IA) como driver de demanda</div>
+    </div>
+    <div class="chain-item" id="2026-nvidia-rubin-nvidia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">N</span>
+        <span class="chain-year">2026</span>
+        <h3 class="chain-title">NVIDIA Rubin&nbsp;<span class="chain-person">— NVIDIA</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> lanza Rubin (R100) a finales de 2026. HBM4, NVLink 6, sucesor de Blackwell (B100/B200, 2024). Continúa la cadencia anual que NVIDIA aceleró después de Hopper: Hopper (2022) → Blackwell (2024) → Rubin (2026).</p><p>NVLink 6 aumenta el ancho de banda inter-GPU, crítico para modelos que no caben en un solo chip.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Vera Rubin Ultra (2027), Apple M6 (2027 en PC) · <strong>Depende de:</strong> Tensor Cores (2017)</div>
+    </div>
+    <div class="chain-item" id="2027-vera-rubin-ultra-esp-nvidia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">O</span>
+        <span class="chain-year">2027</span>
+        <h3 class="chain-title">Vera Rubin Ultra (esp.)&nbsp;<span class="chain-person">— NVIDIA</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> Vera Rubin Ultra: integra en un solo package la CPU Vera (arquitectura arm-compatible diseñada por NVIDIA) con la GPU Rubin Ultra. NVLink directo entre CPU y GPU elimina el cuello de botella del bus PCIe. La CPU Vera diseñada explícitamente como acompañante de la GPU — no como CPU de propósito general sino como orquestador de workloads de IA.</p><p>El concepto: una "AI factory" en un package. Ya no un servidor con CPU separada y GPU separada, sino una unidad integrada para entrenar y servir modelos.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> convergencia CPU+GPU+NPU en un package · <strong>Depende de:</strong> NVIDIA Rubin (2026), <a href="08_PC.html#apple-m6">08_PC#Apple M6</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1999</td>
+          <td>Jensen Huang</td>
+          <td>Co-fundador y CEO NVIDIA, estrategia GPU</td>
+          <td>NVIDIA (Taiwan/California)</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>Ian Buck</td>
+          <td>Lideró desarrollo de CUDA</td>
+          <td>NVIDIA / ex-Stanford</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>John Owens</td>
+          <td>Primeros papers académicos con CUDA</td>
+          <td>UC Davis</td>
+        </tr>
+        <tr>
+          <td>2015</td>
+          <td>Jeff Dean</td>
+          <td>Impulsor del TPU v1 en Google</td>
+          <td>Google Brain</td>
+        </tr>
+        <tr>
+          <td>2015</td>
+          <td>Norm Jouppi</td>
+          <td>Arquitecto principal TPU v1</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>Andrew Feldman</td>
+          <td>Co-fundador Cerebras</td>
+          <td>Cerebras Systems</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>Gary Lauterbach</td>
+          <td>Co-fundador Cerebras</td>
+          <td>Cerebras Systems</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Gavin Uberti</td>
+          <td>Co-fundador Etched</td>
+          <td>Etched</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Chris Zhu</td>
+          <td>Co-fundador Etched</td>
+          <td>Etched</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="11_IA.html#2017-transformer">11_IA#2017 · Transformer</a> → impulsa el diseño de Tensor Cores y TPU v5/v7 específicos para Transformers</li>
+      <li><span class="arrow">↗</span>De <a href="11_IA.html#2012-alexnet">11_IA#2012 · AlexNet</a> → primer caso de uso que justifica CUDA para IA</li>
+      <li><span class="arrow">↗</span>De <a href="11_IA.html#2022-chatgpt">11_IA#2022 · ChatGPT</a> → explosión de demanda que hace rentable el silicio especializado</li>
+      <li><span class="arrow">↗</span>De <a href="07_SOFTWARE.html#1991-python">07_SOFTWARE#1991 · Python</a> → Python como frontend de CUDA; sin Python no hay ecosistema IA sobre GPU</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De CUDA (2006) → habilita <a href="11_IA.html#2012-alexnet">11_IA#2012 · AlexNet</a> (entrenamiento viable en 2× GTX 580)</li>
+      <li><span class="arrow">↘</span>De CUDA (2006) → habilita <a href="14_SUPERCOMPUTACION.html#2022-frontier">14_SUPERCOMPUTACION#2022 · Frontier</a> (GPUs AMD como acelerador del primer exascale)</li>
+      <li><span class="arrow">↘</span>De Tensor Cores (2017) → habilita <a href="08_PC.html#2026-nvidia-rubin">08_PC#2026 · NVIDIA Rubin</a> y cadena de chips avanzados</li>
+      <li><span class="arrow">↘</span>De OpenCL (2009) → habilita <a href="14_SUPERCOMPUTACION.html#aurora">14_SUPERCOMPUTACION#Aurora</a> como arquitectura Intel alternativa</li>
+      <li><span class="arrow">↘</span>De TPU v2 (2017) → habilita <a href="11_IA.html#2023-gemini-ultra">11_IA#2023 · Gemini Ultra</a> (entrenamiento sobre hardware propio)</li>
+      <li><span class="arrow">↘</span>De Rubin (2026) → habilita <a href="08_PC.html#apple-m6-vera">08_PC#Apple M6 + Vera</a> como plataforma unificada</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo el hardware habilita la IA → <a href="11_IA.html">11_IA</a></li>
+      <li>Si te interesa la computación masivamente paralela en supercomputación → <a href="14_SUPERCOMPUTACION.html">14_SUPERCOMPUTACION</a></li>
+      <li>Si quieres ver el límite cuántico del paralelismo → <a href="13_CUANTICA.html">13_CUANTICA</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 12</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="11_IA.html" title="Capítulo anterior">◄</a>
+      <a href="13_CUANTICA.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>12-1</span>
+  </footer>
+</article>
+</body>
+</html>

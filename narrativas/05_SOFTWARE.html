@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOFTWARE · Del primer lenguaje olvidado al agente que programa · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Setenta años de reducir la distancia entre lo que el ser humano piensa y lo que la máquina ejecuta.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-software.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #198038;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">SOFTWARE</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-05</span>
+  </header>
+  <h1 class="page-title">SOFTWARE · Del primer lenguaje olvidado al agente que programa</h1>
+  <p class="page-subtitle">Setenta años de reducir la distancia entre lo que el ser humano piensa y lo que la máquina ejecuta.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>La columna SOFTWARE es la historia de la abstracción como herramienta. Cada generación de esta columna hace lo mismo: añade una capa entre el programador y el hardware para que el programador piense en términos más cercanos al problema y más lejanos al silicio. Zuse lo intenta en 1945 con Plankalkül, y nadie le hace caso. Hopper lo consigue en 1952 con el compilador A-0: por primera vez, el ordenador traduce su propio lenguaje. Entonces viene la proliferación — FORTRAN para ciencia, COBOL para negocio, LISP para IA simbólica, ALGOL como gramática madre de casi todo lo que viene. Unix en 1969 unifica con una filosofía: archivos como interfaz universal, herramientas pequeñas encadenables. C es la lengua que Unix habla. GNU y Linux convierten esa filosofía en sistema distribuido libre. Git convierte la colaboración en grafo de versiones. Docker convierte el entorno en dato. Copilot añade la IA como interlocutor. Los agentes de 2024 cierran el ciclo: el software que programa software.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1945-plankalk-l-konrad-zuse">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1945</span>
+        <h3 class="chain-title">Plankalkül&nbsp;<span class="chain-person">— Konrad Zuse</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Konrad Zuse</strong> escribe el Plankalkül entre 1942 y 1945 mientras trabaja en los Z3 y Z4, en la Alemania de la guerra. Es el primer lenguaje de programación de alto nivel del mundo: incluye tipos de datos estructurados, estructuras de control (condicionales, bucles), expresiones lógicas y matriciales. Zuse diseña Plankalkül para ser compilado a lenguaje de máquina, pero nunca lo implementa — Alemania posguerra no tiene infraestructura computacional para ejecutarlo. El lenguaje se publica en 1972 y se compila por primera vez en 1975. Para entonces, FORTRAN tiene 18 años y ALGOL 15. Los conceptos de Plankalkül — tipos, estructuras, asignación — se reinventan independientemente en todos esos lenguajes. Zuse los había visto primero.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> FORTRAN (1957) — paralelo en concepto (lenguaje de alto nivel) aunque ignorado · <strong>Depende de:</strong> Z3 (1941) — la máquina para la que diseña el lenguaje.</div>
+    </div>
+    <div class="chain-item" id="1952-compilador-a-0-grace-hopper">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1952</span>
+        <h3 class="chain-title">Compilador A-0&nbsp;<span class="chain-person">— Grace Hopper</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Grace Hopper</strong> desarrolla el compilador A-0 (<em>Arithmetic Language, version 0</em>) en UNIVAC en 1952. El A-0 no es un compilador en el sentido moderno — es más un linker de subrutinas — pero establece el principio: el ordenador puede traducir instrucciones simbólicas a código de máquina. Hopper tiene que superar la resistencia de sus jefes y colegas ("los ordenadores no pueden hacer eso"). Su argumento: si le enseñas al ordenador a entender código próximo al inglés, puedes tener cien programadores en lugar de uno. El A-0 habilita el MATH-MATIC y luego el FLOW-MATIC, que es la base directa de COBOL. Hopper había aprendido a programar en el Harvard Mark I en 1944 — de máquinas electromecánicas a compiladores en 8 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> FORTRAN (1957), COBOL (1959) · <strong>Depende de:</strong> EDSAC (1949) — arquitectura que hace posible el compilador; Harvard Mark I (1944) — donde Hopper aprende.</div>
+    </div>
+    <div class="chain-item" id="1957-fortran-john-backus">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1957</span>
+        <h3 class="chain-title">FORTRAN&nbsp;<span class="chain-person">— John Backus</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>John Backus</strong> (IBM) lidera el equipo que publica FORTRAN (<em>FORmula TRANslation</em>) en abril de 1957 para el IBM 704. La apuesta era arriesgada: muchos creían que un compilador nunca podría generar código tan eficiente como el ensamblador escrito a mano. El equipo de Backus dedica 18 meses. El resultado: código casi tan eficiente como el ensamblador, y un lenguaje que los científicos e ingenieros pueden usar directamente. FORTRAN introduce el array multidimensional, las funciones matemáticas nativas, y el bucle DO. Backus luego crea la notación BNF (<em>Backus-Naur Form</em>) para describir la gramática de lenguajes formales — fundamento de todos los parsers modernos. FORTRAN 77, 90, 2003, 2018: el lenguaje sigue activo en computación científica y de alto rendimiento.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> ALGOL 60 (1960), COBOL (1959) · <strong>Depende de:</strong> Compilador A-0 (1952) — Hopper demuestra que es posible.</div>
+    </div>
+    <div class="chain-item" id="1958-lisp-john-mccarthy">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1958</span>
+        <h3 class="chain-title">LISP&nbsp;<span class="chain-person">— John McCarthy</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>John McCarthy</strong> diseña LISP (<em>LISt Processor</em>) en el MIT en 1958, publicado en 1960. Dos ideas fundacionales: el código es datos (homoiconicidad — un programa LISP es una lista, y las listas son el tipo de datos nativo) y el cálculo lambda de Church como sustrato matemático. McCarthy inventa también el <em>garbage collector</em> — la gestión automática de memoria. LISP es la lengua franca de la IA simbólica durante cuatro décadas. Todos los sistemas expertos de los 70 y 80 se escriben en LISP. La función map(), filter() y reduce() que hoy usa Python heredan directamente de LISP. Macros, metaprogramación, programación funcional: todo pasa por LISP antes de llegar a los lenguajes modernos.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Sistemas expertos (IA simbólica); Word2Vec (la representación simbólica como antecedente); programación funcional moderna · <strong>Depende de:</strong> Lambda calculus de Church (1936) — sustrato matemático directo; Conferencia Dartmouth (1956) — contexto IA.</div>
+    </div>
+    <div class="chain-item" id="1960-algol-60-comite-internacional">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1960</span>
+        <h3 class="chain-title">ALGOL 60&nbsp;<span class="chain-person">— Comité internacional</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>ALGOL 60</strong> (<em>Algorithmic Language 1960</em>) es el resultado de un comité internacional — europeos y americanos — que incluye a <strong>Peter Naur</strong>, <strong>John Backus</strong>, <strong>Alan Perlis</strong> y <strong>Adriaan van Wijngaarden</strong>. ALGOL 60 introduce la estructura de bloques (begin/end), el alcance léxico, los procedimientos recursivos y la notación BNF para describir su propia gramática. Nunca fue adoptado comercialmente a escala masiva (IBM apostó por FORTRAN y COBOL), pero se convierte en el lenguaje de referencia para describir algoritmos en papers académicos durante 20 años. De ALGOL descienden directamente Pascal, C, Java, y prácticamente todos los lenguajes de programación modernos con sintaxis de llaves o palabras clave de bloque.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Programación estructurada de Dijkstra (1968) — ALGOL es el lenguaje que Dijkstra usa · <strong>Depende de:</strong> FORTRAN (1957) — ALGOL responde a las limitaciones de FORTRAN.</div>
+    </div>
+    <div class="chain-item" id="1959-cobol-grace-hopper-codasyl">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">1959</span>
+        <h3 class="chain-title">COBOL&nbsp;<span class="chain-person">— Grace Hopper / CODASYL</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>CODASYL</strong> (<em>Conference on Data Systems Languages</em>, convocada por el DoD americano) define COBOL (<em>COmmon Business-Oriented Language</em>) en 1959. El primer compilador funciona en 1960. <strong>Grace Hopper</strong> es la influencia técnica central — su FLOW-MATIC es el antecedente directo. COBOL tiene una sintaxis deliberadamente cercana al inglés: <code>MOVE SALARY TO GROSS-PAY</code> en lugar de operadores matemáticos. El objetivo: que los directivos de empresa puedan leer (si no escribir) los programas. En 2026, COBOL procesa el 70% de las transacciones bancarias mundiales. Se estiman más de 200.000 millones de líneas de COBOL en producción. El banco que intenta migrarlo a Java normalmente aborta y vuelve a COBOL.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Software empresarial durante décadas; sustrato del IBM System/360 · <strong>Depende de:</strong> Compilador A-0 (1952) de Hopper; FORTRAN (1957) — paralelo contemporáneo; LEO I (1951) — primero en demostrar que el negocio necesita su propio software.</div>
+    </div>
+    <div class="chain-item" id="1961-ctss-timesharing-fernando-corbato">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">1961</span>
+        <h3 class="chain-title">CTSS · timesharing&nbsp;<span class="chain-person">— Fernando Corbató</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Fernando Corbató</strong> (MIT) implementa el CTSS (<em>Compatible Time-Sharing System</em>) en el IBM 7090 en 1961. Antes del CTSS, un ordenador ejecutaba un trabajo a la vez — batch processing. Corbató demuestra que un único mainframe puede atender a múltiples usuarios simultáneos, intercalando sus trabajos con conmutación rápida de contexto. Cada usuario tiene la ilusión de que el ordenador es suyo. El CTSS también introduce las contraseñas en 1962 — la primera vez que un sistema informático tiene cuentas de usuario con credenciales. Corbató recibe el Premio Turing en 1990. El CTSS es el padre conceptual de Multics (1969), que es el padre de Unix.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Unix (1969) — cadena CTSS → Multics → Unix · <strong>Depende de:</strong> Harvard Mark I (1944) — contexto MIT de computación.</div>
+    </div>
+    <div class="chain-item" id="1968-programacion-estructurada-edsger-dijkstra">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">1968</span>
+        <h3 class="chain-title">Programación estructurada&nbsp;<span class="chain-person">— Edsger Dijkstra</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Edsger Dijkstra</strong> publica la carta al editor <em>Go To Statement Considered Harmful</em> en <em>Communications of the ACM</em> en marzo de 1968. El argumento: el <code>GOTO</code> hace que el código sea imposible de razonar — el flujo de ejecución puede saltar a cualquier línea desde cualquier otra, sin estructura. La alternativa: secuencia, selección (if/else), iteración (while/for). Estas tres estructuras son suficientes para cualquier cómputo (teorema de Böhm-Jacopini, 1966). La programación estructurada no es un lenguaje específico sino una disciplina. Dijkstra también escribe las primeras notas sobre verificación formal de programas — demostrar matemáticamente que un programa es correcto. Funda la idea de que programar es una actividad intelectual que puede hacerse bien o mal de forma sistemática.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Unix (1969) — el estilo de programación que Thompson y Ritchie adoptan; ALGOL 60 como lenguaje que Dijkstra usa para demostrar sus ideas · <strong>Depende de:</strong> ALGOL 60 (1960).</div>
+    </div>
+    <div class="chain-item" id="1969-hamilton-apollo-11-margaret-hamilton">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">1969</span>
+        <h3 class="chain-title">Hamilton · Apollo 11&nbsp;<span class="chain-person">— Margaret Hamilton</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Margaret Hamilton</strong> dirige el equipo de software de vuelo del Apollo 11 en el MIT Instrumentation Lab. El momento clave: el 20 de julio de 1969, a 3 minutos del alunizaje, el AGC (<em>Apollo Guidance Computer</em>) genera alarmas de sobrecarga (códigos 1202, 1201). El sistema operativo de Hamilton tiene un sistema de prioridades que descarta tareas de baja prioridad y protege las críticas — el radar de encuentro genera datos basura, el SO los tira, y el proceso de alunizaje continúa. Sin ese mecanismo de prioridades, la misión se aborta. Hamilton acuña el término "software engineering" para describir su disciplina y forzar su reconocimiento institucional como ingeniería. Recibe la Medalla Presidencial de la Libertad de Obama en 2016.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Programación estructurada — paralelo en tiempo; funda la ingeniería del software como profesión · <strong>Depende de:</strong> Von Neumann (1945) — arquitectura del AGC; programación estructurada — misma era.</div>
+    </div>
+    <div class="chain-item" id="1969-unix-ken-thompson-dennis-ritchie">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">1969</span>
+        <h3 class="chain-title">Unix&nbsp;<span class="chain-person">— Ken Thompson / Dennis Ritchie</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ken Thompson</strong> y <strong>Dennis Ritchie</strong> crean Unix en Bell Labs (Murray Hill, New Jersey) en 1969, empezando con un PDP-7 que nadie más quería. La filosofía: cada herramienta hace una sola cosa bien; la composición de herramientas resuelve problemas complejos; todo es un archivo. Thompson escribe el kernel inicial en ensamblador; Ritchie diseña C para reescribirlo. Unix introduce la <em>pipeline</em> (la salida de un programa es la entrada del siguiente), el filesystem jerárquico con inodes, y los procesos como abstracción. En 1973, Unix se reescribe completamente en C — primer sistema operativo portátil entre arquitecturas de hardware distintas. La cadena Unix → BSD → macOS → iOS y Unix → Linux → Android → servidores cubre el 90%+ del cómputo moderno.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> C (1973), GNU (1983); sustrato de macOS, Linux, Android, iOS · <strong>Depende de:</strong> Programación estructurada (1968) — filosofía; CTSS (1961) — modelo multiusuario; Manchester Atlas (1962) — memoria virtual como prerequisito.</div>
+    </div>
+    <div class="chain-item" id="1973-lenguaje-c-dennis-ritchie">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">1973</span>
+        <h3 class="chain-title">Lenguaje C&nbsp;<span class="chain-person">— Dennis Ritchie</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Dennis Ritchie</strong> diseña C entre 1969 y 1973 en Bell Labs, inicialmente como herramienta para reescribir Unix. C es de bajo nivel suficiente para controlar hardware (punteros, manipulación de bits) pero de alto nivel suficiente para ser portátil entre arquitecturas. En 1978, Ritchie y <strong>Brian Kernighan</strong> publican <em>The C Programming Language</em> ("K&amp;R") — uno de los libros técnicos más influyentes del siglo XX. El estándar ANSI C llega en 1989. C es el padre directo de C++ (1985), Java (1995), C# (2000), y el abuelo de prácticamente todos los lenguajes de sistemas modernos. Rust y Go, en 2010-2015, se definen explícitamente como alternativas a C para sistemas seguros.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> C++ (1985) — suma POO sobre C; Go y Rust (2010) — sucesores de sistemas · <strong>Depende de:</strong> Unix (1969) — C nace para escribir Unix.</div>
+    </div>
+    <div class="chain-item" id="1983-gnu-project-richard-stallman">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">L</span>
+        <span class="chain-year">1983</span>
+        <h3 class="chain-title">GNU Project&nbsp;<span class="chain-person">— Richard Stallman</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Richard Stallman</strong> anuncia el proyecto GNU (<em>GNU's Not Unix</em>) el 27 de septiembre de 1983, en net.unix-wizards y net.usoft. El manifiesto GNU (1985) artícula la filosofía: el software debe ser libre de usar, estudiar, modificar y redistribuir. La GPL (<em>GNU General Public License</em>, 1989) implementa el <em>copyleft</em>: cualquier obra derivada de software GPL debe también ser GPL. Stallman construye el compilador GCC, el editor Emacs, el debugger GDB, y docenas de herramientas. Lo que falta en 1991 es el kernel. Stallman no es solamente ideólogo — es un ingeniero excepcional: GCC compila más lenguajes que cualquier otro compilador de su época.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Linux (1991) — GNU + Linux = sistema operativo completo · <strong>Depende de:</strong> Unix (1969) — GNU es una reimplementación libre de Unix; Manchester Atlas — herencia académica.</div>
+    </div>
+    <div class="chain-item" id="1991-linux-kernel-linus-torvalds">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">M</span>
+        <span class="chain-year">1991</span>
+        <h3 class="chain-title">Linux kernel&nbsp;<span class="chain-person">— Linus Torvalds</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Linus Torvalds</strong> (Universidad de Helsinki) publica la primera versión del kernel Linux el 17 de septiembre de 1991 en comp.os.minix: "I'm doing a (free) operating system (just a hobby, won't be big and professional like GNU) for 386(486) AT clones." En 1992 adopta la GPL. En 1993, las distribuciones Slackware y Debian aparecen. Linux + herramientas GNU = sistema operativo completo y libre. Hoy Linux corre en el 96.4% de los servidores web, el 100% de las supercomputadoras del TOP500 (desde 2017), y es la base de Android (70%+ de smartphones). El modelo de desarrollo distribuido de Linux — miles de contribuidores coordinados por listas de correo y, desde 2005, por Git — es el prototipo de la colaboración open source.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Docker (2013), Android (2008) · <strong>Depende de:</strong> GNU (1983) — las herramientas; C (1973) — el lenguaje; Unix (1969) — la filosofía.</div>
+    </div>
+    <div class="chain-item" id="2005-git-linus-torvalds">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">N</span>
+        <span class="chain-year">2005</span>
+        <h3 class="chain-title">Git&nbsp;<span class="chain-person">— Linus Torvalds</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Linus Torvalds</strong> escribe Git en 10 días de abril de 2005, tras un conflicto con BitKeeper (la herramienta de control de versiones propietaria que usaba para el kernel Linux). El diseño es radical para su época: distribuido (cada clone es un repositorio completo), branches baratas (crear una rama cuesta nanosegundos), modelo de snapshots en lugar de deltas, y un grafo de commits como estructura de datos fundamental. El primer commit de Git usa Git para guardarse a sí mismo. GitHub (fundado 2008 por <strong>Tom Preston-Werner</strong>, <strong>Chris Wanstrath</strong> y <strong>PJ Hyett</strong>) lo populariza globalmente. En 2026, más de 100 millones de repositorios en GitHub.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Docker (2013) — Git habilita el versionado de Dockerfiles e imágenes · <strong>Depende de:</strong> C (1973) — Git está escrito en C; Linux (1991) — el ecosistema que lo necesita.</div>
+    </div>
+    <div class="chain-item" id="2013-docker-solomon-hykes">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">O</span>
+        <span class="chain-year">2013</span>
+        <h3 class="chain-title">Docker&nbsp;<span class="chain-person">— Solomon Hykes</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Solomon Hykes</strong> presenta Docker en la PyCon US 2013 (13 de marzo), en una sesión de 5 minutos que termina con aplausos sostenidos. Docker populariza los contenedores Linux — una tecnología que existía (Linux namespaces desde 2002, cgroups desde 2007) pero que nadie había empaquetado de forma usable. La idea: un contenedor es una imagen (datos) + un proceso. La imagen incluye el sistema de archivos, las dependencias, la configuración. Se ejecuta igual en el portátil del desarrollador y en producción. dotCloud (la empresa de Hykes) pivota completamente a Docker y se renombra Docker Inc. Kubernetes (Google, 2014) orquesta contenedores a escala.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Kubernetes (NET) · <strong>Depende de:</strong> Linux (1991) — los namespaces y cgroups del kernel; Git (2005) — control de versiones de las imágenes.</div>
+    </div>
+    <div class="chain-item" id="2021-github-copilot-github-openai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">P</span>
+        <span class="chain-year">2021</span>
+        <h3 class="chain-title">GitHub Copilot&nbsp;<span class="chain-person">— GitHub + OpenAI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>GitHub</strong> y <strong>OpenAI</strong> lanzan GitHub Copilot en fase técnica preview en junio de 2021, con disponibilidad general en junio de 2022. Copilot usa Codex — un descendiente de GPT-3 ajustado en código público de GitHub — para completar código en tiempo real dentro del editor. El cambio de paradigma: el programador describe la intención en comentarios o nombres de función, y la IA genera la implementación. En el primer año de disponibilidad general, GitHub reporta que Copilot genera el 40% del código en los archivos donde está activo. Es el primer <em>AI pair programmer</em> masivo. El mercado de herramientas IA para programación no existía en 2020; en 2024 es un campo con decenas de competidores.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Agentes de código (2024) · <strong>Depende de:</strong> Transformer (2017) — Codex es un transformer; Linux/Git/Docker — el ecosistema de código abierto sobre el que se entrena.</div>
+    </div>
+    <div class="chain-item" id="2024-coding-agents-multiples-equipos">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">Q</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Coding agents&nbsp;<span class="chain-person">— Múltiples equipos</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Cursor</strong> (Anysphere, fundada 2022) · <strong>Aider</strong> (Paul Gauthier) · <strong>Claude Code</strong> (Anthropic) · <strong>Devin</strong> (Cognition Labs) · <strong>Cline</strong> (open source). Los IDEs habitados por agentes IA que entienden la codebase completa, ejecutan comandos, leen errores, iteran. La diferencia con Copilot: el agente tiene contexto del repositorio entero (no solo el archivo abierto), puede ejecutar tests y leer su output, puede modificar múltiples archivos, puede buscar en la web documentación. <strong>Andrej Karpathy</strong> acuña el término <em>vibe coding</em> en febrero de 2025: programar describiendo la intención en lenguaje natural y dejando que el agente escriba e itere el código. El programador pasa de escribir código a revisar código — o a describir qué quiere que el código haga.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Vibe coding (Karpathy 2025); Claude Opus 4.7 y agentes autónomos · <strong>Depende de:</strong> GitHub Copilot (2021) — el antecedente; Transformer (2017) — el modelo subyacente; Docker/Git — el entorno que el agente ejecuta.</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1945</td>
+          <td>Konrad Zuse</td>
+          <td>Plankalkül; primer lenguaje de alto nivel del mundo</td>
+          <td>Alemania</td>
+        </tr>
+        <tr>
+          <td>1952</td>
+          <td>Grace Hopper</td>
+          <td>Compilador A-0; FLOW-MATIC; influencia clave en COBOL</td>
+          <td>EE.UU. / UNIVAC / US Navy</td>
+        </tr>
+        <tr>
+          <td>1957</td>
+          <td>John Backus</td>
+          <td>FORTRAN; notación BNF</td>
+          <td>EE.UU. / IBM</td>
+        </tr>
+        <tr>
+          <td>1958</td>
+          <td>John McCarthy</td>
+          <td>LISP; garbage collector; cálculo lambda en software</td>
+          <td>EE.UU. / MIT</td>
+        </tr>
+        <tr>
+          <td>1959</td>
+          <td>Peter Naur</td>
+          <td>ALGOL 60; notación BNF con Backus</td>
+          <td>Dinamarca</td>
+        </tr>
+        <tr>
+          <td>1959</td>
+          <td>Alan Perlis</td>
+          <td>ALGOL 60; primer recipiente del Premio Turing (1966)</td>
+          <td>EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1959</td>
+          <td>Adriaan van Wijngaarden</td>
+          <td>ALGOL 60; gramáticas van Wijngaarden</td>
+          <td>Países Bajos / CWI</td>
+        </tr>
+        <tr>
+          <td>1961</td>
+          <td>Fernando Corbató</td>
+          <td>CTSS; timesharing; contraseñas; Premio Turing 1990</td>
+          <td>EE.UU. / MIT</td>
+        </tr>
+        <tr>
+          <td>1968</td>
+          <td>Edsger Dijkstra</td>
+          <td>Programación estructurada; Go To Considered Harmful</td>
+          <td>Países Bajos / Eindhoven</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>Margaret Hamilton</td>
+          <td>Software Apollo 11; término "software engineering"</td>
+          <td>EE.UU. / MIT Instrumentation Lab</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>Ken Thompson</td>
+          <td>Unix; creador del shell, del editor ed, de Go (2007)</td>
+          <td>EE.UU. / Bell Labs</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>Dennis Ritchie</td>
+          <td>Unix; lenguaje C; <em>The C Programming Language</em></td>
+          <td>EE.UU. / Bell Labs</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>Brian Kernighan</td>
+          <td>Co-autor de <em>The C Programming Language</em> (K&amp;R)</td>
+          <td>EE.UU. / Bell Labs</td>
+        </tr>
+        <tr>
+          <td>1983</td>
+          <td>Richard Stallman</td>
+          <td>GNU Project; GPL; copyleft; GCC, Emacs</td>
+          <td>EE.UU. / MIT</td>
+        </tr>
+        <tr>
+          <td>1991</td>
+          <td>Linus Torvalds</td>
+          <td>Kernel Linux; Git (2005)</td>
+          <td>Finlandia / Universidad de Helsinki</td>
+        </tr>
+        <tr>
+          <td>2005</td>
+          <td>Tom Preston-Werner</td>
+          <td>Cofundador de GitHub</td>
+          <td>EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2005</td>
+          <td>Chris Wanstrath</td>
+          <td>Cofundador de GitHub</td>
+          <td>EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Solomon Hykes</td>
+          <td>Docker; contenedores Linux como modelo de empaquetado</td>
+          <td>Francia / EE.UU. / dotCloud</td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>Paul Gauthier</td>
+          <td>Aider; agente de código open source</td>
+          <td>EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Andrej Karpathy</td>
+          <td>Acuña el término "vibe coding"</td>
+          <td>EE.UU. / OpenAI → independiente</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="01_LOGICA.html#1936-lambda-calculus">01_LOGICA#1936 · Lambda calculus</a> → McCarthy construye LISP directamente sobre el cálculo lambda</li>
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1949-edsac-operativo">03_ARQUITECTURA#1949 · EDSAC operativo</a> → Hopper tiene una arquitectura Von Neumann sobre la que construir el compilador</li>
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1944-harvard-mark-i">03_ARQUITECTURA#1944 · Harvard Mark I</a> → donde Hopper aprende a programar</li>
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1962-manchester-atlas">03_ARQUITECTURA#1962 · Manchester Atlas</a> → la memoria virtual habilita los sistemas operativos multitarea (Unix)</li>
+      <li><span class="arrow">↗</span>De <a href="04_ELECTRONICA.html#1959-circuito-integrado">04_ELECTRONICA#1959 · Circuito integrado</a> → el hardware que hace posible que el software sea práctico</li>
+      <li><span class="arrow">↗</span>De <a href="IA.html#2017-transformer">IA#2017 · Transformer</a> → Copilot y los agentes de código usan transformers como motor</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De Unix (1969) → habilita <a href="DATA.html#1970-modelo-relacional">DATA#1970 · Modelo relacional</a> (bases de datos en entornos Unix); <a href="NET.html#1969-arpanet">NET#1969 · ARPANET</a> — Unix es el SO de los servidores ARPANET</li>
+      <li><span class="arrow">↘</span>De LISP (1958) → habilita <a href="IA.html">IA</a> — sistemas expertos, programación funcional, Word2Vec como herencia cultural</li>
+      <li><span class="arrow">↘</span>De Linux (1991) → habilita <a href="NET.html#2006-aws">NET#2006 · AWS</a> — los servidores cloud corren Linux; Android (2008)</li>
+      <li><span class="arrow">↘</span>De Docker (2013) → habilita <a href="NET.html#2014-kubernetes">NET#2014 · Kubernetes</a></li>
+      <li><span class="arrow">↘</span>De Copilot (2021) → habilita <a href="IA.html#2024-coding-agents">IA#2024 · Coding agents</a> como categoría de producto</li>
+      <li><span class="arrow">↘</span>De COBOL (1959) → sustrato de <a href="ARQ.html#1964-ibm-system-360">ARQ#1964 · IBM System/360</a> — COBOL corre en S/360 durante décadas</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa la cadena de paradigmas de programación (POO, funcional, agile) → POO en el grafo</li>
+      <li>Si quieres ver cómo el software de sistemas se convierte en infraestructura cloud → <a href="NET.html">NET</a> en el grafo</li>
+      <li>Si quieres la arquitectura de las máquinas que ejecutan este software → <a href="03_ARQUITECTURA.html">03_ARQUITECTURA</a></li>
+      <li>Si quieres ver cómo el software se encuentra con la inteligencia artificial → <a href="IA.html">IA</a> en el grafo</li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 5</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="04_ELECTRONICA.html" title="Capítulo anterior">◄</a>
+      <a href="06_PARADIGMAS.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>5-1</span>
+  </footer>
+</article>
+</body>
+</html>

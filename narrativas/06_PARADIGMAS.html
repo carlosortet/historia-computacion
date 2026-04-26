@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PARADIGMAS · Del objeto al agente que vibra · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="La historia de los paradigmas de programación es la historia de cómo los humanos negocian con la complejidad: cada nuevo modelo aparece cuando el anterior colapsa bajo su propio pe">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-paradigmas.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #8A3FFC;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">PARADIGMAS</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-06</span>
+  </header>
+  <h1 class="page-title">PARADIGMAS · Del objeto al agente que vibra</h1>
+  <p class="page-subtitle">La historia de los paradigmas de programación es la historia de cómo los humanos negocian con la complejidad: cada nuevo modelo aparece cuando el anterior colapsa bajo su propio peso.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>En 1967, dos noruegos inventan la clase y el objeto para simular barcos en un puerto. En 2025, un físico convertido en OpenAI-researcher acuña "vibe coding" y describe programar sin escribir código. Entre ambos extremos, la columna PARADIGMAS narra cómo el software organiza su propia complejidad: la POO primero como metáfora, luego como industria, luego como dogma que genera su propia reacción funcional, y finalmente como sustrato que la IA disuelve. Esta columna depende de SOFTWARE (C, Unix, LISP) y alimenta directamente la infraestructura cloud de INTERNET.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1967-simula-67-ole-johan-dahl-kristen-nygaard">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1967</span>
+        <h3 class="chain-title">Simula 67&nbsp;<span class="chain-person">— Ole-Johan Dahl, Kristen Nygaard</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ole-Johan Dahl</strong> y <strong>Kristen Nygaard</strong> (Universidad de Oslo) publican Simula 67: el primer lenguaje con clases, objetos y herencia. El contexto es operativo: Nygaard modelaba sistemas de simulación discreta (barcos en un puerto, pacientes en un hospital) y necesitaba agrupar estado + comportamiento en una unidad. La solución fue la clase.</p><p>Simula corre sobre un UNIVAC 1107 en Oslo. No llega a ser popular fuera de Escandinavia, pero <strong>Alan Kay</strong> lo leerá en Xerox PARC y acuñará el término "object-oriented" para describir lo que quiere construir.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1980-smalltalk-80">#1980 · Smalltalk-80</a> · <strong>Depende de:</strong> <a href="04_SOFTWARE.html#1973-lenguaje-c">04_SOFTWARE#1973 · Lenguaje C</a> (influencia indirecta vía la comunidad de lenguajes)</div>
+    </div>
+    <div class="chain-item" id="1980-smalltalk-80-alan-kay-dan-ingalls-adele-goldberg">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1980</span>
+        <h3 class="chain-title">Smalltalk-80&nbsp;<span class="chain-person">— Alan Kay, Dan Ingalls, Adele Goldberg</span></h3>
+      </div>
+      <div class="chain-body"><p>Xerox PARC. <strong>Alan Kay</strong> (visión), <strong>Dan Ingalls</strong> (implementación) y <strong>Adele Goldberg</strong> (lenguaje, libros, evangelización) construyen Smalltalk-80: el primer entorno donde todo es objeto, incluido el propio entorno. El sistema puede inspeccionarse y modificarse desde dentro.</p><p><strong>Adele Goldberg</strong> presenta el sistema a Steve Jobs durante su visita a PARC en 1979. Jobs ve la GUI y el ratón; lo que no copia es el modelo de objetos puro. Smalltalk recibe el ACM Software System Award en 1987. No domina el mercado, pero dicta la gramática que C++ y Java seguirán.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1985-c">#1985 · C++</a> · <a href="07_MICRO_PC.html#1984-macintosh">07_MICRO_PC#1984 · Macintosh</a> · <strong>Depende de:</strong> <a href="07_MICRO_PC.html#1973-xerox-alto">07_MICRO_PC#1973 · Xerox Alto</a> (mismo equipo PARC)</div>
+    </div>
+    <div class="chain-item" id="1985-c-bjarne-stroustrup">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1985</span>
+        <h3 class="chain-title">C++&nbsp;<span class="chain-person">— Bjarne Stroustrup</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Bjarne Stroustrup</strong> (Bell Labs) suma clases y herencia sobre C. El objetivo es claro: los sistemas de telecomunicaciones de Bell necesitaban modelado orientado a objetos sin sacrificar el control de memoria que C ofrecía. La primera edición comercial aparece en 1985 como "C with Classes"; el nombre C++ llega después.</p><p>C++ lleva la POO al software de sistemas, a los juegos, a los compiladores. Define el trade-off que marcará dos décadas: poder expresivo a cambio de complejidad de gestión de memoria. Stroustrup dirá más tarde que C++ fue diseñado para ser aprendido gradualmente, no de golpe.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1995-java">#1995 · Java</a> · <strong>Depende de:</strong> <a href="04_SOFTWARE.html#1973-lenguaje-c">04_SOFTWARE#1973 · Lenguaje C</a> (habilitante directo)</div>
+    </div>
+    <div class="chain-item" id="1991-python-guido-van-rossum">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1991</span>
+        <h3 class="chain-title">Python&nbsp;<span class="chain-person">— Guido van Rossum</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Guido van Rossum</strong> diseña Python durante las vacaciones de Navidad de 1989 (primera versión pública en febrero 1991). El objetivo declarado: un lenguaje que fuera legible como pseudocódigo. Van Rossum trabajaba en el CWI de Ámsterdam y estaba insatisfecho con ABC.</p><p>Python combina scripting, POO y funcional sin forzar ninguno de los tres. La versión 2.0 (2000) introduce list comprehensions; la 3.0 (2008) rompe compatibilidad para limpiar el diseño. Tres décadas después es la lengua franca de la IA, el data science y la automatización. El momento en que PyPI supera 500.000 paquetes (2023) cierra el argumento.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2025-vibe-coding">#2025 · Vibe Coding</a> (paralelo via coding agents) · <strong>Depende de:</strong> <a href="04_SOFTWARE.html#1958-lisp">04_SOFTWARE#1958 · LISP</a> (herencia funcional) · <a href="03_IA.html#2012-alexnet">03_IA#2012 · AlexNet</a> (python como puente a IA)</div>
+    </div>
+    <div class="chain-item" id="1995-java-james-gosling">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1995</span>
+        <h3 class="chain-title">Java&nbsp;<span class="chain-person">— James Gosling</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>James Gosling</strong> (Sun Microsystems) lanza Java con la promesa "write once, run anywhere" sobre la Java Virtual Machine. El contexto: la fragmentación de plataformas (Solaris, Windows, Mac, HP-UX) hacía imposible distribuir software binario. La JVM abstrae el hardware.</p><p>Java masifica la POO en entornos corporativos. J2EE (1999) la lleva a los servidores de aplicaciones bancarios y de telecomunicaciones. En 2010 Oracle compra Sun. Android adopta Java (después Kotlin sobre JVM) y le da 15 años adicionales de dominio. Gosling recibe el premio Draper en 2022.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2001-tdd-manifiesto-gil">#2001 · TDD + Manifiesto Ágil</a> · <a href="#2014-swift-typescript">#2014 · Swift + TypeScript</a> (paralelo)</div>
+    </div>
+    <div class="chain-item" id="1995-javascript-brendan-eich">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">1995</span>
+        <h3 class="chain-title">JavaScript&nbsp;<span class="chain-person">— Brendan Eich</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Brendan Eich</strong> diseña JavaScript en 10 días en Netscape, mayo 1995. Originalmente "Mocha", luego "LiveScript", renombrado JavaScript para aprovechar el hype de Java (sin relación técnica). Estandarizado como ECMAScript en 1997.</p><p>Durante su primera década, JavaScript es el lenguaje que nadie confiesa usar. Node.js (2009, Ryan Dahl) lo saca del navegador y lo instala en servidores. Con el tiempo pasa a ser el lenguaje más usado del mundo. Es el único lenguaje nativo del navegador hasta que WebAssembly llega en 2019.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2014-swift-typescript">#2014 · Swift + TypeScript</a> · <a href="#2007-renacimiento-funcional">#2007 · Renacimiento funcional</a> (paralelo)</div>
+    </div>
+    <div class="chain-item" id="2001-tdd-manifiesto-agil-kent-beck-ward-cunningham-martin-fowler">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2001</span>
+        <h3 class="chain-title">TDD + Manifiesto Ágil&nbsp;<span class="chain-person">— Kent Beck, Ward Cunningham, Martin Fowler</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Kent Beck</strong> publica <em>Extreme Programming Explained</em> (octubre 1999). En febrero de 2001, diecisiete desarrolladores se reúnen en Snowbird, Utah, y firman el Manifiesto Ágil: individuos sobre procesos, software funcionando sobre documentación exhaustiva, colaboración con el cliente sobre contratos. Beck publica <em>TDD: By Example</em> en noviembre 2002.</p><p>El Manifiesto desplaza el modelo waterfall (dominante en contratos de defensa y bancarios desde los 70) como marco de referencia. Scrum y XP se convierten en estándar de facto en startups y luego en empresas grandes. <strong>Martin Fowler</strong> y <strong>James Lewis</strong> sistematizarán la siguiente transformación: los microservicios (2014).</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2014-microservicios">#2014 · Microservicios</a></div>
+    </div>
+    <div class="chain-item" id="2007-renacimiento-funcional-rich-hickey-martin-odersky">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2007</span>
+        <h3 class="chain-title">Renacimiento funcional&nbsp;<span class="chain-person">— Rich Hickey, Martin Odersky</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Rich Hickey</strong> lanza Clojure (2007): Lisp sobre la JVM, inmutabilidad radical, datos como valores. <strong>Martin Odersky</strong> publica Scala (primera versión 2004, popularidad desde 2007): objetos + tipos + funcional sobre JVM.</p><p>El contexto es el problema de la concurrencia: con los procesadores multi-núcleo (Intel Core 2 Duo, 2006), el estado mutable compartido se convierte en una fuente constante de bugs imposibles de depurar. Las funciones puras y los datos inmutables no tienen ese problema. Clojure + Scala influyen en Java (lambdas en Java 8, 2014), en JavaScript (React/Redux, 2015) y en Python (functools, itertools).</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2010-go-rust">#2010 · Go + Rust</a> (paralelo)</div>
+    </div>
+    <div class="chain-item" id="2010-go-rust-rob-pike-robert-griesemer-ken-thompson-graydon-hoare">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2010</span>
+        <h3 class="chain-title">Go + Rust&nbsp;<span class="chain-person">— Rob Pike, Robert Griesemer, Ken Thompson / Graydon Hoare</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Go</strong>: anunciado por <strong>Rob Pike</strong>, <strong>Robert Griesemer</strong> y <strong>Ken Thompson</strong> (Google) en noviembre 2009; versión 1.0 en marzo 2012. Concurrencia nativa con goroutines, garbage collector, compilación rápida. Docker (Go, 2013) y Kubernetes (Go, 2014) lo consagran.</p><p><strong>Rust</strong>: proyecto personal de <strong>Graydon Hoare</strong> desde 2006; Mozilla lo patrocina en 2009; anuncio público en 2010; versión 1.0 en mayo 2015. Memory safety sin garbage collector mediante el sistema de ownership. Cloudflare Workers y el kernel Linux lo adoptan.</p><p>Ambos comparten el objetivo de reemplazar C/C++ en infraestructura, pero con garantías de seguridad que C nunca tuvo.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="09_INTERNET.html#2014-kubernetes">09_INTERNET#2014 · Kubernetes</a> (Go como sustrato)</div>
+    </div>
+    <div class="chain-item" id="2014-microservicios-martin-fowler-james-lewis">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">2014</span>
+        <h3 class="chain-title">Microservicios&nbsp;<span class="chain-person">— Martin Fowler, James Lewis</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Martin Fowler</strong> y <strong>James Lewis</strong> popularizan el término "microservices" en marzo 2014 (artículo en martinfowler.com). La idea no es nueva — SOA llevaba una década — pero la combinación con contenedores Docker (2013) y cloud hace que el modelo sea por primera vez económicamente viable para equipos medianos.</p><p>La arquitectura de microservicios descompone el monolito en servicios desplegables independientemente, cada uno con su propia base de datos y ciclo de release. Permite que Netflix, Amazon y Spotify escalen con cientos de equipos en paralelo. La complejidad operativa que genera (service mesh, distributed tracing, eventual consistency) alimentará la demanda de Kubernetes.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="09_INTERNET.html#2014-kubernetes">09_INTERNET#2014 · Kubernetes</a> · <strong>Depende de:</strong> <a href="04_SOFTWARE.html#2013-docker">04_SOFTWARE#2013 · Docker</a></div>
+    </div>
+    <div class="chain-item" id="2014-swift-typescript-chris-lattner-anders-hejlsberg">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">2014</span>
+        <h3 class="chain-title">Swift + TypeScript&nbsp;<span class="chain-person">— Chris Lattner / Anders Hejlsberg</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Apple Swift</strong> (junio 2014): diseñado por <strong>Chris Lattner</strong> (creador también de LLVM y Clang) como sucesor de Objective-C. Sucesor directo de la plataforma iOS/macOS.</p><p><strong>Microsoft TypeScript</strong> (anunciado 2012, mainstream 2014): diseñado por <strong>Anders Hejlsberg</strong> (también creador de Turbo Pascal y C#). Añade tipos estáticos opcionales sobre JavaScript. En 2024, TypeScript supera a JavaScript en repos activos en GitHub.</p><p>Ambos modernizan plataformas masivas sin romperlas: Swift convive con Objective-C, TypeScript es JavaScript válido.</p></div>
+    </div>
+    <div class="chain-item" id="2024-algoritmos-agenticos-multiples-autores">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">L</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Algoritmos agénticos&nbsp;<span class="chain-person">— múltiples autores</span></h3>
+      </div>
+      <div class="chain-body"><p>ReAct (2022, <strong>Shunyu Yao</strong> et al., Princeton+Google) → Tree-of-Thoughts (2023, <strong>Shunyu Yao</strong> et al.) → MCTS sobre LLMs → tool use estructurado → planning con verificación. La IA vuelve a abrazar la búsqueda algorítmica clásica, pero con LLMs como heurística.</p><p>No es una persona ni una empresa: es un patrón que emerge en paralelo en múltiples laboratorios. El resultado: agentes capaces de descomponer tareas, usar herramientas, verificar resultados e iterar. Base de Cursor, Claude Code, Devin.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2025-vibe-coding">#2025 · Vibe Coding</a> · <strong>Depende de:</strong> <a href="03_IA.html#2017-transformer">03_IA#2017 · Transformer</a></div>
+    </div>
+    <div class="chain-item" id="2025-vibe-coding-andrej-karpathy">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">M</span>
+        <span class="chain-year">2025</span>
+        <h3 class="chain-title">Vibe Coding&nbsp;<span class="chain-person">— Andrej Karpathy</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Andrej Karpathy</strong> acuña <em>vibe coding</em> en febrero de 2025: programar describiendo la intención en lenguaje natural y dejar que un agente IA escriba e itere el código. Karpathy era Director de IA en Tesla y cofundador de OpenAI; el término aparece en un post de X el 2 de febrero de 2025.</p><p>El nombre es provocador y preciso a la vez: el programador no necesita saber el nombre de la función, solo la intención. Es el cierre del arco que empieza con el compilador A-0 de Hopper (1952): cada salto de abstracción aleja al humano un paso más de los bits.</p></div>
+      <div class="chain-rel"><strong>Depende de:</strong> <a href="04_SOFTWARE.html#2024-coding-agents">04_SOFTWARE#2024 · Coding agents</a> · <a href="03_IA.html#2026-claude-opus-4-7-1m">03_IA#2026 · Claude Opus 4.7 · 1M</a> (como soporte de razonamiento)</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1967</td>
+          <td>Ole-Johan Dahl</td>
+          <td>Coinventor de Simula 67, clases y objetos</td>
+          <td>Universidad de Oslo, Noruega</td>
+        </tr>
+        <tr>
+          <td>1967</td>
+          <td>Kristen Nygaard</td>
+          <td>Coinventor de Simula 67, diseño del modelo de simulación</td>
+          <td>Universidad de Oslo, Noruega</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>Alan Kay</td>
+          <td>Visión de Smalltalk, acuña "object-oriented"</td>
+          <td>Xerox PARC, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>Dan Ingalls</td>
+          <td>Implementación de Smalltalk-80</td>
+          <td>Xerox PARC, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>Adele Goldberg</td>
+          <td>Lenguaje Smalltalk, libros, evangelización, demo a Jobs</td>
+          <td>Xerox PARC, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1985</td>
+          <td>Bjarne Stroustrup</td>
+          <td>Diseñador de C++</td>
+          <td>Bell Labs, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1991</td>
+          <td>Guido van Rossum</td>
+          <td>Diseñador de Python</td>
+          <td>CWI, Países Bajos</td>
+        </tr>
+        <tr>
+          <td>1995</td>
+          <td>James Gosling</td>
+          <td>Diseñador de Java</td>
+          <td>Sun Microsystems, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1995</td>
+          <td>Brendan Eich</td>
+          <td>Diseñador de JavaScript</td>
+          <td>Netscape, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1999</td>
+          <td>Kent Beck</td>
+          <td>Extreme Programming, TDD</td>
+          <td>Independiente, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2001</td>
+          <td>Martin Fowler</td>
+          <td>Manifiesto Ágil, microservicios</td>
+          <td>ThoughtWorks, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2001</td>
+          <td>James Lewis</td>
+          <td>Coautor del término "microservicios"</td>
+          <td>ThoughtWorks, UK</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>Rich Hickey</td>
+          <td>Diseñador de Clojure</td>
+          <td>Independiente, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2004</td>
+          <td>Martin Odersky</td>
+          <td>Diseñador de Scala</td>
+          <td>EPFL, Suiza</td>
+        </tr>
+        <tr>
+          <td>2009</td>
+          <td>Rob Pike</td>
+          <td>Codiseñador de Go</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2009</td>
+          <td>Robert Griesemer</td>
+          <td>Codiseñador de Go</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2009</td>
+          <td>Ken Thompson</td>
+          <td>Codiseñador de Go (también Unix, C)</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>Graydon Hoare</td>
+          <td>Diseñador de Rust</td>
+          <td>Mozilla, Canadá</td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td>Chris Lattner</td>
+          <td>Diseñador de Swift (también LLVM, Clang)</td>
+          <td>Apple, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td>Anders Hejlsberg</td>
+          <td>Diseñador de TypeScript (también Turbo Pascal, C#)</td>
+          <td>Microsoft, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>Andrej Karpathy</td>
+          <td>Acuña "vibe coding"</td>
+          <td>Ex-Tesla/OpenAI, EE.UU.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#1958-lisp">04_SOFTWARE#1958 · LISP</a> → habilita Python (herencia funcional) y el renacimiento funcional via Church-lambda</li>
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#1973-lenguaje-c">04_SOFTWARE#1973 · Lenguaje C</a> → habilita C++ (C es el sustrato directo)</li>
+      <li><span class="arrow">↗</span>De <a href="07_MICRO_PC.html#1973-xerox-alto">07_MICRO_PC#1973 · Xerox Alto</a> → habilita Smalltalk-80 (mismo equipo PARC, entorno paralelo)</li>
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#2013-docker">04_SOFTWARE#2013 · Docker</a> → habilita Microservicios (contenedores hacen el modelo viable)</li>
+      <li><span class="arrow">↗</span>De <a href="03_IA.html#2017-transformer">03_IA#2017 · Transformer</a> → habilita Coding agents y Vibe Coding</li>
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#2024-coding-agents">04_SOFTWARE#2024 · Coding agents</a> → habilita Vibe Coding</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>Smalltalk-80 → habilita <a href="07_MICRO_PC.html#1984-macintosh">07_MICRO_PC#1984 · Macintosh</a> (la GUI de Mac hereda conceptos PARC/Smalltalk)</li>
+      <li><span class="arrow">↘</span>Microservicios → habilita <a href="09_INTERNET.html#2014-kubernetes">09_INTERNET#2014 · Kubernetes</a> (la demanda de orquestación nace de los microservicios)</li>
+      <li><span class="arrow">↘</span>Python → habilita <a href="03_IA.html#2012-alexnet">03_IA#2012 · AlexNet</a> (puente crítico al ecosistema IA)</li>
+      <li><span class="arrow">↘</span>Vibe Coding → habilita <a href="03_IA.html#2026-claude-opus-4-7-1m">03_IA#2026 · Claude Opus 4.7 · 1M</a> (relación recíproca de soporte)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo se ejecutan estos paradigmas en hardware → <a href="07_MICRO_PC.html">07_MICRO_PC</a></li>
+      <li>Si quieres seguir la rama del software de sistemas (compiladores, kernels) → <a href="04_SOFTWARE.html">04_SOFTWARE</a></li>
+      <li>Si quieres ver cómo los agentes IA convierten estos lenguajes en herramientas → <a href="03_IA.html">03_IA</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 6</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="05_SOFTWARE.html" title="Capítulo anterior">◄</a>
+      <a href="07_MICRO_PC.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>6-1</span>
+  </footer>
+</article>
+</body>
+</html>

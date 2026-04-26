@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LÓGICA · Del binario a la prueba automática · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Tres siglos de reducción: el razonamiento humano convertido en símbolo, el símbolo en circuito, el circuito en lenguaje, el lenguaje en máquina que prueba matemáticas sola.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-logica.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #1F70C1;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">LÓGICA</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-01</span>
+  </header>
+  <h1 class="page-title">LÓGICA · Del binario a la prueba automática</h1>
+  <p class="page-subtitle">Tres siglos de reducción: el razonamiento humano convertido en símbolo, el símbolo en circuito, el circuito en lenguaje, el lenguaje en máquina que prueba matemáticas sola.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>La columna LÓGICA arranca con Leibniz y su obsesión de convertir el pensamiento en cálculo. Durante dos siglos, la lógica avanza dentro de la filosofía y las matemáticas puras, sin tocar ninguna máquina. El giro llega en 1937, cuando Shannon demuestra que los operadores de Boole son el plano eléctrico de un circuito. A partir de ahí, la lógica deja de ser abstracción y se convierte en ingeniería. El segundo arco, que empieza en Gödel y Turing, traza los límites de lo que puede demostrarse: y esos límites fuerzan la aparición del ordenador. El tercer arco, abierto en 2013 con HoTT, pregunta si las máquinas pueden hacer matemáticas formales por sí solas. En 2024, AlphaProof responde que sí, al nivel de olimpiada.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1673-leibniz-binario-gottfried-wilhelm-leibniz">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1673</span>
+        <h3 class="chain-title">Leibniz · binario&nbsp;<span class="chain-person">— Gottfried Wilhelm Leibniz</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Gottfried Wilhelm Leibniz</strong> construye la Stepped Reckoner entre 1672 y 1674 en París: primera calculadora mecánica capaz de las cuatro operaciones. En paralelo, formaliza el sistema binario en <em>Explication de l'Arithmétique Binaire</em> (1679). Su motivación es explícita: "Es indigno que hombres excelentes pierdan horas como esclavos en la labor de cálculos." El aparato no es confiable en la práctica, pero la notación binaria que publica es perfecta. Pasarán 168 años antes de que Boole le dé estructura algebraica.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Álgebra booleana (1847) · <strong>Depende de:</strong> Pascalina de Pascal (1642) — primer escalón mecánico que Leibniz mejora.</div>
+    </div>
+    <div class="chain-item" id="1847-algebra-booleana-george-boole">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1847</span>
+        <h3 class="chain-title">Álgebra booleana&nbsp;<span class="chain-person">— George Boole</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>George Boole</strong> publica <em>The Mathematical Analysis of Logic</em> (1847) y <em>Laws of Thought</em> (1854) desde Cork (Irlanda). Sin doctorado, enseña en el Queen's College. Formaliza la lógica clásica como un álgebra de dos valores: AND, OR, NOT como operaciones cerradas. La motivación es teológica y filosófica — busca "las leyes del pensamiento" — pero el armazón matemático es ajedrez puro. No hay máquina que lo ejecute. Muere en 1864 a los 49 años sin ver ninguna aplicación técnica.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Lógica de predicados de Frege (1879) · <strong>Depende de:</strong> sistema binario de Leibniz (1673) — sin notación de dos valores no hay álgebra de dos valores.</div>
+    </div>
+    <div class="chain-item" id="1879-logica-de-predicados-gottlob-frege">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1879</span>
+        <h3 class="chain-title">Lógica de predicados&nbsp;<span class="chain-person">— Gottlob Frege</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Gottlob Frege</strong> publica <em>Begriffsschrift</em> ("escritura conceptual") en 1879, con 31 años, en Jena. Es la primera notación lógica que incluye cuantificadores (∀, ∃) y permite expresar enunciados sobre objetos y sus propiedades con precisión matemática completa. Boole podía formalizar "A y B implica C"; Frege puede formalizar "para todo x, si x es par entonces x no es primo (salvo el 2)". La notación bidimensional de <em>Begriffsschrift</em> es ilegible — Russell y Peano ignoran el formato pero absorben las ideas. El trabajo directo de Frege influye en Hilbert, en Russell y, a través de ellos, en Gödel y Turing.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Incompletitud de Gödel (1931) · <strong>Depende de:</strong> Álgebra booleana (1847) — Frege conoce el trabajo de Boole y lo considera insuficiente.</div>
+    </div>
+    <div class="chain-item" id="1931-incompletitud-entscheidungsproblem-kurt-g-del-david-hilbert">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1931</span>
+        <h3 class="chain-title">Incompletitud · Entscheidungsproblem&nbsp;<span class="chain-person">— Kurt Gödel / David Hilbert</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>David Hilbert</strong> plantea el Entscheidungsproblem en 1928: ¿existe un procedimiento mecánico capaz de decidir, para cualquier enunciado matemático, si es verdadero o falso? <strong>Kurt Gödel</strong> responde en 1931, desde Viena, con dos teoremas de incompletitud: en cualquier sistema formal suficientemente potente, hay verdades que no se pueden probar dentro de ese sistema. El edificio que Hilbert quería construir tiene fisuras estructurales por definición. El resultado de Gödel no destruye las matemáticas, pero traza un perímetro: hay preguntas que ningún axioma resuelve desde dentro.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Lambda calculus de Church (1936), Máquina de Turing (1936) — ambos responden directamente al Entscheidungsproblem · <strong>Depende de:</strong> Lógica de predicados de Frege (1879) — sin notación formal precisa, Gödel no puede construir su argumento de autoref.</div>
+    </div>
+    <div class="chain-item" id="1936-lambda-calculus-alonzo-church">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1936</span>
+        <h3 class="chain-title">Lambda calculus&nbsp;<span class="chain-person">— Alonzo Church</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Alonzo Church</strong> publica el cálculo lambda en 1936 en Princeton. Define una notación formal para funciones y su aplicación: cualquier función computable puede expresarse como combinación de abstracciones lambda. Ese mismo año, simultáneamente e independientemente de Turing, demuestra que el Entscheidungsproblem es indecidible. Church y Turing trabajan en el mismo departamento; Turing lee el paper de Church antes de publicar el suyo. La tesis Church-Turing: cualquier función computable por un proceso mecánico es computable por una Máquina de Turing, y también por el cálculo lambda — son equivalentes.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> LISP (1958) — McCarthy construye LISP directamente sobre el cálculo lambda · Programación funcional moderna · <strong>Depende de:</strong> Gödel (1931) — la incompletitud es el problema que Church ataca.</div>
+    </div>
+    <div class="chain-item" id="1937-logica-circuitos-claude-shannon">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">1937</span>
+        <h3 class="chain-title">Lógica → circuitos&nbsp;<span class="chain-person">— Claude Shannon</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Claude Shannon</strong>, con 21 años, escribe su tesis de máster en el MIT en 1937. Título: <em>A Symbolic Analysis of Relay and Switching Circuits</em>. La tesis central: los relés eléctricos se comportan exactamente como los operadores del álgebra de Boole. Un relé abierto = 0, un relé cerrado = 1. AND = relés en serie, OR = relés en paralelo. Llevó 90 años desde Boole (1847) hasta que alguien hiciera esta conexión. Shannon lo vio porque trabajaba simultáneamente con circuitos físicos en Bell Labs y con lógica matemática en sus clases del MIT. La tesis no tiene más de 60 páginas. Es posiblemente la tesis de máster más influyente del siglo XX.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Z3 de Zuse (1941), Colossus (1944), ENIAC (1946) — puente directo entre lógica y electrónica · <strong>Depende de:</strong> Álgebra booleana de Boole (1847) — aplicación directa al dominio eléctrico.</div>
+    </div>
+    <div class="chain-item" id="1948-teoria-de-la-informacion-claude-shannon">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">1948</span>
+        <h3 class="chain-title">Teoría de la Información&nbsp;<span class="chain-person">— Claude Shannon</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Claude Shannon</strong> publica <em>A Mathematical Theory of Communication</em> en julio-octubre de 1948, en el Bell System Technical Journal. Dos artículos en dos entregas. Define el <strong>bit</strong> como unidad de información, establece la entropía de Shannon como medida de incertidumbre, y prueba los límites teóricos de transmisión sobre cualquier canal con ruido. La <em>Scientific American</em> lo llamará "la Magna Carta de la era de la información". El biólogo <strong>James Gleick</strong> sostiene que este paper es más importante que el transistor. Sin él no hay compresión de datos, no hay criptografía moderna, no hay codificación de canal, no hay cálculo de capacidad de redes neuronales.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TCP/IP y toda la comunicación digital — la teoría del canal es el sustrato matemático · <strong>Depende de:</strong> Tesis Shannon 1937 — misma mente, aplicación extendida al dominio de la comunicación.</div>
+    </div>
+    <div class="chain-item" id="2013-hott-book-univalent-foundations-vladimir-voevodsky-et-al">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2013</span>
+        <h3 class="chain-title">HoTT Book · Univalent Foundations&nbsp;<span class="chain-person">— Vladimir Voevodsky et al.</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>The Univalent Foundations Program</strong> — 40 autores reunidos en el Institute for Advanced Study (IAS) de Princeton — publica el <em>HoTT Book</em> en 2013. <strong>Vladimir Voevodsky</strong> (ganador de la Medalla Fields en 2002, ahora en IAS) aporta el axioma de univalencia: dos estructuras matemáticamente equivalentes son, en este sistema, literalmente idénticas. HoTT conecta la teoría de tipos de Martin-Löf con la topología algebraica. El resultado práctico: un sistema donde las pruebas matemáticas pueden verificarse automáticamente por ordenador. Voevodsky se convierte al HoTT tras encontrar un error en uno de sus propios teoremas que pasó años sin detectarse — la formalización mecánica como corrector de errores humanos.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Lean 4 + mathlib (2021) · <strong>Depende de:</strong> Teoremas de incompletitud de Gödel (1931) — el debate fundacional que HoTT reabre; Lambda calculus de Church (1936) — teoría de tipos como descendiente.</div>
+    </div>
+    <div class="chain-item" id="2021-lean-4-mathlib-leonardo-de-moura-et-al">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2021</span>
+        <h3 class="chain-title">Lean 4 + mathlib&nbsp;<span class="chain-person">— Leonardo de Moura et al.</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Leonardo de Moura</strong> (Microsoft Research) lanza Lean 4 en 2021: lenguaje de programación y asistente de pruebas simultáneamente. La clave es <strong>mathlib</strong>: una biblioteca matemática colaborativa mantenida por cientos de matemáticos. En 2022-2023, <strong>Peter Scholze</strong> (Medalla Fields 2018) pide ayuda para formalizar su "liquid tensor experiment" — una prueba de 100+ páginas que él mismo no está seguro de que sea correcta. La comunidad Lean la formaliza en meses. El ordenador confirma: la prueba es correcta. Herramientas similares: Isabelle, Coq, Agda. Lean domina por su ergonomía y por mathlib.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> AlphaProof (2024) · <strong>Depende de:</strong> HoTT Book (2013) — sustrato teórico; TAOCP de Knuth (1968) — formalización del análisis algorítmico como antecedente cultural.</div>
+    </div>
+    <div class="chain-item" id="2024-alphaproof-alphageometry-deepmind">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">AlphaProof / AlphaGeometry&nbsp;<span class="chain-person">— DeepMind</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>DeepMind</strong> publica AlphaProof y AlphaGeometry en julio de 2024. En la IMO 2024 (International Mathematical Olympiad), el sistema resuelve 4 de 6 problemas, incluyendo dos de los tres más difíciles. Medalla de plata equivalente — el primer resultado de plata para un sistema automatizado en la olimpiada más exigente del mundo. AlphaProof combina un modelo de lenguaje con el asistente de pruebas Lean: el LLM propone pasos de prueba, Lean verifica cada uno formalmente. AlphaGeometry usa un sistema diferente (cálculo simbólico + LLM) para los problemas de geometría.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> era de formalización matemática asistida por IA — el círculo Boole → Hilbert → Gödel → Turing → IA razonando en lógica formal se cierra. · <strong>Depende de:</strong> Lean 4 (2021) — motor de verificación; Transformer (2017) — LLM que propone los pasos.</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1673</td>
+          <td>Gottfried Wilhelm Leibniz</td>
+          <td>Sistema binario formalizado; primera calculadora de 4 operaciones</td>
+          <td>Alemania / París</td>
+        </tr>
+        <tr>
+          <td>1847</td>
+          <td>George Boole</td>
+          <td>Álgebra lógica AND/OR/NOT sobre dos valores</td>
+          <td>Irlanda / Queen's College Cork</td>
+        </tr>
+        <tr>
+          <td>1879</td>
+          <td>Gottlob Frege</td>
+          <td>Lógica de predicados con cuantificadores; primera notación formal completa</td>
+          <td>Alemania / Universidad de Jena</td>
+        </tr>
+        <tr>
+          <td>1928</td>
+          <td>David Hilbert</td>
+          <td>Entscheidungsproblem — el problema que Gödel y Turing resuelven</td>
+          <td>Alemania / Universidad de Gotinga</td>
+        </tr>
+        <tr>
+          <td>1931</td>
+          <td>Kurt Gödel</td>
+          <td>Teoremas de incompletitud — límites formales de los sistemas matemáticos</td>
+          <td>Austria / Universidad de Viena</td>
+        </tr>
+        <tr>
+          <td>1936</td>
+          <td>Alonzo Church</td>
+          <td>Cálculo lambda; indecidibilidad del Entscheidungsproblem</td>
+          <td>EE.UU. / Princeton</td>
+        </tr>
+        <tr>
+          <td>1937</td>
+          <td>Claude Shannon</td>
+          <td>Aplicación del álgebra de Boole a circuitos eléctricos</td>
+          <td>EE.UU. / MIT / Bell Labs</td>
+        </tr>
+        <tr>
+          <td>1948</td>
+          <td>Claude Shannon</td>
+          <td>Teoría de la información; definición del bit; entropía</td>
+          <td>EE.UU. / Bell Labs</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Vladimir Voevodsky</td>
+          <td>Axioma de univalencia; Univalent Foundations</td>
+          <td>Rusia / EE.UU. / IAS Princeton</td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>Leonardo de Moura</td>
+          <td>Lean 4; asistente de pruebas práctico para matemáticos</td>
+          <td>Brasil / Microsoft Research</td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>Peter Scholze</td>
+          <td>Formalización del liquid tensor experiment en Lean</td>
+          <td>Alemania / Universidad de Bonn</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1642-pascalina">03_ARQUITECTURA#1642 · Pascalina</a> → Leibniz mejora el cálculo mecánico de Pascal para construir la Stepped Reckoner</li>
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1936-m-quina-universal">03_ARQUITECTURA#1936 · Máquina universal</a> → Turing responde directamente al Entscheidungsproblem (paralelo a Church 1936)</li>
+      <li><span class="arrow">↗</span>De <a href="02_ALGORITMOS.html#1968-knuth-taocp-vol-1">02_ALGORITMOS#1968 · Knuth · TAOCP Vol 1</a> → antecedente cultural de la formalización algorítmica que habilita Lean 4</li>
+      <li><span class="arrow">↗</span>De <a href="05_SOFTWARE.html#2021-github-copilot">05_SOFTWARE#2021 · GitHub Copilot</a> / <a href="03_ARQUITECTURA.html">03_ARQUITECTURA</a> Transformer → AlphaProof usa un LLM como generador de pasos de prueba</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De Shannon 1937 → habilita <a href="04_ELECTRONICA.html#1941-z3">04_ELECTRONICA#1941 · Z3</a>, <a href="04_ELECTRONICA.html#1944-colossus">04_ELECTRONICA#1944 · Colossus</a>, <a href="04_ELECTRONICA.html#1946-eniac">04_ELECTRONICA#1946 · ENIAC</a> — puente lógica-electrónica</li>
+      <li><span class="arrow">↘</span>De Church (lambda calculus) → habilita <a href="05_SOFTWARE.html#1958-lisp">05_SOFTWARE#1958 · LISP</a> y toda la programación funcional</li>
+      <li><span class="arrow">↘</span>De Gödel → habilita <a href="02_ALGORITMOS.html#1971-cook-levin-np">02_ALGORITMOS#1971 · Cook-Levin · NP</a> (vía cadena Gödel → Turing → complejidad)</li>
+      <li><span class="arrow">↘</span>De Shannon 1948 → habilita TCP/IP y toda la comunicación digital — sustrato matemático de <a href="NET.html">NET</a></li>
+      <li><span class="arrow">↘</span>De Lean 4 → habilita <a href="#2024-alphaproof-alphageometry">#2024 · AlphaProof / AlphaGeometry</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo la lógica se convierte en hardware físico → <a href="04_ELECTRONICA.html">04_ELECTRONICA</a></li>
+      <li>Si quieres ver cómo el cálculo lambda se convierte en lenguajes de programación → <a href="05_SOFTWARE.html">05_SOFTWARE</a></li>
+      <li>Si quieres la cadena de algoritmos que nace de los límites lógicos (Cook-Levin, Shor) → <a href="02_ALGORITMOS.html">02_ALGORITMOS</a></li>
+      <li>Si quieres ver cómo se construyen las máquinas que ejecutan la lógica → <a href="03_ARQUITECTURA.html">03_ARQUITECTURA</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 1</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="00_INDICE.html" title="Capítulo anterior">◄</a>
+      <a href="02_ALGORITMOS.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>1-1</span>
+  </footer>
+</article>
+</body>
+</html>

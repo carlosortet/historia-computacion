@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIMULACIÓN · Del dado de von Neumann al mundo sintético · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Desde la primera predicción meteorológica numérica hasta los modelos generativos que aprenden física al ver vídeos del mundo real: la simulación pasa de programarse a aprenderse.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-simulacion.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #A66A0A;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">SIMULACIÓN</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-15</span>
+  </header>
+  <h1 class="page-title">SIMULACIÓN · Del dado de von Neumann al mundo sintético</h1>
+  <p class="page-subtitle">Desde la primera predicción meteorológica numérica hasta los modelos generativos que aprenden física al ver vídeos del mundo real: la simulación pasa de programarse a aprenderse.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>La simulación como disciplina computacional nace en el Manhattan Project con Monte Carlo: usar la aleatoriedad para aproximar integrales que no tienen solución analítica. En 50 años recorre el camino completo: meteorología (1950), diseño de circuitos (1973), dinámica de fluidos en la ingeniería aeronáutica (1989), física en tiempo real para videojuegos que luego entrenan robots (2008), gemelos digitales industriales (2021-2022), y modelos de fundación que sintetizan entornos físicos completos sin necesidad de programarlos explícitamente (2025). El patrón: cada vez que la potencia de cómputo da un salto de orden de magnitud, una nueva clase de fenómenos pasa de "imposible de simular" a "simulable en tiempo útil". El problema que resuelve esta columna es epistemológico además de técnico: permite experimentar en mundos que no existen todavía antes de construirlos.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1947-monte-carlo-ulam-y-von-neumann">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1947</span>
+        <h3 class="chain-title">Monte Carlo&nbsp;<span class="chain-person">— Ulam y von Neumann</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Stanislaw Ulam</strong> (Los Alamos) concibe el método Monte Carlo recuperándose de una enfermedad en 1946. Estudiando solitario, se pregunta: ¿cuál es la probabilidad de que salga un cierto orden de cartas? En lugar de calcularlo combinatoriamente, propone muestrear el espacio aleatoriamente. <strong>John von Neumann</strong> lo formaliza y lo aplica a cálculos de difusión de neutrones para la bomba. El nombre "Monte Carlo" lo elige Ulam en honor al casino de Mónaco.</p><p>El método: si no puedes integrar una función analíticamente, muestrea muchos puntos aleatorios y promedia. Con suficientes muestras, el promedio converge al valor real. Funciona en 100 dimensiones igual que en 2.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Meteorología numérica en ENIAC (1950) · <strong>Depende de:</strong> <a href="03_ARQUITECTURA.html#1945-von-neumann">03_ARQUITECTURA#1945 · Von Neumann</a> — es el mismo equipo del Manhattan Project</div>
+    </div>
+    <div class="chain-item" id="1950-weather-eniac-charney-fj-rtoft-von-neumann">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1950</span>
+        <h3 class="chain-title">Weather (ENIAC)&nbsp;<span class="chain-person">— Charney, Fjørtoft, von Neumann</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Jules Charney</strong> (MIT), <strong>Ragnar Fjørtoft</strong> (meteorólogo noruego) y <strong>John von Neumann</strong> ejecutan la primera predicción meteorológica numérica en ENIAC (abril 1950, Princeton). Calculan un pronóstico de 24 horas para Norteamérica usando ecuaciones de cuasi-geostrofía simplificadas. El cálculo tarda 24 horas — el mismo tiempo que predice.</p><p>En 1955, la <strong>Joint Numerical Weather Prediction Unit</strong> (USAF + USNavy + USWB) ya produce predicciones operacionales diarias. El tiempo de cómputo cae por debajo del tiempo real a finales de los 50.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> CFD industrial (1989) · <strong>Depende de:</strong> Monte Carlo (1947), <a href="02_ELECTRONICA.html#1946-eniac">02_ELECTRONICA#1946 · ENIAC</a> como hardware</div>
+    </div>
+    <div class="chain-item" id="1973-spice-donald-pederson">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1973</span>
+        <h3 class="chain-title">SPICE&nbsp;<span class="chain-person">— Donald Pederson</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Donald Pederson</strong> y equipo en <strong>UC Berkeley</strong> crean SPICE (Simulation Program with Integrated Circuit Emphasis): simulador de circuitos analógicos y digitales. Open source desde el primer día — Pederson insiste en que el código sea público para facilitar la adopción universitaria.</p><p>SPICE resuelve las ecuaciones diferenciales de los componentes electrónicos (transistores, condensadores, resistencias) y predice el comportamiento del circuito antes de fabricarlo. Antes de SPICE, los diseñadores de chips construían prototipos físicos para cada iteración — proceso lento y caro.</p><p>Sin SPICE no se diseña ningún chip moderno. Todos los EDA tools (Electronic Design Automation) de la industria descienden o compiten con SPICE.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> CFD industrial (1989) como paralelo de simulación especializada · <strong>Depende de:</strong> <a href="02_ELECTRONICA.html#1959-circuito-integrado">02_ELECTRONICA#1959 · Circuito integrado</a> — SPICE nace para simular ICs</div>
+    </div>
+    <div class="chain-item" id="1989-cfd-industrial-boeing-y-aeronautica">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1989</span>
+        <h3 class="chain-title">CFD industrial&nbsp;<span class="chain-person">— Boeing y aeronáutica</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Computational Fluid Dynamics</strong> se vuelve estándar industrial en la aeronáutica y el automóvil. El hito canónico: el <strong>Boeing 777</strong> (certificado 1995) es el primer avión "100% diseñado en ordenador" sin maqueta física a escala completa. El gemelo digital computacional reemplaza el túnel de viento de madera.</p><p>Los grupos de investigación clave: <strong>NASA Ames</strong>, grupos en Oxford, ONERA (Francia). Los códigos: FLUENT, OVERFLOW, CFL3D. La GPU todavía no existe como acelerador — estos cálculos corren en estaciones de trabajo SGI y superordenadores Cray.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> PhysX/Bullet (2008) · <strong>Depende de:</strong> Weather/ENIAC (1950) como precursor metodológico</div>
+    </div>
+    <div class="chain-item" id="2002-a-new-kind-of-science-stephen-wolfram">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">2002</span>
+        <h3 class="chain-title">A New Kind of Science&nbsp;<span class="chain-person">— Stephen Wolfram</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Stephen Wolfram</strong> publica <em>A New Kind of Science</em> (may 2002): 1.197 páginas con la tesis de que reglas computacionales simples (autómatas celulares) generan complejidad arbitraria. La regla 30, un autómata de 3 colores con una regla de 3 bits, produce patrones que superan el test de aleatoriedad de NIST.</p><p>La tesis central: el universo es un autómata computacional. El cómputo es el lenguaje fundamental de la naturaleza, no la matemática diferencial.</p><p>El libro es polémico (Wolfram no cita suficiente trabajo previo, incluyendo el de <strong>John Conway</strong> con Game of Life). Pero conecta la tradición de autómatas autoreplicantes de <strong>von Neumann</strong> (1948) con la simulación moderna: si las reglas simples generan complejidad, quizá la realidad es una simulación de bajo nivel.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> PhysX (2008) en paralelo · <strong>Depende de:</strong> <a href="03_ARQUITECTURA.html#1948-aut-matas-autoreplicantes">03_ARQUITECTURA#1948 · Autómatas autoreplicantes</a> (von Neumann)</div>
+    </div>
+    <div class="chain-item" id="2008-physx-bullet-nvidia-erwin-coumans">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">2008</span>
+        <h3 class="chain-title">PhysX · Bullet&nbsp;<span class="chain-person">— NVIDIA / Erwin Coumans</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> adquiere Ageia Technologies (4 feb 2008) y libera PhysX como SDK gratuito. <strong>Erwin Coumans</strong> desarrolla <strong>Bullet Physics</strong> (open source, desde 2003): rigid bodies, soft bodies, colisiones. PhysX se ejecuta en GPU; Bullet corre en CPU.</p><p>El impacto no es el videojuego en sí — es que los motores de juego (Unreal Engine, Unity) los integran como infraestructura estándar. Esto convierte los motores de juego en simuladores físicos de propósito general. Años después, Boston Dynamics, Waymo y todos los proyectos de robótica autónoma usarán derivados de esta infraestructura para entrenar sus sistemas.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> NVIDIA Omniverse (2021) · <strong>Depende de:</strong> CFD industrial (1989), A New Kind of Science (2002)</div>
+    </div>
+    <div class="chain-item" id="2021-nvidia-omniverse-nvidia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2021</span>
+        <h3 class="chain-title">NVIDIA Omniverse&nbsp;<span class="chain-person">— NVIDIA</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> lanza Omniverse en versión general (dic 2021): plataforma de gemelos digitales en tiempo real basada en <strong>USD</strong> (Universal Scene Description), el formato de escenas 3D creado por <strong>Pixar</strong>. Multi-usuario: varios ingenieros de lugares distintos colaboran en la misma simulación simultáneamente. Físicamente correcta: materiales PBR, iluminación ray-traced, simulación de fluidos integrada.</p><p>Los primeros adoptantes industriales: <strong>BMW</strong> simula la fábrica completa antes de mover una máquina real. <strong>Boeing</strong> simula el ensamblaje de aviones. <strong>Foxconn</strong> planifica la reorganización de líneas de producción.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Digital Twins mainstream (2022) · <strong>Depende de:</strong> PhysX (2008), <a href="12_PARALELISMO.html">12_PARALELISMO</a> para el hardware de renderizado físico</div>
+    </div>
+    <div class="chain-item" id="2022-digital-twins-mainstream-bmw-boeing-singapore">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2022</span>
+        <h3 class="chain-title">Digital Twins mainstream&nbsp;<span class="chain-person">— BMW, Boeing, Singapore</span></h3>
+      </div>
+      <div class="chain-body"><p>Los gemelos digitales pasan de proyecto piloto a práctica industrial estándar. <strong>BMW iFactory</strong>: cada fábrica tiene su clon digital completo actualizado en tiempo real — líneas de montaje, robots, flujo de materiales. Si se reorganiza la planta virtual, el sistema predice cuellos de botella antes de mover nada físico.</p><p><strong>Digital Singapore</strong>: el gobierno de Singapur crea un gemelo digital de toda la isla — edificios, infraestructura, datos de sensores urbanos en tiempo real — para planificación urbanística y gestión de emergencias.</p><p>La fusión: el gemelo digital no es ya una visualización sino un entorno en el que se toman decisiones que después se ejecutan en el mundo físico.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> World Models / Sora (2024) · <strong>Depende de:</strong> NVIDIA Omniverse (2021)</div>
+    </div>
+    <div class="chain-item" id="2024-world-models-sora-openai-deepmind">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">World Models · Sora&nbsp;<span class="chain-person">— OpenAI, DeepMind</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>OpenAI</strong> presenta Sora (15 feb 2024): modelo de difusión latente entrenado sobre vídeo masivo que genera clips de hasta 1 minuto físicamente consistentes. Sora no programa física explícitamente — aprende la dinámica del mundo al ver cómo se mueven las cosas en miles de millones de frames.</p><p><strong>DeepMind</strong> publica Genie (paper arXiv, 23 feb 2024): modelo generativo entrenado en plataformers 2D que aprende las reglas del mundo físico de videojuegos sin supervisión explícita. Con un solo frame como prompt, genera el videojuego completo.</p><p>La transición conceptual: la simulación deja de programarse con ecuaciones diferenciales y comienza a aprenderse de observaciones del mundo.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> NVIDIA Cosmos (2025) · <strong>Depende de:</strong> Digital Twins (2022), <a href="11_IA.html#2023-gpt-4">11_IA#2023 · GPT-4</a> y Transformer como motor generativo</div>
+    </div>
+    <div class="chain-item" id="2025-nvidia-cosmos-genesis-2-nvidia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">2025</span>
+        <h3 class="chain-title">NVIDIA Cosmos · Genesis 2&nbsp;<span class="chain-person">— NVIDIA</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>NVIDIA</strong> anuncia Cosmos en CES (6 ene 2025): plataforma de "world foundation models" específicamente diseñados para entrenar robots y vehículos autónomos en entornos sintéticos. Los modelos de Cosmos generan escenas físicamente coherentes desde descripciones textuales o imágenes de referencia.</p><p><strong>Genesis 2</strong> (sucesor open source del simulador Genesis): simulador de propósito general para robótica y física, compatible con los modelos de Cosmos como backend.</p><p>La lógica operativa: si necesitas millones de trayectorias de robot para entrenar una política robótica y el mundo real solo genera miles, la simulación genera los millones restantes. El ratio simulación/realidad pasa de 1:1 a 1000:1.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Foundation Simulation (2027) · <strong>Depende de:</strong> World Models (2024), <a href="10_ROBOTICA.html#robot-foundation-models">10_ROBOTICA#Robot Foundation Models</a></div>
+    </div>
+    <div class="chain-item" id="2027-foundation-simulation-esp-convergencia">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">2027</span>
+        <h3 class="chain-title">Foundation simulation (esp.)&nbsp;<span class="chain-person">— convergencia</span></h3>
+      </div>
+      <div class="chain-body"><p>Convergencia esperada: un único modelo de fundación capaz de simular cualquier entorno físico — mecánico, fluido, biológico, social — con prompts en lenguaje natural. Sora + AlphaFold + Cosmos en una capa unificada. Si describes "simula el plegamiento de esta proteína en un solvente acuoso a 37°C durante 10 microsegundos", el modelo genera la trayectoria.</p><p>La clave técnica habilitante: los modelos de fundación unificados aprenden física transferible entre dominios — la dinámica de fluidos comparte estructura matemática con la dinámica molecular que comparte estructura con los mercados financieros.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> realidad como query; el mundo físico como dataset de validación · <strong>Depende de:</strong> NVIDIA Cosmos (2025), <a href="11_IA.html#2021-alphafold-2">11_IA#2021 · AlphaFold 2</a> como caso de demostración, <a href="10_ROBOTICA.html#robot-fm-cross-embodiment">10_ROBOTICA#Robot FM cross-embodiment</a> en paralelo</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1947</td>
+          <td>Stanislaw Ulam</td>
+          <td>Concepción del método Monte Carlo</td>
+          <td>Los Alamos / Polonia-USA</td>
+        </tr>
+        <tr>
+          <td>1947</td>
+          <td>John von Neumann</td>
+          <td>Formalización matemática de Monte Carlo</td>
+          <td>Los Alamos / Princeton</td>
+        </tr>
+        <tr>
+          <td>1950</td>
+          <td>Jules Charney</td>
+          <td>Primera predicción meteorológica numérica</td>
+          <td>MIT</td>
+        </tr>
+        <tr>
+          <td>1950</td>
+          <td>Ragnar Fjørtoft</td>
+          <td>Predicción meteorológica ENIAC (meteorólogo)</td>
+          <td>Instituto Meteorológico Noruego</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>Donald Pederson</td>
+          <td>Creó SPICE, simulación de circuitos</td>
+          <td>UC Berkeley</td>
+        </tr>
+        <tr>
+          <td>2002</td>
+          <td>Stephen Wolfram</td>
+          <td>A New Kind of Science, autómatas y complejidad</td>
+          <td>Wolfram Research</td>
+        </tr>
+        <tr>
+          <td>2008</td>
+          <td>Erwin Coumans</td>
+          <td>Bullet Physics (open source)</td>
+          <td>Sony / Google</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1948-aut-matas-autoreplicantes">03_ARQUITECTURA#1948 · Autómatas autoreplicantes</a> → von Neumann conecta autómatas con A New Kind of Science</li>
+      <li><span class="arrow">↗</span>De <a href="02_ELECTRONICA.html#1946-eniac">02_ELECTRONICA#1946 · ENIAC</a> → hardware para la primera predicción meteorológica (1950)</li>
+      <li><span class="arrow">↗</span>De <a href="02_ELECTRONICA.html#1959-circuito-integrado">02_ELECTRONICA#1959 · Circuito integrado</a> → SPICE nace para simular ICs</li>
+      <li><span class="arrow">↗</span>De <a href="11_IA.html#2023-gpt-4">11_IA#2023 · GPT-4</a> → habilita los World Models como modelos generativos de física</li>
+      <li><span class="arrow">↗</span>De <a href="11_IA.html#2021-alphafold-2">11_IA#2021 · AlphaFold 2</a> → demuestra que la IA puede resolver problemas de simulación científica</li>
+      <li><span class="arrow">↗</span>De <a href="13_CUANTICA.html#1982-simulaci-n-cu-ntica">13_CUANTICA#1982 · Simulación cuántica</a> → Feynman propone simular física con física (paralelo conceptual con Monte Carlo)</li>
+      <li><span class="arrow">↗</span>De <a href="12_PARALELISMO.html">12_PARALELISMO</a> → GPUs como acelerador de CFD, Omniverse, Cosmos</li>
+      <li><span class="arrow">↗</span>De <a href="10_ROBOTICA.html#robot-foundation-models">10_ROBOTICA#Robot Foundation Models</a> → π0 y RT-2 consumen simulación como fuente de datos de entrenamiento</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De Omniverse/Digital Twins → habilita <a href="10_ROBOTICA.html#humanoides-comerciales">10_ROBOTICA#Humanoides comerciales</a> (entrenamiento en entornos sintéticos)</li>
+      <li><span class="arrow">↘</span>De NVIDIA Cosmos (2025) → habilita <a href="10_ROBOTICA.html#robot-fm-cross-embodiment">10_ROBOTICA#Robot FM cross-embodiment</a> (datos sintéticos a escala)</li>
+      <li><span class="arrow">↘</span>De Foundation Simulation (2027) → paralelo con <a href="10_ROBOTICA.html#robot-fm-cross-embodiment">10_ROBOTICA#Robot FM cross-embodiment</a> (misma frontera)</li>
+      <li><span class="arrow">↘</span>De PhysX/Bullet → motores de juego como infraestructura de simulación física general</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa la robótica que usa estas simulaciones → <a href="10_ROBOTICA.html">10_ROBOTICA</a></li>
+      <li>Si te interesa la IA que aprende a simular mundos → <a href="11_IA.html">11_IA</a></li>
+      <li>Si te interesa la supercomputación que ejecuta estas simulaciones → <a href="14_SUPERCOMPUTACION.html">14_SUPERCOMPUTACION</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 15</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="14_SUPERCOMPUTACION.html" title="Capítulo anterior">◄</a>
+      
+    </span>
+    <span>15-1</span>
+  </footer>
+</article>
+</body>
+</html>

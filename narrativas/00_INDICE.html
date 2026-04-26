@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Narrativas de la Historia de la Computación · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="15 ensayos narrativos · uno por columna del grafo · 214 hitos verificados · de Pascal (1642) a Vera Rubin Ultra (2027)">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-indice.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #1A1A1A;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">ÍNDICE</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-00</span>
+  </header>
+  <h1 class="page-title">Narrativas de la Historia de la Computación</h1>
+  <p class="page-subtitle">15 ensayos narrativos · uno por columna del grafo · 214 hitos verificados · de Pascal (1642) a Vera Rubin Ultra (2027)</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-proyecto">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El proyecto</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Existe una <a href="https://zoopa.es/files/historia-computacion-hitos-20260423.html">línea temporal interactiva</a> con 214 hitos y 322 relaciones causales que cubre la historia entera de la computación. Sirve para navegar visualmente. Pero el grafo no cuenta historia — la insinúa.</p>
+    <p>Este directorio contiene la versión narrativa: 15 ensayos en markdown, uno por cada columna temática del grafo. Cada ensayo recorre su cadena causal en orden cronológico, conectando personas, fechas, contextos y consecuencias. Pueden leerse independientemente o como un todo.</p>
+    <p><strong>Estilo:</strong> Smart Brevity. Frases cortas. Verbos activos. Datos concretos. Cero floritura.</p>
+  </section>
+
+  <section class="section" id="como-esta-organizado">
+    <div class="section-head">
+      <span class="proc-num">0005</span>
+      <h2 class="section-title">Cómo está organizado</h2>
+    </div>
+    <hr class="section-rule">
+<pre style="background:var(--shade);padding:12px 16px;font-family:IBM Plex Mono,monospace;font-size:11px;border:1px solid var(--ink);overflow-x:auto;line-height:1.4">narrativas-historia-computacion/
+├── 00_INDICE.md             ← estás aquí
+├── 01_LOGICA.md             ← Boole → Lean 4
+├── 02_ALGORITMOS.md         ← Minimax → Agentic
+├── 03_ARQUITECTURA.md       ← Babbage → autómatas autoreplicantes
+├── 04_ELECTRONICA.md        ← Z3 → Project Silica
+├── 05_SOFTWARE.md           ← Hopper → coding agents
+├── 06_PARADIGMAS.md         ← Simula → Vibe Coding
+├── 07_MICRO_PC.md           ← Intel 4004 → M6 + Vera
+├── 08_ROBOTICA.md           ← Unimate → Foundation Models
+├── 09_INTERNET.md           ← ARPANET → Edge + Web3
+├── 10_DATA.md               ← Codd → agentic memory
+├── 11_IA.md                 ← McCulloch-Pitts → Opus 4.7
+├── 12_PARALELISMO.md        ← GeForce 256 → Vera Rubin Ultra
+├── 13_CUANTICA.md           ← Benioff → Cockatoo
+├── 14_SUPERCOMPUTACION.md   ← Cray-1 → JUPITER
+└── 15_SIMULACION.md         ← Monte Carlo → Foundation Sim</pre>
+  </section>
+
+  <section class="section" id="las-15-columnas-resumenes-ejecutivos">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">Las 15 columnas · resúmenes ejecutivos</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1-01-logica-logica-del-razonamiento-al-codigo">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">1. <a href="01_LOGICA.html">LÓGICA</a> · Del razonamiento al código</h3>
+      </div>
+      <div class="chain-body"><p>Cómo se descubrió que el pensamiento podía reducirse a operaciones formales. <strong>Boole</strong> (1847) algebraiza la lógica. <strong>Frege</strong> (1879) la cuantifica. <strong>Gödel</strong> (1931) marca sus límites. <strong>Turing</strong> (1936) la mecaniza. <strong>Shannon</strong> (1937) la convierte en circuito. Hoy: <strong>Lean 4</strong> verifica matemáticas formalmente y <strong>AlphaProof</strong> (2024) demuestra teoremas con IA.</p><p>&gt; Sin esta cadena no existe ni un transistor digital ni una línea de código.</p></div>
+    </div>
+    <div class="chain-item" id="2-02-algoritmos-algoritmos-los-pasos-para-resolver">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">2. <a href="02_ALGORITMOS.html">ALGORITMOS</a> · Los pasos para resolver</h3>
+      </div>
+      <div class="chain-body"><p>De los algoritmos clásicos (<strong>Dijkstra</strong> 1956, <strong>Knuth</strong> 1968) a la criptografía moderna (<strong>RSA</strong> 1977) y los pilares del cloud (<strong>MapReduce</strong> 2004). El siglo XXI lo dominan dos: <strong>Attention</strong> (Vaswani et al. 2017) que define el Transformer, y <strong>algoritmos agénticos</strong> (2024) que orquestan acciones, no solo respuestas.</p><p>&gt; Cada salto de algoritmo es un salto de lo que un ordenador puede <em>hacer útilmente</em>.</p></div>
+    </div>
+    <div class="chain-item" id="3-03-arquitectura-arquitectura-que-es-un-ordenador">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">3. <a href="03_ARQUITECTURA.html">ARQUITECTURA</a> · ¿Qué es un ordenador?</h3>
+      </div>
+      <div class="chain-body"><p>La definición conceptual. <strong>Babbage</strong> (1837) imagina la Analytical Engine. <strong>Lovelace</strong> (1843) escribe el primer programa. <strong>Turing</strong> (1936) formaliza qué es computable. <strong>von Neumann</strong> (1945) define la arquitectura que aún usamos: memoria + CPU + I/O. <strong>Autómatas autoreplicantes</strong> (1948) anticipan la vida artificial 70 años antes de los virus de ordenador.</p><p>&gt; Definir el problema antes que la solución física.</p></div>
+    </div>
+    <div class="chain-item" id="4-04-electronica-electronica-de-valvulas-a-atomos">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">4. <a href="04_ELECTRONICA.html">ELECTRÓNICA</a> · De válvulas a átomos</h3>
+      </div>
+      <div class="chain-body"><p>La cadena física. <strong>Z3</strong> (Zuse 1941, relés). <strong>ENIAC</strong> (1946, válvulas, 18.000 tubos). <strong>Transistor</strong> (Bardeen-Brattain-Shockley 1947). <strong>Circuito integrado</strong> (Kilby/Noyce 1959). <strong>Ley de Moore</strong> (1965). El final del Moore clásico (~2019) y los nodos GAA (2022). Almacenamiento exótico: <strong>Project Silica</strong> (cristal de cuarzo, Microsoft 2019).</p><p>&gt; Cada hito acerca el cómputo al límite cuántico de la materia.</p></div>
+    </div>
+    <div class="chain-item" id="5-05-software-software-del-a-0-a-los-coding-agents">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">5. <a href="05_SOFTWARE.html">SOFTWARE</a> · Del A-0 a los coding agents</h3>
+      </div>
+      <div class="chain-body"><p><strong>Grace Hopper</strong> escribe el primer compilador (A-0, 1952). <strong>FORTRAN</strong> (1957) democratiza la programación científica. <strong>COBOL</strong> (1959) la empresarial. <strong>Unix</strong> (Thompson-Ritchie 1969) define el modelo de SO. <strong>C</strong> (1973), <strong>GNU</strong> (Stallman 1983), <strong>Linux</strong> (Torvalds 1991), <strong>Git</strong> (2005), <strong>Docker</strong> (2013). En 2024-26: <strong>Copilot</strong> y <strong>coding agents</strong> que escriben código casi sin intervención humana.</p><p>&gt; El software se construyó hasta poder construirse a sí mismo.</p></div>
+    </div>
+    <div class="chain-item" id="6-06-paradigmas-paradigmas-como-se-piensa-el-codigo">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">6. <a href="06_PARADIGMAS.html">PARADIGMAS</a> · Cómo se piensa el código</h3>
+      </div>
+      <div class="chain-body"><p>No qué se programa, sino <em>cómo</em> se piensa. <strong>Simula</strong> (1967) inventa los objetos. <strong>Smalltalk</strong> (Kay 1980) los populariza. <strong>C++</strong> (Stroustrup 1985), <strong>Python</strong> (van Rossum 1991), <strong>Java</strong> (Gosling 1995), <strong>JavaScript</strong> (Eich 1995). <strong>TDD/Ágil</strong> (2001), funcional (2007), <strong>Go</strong>+<strong>Rust</strong> (2010), <strong>TypeScript</strong>+<strong>Swift</strong> (2014), microservicios. En 2025: <strong>Vibe Coding</strong> — código generado por descripción natural, sin teclear lenguaje formal.</p><p>&gt; Cada paradigma redefine qué es "fácil de escribir y mantener".</p></div>
+    </div>
+    <div class="chain-item" id="7-07-micro-pc-micro-pc-el-ordenador-personal">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">7. <a href="07_MICRO_PC.html">MICRO+PC</a> · El ordenador personal</h3>
+      </div>
+      <div class="chain-body"><p>De <strong>Intel 4004</strong> (1971, primer microprocesador) al <strong>iPhone</strong> (Jobs 2007) que cambió la computación móvil para siempre. Pasando por <strong>Altair</strong> (1975), <strong>Apple I/II</strong> (Wozniak 1976-77), <strong>IBM PC</strong> (1981), <strong>Mac</strong> (1984), arquitectura <strong>RISC</strong> (Patterson 1980), 386, Pentium, Athlon 64, Ryzen, <strong>M1</strong> (Apple 2020), y la revolución <strong>RISC-V</strong> (2010, ISA libre). 2027: M6 + Vera SoC.</p><p>&gt; El cómputo se vuelve íntimo. Está en tu bolsillo, en tu reloj, en tu coche.</p></div>
+    </div>
+    <div class="chain-item" id="8-08-robotica-robotica-industrial-autonoma-encarnada">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">8. <a href="08_ROBOTICA.html">ROBÓTICA</a> · Industrial → autónoma → encarnada</h3>
+      </div>
+      <div class="chain-body"><p><strong>Unimate</strong> (Engelberger 1961) trabaja en GM soldando coches. <strong>Shakey</strong> (SRI 1972) razona y se mueve. <strong>PUMA</strong> (1978) define el brazo industrial. <strong>Roomba</strong> (2002) lleva la robótica al salón. <strong>DARPA Urban Challenge</strong> (2007) demuestra coche autónomo. <strong>Spot</strong> (Boston Dynamics 2015), humanoides (2024), <strong>Robot Foundation Models</strong> (π0 de Sergey Levine 2024). 2027 esperado: cross-embodiment universal.</p><p>&gt; El cuerpo del cómputo. Empezamos con brazos atornillados; acabamos con humanoides aprendiendo de vídeo.</p></div>
+    </div>
+    <div class="chain-item" id="9-09-internet-internet-red-web-cloud-edge">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">9. <a href="09_INTERNET.html">INTERNET</a> · Red → web → cloud → edge</h3>
+      </div>
+      <div class="chain-body"><p><strong>ARPANET</strong> (Roberts 1969, 4 nodos). <strong>TCP/IP</strong> (Cerf-Kahn 1983). <strong>WWW</strong> (Berners-Lee 1989, en CERN). <strong>Mosaic</strong> (Andreessen 1993). <strong>Google</strong> (Page-Brin 1998). <strong>AWS</strong> (2006) inventa el cloud. <strong>Kubernetes</strong> (2014) lo orquesta. <strong>Edge</strong> + <strong>Web3</strong> (2020+) lo descentralizan. La red pasó de 4 universidades estadounidenses a 5.500 millones de personas en 56 años.</p><p>&gt; Cada salto multiplica por 10× el alcance del cómputo.</p></div>
+    </div>
+    <div class="chain-item" id="10-10-data-data-estructurar-el-caos">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">10. <a href="10_DATA.html">DATA</a> · Estructurar el caos</h3>
+      </div>
+      <div class="chain-body"><p><strong>Edgar Codd</strong> (IBM 1970) inventa el modelo relacional. <strong>System R</strong> (1974) y <strong>Oracle</strong> (1979) lo comercializan. Los 80-90: <strong>PostgreSQL</strong>, <strong>MySQL</strong>. <strong>NoSQL</strong> (2007) por escala web. <strong>FAISS</strong> (2017), <strong>vector DBs</strong> (2019), <strong>pgvector</strong> (2023): la era de los embeddings. <strong>MCP</strong> (Anthropic 2024): protocolo estándar para que LLMs accedan a datos. 2027: agentic memory persistente.</p><p>&gt; De filas y columnas a vectores semánticos. La forma de los datos refleja qué tipo de cómputo los consume.</p></div>
+    </div>
+    <div class="chain-item" id="11-11-ia-ia-la-cadena-mas-larga">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">11. <a href="11_IA.html">IA</a> · La cadena más larga</h3>
+      </div>
+      <div class="chain-body"><p>83 años. <strong>McCulloch-Pitts</strong> (1943, neurona artificial matemática). Test de <strong>Turing</strong> (1950). <strong>Dartmouth</strong> (McCarthy 1956, donde se acuña "AI"). <strong>Perceptrón</strong> (Rosenblatt 1958). <strong>ELIZA</strong> (Weizenbaum 1965). <strong>Invierno IA</strong> (Minsky 1969). Resurgir: <strong>backprop</strong> (Rumelhart-Hinton-Williams 1986). <strong>Deep Blue</strong> vence a Kasparov (1997). <strong>AlexNet</strong> (Krizhevsky-Sutskever-Hinton 2012) inicia la revolución deep learning. <strong>AlphaGo</strong> (DeepMind 2016). <strong>Transformer</strong> (2017). <strong>GPT-3</strong> (2020). <strong>ChatGPT</strong> (2022). <strong>Nobel a Hopfield + Hinton</strong> (2024). <strong>Claude Opus 4.7</strong> (2026).</p><p>&gt; 80 años de altibajos hasta que la economía y el cómputo alinearon. Hoy define la frontera.</p></div>
+    </div>
+    <div class="chain-item" id="12-12-paralelismo-paralelismo-hardware-para-deep-learning">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">12. <a href="12_PARALELISMO.html">PARALELISMO</a> · Hardware para deep learning</h3>
+      </div>
+      <div class="chain-body"><p><strong>GeForce 256</strong> (Nvidia 1999, primera "GPU"). <strong>CUDA</strong> (Nvidia 2006) abre la GPU al cómputo general. <strong>TPU v1</strong> (Google 2015), primer ASIC para inferencia neuronal. <strong>Tensor Cores</strong> (Nvidia V100, 2017). <strong>Cerebras WSE-1</strong> (2019) — chip del tamaño de una oblea. <strong>Etched</strong> (2024) — primer ASIC dedicado a Transformer. <strong>NVIDIA Rubin</strong> (2026), <strong>TPU v8</strong> (2027), <strong>Vera Rubin Ultra</strong> (2027).</p><p>&gt; El hardware persigue al software. Cada arquitectura nueva nace para una operación dominante (multiply-add masiva, attention, etc.).</p></div>
+    </div>
+    <div class="chain-item" id="13-13-cuantica-cuantica-la-frontera-mas-extrana">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">13. <a href="13_CUANTICA.html">CUÁNTICA</a> · La frontera más extraña</h3>
+      </div>
+      <div class="chain-body"><p><strong>Benioff</strong> (1980) y <strong>Feynman</strong> (1981-82) proponen la idea. <strong>Deutsch</strong> (1985) la formaliza. <strong>Shor</strong> (1994): algoritmo que rompe RSA en tiempo polinomial. <strong>QEC</strong> (Shor-Steane 1995-97): el qubit lógico, abstracción que protege del ruido. <strong>Grover</strong> (1996), 2 qubits NMR (1998). <strong>Sycamore</strong> (Google 2019) reclama supremacía. <strong>IBM Heron + System Two</strong> (2023). <strong>Willow</strong> (Google 2024). <strong>Microsoft Majorana 1</strong> (2025) — qubits topológicos. <strong>IBM Loon + Nighthawk</strong> (2025). 2027: <strong>IBM Cockatoo</strong>, primer ordenador cuántico tolerante a fallos.</p><p>&gt; El cómputo cuántico no es "más rápido". Es <em>otra cosa</em>. Permite resolver problemas que el cómputo clásico no puede ni intentar.</p></div>
+    </div>
+    <div class="chain-item" id="14-14-supercomputacion-supercomputacion-mega-giga-tera-peta-exa">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">14. <a href="14_SUPERCOMPUTACION.html">SUPERCOMPUTACIÓN</a> · Mega → giga → tera → peta → exa</h3>
+      </div>
+      <div class="chain-body"><p><strong>Cray-1</strong> (Seymour Cray 1976). <strong>ASCI Red</strong> (1997, primer teraflop). <strong>Roadrunner</strong> (IBM 2008, primer petaflop). <strong>Fugaku</strong> (Japón 2020, ARM). <strong>Frontier</strong> (HPE 2022, primer exaflop). <strong>Aurora</strong> (Intel 2024). <strong>El Capitan</strong> (HPE 2024, 2.7 EF). <strong>JUPITER</strong> (EU 2025, primer exaflop europeo). Cada salto x1000 ha tardado ~10 años.</p><p>&gt; La punta de lanza del cómputo. Lo que hoy ocupa una sala — en 25 años cabe en tu móvil.</p></div>
+    </div>
+    <div class="chain-item" id="15-15-simulacion-simulacion-modelar-la-realidad">
+      <div class="chain-head">
+        <span class="chain-year"></span>
+        <h3 class="chain-title">15. <a href="15_SIMULACION.html">SIMULACIÓN</a> · Modelar la realidad</h3>
+      </div>
+      <div class="chain-body"><p><strong>Monte Carlo</strong> (Ulam-von Neumann 1947, en Los Alamos). <strong>ENIAC weather</strong> (Charney-Fjørtoft-von Neumann 1950). <strong>SPICE</strong> (Berkeley 1973). <strong>CFD industrial</strong> (años 90). <strong>NKS</strong> (Wolfram 2002). <strong>PhysX</strong>+<strong>Bullet</strong> (motores físicos, 2008). <strong>Omniverse</strong> (Nvidia 2021). <strong>Digital Twins</strong> (2022). <strong>Sora</strong>+<strong>Genie</strong> (2024) generan vídeo + mundos jugables desde texto. <strong>NVIDIA Cosmos</strong> (2025): foundation model para simulación física. 2027: foundation simulation universal.</p><p>&gt; La simulación es la inversa del cómputo: en vez de procesar el mundo, lo crea. Es el futuro del entrenamiento de IA y robots.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="mapa-de-cross-column-dependencies-alto-nivel">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Mapa de cross-column dependencies (alto nivel)</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Algunas cadenas atraviesan toda la historia:</p>
+<pre style="background:var(--shade);padding:12px 16px;font-family:IBM Plex Mono,monospace;font-size:11px;border:1px solid var(--ink);overflow-x:auto;line-height:1.4">LÓGICA ─────► ELECTRÓNICA ─────► MICRO+PC ─────► PARALELISMO ─────► IA
+  │                │                  │                 │              │
+  ▼                ▼                  ▼                 ▼              ▼
+ALGORITMOS    ARQUITECTURA      SOFTWARE         CUÁNTICA       SIMULACIÓN
+                  │                  │
+                  └──────► INTERNET ◄┘
+                                │
+                                ▼
+                              DATA ─────► ROBÓTICA</pre>
+    <p>Las "autopistas" cross-column principales:</p>
+    <p>1. <strong>Lógica → Electrónica → IA</strong>: Boole → Shannon → transistor → IC → Moore → CUDA → Transformer → GPT. 2. <strong>Arquitectura → Software → Internet</strong>: Turing → von Neumann → Unix → C → ARPANET → WWW → Cloud. 3. <strong>Algoritmos → Criptografía → Internet → Cuántica</strong>: RSA → SSL/TLS → todo el e-commerce → Shor (que la rompe) → PQC. 4. <strong>Paralelismo → IA → Simulación → Robótica</strong>: GPU → DL → world models → Robot Foundation Models.</p>
+  </section>
+
+  <section class="section" id="rutas-de-lectura-recomendadas">
+    <div class="section-head">
+      <span class="proc-num">0070</span>
+      <h2 class="section-title">Rutas de lectura recomendadas</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Si te interesa...</th>
+        <th>Lee en este orden</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>El origen filosófico</strong></td>
+          <td>LÓGICA → ARQUITECTURA → ALGORITMOS</td>
+        </tr>
+        <tr>
+          <td><strong>El hardware</strong></td>
+          <td>ELECTRÓNICA → MICRO+PC → PARALELISMO → CUÁNTICA</td>
+        </tr>
+        <tr>
+          <td><strong>Cómo se programa</strong></td>
+          <td>SOFTWARE → PARADIGMAS → ALGORITMOS</td>
+        </tr>
+        <tr>
+          <td><strong>La revolución IA</strong></td>
+          <td>IA → PARALELISMO → DATA → SIMULACIÓN</td>
+        </tr>
+        <tr>
+          <td><strong>El cómputo distribuido</strong></td>
+          <td>INTERNET → DATA → ARQUITECTURA → SUPERCOMP</td>
+        </tr>
+        <tr>
+          <td><strong>El futuro físico</strong></td>
+          <td>ROBÓTICA → SIMULACIÓN → IA</td>
+        </tr>
+        <tr>
+          <td><strong>Sin orden específico</strong></td>
+          <td>Empieza por la columna que ya conoces. Sigue los wikilinks.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="personas-que-aparecen-en-multiples-columnas">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Personas que aparecen en múltiples columnas</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Persona</th>
+        <th>Columnas</th>
+        <th>Aportación múltiple</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>John von Neumann</strong></td>
+          <td>ARQUITECTURA, SIMULACIÓN, ALGORITMOS</td>
+          <td>Arquitectura clásica + Monte Carlo + autómatas + minimax</td>
+        </tr>
+        <tr>
+          <td><strong>Alan Turing</strong></td>
+          <td>LÓGICA, ARQUITECTURA, IA</td>
+          <td>Máquina universal + test de inteligencia + criptoanálisis</td>
+        </tr>
+        <tr>
+          <td><strong>Claude Shannon</strong></td>
+          <td>LÓGICA, ALGORITMOS</td>
+          <td>Tesis 1937 + teoría de la información 1948</td>
+        </tr>
+        <tr>
+          <td><strong>Donald Knuth</strong></td>
+          <td>ALGORITMOS, SOFTWARE</td>
+          <td>TAOCP + TeX + análisis de algoritmos</td>
+        </tr>
+        <tr>
+          <td><strong>Edsger Dijkstra</strong></td>
+          <td>ALGORITMOS, SOFTWARE</td>
+          <td>Dijkstra + GOTO considered harmful + concurrencia</td>
+        </tr>
+        <tr>
+          <td><strong>Geoffrey Hinton</strong></td>
+          <td>IA, varias</td>
+          <td>Backprop + DBN + AlexNet + Nobel 2024</td>
+        </tr>
+        <tr>
+          <td><strong>Linus Torvalds</strong></td>
+          <td>SOFTWARE</td>
+          <td>Linux + Git</td>
+        </tr>
+        <tr>
+          <td><strong>Ken Thompson</strong></td>
+          <td>SOFTWARE</td>
+          <td>Unix + B (precursor de C)</td>
+        </tr>
+        <tr>
+          <td><strong>Tim Berners-Lee</strong></td>
+          <td>INTERNET</td>
+          <td>HTML + HTTP + URI</td>
+        </tr>
+        <tr>
+          <td><strong>Steve Wozniak</strong></td>
+          <td>MICRO+PC</td>
+          <td>Apple I + Apple II</td>
+        </tr>
+        <tr>
+          <td><strong>Jeff Dean</strong></td>
+          <td>DATA, ALGORITMOS, IA</td>
+          <td>MapReduce + BigTable + TensorFlow</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="convenciones-del-directorio">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Convenciones del directorio</h2>
+    </div>
+    <hr class="section-rule">
+    <ul>
+      <li><strong>Wikilinks</strong>: <code><a href="03_ARQUITECTURA.html#1936-turing">03_ARQUITECTURA#1936 · Turing</a></code> apunta al archivo + sección anchor</li>
+      <li><strong>Bold</strong>: solo para personas y fechas en su primera mención dentro del documento</li>
+      <li><strong>Tablas</strong>: una al final de cada archivo con <code>Personas clave</code></li>
+      <li><strong>Cross-column</strong>: marcadas con <code>↗ recibe</code> y <code>↘ aporta</code></li>
+      <li><strong>Sin emojis</strong>: estilo consistente con la página HTML</li>
+      <li><strong>Idioma</strong>: español (alineado con la página principal)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="versionado">
+    <div class="section-head">
+      <span class="proc-num">0095</span>
+      <h2 class="section-title">Versionado</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Versión</th>
+        <th>Fecha</th>
+        <th>Cambios</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>v1.0</strong></td>
+          <td>2026-04-26</td>
+          <td>Generación inicial · 15 narrativas + índice</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="mantenimiento">
+    <div class="section-head">
+      <span class="proc-num">0096</span>
+      <h2 class="section-title">Mantenimiento</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Cuando se actualice el HTML principal (nodos nuevos, ediciones), regenerar las narrativas afectadas. La integridad fuente es el HTML — estos .md son su versión narrativa derivada.</p>
+  </section>
+
+  <section class="section" id="licencia">
+    <div class="section-head">
+      <span class="proc-num">0097</span>
+      <h2 class="section-title">Licencia</h2>
+    </div>
+    <hr class="section-rule">
+    <p>CC BY-SA 4.0 (igual que el HTML principal).</p>
+  </section>
+
+  <section class="section" id="autor">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Autor</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Carlos Ortet · 498 Advance · The European Intrepid Lab</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 0</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      
+      <a href="01_LOGICA.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>0-1</span>
+  </footer>
+</article>
+</body>
+</html>

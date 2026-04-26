@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IA · De la neurona de papel a la era del razonamiento · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Ochenta años de oscilaciones entre euforia y abandono, desde un modelo matemático de neurona hasta modelos de lenguaje que razonan en tiempo real.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-ia.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #EE5396;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">IA</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-11</span>
+  </header>
+  <h1 class="page-title">IA · De la neurona de papel a la era del razonamiento</h1>
+  <p class="page-subtitle">Ochenta años de oscilaciones entre euforia y abandono, desde un modelo matemático de neurona hasta modelos de lenguaje que razonan en tiempo real.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>La IA nace dos veces: primero como proyecto simbólico (reglas, lógica, sistemas expertos) y luego como proyecto estadístico y conexionista (redes, gradientes, datos masivos). Cada ciclo tiene su invierno. El punto de inflexión real llega en 2012 con AlexNet y la GPU barata: las redes neuronales escalan, la curva no se detiene. A partir de 2017, el Transformer unifica casi todo. A partir de 2022, el campo ya no trabaja con modelos sino con productos de consumo masivo que llegan a 100 millones de usuarios en dos meses. El problema que la columna resuelve es uno: hacer que las máquinas aprendan de la experiencia, no de las reglas escritas a mano.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1943-neurona-artificial-mcculloch-y-pitts">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1943</span>
+        <h3 class="chain-title">Neurona artificial&nbsp;<span class="chain-person">— McCulloch y Pitts</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Warren McCulloch</strong> (neurocientífico) y <strong>Walter Pitts</strong> (matemático de 18 años, autodidacta) publican <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em>. Proponen un modelo matemático de neurona que opera con lógica binaria: la neurona se activa o no según el umbral de sus entradas. Pitts había llegado a Chicago como vagabundo; McCulloch lo acogió y colaboraron en la cocina de su casa.</p><p>El paper no construye nada físico. Es pura abstracción: demostrar que redes de neuronas formales pueden computar cualquier función lógica.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Perceptrón (1958) · <strong>Depende de:</strong> <a href="03_ARQUITECTURA.html#1936-m-quina-universal">03_ARQUITECTURA#1936 · Máquina universal</a> (Turing), <a href="01_LOGICA.html#1847-lgebra-booleana">01_LOGICA#1847 · Álgebra booleana</a> (Boole)</div>
+    </div>
+    <div class="chain-item" id="1950-test-de-turing-alan-turing">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1950</span>
+        <h3 class="chain-title">Test de Turing&nbsp;<span class="chain-person">— Alan Turing</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Alan Turing</strong> publica <em>Computing Machinery and Intelligence</em> en Mind. Propone el "juego de imitación": si un evaluador humano no puede distinguir la respuesta de una máquina de la de un humano, la máquina puede considerarse inteligente. El paper dedica más espacio a anticipar objeciones que a defender la idea.</p><p>Turing no pretende dar una definición de inteligencia. Propone un criterio operativo. La pregunta "¿pueden pensar las máquinas?" se convierte en "¿pueden engañar a los humanos?".</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Conferencia Dartmouth (1956)</div>
+    </div>
+    <div class="chain-item" id="1956-conferencia-dartmouth-mccarthy-minsky-shannon-rochester">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1956</span>
+        <h3 class="chain-title">Conferencia Dartmouth&nbsp;<span class="chain-person">— McCarthy, Minsky, Shannon, Rochester</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>John McCarthy</strong> (Dartmouth), <strong>Marvin Minsky</strong> (Harvard), <strong>Claude Shannon</strong> (Bell Labs) y <strong>Nathaniel Rochester</strong> (IBM) organizan un workshop de 6 semanas en Hanover, New Hampshire. McCarthy acuña el término "Artificial Intelligence" para evitar la carga del término "cibernética" de Wiener. Asisten 10 investigadores en total.</p><p>El workshop no produce resultados técnicos directos. Produce un campo: nombre, agenda, y una red de personas que dominarán la disciplina durante 30 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Perceptrón, ELIZA, sistemas expertos · <strong>Depende de:</strong> Test de Turing (1950)</div>
+    </div>
+    <div class="chain-item" id="1958-perceptron-frank-rosenblatt">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1958</span>
+        <h3 class="chain-title">Perceptrón&nbsp;<span class="chain-person">— Frank Rosenblatt</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Frank Rosenblatt</strong> (Cornell Aeronautical Laboratory) construye el Perceptrón Mark I: hardware dedicado que aprende a clasificar imágenes mediante ajuste de pesos. El New York Times lo describe como "el embrión de un ordenador electrónico que se espera sea capaz de caminar, hablar, ver, escribir, reproducirse y ser consciente de su existencia."</p><p>Rosenblatt demuestra el teorema de convergencia: si los datos son linealmente separables, el perceptrón aprende en tiempo finito.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Invierno IA (1969) · <strong>Depende de:</strong> Neurona artificial (1943), Conferencia Dartmouth (1956)</div>
+    </div>
+    <div class="chain-item" id="1965-eliza-joseph-weizenbaum">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1965</span>
+        <h3 class="chain-title">ELIZA&nbsp;<span class="chain-person">— Joseph Weizenbaum</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Joseph Weizenbaum</strong> (MIT) crea ELIZA: simula a un psicoterapeuta rogeriano mediante pattern-matching y sustitución de palabras clave. La secuencia "Estoy triste" se convierte en "¿Por qué estás triste?". Sin comprensión. Sin estado. Sin memoria.</p><p>Weizenbaum queda perturbado por la reacción: su secretaria le pide privacidad para hablar con el programa. Su propia hija desarrolla apego emocional. El "efecto ELIZA" — antropomorfizar cualquier sistema que responde en lenguaje natural — tiene 60 años de antigüedad.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Sistemas expertos (1980) · <strong>Depende de:</strong> Conferencia Dartmouth (1956)</div>
+    </div>
+    <div class="chain-item" id="1969-invierno-ia-minsky-y-papert">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">1969</span>
+        <h3 class="chain-title">Invierno IA&nbsp;<span class="chain-person">— Minsky y Papert</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Marvin Minsky</strong> y <strong>Seymour Papert</strong> publican <em>Perceptrons</em>: análisis matemático riguroso de las limitaciones del perceptrón simple. El resultado clave: el perceptrón de una capa no puede aprender XOR. El DARPA recorta financiación. El conexionismo entra en hibernación.</p><p>El libro era técnicamente correcto sobre el perceptrón de una capa. No demostraba que múltiples capas tuvieran la misma limitación — pero la industria no distinguió.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Backpropagation (1986) · <strong>Depende de:</strong> Perceptrón (1958)</div>
+    </div>
+    <div class="chain-item" id="1980-sistemas-expertos-xcon-mycin-prolog">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">1980</span>
+        <h3 class="chain-title">Sistemas expertos&nbsp;<span class="chain-person">— XCON, MYCIN, Prolog</span></h3>
+      </div>
+      <div class="chain-body"><p>Pico comercial de la IA simbólica. <strong>R1/XCON</strong> (Digital Equipment Corporation) configura pedidos de minicomputadoras VAX: ahorra 40M USD/año a DEC. <strong>MYCIN</strong> (Stanford, <strong>Edward Shortliffe</strong> y <strong>Bruce Buchanan</strong>) diagnostica infecciones bacterianas con precisión superior a médicos junior. El proyecto japonés Fifth Generation Computer Systems (1982) inyecta 500M USD en Prolog.</p><p>El paradigma: si codificas el conocimiento experto en reglas, la máquina razona. Funciona en dominios cerrados. Fracasa en el mundo real: las reglas no escalan, el mantenimiento es insostenible. El mercado colapsa entre 1987 y 1993.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Backpropagation (1986) como alternativa · <strong>Depende de:</strong> LISP (1958) para implementación</div>
+    </div>
+    <div class="chain-item" id="1986-backpropagation-rumelhart-hinton-williams">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">1986</span>
+        <h3 class="chain-title">Backpropagation&nbsp;<span class="chain-person">— Rumelhart, Hinton, Williams</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>David Rumelhart</strong>, <strong>Geoffrey Hinton</strong> y <strong>Ronald Williams</strong> popularizan el algoritmo de retropropagación del error en <em>Learning Representations by Back-propagating Errors</em> (Nature, 1986). <strong>Paul Werbos</strong> lo había formulado en su tesis doctoral de 1974, ignorada durante 12 años.</p><p>La clave matemática: la regla de la cadena aplicada recursivamente permite calcular gradientes en redes multicapa. La red puede ahora aprender representaciones intermedias, no solo clasificar.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Deep Belief Nets (2006), LeNet-5 (1998) · <strong>Depende de:</strong> Invierno IA (1969)</div>
+    </div>
+    <div class="chain-item" id="1997-deep-blue-ibm">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">1997</span>
+        <h3 class="chain-title">Deep Blue&nbsp;<span class="chain-person">— IBM</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>IBM Deep Blue</strong> vence a <strong>Garry Kasparov</strong> en un match de 6 partidas (Filadelfia, mayo 1997): 3.5–2.5. El equipo lo componen <strong>Feng-hsiung Hsu</strong>, <strong>Murray Campbell</strong> y <strong>Joe Hoane</strong>, entre otros. Deep Blue evalúa 200 millones de posiciones por segundo con hardware dedicado.</p><p>No aprende. Busca con fuerza bruta + función de evaluación heurística ajustada por gran maestros. Es IA simbólica llevada al límite. Kasparov acusa a IBM de trampa; IBM rechaza su petición de revisar los logs. La polémica dura décadas.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> AlphaGo (2016) como comparación · <strong>Depende de:</strong> <a href="15_ALGORITMOS.html#1928-minimax">15_ALGORITMOS#1928 · Minimax</a></div>
+    </div>
+    <div class="chain-item" id="1998-lenet-5-yann-lecun">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">1998</span>
+        <h3 class="chain-title">LeNet-5&nbsp;<span class="chain-person">— Yann LeCun</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Yann LeCun</strong> (AT&amp;T Bell Labs) publica LeNet-5: red convolucional entrenada con backprop para reconocimiento de dígitos manuscritos. Los bancos la usan para leer cheques. La arquitectura: convolución → pooling → convolución → pooling → fully connected.</p><p>LeCun lleva 15 años insistiendo en que las redes profundas funcionan. Los patrocinadores no creen en el escenario más allá de este nicho específico.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> AlexNet (2012) · <strong>Depende de:</strong> Backpropagation (1986)</div>
+    </div>
+    <div class="chain-item" id="2006-deep-belief-nets-geoffrey-hinton">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">2006</span>
+        <h3 class="chain-title">Deep Belief Nets&nbsp;<span class="chain-person">— Geoffrey Hinton</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Geoffrey Hinton</strong> (University of Toronto) publica <em>A Fast Learning Algorithm for Deep Belief Nets</em> en Science. La idea: pre-entrenar capa a capa con máquinas de Boltzmann restringidas (RBM) antes del fine-tuning supervisado. Resuelve el problema del gradiente evanescente en redes profundas.</p><p>El paper se publica en el desierto: la mayoría de la comunidad sigue apostando por SVM. Hinton convierte a un pequeño grupo de estudiantes — entre ellos <strong>Ruslan Salakhutdinov</strong> — en el núcleo de lo que será el deep learning moderno.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> AlexNet (2012) · <strong>Depende de:</strong> Backpropagation (1986)</div>
+    </div>
+    <div class="chain-item" id="2009-imagenet-fei-fei-li">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">L</span>
+        <span class="chain-year">2009</span>
+        <h3 class="chain-title">ImageNet&nbsp;<span class="chain-person">— Fei-Fei Li</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Fei-Fei Li</strong> (Princeton, luego Stanford) lidera la creación de ImageNet: 14 millones de imágenes etiquetadas en 22.000 categorías, usando Amazon Mechanical Turk y 50.000 trabajadores. La competición ILSVRC (ImageNet Large Scale Visual Recognition Challenge) arranca en 2010.</p><p>La tesis de Li: los algoritmos son secundarios. El problema de la visión por ordenador es un problema de datos. ImageNet demuestra que tiene razón.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> AlexNet (2012) · <strong>Depende de:</strong> ningún nodo previo en cadena directa — punto de inflexión autónomo de datos</div>
+    </div>
+    <div class="chain-item" id="2012-alexnet-krizhevsky-sutskever-hinton">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">M</span>
+        <span class="chain-year">2012</span>
+        <h3 class="chain-title">AlexNet&nbsp;<span class="chain-person">— Krizhevsky, Sutskever, Hinton</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Alex Krizhevsky</strong>, <strong>Ilya Sutskever</strong> y <strong>Geoffrey Hinton</strong> (University of Toronto) ganan ILSVRC 2012 con error top-5 del 15.3%, frente al 26.2% del segundo clasificado. El margen de 10 puntos porcentuales es tan grande que el comité piensa en un error.</p><p>Entrenado en 2× GTX 580 (3 GB VRAM cada una) durante 5–6 días. 60 millones de parámetros. La clave: dropout para regularización, ReLU en lugar de tanh/sigmoid, y data augmentation masiva.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> AlphaGo (2016), Transformer (2017), AlphaFold 1 (2018), GANs (2014) · <strong>Depende de:</strong> Deep Belief Nets (2006), ImageNet (2009), <a href="12_PARALELISMO.html#2006-cuda">12_PARALELISMO#2006 · CUDA</a></div>
+    </div>
+    <div class="chain-item" id="2013-word2vec-tomas-mikolov">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">N</span>
+        <span class="chain-year">2013</span>
+        <h3 class="chain-title">Word2Vec&nbsp;<span class="chain-person">— Tomas Mikolov</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Tomas Mikolov</strong> y equipo en Google (inc. <strong>Kai Chen</strong>, <strong>Greg Corrado</strong>, <strong>Jeff Dean</strong>) publican Word2Vec: vectores densos de palabras entrenados con redes neuronales superficiales. La demo: <code>rey - hombre + mujer ≈ reina</code>. La analogía vectorial revela estructura semántica latente.</p><p>El paper clave es el segundo de septiembre 2013. El primero (enero) describe la arquitectura; el segundo explica los trucos que lo hacen práctico (negative sampling, subsampling de palabras frecuentes).</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Transformer (2017) · <strong>Depende de:</strong> Backpropagation (1986), LISP como raíz conceptual del simbolismo que Word2Vec supera</div>
+    </div>
+    <div class="chain-item" id="2014-gans-ian-goodfellow">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">O</span>
+        <span class="chain-year">2014</span>
+        <h3 class="chain-title">GANs&nbsp;<span class="chain-person">— Ian Goodfellow</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ian Goodfellow</strong> (Université de Montréal) propone las Generative Adversarial Networks en un paper de junio 2014. La arquitectura: un generador crea datos sintéticos; un discriminador los evalúa. Los dos se entrenan en oposición. La idea surge en una discusión en un bar después de la defensa de tesis de un amigo.</p><p>El paper original genera imágenes de 28×28 píxeles borrosas. En 10 años, el principio escala a DALL-E, Midjourney y Stable Diffusion.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Diffusion (2022) · <strong>Depende de:</strong> AlexNet (2012)</div>
+    </div>
+    <div class="chain-item" id="2016-alphago-deepmind">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">P</span>
+        <span class="chain-year">2016</span>
+        <h3 class="chain-title">AlphaGo&nbsp;<span class="chain-person">— DeepMind</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>DeepMind</strong> (Demis Hassabis, David Silver y equipo) vence a <strong>Lee Sedol</strong> en Go: 4–1 (Seúl, marzo 2016). Go tiene más posiciones que átomos en el universo observable. La fuerza bruta no alcanza.</p><p>AlphaGo combina redes de política (qué jugada hacer), redes de valor (qué tan buena es una posición) y MCTS (Monte Carlo Tree Search). El entrenamiento: primero aprendizaje supervisado con 160.000 partidas humanas, luego reinforcement learning contra sí mismo.</p><p>La jugada 37 del partido 2 — un movimiento que ningún humano habría jugado, que resultó ganador — es el momento en que el mundo comprende que el sistema no imita humanos; los supera.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Algoritmos agénticos (2024) · <strong>Depende de:</strong> AlexNet (2012), <a href="15_ALGORITMOS.html#1928-minimax">15_ALGORITMOS#1928 · Minimax</a></div>
+    </div>
+    <div class="chain-item" id="2017-transformer-vaswani-et-al">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">Q</span>
+        <span class="chain-year">2017</span>
+        <h3 class="chain-title">Transformer&nbsp;<span class="chain-person">— Vaswani et al.</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ashish Vaswani</strong> y 7 coautores en Google Brain publican <em>Attention Is All You Need</em> en NeurIPS 2017. La idea: descartar las RNN/LSTM y dejar que cada token atienda a todos los demás simultáneamente. Self-attention paraleliza lo que antes era secuencial.</p><p>El paper sale de un proyecto interno de traducción automática EN→DE. <strong>Jakob Uszkoreit</strong> propone la idea inicial de usar solo atención. <strong>Noam Shazeer</strong> reescribe el código. <strong>Llion Jones</strong> lo implementa en el framework Tensor2Tensor. Nadie predice que en 5 años cambiará todo.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> GPT-1 (2018), BERT (2018), ChatGPT (2022), Claude, Gemini · <strong>Depende de:</strong> Word2Vec (2013), AlexNet (2012), <a href="12_PARALELISMO.html#2017-tensor-cores">12_PARALELISMO#2017 · Tensor Cores</a></div>
+    </div>
+    <div class="chain-item" id="2018-alphafold-1-deepmind">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">R</span>
+        <span class="chain-year">2018</span>
+        <h3 class="chain-title">AlphaFold 1&nbsp;<span class="chain-person">— DeepMind</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>DeepMind</strong> gana CASP13 (dic 2018): primer salto cualitativo de IA en predicción de plegamiento de proteínas. El equipo lo lidera <strong>Andrew Senior</strong> y <strong>John Jumper</strong>. AlphaFold 1 usa redes residuales profundas para predecir mapas de distancias entre residuos de aminoácidos.</p><p>El récord anterior requería años de trabajo experimental por proteína (cristalografía de rayos X, cryo-EM). AlphaFold 1 no resuelve el problema — pero demuestra que el deep learning puede atacarlo.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> AlphaFold 2 (2021) · <strong>Depende de:</strong> AlexNet (2012), Transformer (como arquitectura paralela)</div>
+    </div>
+    <div class="chain-item" id="2018-gpt-1-openai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">S</span>
+        <span class="chain-year">2018</span>
+        <h3 class="chain-title">GPT-1&nbsp;<span class="chain-person">— OpenAI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>OpenAI</strong> publica GPT-1 (jun 2018): transformer decoder-only preentrenado en 117M parámetros sobre BookCorpus (~4.5 GB de texto). El diseño es de <strong>Alec Radford</strong>, <strong>Karthik Narasimhan</strong>, <strong>Tim Salimans</strong> e <strong>Ilya Sutskever</strong>.</p><p>La apuesta: pretraining + fine-tuning escala mejor que entrenar desde cero para cada tarea. La demostración es modesta. La dirección es clara.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> GPT-3 (2020) · <strong>Depende de:</strong> Transformer (2017)</div>
+    </div>
+    <div class="chain-item" id="2018-bert-google">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">T</span>
+        <span class="chain-year">2018</span>
+        <h3 class="chain-title">BERT&nbsp;<span class="chain-person">— Google</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> libera BERT (oct 2018): <strong>Jacob Devlin</strong>, <strong>Ming-Wei Chang</strong>, <strong>Kenton Lee</strong> y <strong>Kristina Toutanova</strong>. Transformer bidireccional encoder-only, preentrenado con masked language modeling y next sentence prediction. 110M/340M parámetros.</p><p>BERT supera a humanos en 11 benchmarks de NLP el día de su publicación. En semanas, Google lo integra en su motor de búsqueda — el mayor cambio en el ranking de búsqueda en 5 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> GPT-3 (2020) · <strong>Depende de:</strong> Transformer (2017)</div>
+    </div>
+    <div class="chain-item" id="2020-gpt-3-scaling-openai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">U</span>
+        <span class="chain-year">2020</span>
+        <h3 class="chain-title">GPT-3 · scaling&nbsp;<span class="chain-person">— OpenAI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>OpenAI</strong> publica GPT-3 (175B parámetros, jun 2020). El paper clave: <strong>Kaplan et al.</strong> (ene 2020) había publicado las "scaling laws" — el rendimiento mejora predeciblemente con tamaño + datos + cómputo. GPT-3 es la primera demostración a escala de few-shot learning sin fine-tuning.</p><p><strong>Tom Brown</strong> lidera el equipo de GPT-3. El coste de entrenamiento estimado: 4.6M USD. El mensaje a la industria: si tienes cómputo y datos, escala.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> ChatGPT (2022), LLaMA (2023) · <strong>Depende de:</strong> GPT-1 (2018), BERT (2018)</div>
+    </div>
+    <div class="chain-item" id="2021-alphafold-2-deepmind">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">V</span>
+        <span class="chain-year">2021</span>
+        <h3 class="chain-title">AlphaFold 2&nbsp;<span class="chain-person">— DeepMind</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>DeepMind</strong> resuelve el plegamiento de proteínas con precisión cristalográfica. CASP14 (dic 2020): puntuación media GDT 92.4 — comparable a los mejores resultados experimentales. El equipo: <strong>John Jumper</strong> (PI), <strong>Demis Hassabis</strong> (CEO), <strong>Richard Evans</strong>, y decenas de investigadores.</p><p>En julio 2022 liberan la base de datos completa: 214 millones de estructuras predichas — prácticamente todas las proteínas conocidas. El acceso es gratuito.</p><p>Premio Nobel de Química 2024 a <strong>Hassabis</strong> y <strong>Jumper</strong> junto a <strong>David Baker</strong> por diseño de proteínas.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Foundation simulation (2027) · <strong>Depende de:</strong> AlphaFold 1 (2018), GPT-3 (como contexto de escala)</div>
+    </div>
+    <div class="chain-item" id="2022-chatgpt-openai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">W</span>
+        <span class="chain-year">2022</span>
+        <h3 class="chain-title">ChatGPT&nbsp;<span class="chain-person">— OpenAI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>OpenAI</strong> lanza ChatGPT (30 nov 2022). 100 millones de usuarios en 2 meses — el producto de mayor adopción en la historia del software. El modelo subyacente es GPT-3.5 ajustado con RLHF (Reinforcement Learning from Human Feedback). <strong>Sam Altman</strong> (CEO), <strong>Greg Brockman</strong> (CTO), equipo de seguridad y RLHF.</p><p>La diferencia técnica con GPT-3 puro es modesta. La diferencia de producto es enorme: interfaz conversacional, safety filtering, respuestas útiles y no solo coherentes.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> GPT-4 (2023), LLaMA (2023), MCP (2024) · <strong>Depende de:</strong> GPT-3 (2020), Transformer (2017)</div>
+    </div>
+    <div class="chain-item" id="2022-diffusion-stability-ai-openai-midjourney">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">X</span>
+        <span class="chain-year">2022</span>
+        <h3 class="chain-title">Diffusion&nbsp;<span class="chain-person">— Stability AI, OpenAI, Midjourney</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Stable Diffusion</strong> (Stability AI, ago 2022) · <strong>DALL-E 2</strong> (OpenAI, abr 2022) · <strong>Midjourney</strong> (mar 2022). Los modelos de difusión latente (basados en trabajo de <strong>Jonathan Ho</strong>, <strong>Chitwan Saharia</strong> y otros) democratizan la generación de imágenes.</p><p>Stable Diffusion se libera con pesos abiertos. En 72 horas hay versiones locales en ordenadores domésticos. En un mes, el mercado del stock de imágenes siente el impacto.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> GPT-4 multimodal (2023) · <strong>Depende de:</strong> GANs (2014) como antecesor conceptual</div>
+    </div>
+    <div class="chain-item" id="2023-gpt-4-openai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">Y</span>
+        <span class="chain-year">2023</span>
+        <h3 class="chain-title">GPT-4&nbsp;<span class="chain-person">— OpenAI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>OpenAI</strong> lanza GPT-4 (mar 2023): primer modelo multimodal masivo (texto + imagen como entrada). Puntuación en el bar exam: percentil 90. En USMLE Medical Licensing: aprueba. En GRE Verbal: percentil 99.</p><p>La arquitectura es un secreto. OpenAI no publica el número de parámetros. <strong>Sam Altman</strong> dice que las "scaling laws" ya no funcionan igual — la eficiencia importa más que la escala bruta.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> o1 (2024), Gemini (2023), DeepSeek-R1 (2025) · <strong>Depende de:</strong> ChatGPT (2022), Diffusion (2022)</div>
+    </div>
+    <div class="chain-item" id="2023-llama-meta">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">Z</span>
+        <span class="chain-year">2023</span>
+        <h3 class="chain-title">LLaMA&nbsp;<span class="chain-person">— Meta</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Meta</strong> libera LLaMA (feb 2023): primer LLM competitivo con pesos abiertos. El equipo lo lidera <strong>Hugo Touvron</strong> y <strong>Thibaut Lavril</strong> entre otros. LLaMA 2 (jul 2023), LLaMA 3 (abr 2024), LLaMA 4 (2025). Hugging Face explota en tráfico.</p><p>La filtración de los pesos de LLaMA 1 (3 días después de la publicación restringida) acelera todo: en semanas hay versiones fine-tuneadas para instrucciones que compiten con ChatGPT.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Mistral (2023), DeepSeek-R1 (2025) · <strong>Depende de:</strong> ChatGPT (2022), GPT-4 (2023)</div>
+    </div>
+    <div class="chain-item" id="2023-mistral-open-eu-mistral-ai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">2023</span>
+        <h3 class="chain-title">Mistral · open EU&nbsp;<span class="chain-person">— Mistral AI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Mistral AI</strong> (París, fundada jun 2023 por <strong>Arthur Mensch</strong>, <strong>Guillaume Lample</strong> y <strong>Timothée Lacroix</strong>, ex-DeepMind y ex-Meta): Mistral 7B (sep 2023) · Mixtral 8x7B (dic 2023, Mixture of Experts) · Mistral Large (feb 2024).</p><p>Mistral 7B supera a LLaMA 2 13B en todos los benchmarks a la mitad de parámetros. La estrategia: eficiencia + pesos abiertos + Europa. Mixtral introduce MoE: solo 2 de 8 expertos activos por token — velocidad de 12.9B con capacidad de 45B.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> DeepSeek-R1 (2025) · <strong>Depende de:</strong> LLaMA (2023)</div>
+    </div>
+    <div class="chain-item" id="2023-gemini-ultra-2-5-google-deepmind">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">2023</span>
+        <h3 class="chain-title">Gemini Ultra → 2.5&nbsp;<span class="chain-person">— Google DeepMind</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google DeepMind</strong> lanza Gemini Ultra (dic 2023): multimodal nativo desde el pretraining (texto + imagen + audio + vídeo en el mismo modelo). Primer modelo que supera a humanos en MMLU. El proyecto unifica DeepMind y Google Brain bajo <strong>Demis Hassabis</strong>.</p><p>Gemini 2.5 (2025) añade extended thinking. Se ejecuta sobre TPUs propios — la única arquitectura frontier que no depende de NVIDIA.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Claude Opus 4.7 (2026) como contexto competitivo · <strong>Depende de:</strong> Transformer (2017), <a href="12_PARALELISMO.html#tpu-v5p">12_PARALELISMO#TPU v5p</a></div>
+    </div>
+    <div class="chain-item" id="2024-o1-reasoning-openai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">o1 · reasoning&nbsp;<span class="chain-person">— OpenAI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>OpenAI</strong> lanza o1 (sep 2024): el modelo genera cadenas de razonamiento internas largas (chain-of-thought) antes de responder, entrenadas con reinforcement learning. En matemáticas de competición (AIME 2024): 83% frente al 13% de GPT-4o. En física (GPQA Diamond): 78% frente al 56% de GPT-4o.</p><p>El paradigma cambia: en lugar de hacer el modelo más grande, se le da más tiempo de cómputo en inferencia.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Claude Opus 4.7 (2026), GPT-5 (2025), DeepSeek-R1 (2025) · <strong>Depende de:</strong> GPT-4 (2023)</div>
+    </div>
+    <div class="chain-item" id="2024-nobel-hopfield-hinton-premio-nobel-de-fisica">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Nobel Hopfield+Hinton&nbsp;<span class="chain-person">— Premio Nobel de Física</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>John Hopfield</strong> (Princeton) y <strong>Geoffrey Hinton</strong> (University of Toronto / Google) reciben el Nobel de Física 2024 "por descubrimientos fundamentales que permiten el aprendizaje automático con redes neuronales artificiales" (oct 2024). Hopfield: las redes asociativas (1982). Hinton: la máquina de Boltzmann y backprop (1986).</p><p>El comité del Nobel da el premio de física a dos científicos que no trabajan en física de partículas ni cosmología. La señal es inequívoca.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Reconocimiento de toda la cadena perceptrón → backprop → deep learning · <strong>Depende de:</strong> Backpropagation (1986)</div>
+    </div>
+    <div class="chain-item" id="2024-phi-3-small-models-microsoft">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Phi-3 · small models&nbsp;<span class="chain-person">— Microsoft</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Microsoft Research</strong> lanza Phi-3 (mayo 2024): 3.8B parámetros competitivo con modelos de 30B. El equipo lo lidera <strong>Sebastien Bubeck</strong>. La tesis: la calidad de los datos de entrenamiento importa más que la escala. Phi-3 se entrena con datos cuidadosamente filtrados y sintéticos.</p><p>El resultado práctico: un modelo que cabe en un teléfono y responde como un modelo de datacenter de hace dos años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> NPU mainstream (2024) via on-device AI · <strong>Depende de:</strong> GPT-3 (2020) como referencia de escala a superar con menos parámetros</div>
+    </div>
+    <div class="chain-item" id="2025-deepseek-r1-deepseek-china">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">2025</span>
+        <h3 class="chain-title">DeepSeek-R1&nbsp;<span class="chain-person">— DeepSeek (China)</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>DeepSeek</strong> (Hangzhou, China — filial de High-Flyer Capital) libera R1 (ene 2025): primer reasoning model open-weights competitivo con OpenAI o1. El equipo de entrenamiento está liderado por <strong>Liang Wenfeng</strong>. Coste de entrenamiento declarado: ~6M USD frente a cientos de millones para modelos equivalentes.</p><p>El lanzamiento provoca una caída del 17% en la cotización de NVIDIA en un día (585.000M USD de capitalización evaporados). La hipótesis del mercado: si se puede entrenar tan barato, la demanda de GPUs cae.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Claude Opus 4.7 (2026), GPT-5 (2025) · <strong>Depende de:</strong> o1 (2024), LLaMA (2023), Mistral (2023)</div>
+    </div>
+    <div class="chain-item" id="2025-gpt-5-openai">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2025</span>
+        <h3 class="chain-title">GPT-5&nbsp;<span class="chain-person">— OpenAI</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>OpenAI</strong> lanza GPT-5 (ago 2025): unifica el linaje 4o (multimodal) y el o-series (reasoning) en un solo modelo. Razonamiento adaptativo: el modelo decide cuánto tiempo de pensamiento dedicar según la dificultad de la pregunta.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> cierre del primer ciclo LLM moderno; próxima frontera: agentes autónomos persistentes · <strong>Depende de:</strong> o1 (2024), GPT-4 (2023)</div>
+    </div>
+    <div class="chain-item" id="2026-claude-opus-4-7-1m-anthropic">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2026</span>
+        <h3 class="chain-title">Claude Opus 4.7 · 1M&nbsp;<span class="chain-person">— Anthropic</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Anthropic</strong> lanza Claude Opus 4.7 con ventana de contexto de 1 millón de tokens y razonamiento extendido por defecto. La transición de "chat" a "agente": ciclos de pensamiento encadenados, uso de herramientas, memoria persistente entre sesiones.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Memoria agéntica (2027) · <strong>Depende de:</strong> o1 (2024), DeepSeek-R1 (2025), Gemini 2.5 (2025)</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1943</td>
+          <td>Warren McCulloch</td>
+          <td>Modelo matemático de neurona</td>
+          <td>Illinois/MIT</td>
+        </tr>
+        <tr>
+          <td>1943</td>
+          <td>Walter Pitts</td>
+          <td>Formalización matemática del neurona artificial</td>
+          <td>MIT (autodidacta, Chicago)</td>
+        </tr>
+        <tr>
+          <td>1950</td>
+          <td>Alan Turing</td>
+          <td>Test de Turing, marco filosófico IA</td>
+          <td>UK / Manchester</td>
+        </tr>
+        <tr>
+          <td>1956</td>
+          <td>John McCarthy</td>
+          <td>Acuña "Artificial Intelligence", organiza Dartmouth</td>
+          <td>Dartmouth / MIT / Stanford</td>
+        </tr>
+        <tr>
+          <td>1956</td>
+          <td>Marvin Minsky</td>
+          <td>Co-organizador Dartmouth, MIT AI Lab</td>
+          <td>MIT</td>
+        </tr>
+        <tr>
+          <td>1956</td>
+          <td>Claude Shannon</td>
+          <td>Co-organizador Dartmouth</td>
+          <td>Bell Labs</td>
+        </tr>
+        <tr>
+          <td>1956</td>
+          <td>Nathaniel Rochester</td>
+          <td>Co-organizador Dartmouth</td>
+          <td>IBM</td>
+        </tr>
+        <tr>
+          <td>1958</td>
+          <td>Frank Rosenblatt</td>
+          <td>Perceptrón Mark I</td>
+          <td>Cornell Aeronautical Lab</td>
+        </tr>
+        <tr>
+          <td>1965</td>
+          <td>Joseph Weizenbaum</td>
+          <td>ELIZA, primer chatbot</td>
+          <td>MIT</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>Marvin Minsky</td>
+          <td>Co-autor Perceptrons (crítica al conexionismo)</td>
+          <td>MIT</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>Seymour Papert</td>
+          <td>Co-autor Perceptrons</td>
+          <td>MIT</td>
+        </tr>
+        <tr>
+          <td>1974</td>
+          <td>Paul Werbos</td>
+          <td>Formulación original backpropagation (tesis)</td>
+          <td>Harvard</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>Edward Shortliffe</td>
+          <td>MYCIN (diagnóstico médico experto)</td>
+          <td>Stanford</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>Bruce Buchanan</td>
+          <td>MYCIN co-autor</td>
+          <td>Stanford</td>
+        </tr>
+        <tr>
+          <td>1986</td>
+          <td>David Rumelhart</td>
+          <td>Popularización de backpropagation</td>
+          <td>UCSD</td>
+        </tr>
+        <tr>
+          <td>1986</td>
+          <td>Geoffrey Hinton</td>
+          <td>Backpropagation, Deep Belief Nets, Nobel 2024</td>
+          <td>Toronto / Google</td>
+        </tr>
+        <tr>
+          <td>1986</td>
+          <td>Ronald Williams</td>
+          <td>Co-autor backpropagation</td>
+          <td>Northeastern</td>
+        </tr>
+        <tr>
+          <td>1997</td>
+          <td>Feng-hsiung Hsu</td>
+          <td>Deep Blue, arquitectura hardware</td>
+          <td>IBM</td>
+        </tr>
+        <tr>
+          <td>1997</td>
+          <td>Murray Campbell</td>
+          <td>Deep Blue, equipo principal</td>
+          <td>IBM</td>
+        </tr>
+        <tr>
+          <td>1997</td>
+          <td>Joe Hoane</td>
+          <td>Deep Blue, equipo principal</td>
+          <td>IBM</td>
+        </tr>
+        <tr>
+          <td>1998</td>
+          <td>Yann LeCun</td>
+          <td>LeNet-5, CNNs, padre del deep learning visual</td>
+          <td>AT&amp;T Bell Labs / Meta</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>Geoffrey Hinton</td>
+          <td>Deep Belief Nets (segunda aparición clave)</td>
+          <td>Toronto</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>Ruslan Salakhutdinov</td>
+          <td>Deep Belief Nets co-autor</td>
+          <td>Toronto</td>
+        </tr>
+        <tr>
+          <td>2009</td>
+          <td>Fei-Fei Li</td>
+          <td>ImageNet</td>
+          <td>Princeton / Stanford</td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td>Alex Krizhevsky</td>
+          <td>AlexNet</td>
+          <td>Toronto</td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td>Ilya Sutskever</td>
+          <td>AlexNet, OpenAI co-fundador</td>
+          <td>Toronto / OpenAI</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Tomas Mikolov</td>
+          <td>Word2Vec</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Kai Chen</td>
+          <td>Word2Vec</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Greg Corrado</td>
+          <td>Word2Vec</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Jeff Dean</td>
+          <td>Word2Vec, TPU, Google Brain</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td>Ian Goodfellow</td>
+          <td>GANs</td>
+          <td>Université de Montréal</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td>Demis Hassabis</td>
+          <td>AlphaGo, AlphaFold, Nobel 2024</td>
+          <td>DeepMind / Google</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td>David Silver</td>
+          <td>AlphaGo PI</td>
+          <td>DeepMind</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Ashish Vaswani</td>
+          <td>Transformer lead author</td>
+          <td>Google Brain</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Jakob Uszkoreit</td>
+          <td>Idea inicial del Transformer (solo attention)</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Noam Shazeer</td>
+          <td>Transformer, implementación clave</td>
+          <td>Google Brain</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Llion Jones</td>
+          <td>Tensor2Tensor, implementación Transformer</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>Andrew Senior</td>
+          <td>AlphaFold 1 co-líder</td>
+          <td>DeepMind</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>John Jumper</td>
+          <td>AlphaFold 1, AlphaFold 2 PI, Nobel 2024</td>
+          <td>DeepMind</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>Alec Radford</td>
+          <td>GPT-1 lead</td>
+          <td>OpenAI</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>Jacob Devlin</td>
+          <td>BERT lead</td>
+          <td>Google</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td>Tom Brown</td>
+          <td>GPT-3 lead</td>
+          <td>OpenAI</td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>Richard Evans</td>
+          <td>AlphaFold 2 equipo</td>
+          <td>DeepMind</td>
+        </tr>
+        <tr>
+          <td>2022</td>
+          <td>Sam Altman</td>
+          <td>ChatGPT, CEO OpenAI</td>
+          <td>OpenAI</td>
+        </tr>
+        <tr>
+          <td>2022</td>
+          <td>Greg Brockman</td>
+          <td>ChatGPT, CTO OpenAI</td>
+          <td>OpenAI</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>Hugo Touvron</td>
+          <td>LLaMA lead</td>
+          <td>Meta</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>Arthur Mensch</td>
+          <td>Mistral AI co-fundador</td>
+          <td>Mistral AI</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>Guillaume Lample</td>
+          <td>Mistral AI co-fundador</td>
+          <td>Mistral AI</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>Timothée Lacroix</td>
+          <td>Mistral AI co-fundador</td>
+          <td>Mistral AI</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>John Hopfield</td>
+          <td>Redes asociativas, Nobel 2024</td>
+          <td>Princeton</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Sebastien Bubeck</td>
+          <td>Phi-3 lead</td>
+          <td>Microsoft Research</td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>Liang Wenfeng</td>
+          <td>DeepSeek R1</td>
+          <td>DeepSeek / High-Flyer</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="03_ARQUITECTURA.html#1948-aut-matas-autoreplicantes">03_ARQUITECTURA#1948 · Autómatas autoreplicantes</a> → habilita Perceptrón (neurona como unidad computable)</li>
+      <li><span class="arrow">↗</span>De <a href="01_LOGICA.html#1847-lgebra-booleana">01_LOGICA#1847 · Álgebra booleana</a> → sustrato lógico de la neurona artificial</li>
+      <li><span class="arrow">↗</span>De <a href="12_PARALELISMO.html#2006-cuda">12_PARALELISMO#2006 · CUDA</a> → hace viable entrenar AlexNet en 2012</li>
+      <li><span class="arrow">↗</span>De <a href="12_PARALELISMO.html#2017-tensor-cores">12_PARALELISMO#2017 · Tensor Cores</a> → hardware para entrenar Transformers</li>
+      <li><span class="arrow">↗</span>De <a href="12_PARALELISMO.html#tpu-v1">12_PARALELISMO#TPU v1</a> → habilita escalar modelos de Google a partir de 2016</li>
+      <li><span class="arrow">↗</span>De <a href="07_SOFTWARE.html#1958-lisp">07_SOFTWARE#1958 · LISP</a> → lengua franca de la IA simbólica, sustrato de sistemas expertos</li>
+      <li><span class="arrow">↗</span>De <a href="15_ALGORITMOS.html#1928-minimax">15_ALGORITMOS#1928 · Minimax</a> → lógica de búsqueda en árbol usada por Deep Blue y AlphaGo</li>
+      <li><span class="arrow">↗</span>De <a href="15_ALGORITMOS.html#2017-attention">15_ALGORITMOS#2017 · Attention</a> → algoritmo base del Transformer</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De Transformer (2017) → habilita <a href="12_PARALELISMO.html#tpu-v5p">12_PARALELISMO#TPU v5p</a> (diseño de hardware específico)</li>
+      <li><span class="arrow">↘</span>De Transformer (2017) → habilita <a href="12_PARALELISMO.html#etched-sohu">12_PARALELISMO#Etched Sohu</a> (ASIC dedicado a Transformers)</li>
+      <li><span class="arrow">↘</span>De ChatGPT (2022) → habilita <a href="09_DATOS.html#mcp-protocol">09_DATOS#MCP Protocol</a> (estándar agente↔datos)</li>
+      <li><span class="arrow">↘</span>De Transformer (2017) → habilita <a href="14_SIMULACION.html#world-models-sora">14_SIMULACION#World Models/Sora</a> (modelos generativos físicos)</li>
+      <li><span class="arrow">↘</span>De AlphaFold 2 (2021) → habilita <a href="14_SIMULACION.html#foundation-simulation">14_SIMULACION#Foundation Simulation</a></li>
+      <li><span class="arrow">↘</span>De Transformer (2017) → habilita <a href="10_ROBOTICA.html#humanoides-comerciales">10_ROBOTICA#Humanoides comerciales</a></li>
+      <li><span class="arrow">↘</span>De Claude Opus 4.7 (2026) → habilita <a href="09_DATOS.html#agentic-memory">09_DATOS#Agentic Memory</a></li>
+      <li><span class="arrow">↘</span>De Backpropagation (1986) → Nobel 2024 como reconocimiento institucional</li>
+      <li><span class="arrow">↘</span>De AlexNet (2012) → habilita <a href="14_SIMULACION.html#alphafold-1">14_SIMULACION#AlphaFold 1</a> como primer demo científica</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo el hardware aceleró el deep learning → <a href="12_PARALELISMO.html">12_PARALELISMO</a></li>
+      <li>Si quieres seguir la rama robótica y física → <a href="14_SIMULACION.html">14_SIMULACION</a></li>
+      <li>Si te interesa el límite cuántico de lo que computan las máquinas → <a href="13_CUANTICA.html">13_CUANTICA</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 11</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="10_DATA.html" title="Capítulo anterior">◄</a>
+      <a href="12_PARALELISMO.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>11-1</span>
+  </footer>
+</article>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INTERNET · De 4 nodos universitarios a la infraestructura del mundo · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Internet no fue diseñado como red global: fue diseñado para sobrevivir. Lo demás vino después.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-internet.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #0E6027;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">INTERNET</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-09</span>
+  </header>
+  <h1 class="page-title">INTERNET · De 4 nodos universitarios a la infraestructura del mundo</h1>
+  <p class="page-subtitle">Internet no fue diseñado como red global: fue diseñado para sobrevivir. Lo demás vino después.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>El 29 de octubre de 1969, dos ordenadores en UCLA y SRI Stanford intentan enviarse la palabra "LOGIN". El sistema cae tras dos caracteres: "LO". Así empieza internet. Cincuenta años después, la columna INTERNET cubre el camino desde ese primer paquete hasta el cómputo distribuido en el borde de la red, pasando por el protocolo TCP/IP, la web, el primer navegador gráfico, Google, AWS y Kubernetes. El patrón es constante: cada capa construye sobre la anterior y desplaza el poder hacia quien controla la nueva abstracción. La columna recibe de ELECTRÓNICA (el circuito integrado) y de SOFTWARE (Unix, Linux, Docker) sus habilitadores; alimenta DATA y PARADIGMAS.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1969-arpanet-larry-roberts-vinton-cerf-bob-kahn">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1969</span>
+        <h3 class="chain-title">ARPANET&nbsp;<span class="chain-person">— Larry Roberts, Vinton Cerf, Bob Kahn</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Larry Roberts</strong> lidera desde DARPA (Defense Advanced Research Projects Agency) la primera red de paquetes conmutados. El 29 de octubre de 1969, el primer mensaje viaja entre la UCLA (<strong>Len Kleinrock</strong>, equipo) y el SRI Stanford (<strong>Doug Engelbart</strong>, equipo): "LO". Pretendían enviar "LOGIN" pero el sistema IMP (Interface Message Processor) en el SRI cae tras dos caracteres.</p><p>La red crece: 4 nodos en 1969 (UCLA, SRI Stanford, UC Santa Barbara, Universidad de Utah). Los algoritmos de <strong>Paul Baran</strong> (RAND Corporation, 1964) sobre packet switching —redes que encaminan paquetes por múltiples rutas y resisten la destrucción de nodos— son el sustrato conceptual. Sin ARPA y sin la presión de la Guerra Fría (redes resistentes a ataque nuclear), el proyecto no habría recibido financiación.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1983-tcp-ip-flag-day">#1983 · TCP/IP "flag day"</a> · <strong>Depende de:</strong> <a href="02_ELE.html#1959-circuito-integrado">02_ELE#1959 · Circuito integrado</a> · <a href="04_SOFTWARE.html#1969-unix">04_SOFTWARE#1969 · Unix</a> (paralelo: Unix y ARPANET nacen el mismo año, mismo ecosistema DARPA)</div>
+    </div>
+    <div class="chain-item" id="1983-tcp-ip-flag-day-vinton-cerf-bob-kahn">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1983</span>
+        <h3 class="chain-title">TCP/IP "flag day"&nbsp;<span class="chain-person">— Vinton Cerf, Bob Kahn</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Vinton Cerf</strong> y <strong>Bob Kahn</strong> especifican TCP/IP entre 1973 y 1978. El 1 de enero de 1983 es el "flag day": ARPANET completa la migración desde NCP (Network Control Protocol) a TCP/IP. Cualquier ordenador en cualquier red heterogénea puede ahora intercambiar paquetes con cualquier otro.</p><p>TCP/IP es el estándar abierto que permite la interoperación sin coordinación central. Cerf y Kahn reciben el Premio Turing en 2004. La arquitectura de capas (física, red, transporte, aplicación) que define el modelo OSI deriva de esta decisión de diseño.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1989-www-berners-lee">#1989 · WWW · Berners-Lee</a> · <strong>Depende de:</strong> <a href="01_LOG.html#1948-teor-a-de-la-informaci-n">01_LOG#1948 · Teoría de la Información</a> (la teoría de Shannon sobre canales de comunicación es el sustrato matemático)</div>
+    </div>
+    <div class="chain-item" id="1989-www-berners-lee-tim-berners-lee">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1989</span>
+        <h3 class="chain-title">WWW · Berners-Lee&nbsp;<span class="chain-person">— Tim Berners-Lee</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Tim Berners-Lee</strong> (CERN, Ginebra) entrega su propuesta "Information Management: A Proposal" en marzo de 1989. Su jefe, <strong>Mike Sendall</strong>, escribe en el margen: "Vague but exciting". En 1990, Berners-Lee implementa el primer servidor HTTP (en una NeXT Cube) y el primer navegador/editor. El primer sitio web público es info.cern.ch, activo desde agosto de 1991.</p><p>HTTP, HTML y URL son los tres inventos en un mismo proyecto. El diseño es deliberadamente abierto: sin patentes, sin licencias. Berners-Lee rechaza enriquecerse con el invento. En 1994 funda el W3C (World Wide Web Consortium) para mantener los estándares abiertos. Sin esta decisión, la web podría haber sido un sistema propietario de una empresa.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1993-mosaic-browser">#1993 · Mosaic browser</a></div>
+    </div>
+    <div class="chain-item" id="1993-mosaic-browser-marc-andreessen-eric-bina">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1993</span>
+        <h3 class="chain-title">Mosaic browser&nbsp;<span class="chain-person">— Marc Andreessen, Eric Bina</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Marc Andreessen</strong> y <strong>Eric Bina</strong> (NCSA, Universidad de Illinois) lanzan Mosaic en enero de 1993: el primer navegador que muestra imágenes en línea con el texto (los anteriores mostraban el texto y descargaban las imágenes por separado). Gratuito. Disponible para Windows, Mac y Unix.</p><p>En 18 meses, el tráfico web en internet crece un 341.634%. Andreessen funda Netscape en 1994 con <strong>Jim Clark</strong>. La IPO de Netscape en agosto de 1995 (con la empresa sin beneficios) dispara el boom dotcom.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1998-google-pagerank">#1998 · Google · PageRank</a> · <strong>Depende de:</strong> <a href="07_MICRO_PC.html#1984-macintosh">07_MICRO_PC#1984 · Macintosh</a> (Mac populariza la interfaz visual que Mosaic adopta)</div>
+    </div>
+    <div class="chain-item" id="1998-google-pagerank-larry-page-sergey-brin">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1998</span>
+        <h3 class="chain-title">Google · PageRank&nbsp;<span class="chain-person">— Larry Page, Sergey Brin</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Larry Page</strong> y <strong>Sergey Brin</strong> lanzan Google en septiembre de 1998 desde un garaje en Menlo Park, California. El algoritmo <strong>PageRank</strong> (desarrollado como BackRub en 1996 en Stanford) mide la importancia de una página web como el eigenvector de la matriz de adyacencia del grafo de hiperenlaces: una página es importante si otras páginas importantes apuntan a ella.</p><p>La búsqueda web existía antes (AltaVista, Yahoo, Lycos) pero Google la resuelve con calidad sustancialmente mayor. En 2004, Google tiene el 75% del mercado de búsqueda. AdWords (2000) y AdSense (2003) convierten la búsqueda en el negocio de publicidad más eficiente de la historia.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2006-aws-cloud-p-blica">#2006 · AWS · cloud pública</a> · <strong>Depende de:</strong> <a href="08_ALG.html#1998-pagerank">08_ALG#1998 · PageRank</a> (el algoritmo es el corazón)</div>
+    </div>
+    <div class="chain-item" id="2006-aws-cloud-publica-andy-jassy-werner-vogels">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">2006</span>
+        <h3 class="chain-title">AWS · cloud pública&nbsp;<span class="chain-person">— Andy Jassy, Werner Vogels</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Amazon Web Services</strong> lanza S3 (Simple Storage Service, marzo 2006) y EC2 (Elastic Compute Cloud, agosto 2006). <strong>Andy Jassy</strong> lidera AWS; <strong>Werner Vogels</strong> (CTO de Amazon) impulsa la arquitectura de servicios que hace posible el modelo.</p><p>La idea nace de la necesidad interna de Amazon: para los picos de Navidad, Amazon tenía que aprovisionar hardware suficiente para el máximo de demanda, que luego quedaba ocioso el resto del año. AWS ofrece ese exceso a terceros. El resultado accidental es la mayor transformación en la economía del software desde el PC: el hardware deja de ser barrera de entrada. Startups sin capital pueden escalar globalmente el mismo día de su lanzamiento.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2014-kubernetes">#2014 · Kubernetes</a> · <strong>Depende de:</strong> <a href="08_ALG.html#2004-mapreduce-google">08_ALG#2004 · MapReduce (Google)</a> (el patrón de procesamiento distribuido masivo habilita el modelo cloud)</div>
+    </div>
+    <div class="chain-item" id="2014-kubernetes-joe-beda-brendan-burns-craig-mcluckie">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2014</span>
+        <h3 class="chain-title">Kubernetes&nbsp;<span class="chain-person">— Joe Beda, Brendan Burns, Craig McLuckie</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> libera Kubernetes (k8s) en junio de 2014. <strong>Joe Beda</strong>, <strong>Brendan Burns</strong> y <strong>Craig McLuckie</strong> son los tres ingenieros que lo originan internamente. Se basa en Borg, el sistema de orquestación interno de Google que lleva más de una década en producción.</p><p>Kubernetes orquesta contenedores Docker (2013): decide en qué máquina ejecutar cada contenedor, gestiona el escalado automático, reemplaza los contenedores que fallan y expone los servicios con load balancing. En 2016 se dona a la Cloud Native Computing Foundation (CNCF). En 2024 es el estándar industrial indiscutible para despliegue cloud-native.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2017-edge-computing">#2017 · Edge computing</a> · <strong>Depende de:</strong> <a href="04_SOFTWARE.html#2013-docker">04_SOFTWARE#2013 · Docker</a> (Docker es el formato que Kubernetes orquesta) · <a href="06_PARADIGMAS.html#2014-microservicios">06_PARADIGMAS#2014 · Microservicios</a> (la demanda de orquestación viene de los microservicios)</div>
+    </div>
+    <div class="chain-item" id="2017-edge-computing-cloudflare-vercel-aws">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2017</span>
+        <h3 class="chain-title">Edge computing&nbsp;<span class="chain-person">— Cloudflare, Vercel, AWS</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Cloudflare Workers</strong> (septiembre 2017): código JavaScript ejecutándose en los ~300 PoP (puntos de presencia) de Cloudflare, a menos de 50 ms de cualquier usuario del mundo. <strong>Vercel Edge Functions</strong> (2021). <strong>AWS Lambda@Edge</strong> (2016, producción desde 2017).</p><p>El modelo: en lugar de enviar la petición de un usuario en Tokyo a un servidor en us-east-1 (Virginia), la lógica corre en el PoP de Tokyo. La latencia pasa de 150 ms a 5 ms para funciones simples. 5G (despliegue masivo 2019-2021) acelera la adopción. <strong>Matthew Prince</strong> y <strong>Michelle Zatlyn</strong> (Cloudflare) y <strong>Guillermo Rauch</strong> (Vercel) son las caras públicas de este movimiento.</p></div>
+      <div class="chain-rel"><strong>Depende de:</strong> <a href="08_ALG.html#2008-nakamoto-consensus">08_ALG#2008 · Nakamoto consensus</a> (blockchain como fenómeno paralelo en esta capa, Web3)</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1964</td>
+          <td>Paul Baran</td>
+          <td>Algoritmos de packet switching</td>
+          <td>RAND Corporation, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>Larry Roberts</td>
+          <td>Dirección de ARPANET desde DARPA</td>
+          <td>DARPA, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>Len Kleinrock</td>
+          <td>Teoría de colas para redes, nodo UCLA</td>
+          <td>UCLA, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>Vinton Cerf</td>
+          <td>Codiseñador de TCP/IP</td>
+          <td>Stanford / DARPA, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>Bob Kahn</td>
+          <td>Codiseñador de TCP/IP</td>
+          <td>DARPA, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1989</td>
+          <td>Tim Berners-Lee</td>
+          <td>Inventor de la WWW, HTTP, HTML, URL</td>
+          <td>CERN, Suiza</td>
+        </tr>
+        <tr>
+          <td>1993</td>
+          <td>Marc Andreessen</td>
+          <td>Mosaic, cofundador Netscape</td>
+          <td>NCSA / Netscape, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1993</td>
+          <td>Eric Bina</td>
+          <td>Codesarrollador de Mosaic</td>
+          <td>NCSA, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1994</td>
+          <td>Jim Clark</td>
+          <td>Cofundador de Netscape</td>
+          <td>Netscape, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1996</td>
+          <td>Larry Page</td>
+          <td>PageRank, cofundador Google</td>
+          <td>Stanford / Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1998</td>
+          <td>Sergey Brin</td>
+          <td>PageRank, cofundador Google</td>
+          <td>Stanford / Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2003</td>
+          <td>Andy Jassy</td>
+          <td>Creador y CEO de AWS</td>
+          <td>Amazon, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2003</td>
+          <td>Werner Vogels</td>
+          <td>CTO Amazon, arquitectura de servicios</td>
+          <td>Amazon, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td>Joe Beda</td>
+          <td>Cofundador de Kubernetes</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td>Brendan Burns</td>
+          <td>Cofundador de Kubernetes</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td>Craig McLuckie</td>
+          <td>Cofundador de Kubernetes</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Matthew Prince</td>
+          <td>CEO Cloudflare Workers</td>
+          <td>Cloudflare, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Michelle Zatlyn</td>
+          <td>Cofundadora Cloudflare</td>
+          <td>Cloudflare, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Guillermo Rauch</td>
+          <td>CEO Vercel, Edge Functions</td>
+          <td>Vercel, EE.UU.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="02_ELE.html#1959-circuito-integrado">02_ELE#1959 · Circuito integrado</a> → habilita ARPANET (el IC hace posibles los IMP routers)</li>
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#1969-unix">04_SOFTWARE#1969 · Unix</a> → paralelo con ARPANET (mismo ecosistema; Unix se convierte en el SO de los servidores de internet)</li>
+      <li><span class="arrow">↗</span>De <a href="07_MICRO_PC.html#1984-macintosh">07_MICRO_PC#1984 · Macintosh</a> → habilita Mosaic (la GUI visual que Mosaic toma como referencia)</li>
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#2013-docker">04_SOFTWARE#2013 · Docker</a> → habilita Kubernetes (Docker es el formato de paquete que Kubernetes orquesta)</li>
+      <li><span class="arrow">↗</span>De <a href="06_PARADIGMAS.html#2014-microservicios">06_PARADIGMAS#2014 · Microservicios</a> → habilita Kubernetes (la demanda de orquestación nace del modelo de microservicios)</li>
+      <li><span class="arrow">↗</span>De <a href="08_ALG.html#2004-mapreduce">08_ALG#2004 · MapReduce</a> → habilita AWS (el patrón de procesamiento distribuido masivo)</li>
+      <li><span class="arrow">↗</span>De <a href="01_LOG.html#1948-teor-a-de-la-informaci-n">01_LOG#1948 · Teoría de la Información</a> → habilita TCP/IP (los canales de Shannon como sustrato matemático de la comunicación)</li>
+      <li><span class="arrow">↗</span>De <a href="08_ALG.html#2008-nakamoto-consensus">08_ALG#2008 · Nakamoto consensus</a> → Edge computing (blockchain como fenómeno paralelo en la capa de borde)</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>AWS → habilita <a href="10_DATA.html#2007-nosql-bigtable-dynamo">10_DATA#2007 · NoSQL · BigTable · Dynamo</a> (Amazon Dynamo es el origen del movimiento NoSQL)</li>
+      <li><span class="arrow">↘</span>Kubernetes → habilita <a href="06_PARADIGMAS.html#2010-go-rust">06_PARADIGMAS#2010 · Go + Rust</a> (K8s en Go consagra el lenguaje)</li>
+      <li><span class="arrow">↘</span>Google → habilita <a href="10_DATA.html#2007-nosql">10_DATA#2007 · NoSQL</a> y <a href="08_ALG.html#2004-mapreduce">08_ALG#2004 · MapReduce</a> (Google publica BigTable y MapReduce)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo internet gestiona y almacena sus datos → <a href="10_DATA.html">10_DATA</a></li>
+      <li>Si quieres ver los algoritmos que hacen funcionar la web (PageRank, MapReduce) → <a href="08_ALG.html">08_ALG</a></li>
+      <li>Si te interesa la capa de software que hace posible el cloud (Docker, Linux) → <a href="04_SOFTWARE.html">04_SOFTWARE</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 9</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="08_ROBOTICA.html" title="Capítulo anterior">◄</a>
+      <a href="10_DATA.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>9-1</span>
+  </footer>
+</article>
+</body>
+</html>

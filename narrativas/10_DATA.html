@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DATA · Del modelo relacional a la memoria de los agentes · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Las bases de datos no almacenan datos: almacenan la forma en que los humanos modelan el mundo. Cada nuevo modelo de datos refleja un cambio en qué tipo de preguntas queremos hacer.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-data.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #A56EFF;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">DATA</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-10</span>
+  </header>
+  <h1 class="page-title">DATA · Del modelo relacional a la memoria de los agentes</h1>
+  <p class="page-subtitle">Las bases de datos no almacenan datos: almacenan la forma en que los humanos modelan el mundo. Cada nuevo modelo de datos refleja un cambio en qué tipo de preguntas queremos hacer.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>En 1970, un matemático de IBM publica 13 páginas que fundan la teoría de las bases de datos relacionales. En 2027, se espera la convergencia de múltiples paradigmas de almacenamiento —relacional, vectorial, episódico, grafos— en plataformas diseñadas para que los agentes IA mantengan memoria persistente entre sesiones. Entre ambos extremos, la columna DATA narra cuatro transiciones: de la teoría al producto comercial (Codd a Oracle), del monopolio relacional a la escala web (SQL a NoSQL), de la búsqueda exacta a la similitud semántica (RDBMS a vector DBs), y del almacenamiento como commodity al dato como contexto activo de la IA. La columna recibe de INTERNET y de IA sus presiones transformadoras.</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1970-modelo-relacional-e-f-codd">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1970</span>
+        <h3 class="chain-title">Modelo relacional&nbsp;<span class="chain-person">— E.F. Codd</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Edgar F. Codd</strong> (IBM Research, San José) publica "A Relational Model of Data for Large Shared Data Banks" en junio de 1970 en <em>Communications of the ACM</em>. 13 páginas. La propuesta: representar datos como tuplas en relaciones (tablas), operar sobre ellas con álgebra relacional (selección, proyección, producto, unión, diferencia) y separar la estructura lógica de los datos de su implementación física.</p><p>En 1970, los datos se almacenaban con modelos jerárquicos o de red (IMS de IBM, CODASYL) donde las relaciones entre registros eran punteros físicos. Cambiar la estructura física de los datos requería reescribir las aplicaciones. Codd propone una capa de abstracción: el modelo lógico es independiente del almacenamiento.</p><p>IBM tarda 8 años en implementar la idea. Irónicamente, Oracle la implementa primero.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1974-ibm-system-r">#1974 · IBM System R</a> · <strong>Depende de:</strong> <a href="04_SOFTWARE.html#1969-unix">04_SOFTWARE#1969 · Unix</a> (el ecosistema Unix/C es el entorno de desarrollo de los primeros RDBMS)</div>
+    </div>
+    <div class="chain-item" id="1974-ibm-system-r-donald-chamberlin-raymond-boyce">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1974</span>
+        <h3 class="chain-title">IBM System R&nbsp;<span class="chain-person">— Donald Chamberlin, Raymond Boyce</span></h3>
+      </div>
+      <div class="chain-body"><p>IBM Research (San José) desarrolla System R entre 1974 y 1979. <strong>Donald Chamberlin</strong> y <strong>Raymond Boyce</strong> diseñan SEQUEL (Structured English Query Language) para acceder a los datos del modelo de Codd; SEQUEL se renombra SQL para evitar un conflicto de marca.</p><p>System R demuestra que el modelo relacional de Codd es implementable con rendimiento aceptable. Dos contribuciones clave: el optimizador de consultas (decide automáticamente cómo ejecutar una consulta) y el protocolo de control de concurrencia. Ambos siguen siendo el núcleo de cualquier RDBMS moderno.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1979-oracle-v2">#1979 · Oracle V2</a></div>
+    </div>
+    <div class="chain-item" id="1979-oracle-v2-larry-ellison">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1979</span>
+        <h3 class="chain-title">Oracle V2&nbsp;<span class="chain-person">— Larry Ellison</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Larry Ellison</strong> lee el paper de Codd en 1977 e invierte 2.000 USD en fundar SDL (Software Development Labs) con <strong>Bob Miner</strong> y <strong>Ed Oates</strong>. Oracle V2 se lanza en 1979 (V1 nunca salió de pruebas) para el minicomputador PDP-11. Es el primer RDBMS comercial funcional.</p><p>Oracle se adelanta a IBM en comercializar la idea que IBM había inventado. Ellison convence a la CIA como primer cliente. El nombre "Oracle" viene del proyecto CIA para el que IBM había contratado a Ellison antes de su empresa. Oracle domina el mercado de bases de datos empresariales durante 30 años.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#1996-postgresql-mysql">#1996 · PostgreSQL · MySQL</a></div>
+    </div>
+    <div class="chain-item" id="1990-blast-bioinformatica-stephen-altschul">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1990</span>
+        <h3 class="chain-title">BLAST · bioinformática&nbsp;<span class="chain-person">— Stephen Altschul</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Stephen Altschul</strong>, <strong>Warren Gish</strong>, <strong>Webb Miller</strong>, <strong>Eugene Myers</strong> y <strong>David Lipman</strong> (NCBI, NIH) publican BLAST (Basic Local Alignment Search Tool) en 1990: búsqueda heurística de similitud entre secuencias biológicas (DNA, RNA, proteínas) a velocidad práctica. Resuelve un problema de búsqueda por similitud en espacios de alta dimensión biológica.</p><p>BLAST es el algoritmo más citado de la biología computacional. Es el sustrato técnico del Human Genome Project (1990-2003). Conceptualmente, BLAST es el precursor de la búsqueda vectorial: encontrar el elemento más similar en un espacio de alta dimensión, no el elemento exacto.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2017-faiss-meta">#2017 · FAISS (Meta)</a> (puente conceptual) · <a href="03_IA.html#2018-alphafold-1">03_IA#2018 · AlphaFold 1</a> (la bioinformática habilita la IA biológica)</div>
+    </div>
+    <div class="chain-item" id="1996-postgresql-mysql-michael-stonebraker-monty-widenius">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1996</span>
+        <h3 class="chain-title">PostgreSQL · MySQL&nbsp;<span class="chain-person">— Michael Stonebraker / Monty Widenius</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>MySQL 1.0</strong> (mayo 1995, <strong>Michael "Monty" Widenius</strong> y <strong>David Axmark</strong>, Suecia). <strong>PostgreSQL</strong>: sucesor del proyecto Postgres de <strong>Michael Stonebraker</strong> (UC Berkeley, 1986); renombrado en 1996; PostgreSQL 6.0 lanzado en enero de 1997.</p><p>Ambos democratizan el RDBMS a coste cero. Hasta entonces, Oracle DB costaba decenas de miles de dólares por servidor. MySQL y PostgreSQL bajan la barrera a cero. MySQL se convierte en el estándar de la web 2.0 (LAMP stack: Linux + Apache + MySQL + PHP). PostgreSQL gana reputación de corrección y extensibilidad.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2007-nosql-bigtable-dynamo">#2007 · NoSQL · BigTable · Dynamo</a> · <a href="#2024-pgvector-iceberg">#2024 · pgvector + Iceberg</a> (PostgreSQL como sustrato de la convergencia)</div>
+    </div>
+    <div class="chain-item" id="2007-nosql-bigtable-dynamo-jeff-dean-werner-vogels">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">2007</span>
+        <h3 class="chain-title">NoSQL · BigTable · Dynamo&nbsp;<span class="chain-person">— Jeff Dean, Werner Vogels</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Google</strong> publica el paper de BigTable en 2006 (<strong>Fay Chang</strong>, <strong>Jeffrey Dean</strong> et al.): almacenamiento distribuido orientado a columnas para datos esparsos a escala web. <strong>Amazon</strong> publica Dynamo en 2007 (<strong>Giuseppe DeCandia</strong>, <strong>Werner Vogels</strong> et al.): almacenamiento clave-valor distribuido para alta disponibilidad con consistencia eventual.</p><p>El problema: MySQL no escala horizontalmente. Cuando tienes 1.000 servidores y petabytes de datos, las garantías ACID del modelo relacional son demasiado caras. El movimiento NoSQL produce CouchDB (2005), Cassandra (Facebook, 2008, open source 2009), MongoDB (2009). El patrón MapReduce de Google (2004) habilita el procesamiento masivo sobre estos almacenes.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2019-vector-dbs-pinecone">#2019 · Vector DBs · Pinecone+</a> · <strong>Depende de:</strong> <a href="09_INTERNET.html#2006-aws-cloud-p-blica">09_INTERNET#2006 · AWS · cloud pública</a> (Amazon Dynamo nace de las necesidades de AWS) · <a href="08_ALG.html#2004-mapreduce">08_ALG#2004 · MapReduce</a> (el procesamiento distribuido masivo habilita el modelo NoSQL)</div>
+    </div>
+    <div class="chain-item" id="2017-faiss-meta-herve-jegou-matthijs-douze">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">2017</span>
+        <h3 class="chain-title">FAISS (Meta)&nbsp;<span class="chain-person">— Hervé Jégou, Matthijs Douze</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Meta</strong> (entonces Facebook) abre <strong>FAISS</strong> (Facebook AI Similarity Search) en 2017. <strong>Hervé Jégou</strong> y <strong>Matthijs Douze</strong> lideran el desarrollo. FAISS resuelve un problema específico: dado un vector de 1.024 dimensiones (un embedding de imagen o texto), encontrar los K vectores más similares entre mil millones de vectores en milisegundos.</p><p>El algoritmo usa quantización de productos e índices HNSW (Hierarchical Navigable Small World). FAISS hace prácticas las búsquedas de similitud a escala. Sin FAISS, las bases de datos vectoriales y el RAG (Retrieval-Augmented Generation) no existirían en su forma actual.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2019-vector-dbs-pinecone">#2019 · Vector DBs · Pinecone+</a> · <strong>Depende de:</strong> <a href="03_IA.html#2017-transformer">03_IA#2017 · Transformer</a> (los embeddings del Transformer son lo que se indexa)</div>
+    </div>
+    <div class="chain-item" id="2019-vector-dbs-pinecone-multiples-fundadores">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">2019</span>
+        <h3 class="chain-title">Vector DBs · Pinecone+&nbsp;<span class="chain-person">— múltiples fundadores</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Weaviate</strong> (open source, <strong>Bob van Luijt</strong>, Ámsterdam, 2019) y <strong>Milvus</strong> (open source, <strong>Charles Xie</strong>, Zilliz, China, 2019) son los primeros. <strong>Pinecone</strong> fundada en 2019 por <strong>Edo Liberty</strong> (ex-Yahoo Research); lanzamiento público en enero 2021.</p><p>El producto: una base de datos cuya primitiva de búsqueda no es "dame el registro donde id=5" sino "dame los 10 registros más similares a este vector". El caso de uso que las lanza a la fama es RAG (Retrieval-Augmented Generation) con LLMs: el embedding de la pregunta del usuario se compara con el embedding de los documentos almacenados para recuperar contexto relevante.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2024-pgvector-iceberg">#2024 · pgvector + Iceberg</a></div>
+    </div>
+    <div class="chain-item" id="2024-pgvector-iceberg-andrew-kane-apache-community">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">pgvector + Iceberg&nbsp;<span class="chain-person">— Andrew Kane / Apache community</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>pgvector</strong> (creado por <strong>Andrew Kane</strong>, primera versión en abril 2021) se vuelve estándar de facto en PostgreSQL en 2023-2024: un índice vectorial dentro del RDBMS más maduro. Las bases vectoriales aisladas (Pinecone, Weaviate como servicio independiente) pierden parte de su razón de ser.</p><p><strong>Apache Iceberg</strong> (open source, creado por <strong>Ryan Blue</strong> en Netflix, 2018) gana la guerra de open table formats en 2023-2024: Snowflake, Databricks y AWS adoptan Iceberg como formato interoperable para tablas analíticas. La convergencia OLAP/OLTP/vector en un solo motor empieza a ser real.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2024-mcp-anthropic">#2024 · MCP (Anthropic)</a> · <a href="#2027-agentic-memory-esp">#2027 · Agentic memory (esp.)</a></div>
+    </div>
+    <div class="chain-item" id="2024-mcp-anthropic-equipo-anthropic">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">MCP (Anthropic)&nbsp;<span class="chain-person">— equipo Anthropic</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Anthropic</strong> libera el <strong>Model Context Protocol</strong> (MCP) en noviembre de 2024: un estándar abierto de comunicación entre agentes IA y fuentes de datos arbitrarias (bases de datos, APIs, sistemas de archivos, servicios web). En 2025, OpenAI, Google y Microsoft lo adoptan; decenas de bases de datos publican conectores MCP.</p><p>MCP es el "USB-C para IA": antes de MCP, cada LLM tenía su propio método propietario de acceder a herramientas y datos. Con MCP, cualquier fuente de datos que implemente el protocolo es accesible desde cualquier agente.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> <a href="#2027-agentic-memory-esp">#2027 · Agentic memory (esp.)</a> · <strong>Depende de:</strong> <a href="03_IA.html#2022-chatgpt">03_IA#2022 · ChatGPT</a> (ChatGPT genera la demanda masiva que hace necesario el protocolo) · <a href="03_IA.html#2026-claude-opus-4-7-1m">03_IA#2026 · Claude Opus 4.7 · 1M</a> (Opus 4.7 como caso de uso avanzado de MCP)</div>
+    </div>
+    <div class="chain-item" id="2027-agentic-memory-esp-convergencia-esperada">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">2027</span>
+        <h3 class="chain-title">Agentic memory (esp.)&nbsp;<span class="chain-person">— convergencia esperada</span></h3>
+      </div>
+      <div class="chain-body"><p>Plataformas diseñadas para agentes IA con memoria persistente: <strong>Mem0</strong> (vectorial + episódica), <strong>Zep</strong> (memoria de larga duración para agentes), próxima generación de Snowflake, Databricks y MongoDB con índices auto-gestionados.</p><p>La convergencia esperada: vector + grafo + memoria episódica + SQL en un motor unificado que se auto-indexa según los patrones de acceso del agente. El agente no solo ejecuta tareas: recuerda, actualiza su conocimiento y adapta su comportamiento basándose en experiencias pasadas.</p></div>
+      <div class="chain-rel"><strong>Depende de:</strong> <a href="#2024-pgvector-iceberg">#2024 · pgvector + Iceberg</a> · <a href="#2024-mcp-anthropic">#2024 · MCP (Anthropic)</a> · <a href="02_ELE.html#2019-project-silica-cristal-5d">02_ELE#2019 · Project Silica · cristal 5D</a> (almacenamiento a largo plazo para la capa de archivo)</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1970</td>
+          <td>E.F. Codd</td>
+          <td>Modelo relacional de datos</td>
+          <td>IBM Research, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1974</td>
+          <td>Donald Chamberlin</td>
+          <td>Codiseñador de SQL (SEQUEL)</td>
+          <td>IBM Research, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1974</td>
+          <td>Raymond Boyce</td>
+          <td>Codiseñador de SQL (SEQUEL)</td>
+          <td>IBM Research, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1979</td>
+          <td>Larry Ellison</td>
+          <td>Fundador de Oracle, primer RDBMS comercial</td>
+          <td>Oracle, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1979</td>
+          <td>Bob Miner</td>
+          <td>Cofundador de Oracle</td>
+          <td>Oracle, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1979</td>
+          <td>Ed Oates</td>
+          <td>Cofundador de Oracle</td>
+          <td>Oracle, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1990</td>
+          <td>Stephen Altschul</td>
+          <td>Codiseñador de BLAST</td>
+          <td>NCBI/NIH, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1990</td>
+          <td>Eugene Myers</td>
+          <td>Codiseñador de BLAST</td>
+          <td>NCBI/NIH, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1990</td>
+          <td>David Lipman</td>
+          <td>Codiseñador de BLAST</td>
+          <td>NCBI/NIH, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1986</td>
+          <td>Michael Stonebraker</td>
+          <td>Creador de Postgres (luego PostgreSQL)</td>
+          <td>UC Berkeley, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>1995</td>
+          <td>Michael "Monty" Widenius</td>
+          <td>Creador de MySQL</td>
+          <td>MySQL AB, Suecia</td>
+        </tr>
+        <tr>
+          <td>1995</td>
+          <td>David Axmark</td>
+          <td>Cofundador MySQL</td>
+          <td>MySQL AB, Suecia</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>Fay Chang</td>
+          <td>Codiseñadora de BigTable (Google)</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>Jeffrey Dean</td>
+          <td>Codiseñador de BigTable (y MapReduce)</td>
+          <td>Google, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>Giuseppe DeCandia</td>
+          <td>Codiseñador de Amazon Dynamo</td>
+          <td>Amazon, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>Werner Vogels</td>
+          <td>CTO Amazon, impulsor de Dynamo</td>
+          <td>Amazon, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Hervé Jégou</td>
+          <td>Codiseñador de FAISS</td>
+          <td>Meta (Facebook AI), Francia</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Matthijs Douze</td>
+          <td>Codiseñador de FAISS</td>
+          <td>Meta (Facebook AI), Francia</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>Bob van Luijt</td>
+          <td>Fundador de Weaviate</td>
+          <td>Weaviate, Países Bajos</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>Charles Xie</td>
+          <td>Fundador de Milvus/Zilliz</td>
+          <td>Zilliz, China</td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>Edo Liberty</td>
+          <td>Fundador de Pinecone</td>
+          <td>Pinecone, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>Andrew Kane</td>
+          <td>Creador de pgvector</td>
+          <td>Independiente, EE.UU.</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>Ryan Blue</td>
+          <td>Creador de Apache Iceberg (en Netflix)</td>
+          <td>Netflix / Apache, EE.UU.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="04_SOFTWARE.html#1969-unix">04_SOFTWARE#1969 · Unix</a> → habilita el modelo relacional (el ecosistema Unix/C es el entorno de desarrollo de los primeros RDBMS)</li>
+      <li><span class="arrow">↗</span>De <a href="09_INTERNET.html#2006-aws-cloud-p-blica">09_INTERNET#2006 · AWS · cloud pública</a> → habilita NoSQL (Amazon Dynamo nace de las necesidades de AWS; BigTable de Google)</li>
+      <li><span class="arrow">↗</span>De <a href="08_ALG.html#2004-mapreduce">08_ALG#2004 · MapReduce</a> → habilita NoSQL (el procesamiento distribuido masivo da sentido al modelo NoSQL)</li>
+      <li><span class="arrow">↗</span>De <a href="03_IA.html#2017-transformer">03_IA#2017 · Transformer</a> → habilita FAISS y Vector DBs (los embeddings del Transformer son lo que se indexa en vectorial)</li>
+      <li><span class="arrow">↗</span>De <a href="03_IA.html#2022-chatgpt">03_IA#2022 · ChatGPT</a> → habilita MCP (ChatGPT genera la demanda masiva que hace necesario el protocolo estándar)</li>
+      <li><span class="arrow">↗</span>De <a href="03_IA.html#2026-claude-opus-4-7-1m">03_IA#2026 · Claude Opus 4.7 · 1M</a> → habilita Agentic memory (Opus 4.7 es el caso de uso avanzado que presiona la arquitectura de memoria)</li>
+      <li><span class="arrow">↗</span>De <a href="02_ELE.html#2019-project-silica-cristal-5d">02_ELE#2019 · Project Silica · cristal 5D</a> → habilita Agentic memory (almacenamiento de largo plazo para la capa de archivo)</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>BLAST → habilita <a href="03_IA.html#2018-alphafold-1">03_IA#2018 · AlphaFold 1</a> (la bioinformática computacional habilita la IA biológica)</li>
+      <li><span class="arrow">↘</span>Vector DBs + MCP → habilita la era de agentes con memoria (<a href="08_ROBOT.html#2027-robot-fm-cross-embodiment">08_ROBOT#2027 · Robot FM cross-embodiment</a>)</li>
+      <li><span class="arrow">↘</span>NoSQL → relacionado con <a href="08_ALG.html#2004-mapreduce">08_ALG#2004 · MapReduce</a> (el patrón MapReduce y los almacenes NoSQL se co-habilitan)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo los agentes IA consumen estos datos → <a href="03_IA.html">03_IA</a></li>
+      <li>Si quieres ver la red sobre la que viajan los datos → <a href="09_INTERNET.html">09_INTERNET</a></li>
+      <li>Si te interesa la bioinformática y la ciencia computacional → <a href="03_IA.html">03_IA</a> (vía AlphaFold)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 10</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="09_INTERNET.html" title="Capítulo anterior">◄</a>
+      <a href="11_IA.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>10-1</span>
+  </footer>
+</article>
+</body>
+</html>

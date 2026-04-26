@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALGORITMOS · De la teoría de juegos al agente que razona · Narrativas Historia Computación · 498 Advance</title>
+<meta name="description" content="Un siglo de primitivas: cada algoritmo resuelve un problema que antes parecía irresolvible, y al hacerlo, abre el siguiente.">
+<meta name="author" content="Carlos Ortet · 498 Advance">
+<link rel="canonical" href="https://zoopa.es/files/narrativas/narrativa-algoritmos.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1A1A'/%3E%3Ctext x='50' y='62' font-family='IBM Plex Sans,sans-serif' font-size='52' font-weight='900' fill='%2333B1FF' text-anchor='middle' letter-spacing='-3'%3E498%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --ink: #1A1A1A;
+  --tab-color: #002D9C;
+  --rule: #1A1A1A;
+  --shade: #E8DCC4;
+  --note: #FAFAFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:#D8C8A4;  /* color "library shelf" alrededor de la página */
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:32px 0;
+}
+.page{
+  background:var(--paper);
+  max-width:840px;
+  margin:0 auto 32px;
+  position:relative;
+  padding:48px 64px 56px 96px;
+  min-height:1100px;
+  box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+}
+/* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
+.holes{
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  width:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:120px 0;
+  pointer-events:none;
+}
+.hole{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#D8C8A4;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.4);
+}
+/* TAB LATERAL (chapter index, derecha) */
+.tab{
+  position:absolute;
+  right:-24px;
+  top:140px;
+  width:48px;
+  height:120px;
+  background:var(--tab-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:1.5px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+/* CABECERA */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:6px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-title{
+  font-size:11px;
+  letter-spacing:.5px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.doc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+}
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin:8px 0 4px;
+  letter-spacing:-.3px;
+  line-height:1.15;
+}
+.page-subtitle{
+  font-size:14px;
+  color:#444;
+  font-weight:400;
+  margin-bottom:14px;
+  font-style:italic;
+}
+.title-rule{
+  border:none;
+  border-bottom:3px solid var(--rule);
+  margin:0 0 28px;
+}
+/* SECCIONES (procedimiento) */
+.section{
+  margin-bottom:32px;
+  page-break-inside:avoid;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+  margin-top:4px;
+}
+.proc-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--shade);
+  padding:2px 8px;
+  border:1px solid var(--ink);
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  flex:1;
+}
+.section-rule{
+  border:none;
+  border-bottom:1px solid var(--ink);
+  margin:0 0 14px;
+}
+.section p{
+  margin:0 0 12px;
+  text-align:justify;
+  hyphens:auto;
+}
+.section blockquote{
+  border-left:3px solid var(--tab-color);
+  padding:6px 14px 6px 18px;
+  margin:14px 0;
+  font-style:italic;
+  color:#444;
+  background:var(--note);
+}
+/* CADENA: items con badge tipo IBM */
+.chain-item{
+  margin:0 0 22px;
+  padding:0 0 0 0;
+}
+.chain-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:0 0 8px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.chain-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+  white-space:nowrap;
+}
+.chain-title{
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+.chain-person{
+  color:#444;
+  font-style:italic;
+  font-weight:400;
+}
+.chain-body{
+  padding-left:32px;
+  margin-bottom:6px;
+}
+.chain-rel{
+  padding-left:32px;
+  font-size:12px;
+  color:#444;
+  border-top:1px dotted #999;
+  padding-top:6px;
+  margin-top:8px;
+}
+.chain-rel strong{color:var(--ink)}
+/* TABLA */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:12px;
+}
+th{
+  background:var(--shade);
+  color:var(--ink);
+  text-align:left;
+  padding:8px 10px;
+  border:1px solid var(--ink);
+  font-weight:700;
+  letter-spacing:.3px;
+}
+td{
+  padding:7px 10px;
+  border:1px solid var(--ink);
+  vertical-align:top;
+}
+/* CROSS-COLUMN dependencies */
+.cross-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.cross-list li{
+  padding:6px 0 6px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+  font-size:13px;
+}
+.cross-list li:last-child{border-bottom:none}
+.cross-list .arrow{
+  position:absolute;
+  left:0;
+  top:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  color:var(--tab-color);
+  font-size:14px;
+}
+.cross-list a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:#999;
+}
+.cross-list a:hover{
+  text-decoration-color:var(--tab-color);
+  color:var(--tab-color);
+}
+/* LECTURA SIGUIENTE */
+.next-list{
+  list-style:none;
+  margin:8px 0;
+  padding:0;
+}
+.next-list li{
+  padding:8px 0 8px 28px;
+  position:relative;
+  border-bottom:1px dotted #999;
+}
+.next-list li::before{
+  content:"►";
+  position:absolute;
+  left:4px;
+  top:8px;
+  color:var(--tab-color);
+  font-size:11px;
+}
+/* FOOTER */
+.page-footer{
+  position:absolute;
+  bottom:24px;
+  left:96px;
+  right:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#666;
+  letter-spacing:.5px;
+  border-top:1px solid #999;
+  padding-top:8px;
+}
+.page-footer .nav a{
+  color:#666;
+  text-decoration:none;
+  border:1px solid #999;
+  padding:1px 6px;
+  margin:0 2px;
+}
+.page-footer .nav a:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
+}
+/* HOVER MARKS */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#999}
+a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
+/* PRINT */
+@media print{
+  body{background:white;padding:0}
+  .page{margin:0;box-shadow:none;page-break-after:always;max-width:none;min-height:auto}
+  .page-footer{position:relative;bottom:auto;left:0;right:0;margin-top:32px}
+  .holes{display:none}
+}
+/* RESPONSIVE */
+@media (max-width:900px){
+  body{padding:8px 0;background:var(--paper)}
+  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .holes{display:none}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .page-title{font-size:22px}
+  .section-title{font-size:16px}
+  .chain-body,.chain-rel{padding-left:0}
+  .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <div class="holes" aria-hidden="true">
+    <span class="hole"></span><span class="hole"></span><span class="hole"></span>
+  </div>
+  <div class="tab" aria-hidden="true">ALGORITMOS</div>
+  <header class="page-header">
+    <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="doc-num">SX-498A-V02 · CAP-02</span>
+  </header>
+  <h1 class="page-title">ALGORITMOS · De la teoría de juegos al agente que razona</h1>
+  <p class="page-subtitle">Un siglo de primitivas: cada algoritmo resuelve un problema que antes parecía irresolvible, y al hacerlo, abre el siguiente.</p>
+  <hr class="title-rule">
+
+
+  <section class="section" id="el-arco">
+    <div class="section-head">
+      <span class="proc-num">0001</span>
+      <h2 class="section-title">El arco</h2>
+    </div>
+    <hr class="section-rule">
+    <p>La columna ALGORITMOS no empieza con "algoritmos de ordenación" — empieza con la teoría de juegos de Von Neumann, que es la primera formulación matemática de la toma de decisiones bajo incertidumbre. De ahí la cadena avanza por la teoría de la complejidad (¿qué es tratable?), la criptografía (¿cómo proteger la información?), el big data distribuido (¿cómo procesar la web entera?), hasta los algoritmos agénticos de 2024 que combinan búsqueda clásica con LLMs. El patrón: cada era crea un cuello de botella computacional nuevo; la columna ALGORITMOS es la historia de cómo se rompe cada uno. La columna recibe impulsos de LÓGICA (Gödel → Cook-Levin), ELECTRÓNICA (ENIAC hace viable el Monte Carlo), IA (backprop → attention) y genera salidas hacia INTERNET (Dijkstra → routing), CRIPTOGRAFÍA (RSA bajo amenaza Shor) y la propia IA (attention → Transformer).</p>
+  </section>
+
+  <section class="section" id="la-cadena">
+    <div class="section-head">
+      <span class="proc-num">0010</span>
+      <h2 class="section-title">La cadena</h2>
+    </div>
+    <hr class="section-rule">
+    <div class="chain-item" id="1928-minimax-john-von-neumann">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">A</span>
+        <span class="chain-year">1928</span>
+        <h3 class="chain-title">Minimax&nbsp;<span class="chain-person">— John von Neumann</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>John von Neumann</strong> publica <em>Zur Theorie der Gesellschaftsspiele</em> en 1928, con 25 años, en Berlín. El teorema minimax prueba que en cualquier juego de suma cero entre dos jugadores con información perfecta, existe una estrategia óptima: minimiza tu pérdida máxima posible. La formulación es puramente matemática — no requiere ordenador. Pero setenta años después se convierte en el corazón de Deep Blue (1997) y AlphaGo (2016): los árboles de búsqueda adversaria que vencen a campeones mundiales ejecutan variantes del mismo principio.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Quicksort (1962) — siguiente nodo en la cadena algorítmica formal · Deep Blue (1997), AlphaGo (2016) como aplicaciones · <strong>Depende de:</strong> Lógica de predicados de Frege (1879) — influencia formal directa.</div>
+    </div>
+    <div class="chain-item" id="1956-dijkstra-shortest-path-edsger-dijkstra">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">B</span>
+        <span class="chain-year">1956</span>
+        <h3 class="chain-title">Dijkstra · shortest path&nbsp;<span class="chain-person">— Edsger Dijkstra</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Edsger Dijkstra</strong> escribe el algoritmo del camino más corto en un café de Ámsterdam en 1956, en aproximadamente 20 minutos, sin papel ni lápiz ("lo diseñé sin papel, lo que creo que es una de las razones por las que es tan elegante"). Lo publica en 1959 en <em>Numerische Mathematik</em>. El algoritmo recorre un grafo dirigido con pesos y encuentra el camino de menor coste desde un nodo origen a todos los demás. Complejidad: O(V²) en la versión original, O(E + V log V) con heap de Fibonacci.</p><p>Sin el algoritmo de Dijkstra no hay routing de internet (OSPF, IS-IS), no hay GPS, no hay planificación de red de telecomunicaciones. Los grafos de redes neuronales también heredan su lógica de recorrido. Dijkstra trabajaba en el Mathematisch Centrum de Ámsterdam con un computador <strong>ARMAC</strong> — es el primer algoritmo diseñado con una aplicación real de computación en mente.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> ARPANET routing (1969) como aplicación directa · <strong>Depende de:</strong> Complejidad formal de TAOCP (1968) — el análisis riguroso llega después.</div>
+    </div>
+    <div class="chain-item" id="1962-quicksort-c-a-r-hoare">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">C</span>
+        <span class="chain-year">1962</span>
+        <h3 class="chain-title">Quicksort&nbsp;<span class="chain-person">— C. A. R. Hoare</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>C. A. R. Hoare</strong> (Tony Hoare) publica Quicksort en 1962 en <em>The Computer Journal</em>, con 28 años. El algoritmo: divide el array en torno a un pivote, ordena recursivamente cada mitad. Complejidad media: O(n log n). Peor caso: O(n²) — pero en la práctica es el algoritmo de ordenación más rápido para datos aleatorios durante décadas. La recursividad aquí no es un truco: es la estructura del problema. Hoare trabaja en Elliott Brothers, fabricante de ordenadores, cuando lo diseña — la necesidad era práctica. El patrón divide-and-conquer se convierte en técnica fundamental de diseño de algoritmos, de Mergesort a FFT.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> TAOCP de Knuth (1968) — Quicksort es uno de los algoritmos que Knuth analiza formalmente · <strong>Depende de:</strong> Minimax (1928) — cadena de formalización algorítmica.</div>
+    </div>
+    <div class="chain-item" id="1968-knuth-taocp-vol-1-donald-knuth">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">D</span>
+        <span class="chain-year">1968</span>
+        <h3 class="chain-title">Knuth · TAOCP Vol 1&nbsp;<span class="chain-person">— Donald Knuth</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Donald Knuth</strong> publica el Vol. 1 de <em>The Art of Computer Programming</em> (TAOCP) en 1968, en Stanford. Antes de Knuth, los algoritmos se describían informalmente, sin análisis de coste. Knuth formaliza la notación O() (aunque Landau la había introducido en 1909, Knuth la populariza en CS), el análisis amortizado, y el análisis probabilístico. Inventa MIX, un computador hipotético estándar para análisis comparativo. El Vol. 4B (el más reciente) se publicó en 2022 — el proyecto lleva más de 50 años activo. Knuth interrumpió la redacción en 1977 para crear TeX porque la composición tipográfica de los manuscritos era inaceptable. TeX es ahora el estándar de publicación científica.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Cook-Levin (1971), Lean 4 (2021) — antecedente de la formalización matemática como práctica · <strong>Depende de:</strong> Quicksort (1962) y los algoritmos que analiza; Lógica formal como fundamento.</div>
+    </div>
+    <div class="chain-item" id="1971-cook-levin-np-stephen-cook-leonid-levin">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">E</span>
+        <span class="chain-year">1971</span>
+        <h3 class="chain-title">Cook-Levin · NP&nbsp;<span class="chain-person">— Stephen Cook / Leonid Levin</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Stephen Cook</strong> (Universidad de Toronto) y <strong>Leonid Levin</strong> (Moscú, independientemente) demuestran en 1971 el teorema Cook-Levin: el problema de satisfacibilidad booleana (SAT) es NP-completo. Consecuencia: si SAT es resoluble en tiempo polinomial, entonces todos los problemas de NP también lo son. Define la frontera entre P (tratable) y NP (verificable en tiempo polinomial). La pregunta P=NP sigue abierta en 2026 — el Clay Mathematics Institute ofrece 1 millón de dólares por su resolución. Cook recibe el Premio Turing en 1982. La teoría de la complejidad se vuelve herramienta para demostrar que ciertos problemas (viajante, coloración de grafos, scheduling) no tienen solución eficiente general conocida.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Criptografía de clave pública (RSA depende de que factorizar sea difícil, es decir, que ciertos problemas sean "NP-hard") · DNA computing de Adleman (1994) — resolver un NP-completo con DNA · <strong>Depende de:</strong> TAOCP de Knuth (1968) — formalización del análisis; Gödel (1931) — los límites de lo demostrable inspiran los límites de lo computable.</div>
+    </div>
+    <div class="chain-item" id="1976-diffie-hellman-whitfield-diffie-martin-hellman">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">F</span>
+        <span class="chain-year">1976</span>
+        <h3 class="chain-title">Diffie-Hellman&nbsp;<span class="chain-person">— Whitfield Diffie / Martin Hellman</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Whitfield Diffie</strong> y <strong>Martin Hellman</strong> publican "New Directions in Cryptography" en noviembre de 1976. Proponen el primer protocolo de intercambio de claves sin canal seguro previo: dos partes que nunca se han comunicado antes pueden establecer un secreto compartido en presencia de un adversario que escucha todo. La seguridad descansa en la dificultad del logaritmo discreto. Antes de Diffie-Hellman, para comunicarte cifrado necesitabas haber intercambiado la clave en persona previamente. Con Diffie-Hellman, la web cifrada es posible. Sin este paper no hay HTTPS, no hay e-commerce, no hay mensajería cifrada moderna. Reciben el Premio Turing en 2015.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> RSA (1977) — primer sistema de cifrado asimétrico completo · <strong>Depende de:</strong> Cook-Levin (1971) — la dureza computacional de ciertos problemas es el fundamento de la seguridad.</div>
+    </div>
+    <div class="chain-item" id="1977-rsa-ron-rivest-adi-shamir-leonard-adleman">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">G</span>
+        <span class="chain-year">1977</span>
+        <h3 class="chain-title">RSA&nbsp;<span class="chain-person">— Ron Rivest / Adi Shamir / Leonard Adleman</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ron Rivest</strong>, <strong>Adi Shamir</strong> y <strong>Leonard Adleman</strong> (MIT) publican RSA en 1977. Primer sistema de cifrado de clave pública completamente funcional: mensaje cifrado con clave pública, descifrado solo con clave privada. La seguridad descansa en la dificultad de factorizar el producto de dos primos grandes. Rivest inventa RSA en una noche de insomnio tras una fiesta de Pésaj, según su propio relato. El algoritmo estaba clasificado en el Reino Unido (GCHQ lo había desarrollado independientemente en 1973, clasificado) hasta que Clifford Cocks lo desclasificó en 1997. RSA es hoy el algoritmo de clave pública más desplegado del mundo — y está directamente bajo amenaza del algoritmo de Shor (1994), que lo rompe en tiempo polinomial con un ordenador cuántico suficientemente grande.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> MapReduce (2004) — siguiente eslabón en la cadena algorítmica; bajo amenaza directa de Shor · <strong>Depende de:</strong> Diffie-Hellman (1976) — el marco conceptual de la criptografía asimétrica.</div>
+    </div>
+    <div class="chain-item" id="1994-dna-computing-leonard-adleman">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">H</span>
+        <span class="chain-year">1994</span>
+        <h3 class="chain-title">DNA computing&nbsp;<span class="chain-person">— Leonard Adleman</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Leonard Adleman</strong> (USC) publica "Molecular Computation of Solutions To Combinatorial Problems" en <em>Science</em> en noviembre de 1994. Resuelve el problema del camino hamiltoniano para un grafo de 7 nodos usando cadenas de DNA: cada posible camino se codifica como una cadena de nucleótidos, las cadenas se mezclan en un tubo de ensayo, y la bioquímica selecciona por complementariedad las que son válidas. El cómputo tarda días, pero funciona. El mismo Adleman de RSA aplica ahora la dureza computacional de NP a un sustrato biológico. Demuestra el principio fundamental: la computación no requiere silicio — cualquier sustrato que procese información puede computar.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> investigación en computación molecular y no convencional · <strong>Depende de:</strong> Cook-Levin (1971) — Adleman ataca un problema NP-completo (camino hamiltoniano).</div>
+    </div>
+    <div class="chain-item" id="1998-pagerank-larry-page-sergey-brin">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">I</span>
+        <span class="chain-year">1998</span>
+        <h3 class="chain-title">PageRank&nbsp;<span class="chain-person">— Larry Page / Sergey Brin</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Larry Page</strong> y <strong>Sergey Brin</strong> (Stanford) publican "The Anatomy of a Large-Scale Hypertextual Web Search Engine" en enero-abril de 1998. Trabajo iniciado en 1996 como "BackRub". PageRank calcula la importancia de una página web como el eigenvector dominante del grafo de hiperenlaces: una página es importante si páginas importantes enlazan a ella. El algoritmo convierte un problema de búsqueda en un problema de álgebra lineal sobre un grafo de miles de millones de nodos. Page y Brin fundan Google ese mismo año. Sin PageRank, el directorio Yahoo o el AltaVista basado en keywords seguirían siendo la norma.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Google (NET) — aplicación directa; búsqueda semántica · <strong>Depende de:</strong> Dijkstra (1956) — algoritmia sobre grafos como antecedente; TAOCP — cultura del análisis algorítmico riguroso.</div>
+    </div>
+    <div class="chain-item" id="2004-mapreduce-jeffrey-dean-sanjay-ghemawat">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">J</span>
+        <span class="chain-year">2004</span>
+        <h3 class="chain-title">MapReduce&nbsp;<span class="chain-person">— Jeffrey Dean / Sanjay Ghemawat</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Jeffrey Dean</strong> y <strong>Sanjay Ghemawat</strong> (Google) publican el paper de MapReduce en 2004, en OSDI. El patrón: distribuir un cómputo masivo en dos fases — map (aplicar una función a cada elemento en paralelo) y reduce (agregar los resultados). La elegancia está en que el programador escribe solo esas dos funciones; el sistema se encarga de la distribución, la tolerancia a fallos y el balanceo de carga en miles de máquinas. Inspira Hadoop (2006, Yahoo/Doug Cutting), Spark (2009, AMPLab Berkeley), y todo el ecosistema big data de la siguiente década. Google usaba MapReduce para construir el índice web completo — el problema que PageRank resuelve teóricamente, MapReduce lo ejecuta a escala.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> NoSQL y bases de datos distribuidas (cadena ALG → DATA); AWS cloud pública · <strong>Depende de:</strong> RSA y la infraestructura computacional que habilita el cómputo distribuido seguro.</div>
+    </div>
+    <div class="chain-item" id="2008-nakamoto-consensus-satoshi-nakamoto">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">K</span>
+        <span class="chain-year">2008</span>
+        <h3 class="chain-title">Nakamoto consensus&nbsp;<span class="chain-person">— Satoshi Nakamoto</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Satoshi Nakamoto</strong> — identidad desconocida — publica "Bitcoin: A Peer-to-Peer Electronic Cash System" en octubre de 2008. Resuelve el problema del teniente bizantino a escala global: ¿cómo llegan a un consenso N nodos desconfiados sin autoridad central? La solución: proof-of-work como mecanismo de selección aleatoria pesado por poder computacional. El primero en resolver un puzzle criptográfico impone el siguiente bloque; la cadena más larga es la válida. Primera vez que un sistema distribuido sin administrador central mantiene estado consistente entre millones de nodos desconocidos entre sí. Funda la era cripto y abre la pregunta sobre consenso descentralizado más allá de la moneda.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Mecanismo de atención (2017) — siguiente eslabón en la cadena ALG; aplicaciones en identidad, contratos, votación · <strong>Depende de:</strong> RSA y criptografía de clave pública — Bitcoin usa ECDSA para firmas.</div>
+    </div>
+    <div class="chain-item" id="2017-attention-ashish-vaswani-et-al">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">L</span>
+        <span class="chain-year">2017</span>
+        <h3 class="chain-title">Attention&nbsp;<span class="chain-person">— Ashish Vaswani et al.</span></h3>
+      </div>
+      <div class="chain-body"><p><strong>Ashish Vaswani</strong>, <strong>Noam Shazeer</strong>, <strong>Niki Parmar</strong>, <strong>Jakob Uszkoreit</strong>, <strong>Llion Jones</strong>, <strong>Aidan N. Gomez</strong>, <strong>Łukasz Kaiser</strong> y <strong>Illia Polosukhin</strong> (Google Brain / Google Research) publican "Attention Is All You Need" en junio de 2017. El mecanismo de atención escalado por producto-punto ya existía en formas previas (Bahdanau 2015), pero este paper lo convierte en la primitiva central: reemplaza convolucioon y recurrencia por atención multi-cabeza, posibilitando paralelización completa durante el entrenamiento. Sin esto no hay Transformer; sin Transformer no hay GPT, Claude, Gemini ni Llama.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Transformer (2017) — el paper es simultáneo y sinónimo; Algoritmos agénticos (2024) · <strong>Depende de:</strong> Word2Vec (2013) — embeddings como representación que el attention opera; Nakamoto (2008) — cadena algorítmica formal.</div>
+    </div>
+    <div class="chain-item" id="2024-algoritmos-agenticos-multiples-autores">
+      <div class="chain-head">
+        <span class="badge" aria-hidden="true">M</span>
+        <span class="chain-year">2024</span>
+        <h3 class="chain-title">Algoritmos agénticos&nbsp;<span class="chain-person">— Múltiples autores</span></h3>
+      </div>
+      <div class="chain-body"><p>La cadena que va de <strong>ReAct</strong> (Yao et al., Princeton/Google, 2022) a <strong>Tree-of-Thoughts</strong> (Yao et al., 2023), <strong>MCTS sobre LLMs</strong>, <strong>tool use estructurado</strong> (Anthropic, OpenAI, 2023-2024) y <strong>planning con verificación</strong> (múltiples equipos). El patrón que emerge: los LLMs actúan como heurísticas dentro de bucles de búsqueda clásica. Tree-of-Thoughts aplica búsqueda en árbol (el minimax de Von Neumann, 1928) pero con un LLM evaluando los nodos. MCTS (Monte Carlo Tree Search) — el mismo algoritmo que AlphaGo usó en Go — se combina con modelos de lenguaje para razonamiento complejo. La IA generativa regresa a los algoritmos de búsqueda clásica como estructura; el LLM aporta la heurística que antes tenía que programarse a mano.</p></div>
+      <div class="chain-rel"><strong>Conduce a:</strong> Claude Opus 4.7 y los agentes IA de 2025-2026 — aplicación directa · <strong>Depende de:</strong> Attention/Transformer (2017) — el LLM que actúa como heurística; AlphaGo (2016) — MCTS ya demostrado en juegos.</div>
+    </div>
+  </section>
+
+  <section class="section" id="personas-clave">
+    <div class="section-head">
+      <span class="proc-num">0050</span>
+      <h2 class="section-title">Personas clave</h2>
+    </div>
+    <hr class="section-rule">
+    <table>
+      <thead><tr>
+        <th>Año</th>
+        <th>Persona</th>
+        <th>Aportación</th>
+        <th>País/Institución</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>1928</td>
+          <td>John von Neumann</td>
+          <td>Teorema minimax; fundación de la teoría de juegos</td>
+          <td>Hungría / EE.UU. / Princeton</td>
+        </tr>
+        <tr>
+          <td>1956</td>
+          <td>Edsger Dijkstra</td>
+          <td>Algoritmo de camino más corto en grafos</td>
+          <td>Países Bajos / Mathematisch Centrum Ámsterdam</td>
+        </tr>
+        <tr>
+          <td>1962</td>
+          <td>C. A. R. Hoare (Tony Hoare)</td>
+          <td>Quicksort; patrón divide-and-conquer</td>
+          <td>Reino Unido / Elliott Brothers</td>
+        </tr>
+        <tr>
+          <td>1968</td>
+          <td>Donald Knuth</td>
+          <td>TAOCP; notación O(); análisis formal de algoritmos; TeX</td>
+          <td>EE.UU. / Stanford</td>
+        </tr>
+        <tr>
+          <td>1971</td>
+          <td>Stephen Cook</td>
+          <td>Teorema Cook-Levin; NP-completitud</td>
+          <td>Canadá / Universidad de Toronto</td>
+        </tr>
+        <tr>
+          <td>1971</td>
+          <td>Leonid Levin</td>
+          <td>Teorema Cook-Levin (independiente)</td>
+          <td>URSS / Moscú</td>
+        </tr>
+        <tr>
+          <td>1976</td>
+          <td>Whitfield Diffie</td>
+          <td>Protocolo de intercambio de claves Diffie-Hellman</td>
+          <td>EE.UU. / Stanford</td>
+        </tr>
+        <tr>
+          <td>1976</td>
+          <td>Martin Hellman</td>
+          <td>Protocolo de intercambio de claves Diffie-Hellman</td>
+          <td>EE.UU. / Stanford</td>
+        </tr>
+        <tr>
+          <td>1977</td>
+          <td>Ron Rivest</td>
+          <td>RSA; criptografía de clave pública práctica</td>
+          <td>EE.UU. / MIT</td>
+        </tr>
+        <tr>
+          <td>1977</td>
+          <td>Adi Shamir</td>
+          <td>RSA</td>
+          <td>EE.UU. / MIT</td>
+        </tr>
+        <tr>
+          <td>1977</td>
+          <td>Leonard Adleman</td>
+          <td>RSA; DNA computing (1994)</td>
+          <td>EE.UU. / MIT / USC</td>
+        </tr>
+        <tr>
+          <td>1994</td>
+          <td>Leonard Adleman</td>
+          <td>DNA computing; computación con sustrato biológico</td>
+          <td>EE.UU. / USC</td>
+        </tr>
+        <tr>
+          <td>1998</td>
+          <td>Larry Page</td>
+          <td>PageRank; fundación de Google</td>
+          <td>EE.UU. / Stanford</td>
+        </tr>
+        <tr>
+          <td>1998</td>
+          <td>Sergey Brin</td>
+          <td>PageRank; fundación de Google</td>
+          <td>EE.UU. / Stanford</td>
+        </tr>
+        <tr>
+          <td>2004</td>
+          <td>Jeffrey Dean</td>
+          <td>MapReduce; computación distribuida masiva</td>
+          <td>EE.UU. / Google</td>
+        </tr>
+        <tr>
+          <td>2004</td>
+          <td>Sanjay Ghemawat</td>
+          <td>MapReduce</td>
+          <td>EE.UU. / Google</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>Doug Cutting</td>
+          <td>Hadoop (implementación open source de MapReduce)</td>
+          <td>EE.UU. / Yahoo</td>
+        </tr>
+        <tr>
+          <td>2008</td>
+          <td>Satoshi Nakamoto</td>
+          <td>Protocolo Bitcoin; consenso distribuido sin autoridad central</td>
+          <td>Identidad desconocida</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Ashish Vaswani</td>
+          <td>Mecanismo de atención escalado; paper "Attention Is All You Need"</td>
+          <td>EE.UU. / Google Brain</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Noam Shazeer</td>
+          <td>Co-autor del mecanismo de atención</td>
+          <td>EE.UU. / Google Brain</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="cross-column-dependencies">
+    <div class="section-head">
+      <span class="proc-num">0080</span>
+      <h2 class="section-title">Cross-column dependencies</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Lo que esta columna <strong>recibe</strong> de otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↗</span>De <a href="01_LOGICA.html#1879-l-gica-de-predicados">01_LOGICA#1879 · Lógica de predicados</a> → Frege influye en Minimax y en Von Neumann</li>
+      <li><span class="arrow">↗</span>De <a href="01_LOGICA.html#1931-incompletitud-entscheidungsproblem">01_LOGICA#1931 · Incompletitud · Entscheidungsproblem</a> → Gödel habilita Cook-Levin (los límites de lo demostrable inspiran los límites de lo computable)</li>
+      <li><span class="arrow">↗</span>De <a href="04_ELECTRONICA.html#1946-eniac">04_ELECTRONICA#1946 · ENIAC</a> → ENIAC hace viable el Monte Carlo (simulación); hardware que ejecuta los algoritmos</li>
+      <li><span class="arrow">↗</span>De <a href="05_SOFTWARE.html#1958-lisp">05_SOFTWARE#1958 · LISP</a> → Word2Vec hereda representación simbólica; ecosistema que ejecuta algoritmos</li>
+      <li><span class="arrow">↗</span>De <a href="IA.html#2013-word2vec">IA#2013 · Word2Vec</a> → embeddings que el mecanismo de atención opera</li>
+      <li><span class="arrow">↗</span>De <a href="IA.html#2016-alphago">IA#2016 · AlphaGo</a> → MCTS demostrado, base de algoritmos agénticos</li>
+    </ul>
+    <p>Lo que esta columna <strong>aporta</strong> a otras columnas:</p>
+    <ul class="cross-list">
+      <li><span class="arrow">↘</span>De Dijkstra (1956) → habilita <a href="NET.html#1969-arpanet">NET#1969 · ARPANET</a> — routing de internet</li>
+      <li><span class="arrow">↘</span>De Cook-Levin (1971) → habilita <a href="CUA.html#1994-algoritmo-de-shor">CUA#1994 · Algoritmo de Shor</a> — complejidad computacional de la factorización</li>
+      <li><span class="arrow">↘</span>De RSA (1977) → bajo amenaza de <a href="CUA.html#1994-algoritmo-de-shor">CUA#1994 · Algoritmo de Shor</a></li>
+      <li><span class="arrow">↘</span>De MapReduce (2004) → habilita <a href="DATA.html#2007-nosql-bigtable-dynamo">DATA#2007 · NoSQL · BigTable · Dynamo</a>; <a href="NET.html#2006-aws-cloud-p-blica">NET#2006 · AWS · cloud pública</a></li>
+      <li><span class="arrow">↘</span>De Attention (2017) → parallel con <a href="IA.html#2017-transformer">IA#2017 · Transformer</a> — mismo paper, primitiva algorítmica</li>
+      <li><span class="arrow">↘</span>De Algoritmos agénticos (2024) → parallel con <a href="IA.html#2026-claude-opus-4-7-1m">IA#2026 · Claude Opus 4.7 · 1M</a></li>
+      <li><span class="arrow">↘</span>De TAOCP (1968) → habilita <a href="01_LOGICA.html#2021-lean-4-mathlib">01_LOGICA#2021 · Lean 4 + mathlib</a> (formalización como práctica)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="lectura-siguiente">
+    <div class="section-head">
+      <span class="proc-num">0090</span>
+      <h2 class="section-title">Lectura siguiente</h2>
+    </div>
+    <hr class="section-rule">
+    <ul class="next-list">
+      <li>Si te interesa cómo los algoritmos de búsqueda se aplican en IA (Deep Blue, AlphaGo, agentes) → <a href="IA.html">IA</a> en el grafo</li>
+      <li>Si quieres ver cómo RSA y Diffie-Hellman quedan bajo amenaza cuántica → <a href="CUA.html">CUA</a> en el grafo</li>
+      <li>Si quieres la cadena que convierte MapReduce en infraestructura cloud → <a href="NET.html">NET</a> en el grafo</li>
+      <li>Si quieres la cadena lógica que da fundamento a Cook-Levin → <a href="01_LOGICA.html">01_LOGICA</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="fuente">
+    <div class="section-head">
+      <span class="proc-num">0099</span>
+      <h2 class="section-title">Fuente</h2>
+    </div>
+    <hr class="section-rule">
+    <p>Datos extraídos del grafo interactivo en https://zoopa.es/files/historia-computacion-hitos-20260423.html</p>
+  </section>
+
+  <footer class="page-footer">
+    <span>SX-498A-V02 · Capítulo 2</span>
+    <span class="nav">
+      <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
+      <a href="01_LOGICA.html" title="Capítulo anterior">◄</a>
+      <a href="03_ARQUITECTURA.html" title="Capítulo siguiente">►</a>
+    </span>
+    <span>2-1</span>
+  </footer>
+</article>
+</body>
+</html>
