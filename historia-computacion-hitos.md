@@ -1,247 +1,125 @@
 ---
 titulo: Historia de la Computación — Hitos, Descubrimientos y Relaciones
-fecha: 2026-04-23
+fecha_creacion: 2026-04-23
+fecha_actualizacion: 2026-04-26
+version: v0.4.0
 autor: Carlos Ortet
-tipo: knowledge / línea temporal
-estado: verificado y enriquecido
+tipo: knowledge / línea temporal interactiva
+estado: live deployed · v0.4.0 estable
+url_publica: https://zoopa.es/files/historia-computacion-hitos-20260423.html
+github: https://github.com/carlosortet/historia-computacion
+companion_html: historia-computacion-hitos-20260423.html
 ---
 
-# Historia de la Computación
+# Historia de la Computación · v0.4.0
 
-> Línea temporal estructurada de los hitos que conectan la lógica formal del siglo XIX con la era actual de IA generativa, computación cuántica y exascala. Cada bloque incluye el aporte central, la fecha verificada y su **relación causal** con bloques previos o posteriores.
+> Línea temporal interactiva con **181 hitos verificados** y **246 relaciones causales** que cubren la historia de la computación desde el álgebra booleana de Boole (1847) hasta los modelos esperados para 2027.
 
----
+> **🌐 Página en vivo (autoritativa):** https://zoopa.es/files/historia-computacion-hitos-20260423.html
+> **📦 Repo público:** https://github.com/carlosortet/historia-computacion
 
-## 1. LÓGICA FORMAL — La base matemática
-
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1847–1854** | George Boole | *Mathematical Analysis of Logic* (1847) y *Laws of Thought* (1854): álgebra booleana | Habilita el siguiente salto → Shannon |
-| **1879** | Gottlob Frege | *Begriffsschrift*: lógica de predicados y cuantificadores | Influye en Russell, Hilbert, Turing |
-| **1928–1931** | Hilbert · Gödel | *Entscheidungsproblem* (Hilbert) y teoremas de incompletitud (Gödel) | Plantea el reto que Turing y Church responden en 1936 |
-| **1937** | Claude Shannon | *A Symbolic Analysis of Relay and Switching Circuits*: aplica Boole a circuitos eléctricos | Fusiona lógica + electrónica → puente directo a la era electrónica |
-
-> **Cadena causal:** Boole → Frege → crisis de fundamentos → Turing/Church (1936) → Shannon traduce todo a circuitos.
+> ⚠️ **Este markdown es un índice estructural.** El contenido completo, interactivo (grafo SVG, tooltips, expandibles, callout cuántico, glosario) está en el HTML companion. Para auditar/editar hitos: editar `historia-computacion-hitos-20260423.html` directamente.
 
 ---
 
-## 2. ARQUITECTURA — El concepto de "ordenador"
+## Estructura
 
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1837** | Charles Babbage | Máquina Analítica: memoria, control, cálculo, programa | Primera arquitectura conceptual general |
-| **1843** | Ada Lovelace | Notas sobre la Máquina Analítica: primer algoritmo destinado a una máquina | Inaugura la distinción **hardware/software** |
-| **1936** | Alan Turing | *On Computable Numbers*: máquina universal | Base teórica de todo ordenador de propósito general |
-| **1945** | John von Neumann | *First Draft of a Report on the EDVAC*: arquitectura de programa almacenado | Modelo dominante hasta hoy (CPU + memoria + bus) |
-| **1949** | Maurice Wilkes | EDSAC en Cambridge: primer ordenador von Neumann plenamente operativo | Convierte la teoría de von Neumann en realidad práctica |
+**15 columnas en el grafo interactivo** + **8 tablas extra** (no en grafo, accesibles desde el header) + **callout educativo** en CUÁNTICA + **glosario completo**.
 
-> **Cadena causal:** Babbage/Lovelace (concepto) → Turing (teoría) → von Neumann (modelo de implementación) → Wilkes (realización).
+### 🟦 15 columnas del grafo (con relaciones causales)
 
----
+| # | Columna | Color | Cobertura resumida | Hitos clave |
+|---|---|---|---|---|
+| 1 | **LÓGICA** | IBM blue | Fundamentos matemáticos | Boole 1847 · Frege 1879 · Gödel 1931 · Shannon 1937 · HoTT 2013 · Lean 4 2021 · AlphaProof 2024 |
+| 2 | **ALGORITMOS** | Navy | Algoritmos fundamentales | Minimax 1928 · Dijkstra 1956 · Quicksort 1962 · Knuth 1968 · Cook-Levin 1971 · DH 1976 · RSA 1977 · PageRank 1998* · MapReduce 2004 · Nakamoto 2008 · Attention 2017* · Agentic 2024 |
+| 3 | **ARQUITECTURA** | IBM red | Concepto de "ordenador" | Babbage 1837 · Lovelace 1843 · Turing 1936 · von Neumann 1945 · Autómatas autoreplicantes 1948 · EDSAC 1949 |
+| 4 | **ELECTRÓNICA** | IBM yellow | De válvulas a chips | Z3 1941 · Colossus 1944 · ENIAC 1946 · Transistor 1947 · IC 1959 · Moore 1965 · Fin Moore 2019 · Project Silica 2019 · GAA 2022 |
+| 5 | **SOFTWARE** | IBM green | OS, lenguajes, dev infra | A-0 1952 · FORTRAN 1957 · COBOL 1959 · LISP 1958 · ALGOL 1960 · Dijkstra 1968 · Unix 1969 · C 1973 · GNU 1983 · Linux 1991 · Git 2005 · Docker 2013 · Copilot 2021 · Coding agents 2024 |
+| 6 | **PARADIGMAS** | Purple | Paradigmas de programación (renombrado de POO) | Simula 1967 · Smalltalk 1980 · C++ 1985 · Python 1991 · Java 1995 · JavaScript 1995 · TDD/Ágil 2001 · Funcional 2007 · Go+Rust 2010 · Swift+TS 2014 · Microservicios 2014 · Vibe Coding 2025 |
+| 7 | **MICRO+PC** | IBM orange | Microprocesador y PC | Intel 4004 1971 · 8008 1972 · 8080 1974 · Altair 1975 · Apple I/II 1976-77 · IBM PC 1981 · Mac 1984 · RISC 1980 · 386 1985 · Pentium 1993 · Athlon 64 2003 · Core 2 Duo 2006 · iPhone 2007 · Android 2008 · RISC-V 2010 · Raspberry Pi 2012 · Ryzen 2017 · M1 2020 · NPU mainstream 2024 · M5+18A 2026 · M6+Vera 2027 |
+| 8 | **ROBÓTICA** | Dark orange | Industrial → autónoma → VLA | Unimate 1961 · Shakey 1972 · PUMA 1978 · Roomba 2002 · DARPA UC 2007 · Spot 2015 · Humanoides 2024 · Robot FM 2024 (π0) · Cross-embodiment 2027 esp. |
+| 9 | **INTERNET** | Dark green | Red → web → cloud → edge | ARPANET 1969 · TCP/IP 1983 · WWW 1989 · Mosaic 1993 · Google 1998 · AWS 2006 · Kubernetes 2014 · Edge+Web3 2020 |
+| 10 | **DATA** | Light purple | Bases de datos | Codd 1970 · System R 1974 · Oracle 1979 · PostgreSQL/MySQL 1995-97 · NoSQL 2007 · FAISS 2017 · Vector DBs 2019 · pgvector+Iceberg 2024 · MCP 2024 · Agentic memory 2027 esp. |
+| 11 | **IA** | Pink | McCulloch-Pitts → LLMs | McCulloch-Pitts 1943 · Turing test 1950 · Dartmouth 1956 · Perceptrón 1958 · ELIZA 1965 · Invierno 1969 · Sistemas expertos 1980 · Backprop 1986 · Deep Blue 1997 · LeNet-5 1998 · DBN 2006 · ImageNet 2009 · AlexNet 2012 · Word2Vec 2013 · GANs 2014 · AlphaGo 2016 · Transformer 2017 · AlphaFold 1 2018 · BERT+GPT-1 2018 · GPT-3 2020 · AlphaFold 2 2021 · ChatGPT 2022 · Diffusion 2022 · GPT-4+LLaMA 2023 · o1 2024 · Nobel Hopfield+Hinton 2024 · DeepSeek-R1 2025 · Claude Opus 4.7 2026 |
+| 12 | **PARALELISMO** | Cyan | GPUs + ASICs IA (renombrado de GPU) | GeForce 256 1999 · Shaders 2001 · CUDA 2006 · OpenCL 2009 · TPU v1 2015 · Tensor Cores 2017 · TPU v2 2017 · Cerebras WSE-1 2019 · TPU v5p 2023 · Hyperscaler Si 2024 · Etched 2024 · TPU v6 Trillium 2024 · TPU v7 Ironwood 2025 · NVIDIA Rubin 2026 · TPU v8 2027 esp. · Vera Rubin Ultra 2027 esp. |
+| 13 | **CUÁNTICA** | Magenta | Teoría → chips → FTQC | Benioff 1980 · Feynman 1981-82 · Deutsch 1985 · Shor 1994 · QEC qubit lógico 1995-97 · Grover 1996 · 2 qubits NMR 1998 · Sycamore 2019 · IBM Heron+System Two 2023 · Willow 2024 · Estim. ruptura RSA 2024 · MS Majorana 1 2025 · IBM Loon+Nighthawk 2025 · IBM Cockatoo 2027 esp. |
+| 14 | **SUPERCOMPUTACIÓN** | Teal | TF → PF → EF | Cray-1 1976 · ASCI Red 1997 · Roadrunner 2008 · Fugaku 2020 · Frontier 2022 · Aurora 2024 · El Capitan 2024 · JUPITER EU 2025 |
+| 15 | **SIMULACIÓN** | Bronze | Monte Carlo → World Models | Monte Carlo 1947 · ENIAC weather 1950 · SPICE 1973 · CFD 1989 · NKS Wolfram 2002 · PhysX/Bullet 2008 · Omniverse 2021 · Digital Twins 2022 · Sora/Genie 2024 · NVIDIA Cosmos 2025 · Foundation simulation 2027 esp. |
 
-## 3. ELECTRÓNICA — De válvulas a chips
+> **\*** Marcadores `*1` y `*2` señalan duplicidades conceptuales: PageRank también está en INTERNET (como producto Google); Attention también en IA (como modelo Transformer).
 
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1941** | Konrad Zuse | Z3: primer ordenador programable y automático funcional (relés electromecánicos) | Demuestra la viabilidad práctica antes que los aliados |
-| **1943–1944** | Tommy Flowers | Colossus (Bletchley Park): computación electrónica con válvulas para criptoanálisis | Primer ordenador electrónico programable |
-| **1945–1946** | Eckert y Mauchly | ENIAC: ordenador electrónico de propósito general | Consolida el paradigma electrónico |
-| **1947** | Bardeen, Brattain, Shockley (Bell Labs) | Transistor de unión bipolar | Permite miniaturización: sustituye válvulas |
-| **1958–1959** | Jack Kilby (TI) y Robert Noyce (Fairchild) | Circuito integrado | Hace posible concentrar miles → millones de transistores en un chip |
+### 🟨 8 tablas extra (no en grafo · accesibles desde header del grafo)
 
-> **Cadena causal:** Shannon habilita la lógica electrónica → Zuse/Colossus/ENIAC la materializan → transistor + IC inician la ley de Moore (formulada por Gordon Moore en **1965**).
+| # | Tabla | Hitos cubiertos |
+|---|---|---|
+| 16 | **STORAGE** | RAMAC 1956 → floppy 8" 1971 → 3.5" 1980 → CD-ROM 1982 → DVD 1995 → USB 2000 → SSD 2007 → NVMe 2011 → Project Silica 2019 → DNA storage 2024 |
+| 17 | **OPEN SOURCE** | GNU 1983 · GPL 1989 · Linux 1991 · Apache 1995 · OSI 1998 · Wikipedia 2001 · Git 2005 · GitHub 2008 · Kubernetes 2014 · PyTorch 2017 · LLaMA 2023 · Hugging Face 2024 · DeepSeek-R1 2025 |
+| 18 | **CIBERSEGURIDAD** | Creeper 1971 · Morris 1988 · SSL 1995 · Slammer 2003 · Stuxnet 2010 · Snowden 2013 · Mirai 2016 · WannaCry 2017 · SolarWinds 2020 · Log4Shell 2021 · NIST PQC 2024 · LLM jailbreaks 2024 |
+| 19 | **MOBILE** | DynaTAC 1973 · IBM Simon 1992 · Nokia 9000 1996 · BlackBerry 1999 · iPod 2001 · iPhone 2007 · Android 2008 · iPad 2010 · Apple Watch 2014 · Pokémon Go 2016 · A11 Bionic 2017 · 5G 2020 · Vision Pro 2024 · LLM on-device 2024 |
+| 20 | **CRIPTOGRAFÍA** | DH 1976 · RSA 1977 · ECC 1985 · PGP 1991 · SSL 1995 · AES 2001 · Bitcoin 2008 · Snowden 2013 · Signal 2014 · NIST PQC competition 2016 · NIST PQC standards 2024 |
+| 21 | **SISTEMAS OPERATIVOS** | OS/360 1964 · Unix 1969 · Multics 1969 · CP/M 1974 · MS-DOS 1981 · Mac OS 1984 · Windows 1.0 1985 · OS/2 1987 · Linux 1991 · NT 1993 · W95 1995 · Mac OS X 2001 · iOS 2007 · Android 2008 · Chrome OS 2009 · SO con LLM 2024 |
+| 22 | **ARQUITECTURAS DE SISTEMA** | IBM 1401 1959 · System/360 1964 · Multics 1965 · VAX 1977 · NetWare 1983 · AS/400 1988 · x86 commodity 90s · VMware 1999 · Xen 2003 · AWS EC2 2006 · Hadoop 2008 · OpenStack 2010 · Docker 2013 · Kubernetes 2014 · Lambda serverless 2014 · Edge 2017 · 5G+IoT 2020s · GPU AI clusters 2024 · Agentic data centers 2025+ |
+| 23 | **GLOSARIO** | 6 categorías a color (Cuántica · IA · Hardware · Datos · Arquitecturas · Software) + bloque siglas. Incluye explicación destacada de qubit físico vs lógico |
 
----
+### ⚛ Callout educativo
 
-## 4. SOFTWARE E INGENIERÍA DEL SOFTWARE
-
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1952** | Grace Hopper | Compilador A-0: primer compilador funcional | Acerca la programación al lenguaje humano |
-| **1957** | John Backus (IBM) | FORTRAN: primer lenguaje de alto nivel ampliamente adoptado | Despega el software científico |
-| **1958–1960** | McCarthy · Naur et al. | LISP (1958) y ALGOL 60 (1960) | LISP → IA y lenguajes funcionales; ALGOL → toda la familia C/Pascal/Java |
-| **1968** | Edsger Dijkstra | *Go To Statement Considered Harmful* + programación estructurada | Funda la ingeniería del software moderna |
-| **1969–1973** | Ken Thompson y Dennis Ritchie (Bell Labs) | Unix (1969) y C (1972–73) | Base de macOS, Linux, Android, iOS, servidores… |
-
-> **Cadena causal:** Hopper abre los compiladores → FORTRAN/ALGOL/LISP definen los grandes paradigmas → Dijkstra disciplina la práctica → Unix+C se convierten en sustrato universal.
-
----
-
-## 5. PROGRAMACIÓN ORIENTADA A OBJETOS
-
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1967** | Ole-Johan Dahl y Kristen Nygaard (Oslo) | **Simula 67**: clases, objetos, herencia | Primer hito real de la POO |
-| **1972–1980** | Alan Kay, Dan Ingalls, Adele Goldberg (Xerox PARC) | **Smalltalk** (Smalltalk-72 → Smalltalk-80): objetos, clases, paso de mensajes, GUI | Inspira Mac, Objective-C, Java… |
-| **1985** | Bjarne Stroustrup (Bell Labs) | **C++**: POO sobre C | Lleva objetos al software de sistemas y alto rendimiento |
-| **1991–1995** | Guido van Rossum · James Gosling | **Python** (1991) y **Java** (1995) | Java masifica POO en empresa; Python la combina con scripting y se convierte hoy en lengua franca de IA |
-
-> **Cadena causal:** Simula (concepto puro) → Smalltalk (manifestación radical + GUI) → C++/Java (adopción industrial) → Python (puente a la era de la IA).
+Sección 9 CUÁNTICA incluye un callout dramático antes de la tabla, explicando "qubit físico ≠ qubit lógico" — el malentendido nº 1 del público. Diseño en gradient deep purple/magenta con la métrica concreta de ruptura RSA-2048 (~1.300 qubits LÓGICOS, Gidney 2024).
 
 ---
 
-## 6. MICROPROCESADOR Y PC
+## Diseño y estética
 
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1971** | Federico Faggin, Ted Hoff, Stanley Mazor, Masatoshi Shima (Intel) | **Intel 4004**: primer microprocesador comercial (4 bits) | Inicia la era del "ordenador en un chip" |
-| **1972** | Faggin et al. (Intel) | **Intel 8008** (8 bits) | Antecesor directo de la familia x86 |
-| **1974** | Equipo Intel | **Intel 8080** | Hace viables Altair 8800 y los primeros microordenadores |
-| **1975** | MITS Altair 8800 + Microsoft (Gates/Allen) | Primer microordenador de éxito + Altair BASIC | Nace la industria del software para PC |
-| **1976–1977** | Steve Wozniak (con Steve Jobs) | **Apple I** (1976) y **Apple II** (1977) | Acerca el ordenador personal al gran público |
-| **1981** | IBM (con MS-DOS de Microsoft) | **IBM PC** (modelo 5150) | Estandariza la arquitectura PC; modelo abierto = explosión de clones |
-| **1984** | Apple Macintosh | Primer PC de éxito masivo con GUI (heredada de Xerox PARC) | Lleva Smalltalk/PARC al mercado |
+- **Inspiración:** IBM (Paul Rand 1972) + Silicon Graphics (Joe Stitzlein 1986)
+- **Header brand:** "498 ADVANCE — The European Intrepid Lab" + manifiesto cyan ("El futuro será simulado antes de ser vivido. Lo habitaremos antes de construirlo.")
+- **Tipografía:** IBM Plex Mono (body) + IBM Plex Sans (titles)
+- **Paleta:** cream/paper #E8DCC4 + IBM blue como acento estructural + 15 colores únicos por columna
+- **Tablas colapsables** con botones expandir/colapsar global
+- **Responsive** sin sacrificar diseño (4 breakpoints)
+- **SEO completo:** meta description, Open Graph, Twitter Card, JSON-LD Schema.org Article
+- **Tooltips** al hover sobre nodos del grafo
+- **Click en nodo** = aísla sus relaciones; click en fondo = reset
 
-> **Cadena causal:** Circuito integrado → 4004/8080 → Altair → Apple/IBM PC → Mac populariza la GUI nacida en PARC.
+## Apéndice especial · IBM System/23 Datamaster
 
----
+Sección dedicada al "eslabón olvidado" entre el System/3 y el IBM PC. Incluye:
+- Ilustración SVG sintética del System/23 (drives verticales, ARM, etc.)
+- Dedicatoria personal a **José Ortet** (técnico de IBM durante décadas)
+- Enlace al manual técnico oficial **SY34-0241-1** (May 1982, copia espejo en zoopa.es)
+- Diario personal en estilo "fósforo verde CRT" con cursor parpadeante
+- Detalles desplegables con ficha técnica completa + 4 secciones en inglés (Commercial Failure, Influence over 5120, Standard parts, Creation of IBM PC)
 
-## 7. INTELIGENCIA ARTIFICIAL
+## Manifiesto
 
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1943** | McCulloch y Pitts | Modelo matemático de neurona artificial | Semilla de las redes neuronales |
-| **1950** | Alan Turing | *Computing Machinery and Intelligence*: test de Turing | Marco filosófico de referencia |
-| **1956** | McCarthy, Minsky, Shannon, Rochester | **Conferencia de Dartmouth**: nace formalmente el campo de la IA | Acuña el término "Artificial Intelligence" |
-| **1958** | Frank Rosenblatt | **Perceptrón** | Primera red neuronal entrenable; primera ola conexionista |
-| **1969** | Minsky y Papert | *Perceptrons*: limita expectativas → primer **invierno de la IA** | Frena el conexionismo durante ~15 años |
-| **1986** | Rumelhart, Hinton, Williams | Populariza **backpropagation** | Resucita las redes neuronales |
-| **1997** | IBM **Deep Blue** vs. Kasparov | Primera derrota de un campeón mundial de ajedrez | Hito simbólico de IA simbólica/búsqueda |
-| **2012** | Krizhevsky, Sutskever, Hinton | **AlexNet** gana ImageNet con CNNs en GPU | Detona la revolución del deep learning moderno |
-| **2016** | DeepMind | **AlphaGo** vence a Lee Sedol | Demuestra el poder de RL + redes profundas |
-| **2017** | Vaswani et al. (Google) | *Attention Is All You Need*: **Transformer** | Base de todos los LLM actuales (GPT, Claude, Gemini…) |
-| **2018** | Hinton, LeCun, Bengio | **Premio Turing** por deep learning | Reconocimiento institucional |
-| **2022–2026** | OpenAI · Anthropic · Google · Meta | ChatGPT (2022), GPT-4, Claude 3/4, Gemini, Llama | Era de los **LLM** y la IA generativa |
+> *El futuro será simulado antes de ser vivido.*
+> *Lo habitaremos antes de construirlo.*
 
-> **Cadena causal:** Dartmouth (campo) → perceptrón → invierno → backprop → **GPU + AlexNet** (2012, aquí se enchufan las GPUs) → Transformer (2017) → LLMs.
+— 498 Advance · The European Intrepid Lab
 
 ---
 
-## 8. GPU Y COMPUTACIÓN ACELERADA
+## Interactividad del grafo
 
-> **Por qué pertenecen al núcleo de la historia:** las GPU son el puente físico entre la informática clásica y la explosión de IA. Sin paralelismo masivo, ni AlexNet (2012) ni los LLM actuales serían viables económicamente.
+- **Click en nodo** → aísla sus relaciones causales
+- **Click en fondo** → reset
+- **Hover en nodo** → tooltip con descripción + relación clave
+- **Drag con ratón** → pan del grafo
+- **Ctrl + scroll** → zoom in/out con anclaje al cursor
+- **Botones +/− /⊕ FIT** en el header del grafo
+- **Atajos teclado:** `+` `−` `0` (cuando el cursor está sobre el grafo)
 
-| Año | Hito | Aportación | Relación clave |
-|---|---|---|---|
-| **1999** | NVIDIA **GeForce 256** | Primera GPU comercial con T&L acelerado | Despega el cómputo gráfico programable |
-| **2001** | NVIDIA GeForce 3 / shaders programables | Empieza a verse la GPU como procesador genérico | Base para GPGPU |
-| **2006** | NVIDIA **CUDA** | Convierte la GPU en plataforma de cómputo general (C/C++) | Habilita HPC + simulación + IA en GPU |
-| **2012** | AlexNet entrenado en 2× GTX 580 | Primera "killer app" de IA sobre GPU | Confirma el matrimonio GPU↔Deep Learning |
-| **2017–2026** | NVIDIA Volta → Hopper → Blackwell | Tensor Cores, NVLink, HBM3 | Hardware específico para entrenar e inferir LLMs |
+## Versiones · changelog
 
-### VRAM — subcomponente decisivo, no bloque fundacional
+- **v0.4.0** (2026-04-26) — **Fase 3:** zoom in/out · pan con drag · atajos teclado · botones +/−/FIT en cabecera. Mejora la navegabilidad del grafo de 15 columnas × 1900px alto.
+- **v0.3.0** (2026-04-26) — Fase 1+2: RISC + RISC-V + COBOL en chart · QEC + qubit lógico + estim. RSA en CUÁNTICA · Secciones 21 SO + 22 ARQUITECTURAS DE SISTEMA + 23 GLOSARIO · Callout cuántico educativo · Header con menú extendido (8 tablas extra). Total: 181 nodos · 246 aristas · 23 secciones.
+- **v0.2.0** (2026-04-25) — Auditoría exhaustiva con 6 subagentes paralelos: 15 errores corregidos (Cosmos año, ENIAC weather, PhysX, NVMe, PageRank, IBM Heron 133q, etc.) + 6 hitos críticos (TPU v6, IBM Loon, Fugaku, JavaScript, LeNet-5, Word2Vec).
+- **v0.1.0** (2026-04-23) — Versión inicial pública. 154 hitos · 197 aristas · 15 columnas · 13 secciones.
 
-- **Función:** memoria de trabajo de alta velocidad (GDDR/HBM) cercana a la GPU; almacena texturas, datos y **tensores** sin depender continuamente de la RAM del sistema.
-- **Por qué importa:** su **tamaño** decide qué modelos caben (cuello de botella en inferencia local de LLMs); su **ancho de banda** decide cuán rápido se alimentan los núcleos.
-- **Por qué no está al nivel de Boole/Turing/von Neumann:** es una optimización de la arquitectura, no un cambio de paradigma.
+## Pendientes próximas iteraciones
 
----
+- Touch gestures (pinch-zoom, two-finger pan) para móviles/tablets
+- Considerar: backup mirror en GitHub Pages (`carlosortet.github.io/historia-computacion/`)
+- Considerar: CHANGELOG.md formal (separado del git log)
 
-## 9. COMPUTACIÓN CUÁNTICA
+## Contribuciones
 
-| Año | Protagonista | Aportación | Relación clave |
-|---|---|---|---|
-| **1980** | Paul Benioff | Modelo cuántico de máquina de Turing | Primer ordenador cuántico teórico |
-| **1981–1982** | Richard Feynman | Propone simular física con ordenadores cuánticos | Motivación fundacional |
-| **1985** | David Deutsch | **Computador cuántico universal** | Análogo cuántico de la máquina universal de Turing |
-| **1994** | Peter Shor | **Algoritmo de Shor** (factorización) | Demuestra ventaja cuántica práctica → reto a RSA |
-| **1996** | Lov Grover | Algoritmo de búsqueda en √N | Segundo algoritmo cuántico paradigmático |
-| **1998** | Chuang, Gershenfeld, Kubinec | Primer ordenador cuántico de **2 qubits** (NMR) | Demostración experimental |
-| **2019** | Google **Sycamore** (53 qubits) | Anuncia "supremacía cuántica" (disputada por IBM) | Primer hito mediático |
-| **2024** | Google **Willow** (105 qubits) | Avance en **corrección de errores** | Primer signo serio hacia computación tolerante a fallos |
-| **2025** | **IBM Quantum** | Roadmap detallado hacia escala tolerante a fallos | Industrialización del campo |
-
-> **Cadena causal:** Feynman/Deutsch (idea) → Shor/Grover (algoritmos que justifican el esfuerzo) → primeras demos físicas → escalado actual de qubits + corrección de errores.
-
----
-
-## 10. SUPERCOMPUTACIÓN
-
-| Año | Sistema | Hito | Relación clave |
-|---|---|---|---|
-| **1976** | **Cray-1** | Referencia fundacional de la supercomputación vectorial | Define el género |
-| **1997** | **ASCI Red** (Sandia / Intel) | Primer superordenador en superar **1 teraflop** | Prueba que clusters x86 pueden liderar |
-| **2008** | **Roadrunner** (LANL / IBM) | Primer **petaflop** (Cell + Opteron) | Primera arquitectura híbrida ganadora |
-| **2022** | **Frontier** (ORNL / HPE+AMD) | Primer **exascale** oficialmente confirmado | Inicia la era exascale (con GPUs) |
-| **2024** | **Aurora** (Argonne / Intel) | Segundo exascale; arquitectura GPU Intel | Diversifica proveedores |
-| **2024–2025** | **El Capitan** (LLNL / HPE+AMD) | **Nº 1 del TOP500**; >1.7 exaflops sostenidos | Consolida la era exascale |
-| **2025** | **JUPITER Booster** (Jülich, EuroHPC) | Primer **exascale europeo**; 4º del TOP500 | Soberanía tecnológica europea |
-
-> **Patrón:** desde Roadrunner (2008) la supercomputación es **híbrida CPU+acelerador**, y desde Frontier (2022) el acelerador dominante es la **GPU** → cierre del círculo con la sección 8.
-
----
-
-## Mapa de relaciones transversales
-
-```
-LÓGICA  ──►  ARQUITECTURA  ──►  ELECTRÓNICA  ──►  MICRO+PC
-(Boole,        (Turing,            (Zuse,             (Intel 4004,
-Shannon)       von Neumann)        ENIAC,             Apple, IBM PC)
-                                   transistor, IC)
-                                          │
-                                          ▼
-                                    SOFTWARE  ──►  POO  ──►  IA clásica
-                                   (Hopper,        (Simula,    (Dartmouth,
-                                   FORTRAN, C)     Smalltalk,  perceptrón,
-                                                   C++, Java,  backprop)
-                                                   Python)         │
-                                                                   ▼
-                                              GPU + CUDA (2006)  ──►  Deep Learning (AlexNet 2012)
-                                                                              │
-                                                                              ▼
-                                                                  Transformer (2017) ──► LLMs (2022→)
-                                                                              │
-                                                                              ▼
-                                                              Supercomputación exascale (2022→)
-
-           [línea paralela]   CUÁNTICA  (Feynman/Deutsch → Shor → Willow/IBM)
-```
-
----
-
-## Verificaciones y matices aplicados a la lista original
-
-1. **Boole 1847–1854** ✓ — *Mathematical Analysis of Logic* (1847) + *Laws of Thought* (1854).
-2. **Shannon 1937** ✓ — tesis de máster en MIT.
-3. **Babbage 1837** ✓ — diseño de la Máquina Analítica (nunca terminada en vida).
-4. **Lovelace 1843** ✓ — notas a la traducción del artículo de Menabrea.
-5. **von Neumann 1945** ✓ — *First Draft of a Report on the EDVAC* (la atribución exclusiva es discutida: el equipo Eckert/Mauchly también contribuyó).
-6. **Z3 1941, Colossus 1943–44, ENIAC 1945–46** ✓.
-7. **Transistor 1947** ✓ — patente y demo en Bell Labs (Nobel 1956).
-8. **Kilby 1958 / Noyce 1959** ✓ — Kilby (TI) primero conceptual, Noyce (Fairchild) con la versión planar fabricable.
-9. **Hopper 1952** ✓ — compilador A-0; COBOL llega en 1959.
-10. **Unix 1969 / C 1972–73** ✓ — Thompson y Ritchie en Bell Labs.
-11. **Simula 67** ✓ — el nombre "orientado a objetos" lo acuña **Alan Kay** después.
-12. **C++ 1985** ✓ — el proyecto empieza en 1979 como "C with Classes"; nombre C++ desde 1983; primera edición comercial 1985.
-13. **Java 1995** ✓ — anunciado por Sun en mayo de 1995.
-14. **Intel 4004 noviembre 1971** ✓.
-15. **Apple I 1976 / Apple II 1977** ✓.
-16. **IBM PC 12 agosto 1981** ✓.
-17. **CUDA 2006** ✓ — anuncio noviembre 2006, SDK público junio 2007.
-18. **Deep Blue 1997** ✓ — match de mayo de 1997 en Nueva York.
-19. **Backpropagation 1986** ✓ — el algoritmo existía antes (Werbos 1974), pero el paper de Rumelhart/Hinton/Williams es el que lo populariza.
-20. **Transformer 2017** ✓ — *Attention Is All You Need*, NeurIPS 2017.
-21. **Frontier mayo 2022** ✓ — primer exascale TOP500.
-22. **El Capitan 2024–2025** ✓ — Nº 1 del TOP500 desde noviembre 2024.
-23. **JUPITER Booster 2025** ✓ — primer exascale europeo.
-
-### Hitos añadidos para cerrar huecos
-
-- **McCulloch-Pitts (1943)** — neurona artificial, anterior al perceptrón.
-- **Frege (1879), Hilbert/Gödel (1928–1931)** — puente entre Boole y Turing.
-- **LISP (1958) y ALGOL 60** — lenguajes que definen los grandes paradigmas.
-- **Altair 8800 (1975) + Microsoft BASIC** — eslabón entre el 8080 y el Apple II.
-- **Macintosh (1984)** — lleva Smalltalk/PARC al mercado.
-- **AlexNet (2012) y AlphaGo (2016)** — transición de IA simbólica a deep learning aplicado.
-- **Sycamore (2019)** — primer hito mediático cuántico previo a Willow.
-- **Ley de Moore (Moore, 1965)** — encaja la electrónica con la economía del PC.
-
----
-
-## Conclusión
-
-La historia es **una sola línea** con **dos ramas finales paralelas** (cuántica y exascale clásica), y una **ola transversal** (la IA) que cruza casi todos los bloques.
-
-- **GPUs** sí merecen estar en el bloque principal: son el puente físico que hace viable la IA moderna y la supercomputación actual.
-- **VRAM** es subcomponente práctico: limita qué se puede ejecutar localmente, pero no es un cambio de paradigma equivalente a Boole, Turing o von Neumann.
-- **CUDA (2006)** y **AlexNet (2012)** son los dos puntos de inflexión que conectan el mundo del hardware paralelo con el de la IA actual.
+Correcciones y aportaciones bienvenidas: **carlos.ortet@zoopa.es**

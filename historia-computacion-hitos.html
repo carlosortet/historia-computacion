@@ -283,7 +283,38 @@
   .graph-bar .legend{display:flex;gap:14px;flex-wrap:wrap}
   .graph-bar .legend span{display:inline-flex;align-items:center;gap:6px}
   .graph-bar .swatch{width:12px;height:12px;border:1px solid var(--bg)}
-  .graph-controls{font-size:11px;color:#999}
+  .graph-controls{font-size:11px;color:#999;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .graph-zoom{display:flex;gap:4px;align-items:center}
+  .graph-zoom button{
+    background:transparent;
+    color:var(--bg);
+    border:1px solid var(--bg);
+    width:26px;
+    height:22px;
+    cursor:pointer;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    line-height:1;
+    padding:0;
+    transition:background .12s, color .12s;
+  }
+  .graph-zoom button:hover{background:var(--ibm-yellow);color:var(--ink);border-color:var(--ibm-yellow)}
+  .graph-zoom button.fit{width:auto;padding:0 8px;font-size:10px;letter-spacing:.5px}
+  .graph-zoom #zoomLevel{
+    color:var(--ibm-cyan);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    min-width:42px;
+    text-align:center;
+    font-weight:700;
+  }
+  .graph-wrap{cursor:grab}
+  .graph-wrap.panning{cursor:grabbing}
+  .graph-wrap.panning *{user-select:none}
+  @media (max-width:640px){
+    .graph-zoom button{width:32px;height:28px;font-size:15px}
+    .graph-zoom #zoomLevel{font-size:12px;min-width:48px}
+  }
   .graph-extra{
     background:#222;
     color:var(--bg);
@@ -798,7 +829,15 @@
         <span><span class="swatch" style="background:#9F1853"></span>PARALELO</span>
         <span><span class="swatch" style="background:#DA1E28"></span>PUENTE</span>
       </div>
-      <div class="graph-controls">CLICK NODO = AISLAR · CLICK FONDO = RESET</div>
+      <div class="graph-controls">
+        <span>CLICK NODO = AISLAR · DRAG = PAN · CTRL+SCROLL = ZOOM</span>
+        <div class="graph-zoom">
+          <button id="zoomOut" type="button" title="Alejar (Ctrl + scroll abajo)">−</button>
+          <span id="zoomLevel">100%</span>
+          <button id="zoomIn" type="button" title="Acercar (Ctrl + scroll arriba)">+</button>
+          <button id="zoomReset" type="button" class="fit" title="Restablecer 100%">⊕ FIT</button>
+        </div>
+      </div>
     </div>
     <div class="graph-extra">
       <span class="extra-label">📋 TABLAS EXTRA · NO EN GRAFO:</span>
@@ -2790,6 +2829,7 @@ NODES.forEach(n=>{
 
   g.addEventListener('click', (ev)=>{
     ev.stopPropagation();
+    if(typeof dragMoved !== 'undefined' && dragMoved) return;
     isolate(n.id);
   });
   g.addEventListener('mouseenter', (ev)=>showTip(ev, n, cat));
@@ -2844,7 +2884,94 @@ function reset(){
   Object.values(nodeEls).forEach(g=>g.classList.remove('dim'));
   edgeEls.forEach(p=>{p.classList.remove('hl');p.classList.remove('dim')});
 }
-svg.addEventListener('click', reset);
+svg.addEventListener('click', (e) => { if(!dragMoved) reset(); });
+
+// ================== ZOOM + PAN ==================
+let zoomLevel = 1;
+const MIN_ZOOM = 0.4, MAX_ZOOM = 3;
+const graphWrap = document.getElementById('graphWrap');
+const zoomLevelEl = document.getElementById('zoomLevel');
+
+function setZoom(level, anchorX, anchorY){
+  const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, level));
+  if(newZoom === zoomLevel) return;
+  // Preserve scroll position centered on anchor (or center of viewport)
+  const rect = graphWrap.getBoundingClientRect();
+  const ax = anchorX !== undefined ? anchorX - rect.left : rect.width/2;
+  const ay = anchorY !== undefined ? anchorY - rect.top : rect.height/2;
+  const beforeX = (graphWrap.scrollLeft + ax) / zoomLevel;
+  const beforeY = (graphWrap.scrollTop + ay) / zoomLevel;
+  zoomLevel = newZoom;
+  svg.setAttribute('width', GRAPH_W * zoomLevel);
+  svg.setAttribute('height', GRAPH_H * zoomLevel);
+  graphWrap.scrollLeft = beforeX * zoomLevel - ax;
+  graphWrap.scrollTop  = beforeY * zoomLevel - ay;
+  zoomLevelEl.textContent = Math.round(zoomLevel * 100) + '%';
+}
+
+document.getElementById('zoomIn').addEventListener('click', () => setZoom(zoomLevel * 1.2));
+document.getElementById('zoomOut').addEventListener('click', () => setZoom(zoomLevel / 1.2));
+document.getElementById('zoomReset').addEventListener('click', () => {
+  setZoom(1);
+  graphWrap.scrollLeft = 0;
+  graphWrap.scrollTop = 0;
+});
+
+// Wheel zoom — solo con Ctrl/Cmd para no interferir con scroll de página
+graphWrap.addEventListener('wheel', (e) => {
+  if(e.ctrlKey || e.metaKey){
+    e.preventDefault();
+    const factor = e.deltaY > 0 ? 1/1.15 : 1.15;
+    setZoom(zoomLevel * factor, e.clientX, e.clientY);
+  }
+}, {passive:false});
+
+// Pan con drag — escucha en graphWrap, mueve scroll
+let isPanning = false;
+let panStart = {x:0, y:0, sl:0, st:0};
+let dragMoved = false;
+
+graphWrap.addEventListener('mousedown', (e) => {
+  // No pan si se clica en un nodo o en un control interactivo
+  if(e.target.closest('#nodes > g')) return;
+  if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+  isPanning = true;
+  dragMoved = false;
+  panStart = {
+    x: e.clientX,
+    y: e.clientY,
+    sl: graphWrap.scrollLeft,
+    st: graphWrap.scrollTop
+  };
+  graphWrap.classList.add('panning');
+});
+
+window.addEventListener('mousemove', (e) => {
+  if(!isPanning) return;
+  e.preventDefault();
+  const dx = e.clientX - panStart.x;
+  const dy = e.clientY - panStart.y;
+  if(Math.abs(dx) > 4 || Math.abs(dy) > 4) dragMoved = true;
+  graphWrap.scrollLeft = panStart.sl - dx;
+  graphWrap.scrollTop  = panStart.st - dy;
+});
+
+window.addEventListener('mouseup', () => {
+  if(isPanning){
+    isPanning = false;
+    graphWrap.classList.remove('panning');
+    setTimeout(() => { dragMoved = false; }, 50);
+  }
+});
+
+// Atajos teclado: + - 0
+document.addEventListener('keydown', (e) => {
+  if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if(!graphWrap.matches(':hover')) return;
+  if(e.key === '+' || e.key === '=') { e.preventDefault(); setZoom(zoomLevel * 1.2); }
+  else if(e.key === '-' || e.key === '_') { e.preventDefault(); setZoom(zoomLevel / 1.2); }
+  else if(e.key === '0') { e.preventDefault(); setZoom(1); graphWrap.scrollLeft=0; graphWrap.scrollTop=0; }
+});
 
 // ================== COLLAPSIBLE SECTIONS ==================
 (function(){

@@ -84,8 +84,19 @@ Correcciones y aportaciones bienvenidas: **carlos.ortet@zoopa.es**
 
 Contenido bajo **CC BY-SA 4.0** (ver `LICENSE`). El PDF del manual IBM es propiedad de IBM Corp. (1982); incluido aquí como copia espejo para preservación digital, originalmente disponible en [bitsavers.org](https://bitsavers.org/pdf/ibm/system23/fe/SY34-0241-1_IBM_5324_Computer_Service_Manual_May82.pdf).
 
+## Interactividad del grafo
+
+- **Click en nodo** → aísla sus relaciones causales (resto se atenúa)
+- **Click en fondo** → reset
+- **Hover en nodo** → tooltip con descripción + relación clave
+- **Drag con ratón** → pan (mover el grafo)
+- **Ctrl + scroll** (Cmd + scroll en Mac) → zoom in/out con anclaje al cursor
+- **Botones +/− /⊕ FIT** en el header del grafo
+- **Atajos teclado:** `+` zoom in · `−` zoom out · `0` reset (cuando el cursor está sobre el grafo)
+
 ## Versiones
 
-- **v0.3.0** (2026-04-26) — Pasos 1-4 Fase 1: RISC en chart, secciones 21 SO + 22 SISTEMAS + 23 GLOSARIO. Total: 181 nodos · 246 aristas · 23 secciones.
+- **v0.4.0** (2026-04-26) — Fase 3: zoom in/out · pan con drag · atajos teclado · botones +/−/FIT en cabecera. Mejora la navegabilidad del grafo de 15 columnas × 1900px alto.
+- **v0.3.0** (2026-04-26) — Pasos 1-6 Fase 1+2: RISC en chart · QEC + qubit lógico + estim. RSA · COBOL · secciones 21 SO + 22 SISTEMAS + 23 GLOSARIO · callout cuántico · header extendido. Total: 181 nodos · 246 aristas · 23 secciones.
 - **v0.2.0** (2026-04-25) — Auditoría exhaustiva con 6 subagentes, correcciones IBM Heron / Cosmos / iPhone / PhysX / NVMe / PageRank / etc.
 - **v0.1.0** (2026-04-23) — Versión inicial pública. 154 hitos · 197 aristas · 15 columnas.
