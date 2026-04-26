@@ -213,6 +213,9 @@
   .tooltip .tt-title{font-weight:700;margin:0 0 6px;font-size:12px;color:#fff}
   .tooltip .tt-desc{color:#ccc}
   .tooltip .tt-rel{color:var(--ibm-orange);font-size:10px;margin-top:6px;padding-top:4px;border-top:1px dashed #444}
+  /* keyboard focus on graph nodes */
+  #nodes g:focus{outline:none}
+  #nodes g:focus-visible .node-rect{stroke:var(--ibm-yellow);stroke-width:3;filter:drop-shadow(0 0 6px var(--ibm-yellow))}
   h1.title{
     font-family:'IBM Plex Sans',sans-serif;
     font-size:32px;
@@ -1000,7 +1003,7 @@
       REV. 1.1 &nbsp;|&nbsp; <a href="https://carlosortet.com" target="_blank" rel="noopener" class="author-link" title="carlosortet.com">CARLOS ORTET</a>
     </div>
   </header>
-  <div id="tooltip" class="tooltip"></div>
+  <div id="tooltip" class="tooltip" role="tooltip" aria-live="polite" aria-hidden="true"></div>
 
   <main id="main">
   <h1 class="title">Historia de la Computación — Hitos y Relaciones</h1>
@@ -3275,7 +3278,14 @@ function truncate(s, n){ return s.length>n ? s.slice(0,n-1)+'…' : s; }
 NODES.forEach(n=>{
   const p = NPOS[n.id];
   const cat = COLS.find(c=>c.id===n.cat);
-  const g = el('g',{transform:`translate(${p.x-NODE_W/2},${p.y-NODE_H/2})`,style:'cursor:pointer'},nodeGroup);
+  const g = el('g',{
+    transform:`translate(${p.x-NODE_W/2},${p.y-NODE_H/2})`,
+    style:'cursor:pointer',
+    tabindex:'0',
+    role:'button',
+    'aria-describedby':'tooltip',
+    'aria-label':`${n.year} · ${n.label}${n.desc ? ' — '+n.desc : ''}${n.rel ? ' (relación: '+n.rel+')' : ''}`
+  },nodeGroup);
   // clipPath to ensure label never escapes the body
   const clipId = 'clip-'+n.id;
   const defs = el('defs',{},g);
@@ -3307,10 +3317,23 @@ NODES.forEach(n=>{
   g.addEventListener('mouseenter', (ev)=>showTip(ev, n, cat));
   g.addEventListener('mousemove', moveTip);
   g.addEventListener('mouseleave', hideTip);
+  // keyboard accessibility
+  g.addEventListener('focus', ()=>showTipForNode(g, n, cat));
+  g.addEventListener('blur', hideTip);
+  g.addEventListener('keydown', (ev)=>{
+    if(ev.key === 'Enter' || ev.key === ' '){
+      ev.preventDefault();
+      isolate(n.id);
+    } else if(ev.key === 'Escape'){
+      ev.preventDefault();
+      reset();
+      hideTip();
+    }
+  });
 });
 
 // ================== TOOLTIP ==================
-function showTip(e, n, cat){
+function renderTip(n, cat){
   tooltip.innerHTML = `
     <div class="tt-head">
       <span class="tt-year">${n.year}</span>
@@ -3321,7 +3344,23 @@ function showTip(e, n, cat){
     ${n.rel ? `<div class="tt-rel">▸ ${n.rel}</div>` : ''}
   `;
   tooltip.style.display = 'block';
+  tooltip.setAttribute('aria-hidden', 'false');
+}
+function showTip(e, n, cat){
+  renderTip(n, cat);
   moveTip(e);
+}
+function showTipForNode(g, n, cat){
+  renderTip(n, cat);
+  // position relative to the focused node's bounding box
+  const r = g.getBoundingClientRect();
+  const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+  let x = r.left + r.width/2 - tw/2;
+  let y = r.bottom + 10;
+  if(x + tw > window.innerWidth - 8) x = window.innerWidth - tw - 8;
+  if(y + th > window.innerHeight - 8) y = r.top - th - 10;
+  tooltip.style.left = Math.max(4,x) + 'px';
+  tooltip.style.top  = Math.max(4,y) + 'px';
 }
 function moveTip(e){
   const pad = 14;
@@ -3332,7 +3371,10 @@ function moveTip(e){
   tooltip.style.left = Math.max(4,x) + 'px';
   tooltip.style.top  = Math.max(4,y) + 'px';
 }
-function hideTip(){ tooltip.style.display = 'none'; }
+function hideTip(){
+  tooltip.style.display = 'none';
+  tooltip.setAttribute('aria-hidden', 'true');
+}
 
 // ================== INTERACTION ==================
 function isolate(id){
