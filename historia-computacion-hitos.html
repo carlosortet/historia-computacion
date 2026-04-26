@@ -1395,6 +1395,7 @@
       <tr><td>2013</td><td>Snowden / NSA revelations</td><td>Filtración masiva de programas de vigilancia (PRISM, XKeyscore)</td><td>Cambia para siempre la cripto y la conciencia de privacidad</td></tr>
       <tr><td>2016</td><td>Mirai botnet</td><td>Ataca con dispositivos IoT comprometidos · DDoS récord</td><td>Demuestra el peligro de IoT inseguro a escala</td></tr>
       <tr><td>2017</td><td>WannaCry ransomware</td><td>Explota EternalBlue (NSA-leaked) · 200.000 sistemas en 150 países</td><td>Inicia la era de ransomware como plaga global</td></tr>
+      <tr><td>2018</td><td><b>Cambridge Analytica + GDPR</b></td><td>Marzo 2018: escándalo Facebook/CA expone uso indebido de datos · Mayo 2018: GDPR entra en vigor en UE</td><td>Funda la era de la privacidad como derecho regulado · multas hasta 4% del facturado mundial · modelo replicado (CCPA, LGPD, Brasil)</td></tr>
       <tr><td>2020</td><td>SolarWinds</td><td>Supply-chain attack a 18.000 organizaciones via Orion</td><td>Demuestra vulnerabilidad de la cadena de suministro de software</td></tr>
       <tr><td>2021</td><td>Log4Shell</td><td>RCE en Apache Log4j · "internet roto" durante semanas</td><td>Demuestra la fragilidad de las dependencias open source críticas</td></tr>
       <tr><td>2024</td><td>NIST PQC standards</td><td>Estándares oficiales de criptografía post-cuántica (FIPS 203/204/205)</td><td>Defensa preventiva contra Shor cuando los ordenadores cuánticos escalen</td></tr>
@@ -1422,6 +1423,13 @@
       <tr><td>2017</td><td>Apple A11 Bionic · Neural Engine</td><td>Primera NPU en mobile (2 cores · 600 GOPS)</td><td>IA on-device se vuelve viable en smartphones</td></tr>
       <tr><td>2020</td><td>5G global rollout</td><td>3GPP Release 16 · gigabit móvil</td><td>Sustrato de IoT, AR, vehículos conectados</td></tr>
       <tr><td>2024</td><td>Apple Vision Pro</td><td>Spatial computing · 23M píxeles · eye tracking</td><td>Apuesta de Apple por XR como sucesor del smartphone</td></tr>
+      <tr><td>1972</td><td>Atari Pong</td><td>Allan Alcorn · primer videojuego comercial de éxito</td><td>Funda la industria del videojuego · más grande que cine + música</td></tr>
+      <tr><td>1983</td><td>MIDI 1.0</td><td>Dave Smith (Sequential) + Yamaha · estándar interconexión musical digital</td><td>Sustrato de toda la música electrónica/producción digital · estándar abierto que sobrevive 40+ años</td></tr>
+      <tr><td>1985</td><td>Nintendo NES</td><td>Famicom global · revive industria del videojuego tras Atari crash</td><td>Define la categoría console · Mario, Zelda como franquicias culturales</td></tr>
+      <tr><td>1993</td><td>MP3 (Fraunhofer)</td><td>Brandenburg + equipo · compresión perceptual de audio</td><td>Sin MP3 no hay Napster (1999) ni iPod (2001) ni streaming. Cambia industria musical para siempre</td></tr>
+      <tr><td>1993</td><td>DOOM (id Software)</td><td>Carmack + Romero · 3D shooter · shareware viral</td><td>Inventa el género FPS · primera "killer app" para PC vs consola · funda mod culture</td></tr>
+      <tr><td>1997</td><td>Wi-Fi 802.11</td><td>IEEE estándar · 2 Mbps inicial</td><td>Funda la era inalámbrica masiva · 802.11n (2009) → ax/Wi-Fi 6 (2019) → be/Wi-Fi 7 (2024)</td></tr>
+      <tr><td>1998</td><td>Bluetooth 1.0</td><td>Ericsson · short-range wireless personal</td><td>Habilita audio inalámbrico, IoT, mando consola, CarPlay/Android Auto</td></tr>
       <tr><td>2024</td><td>Smartphones con LLM on-device</td><td>Apple Intelligence (M+A18 Pro) · Pixel con Gemini Nano</td><td>IA generativa en el bolsillo · sin nube</td></tr>
     </tbody>
   </table>
@@ -1913,6 +1921,9 @@ const COLS = [
 // nodes are MILESTONES (no people). desc = aportación · rel = relación clave
 const NODES = [
   // LÓGICA
+  {id:'leibniz', cat:'LOG', year:1675, label:'Leibniz · binario',
+    desc:'Gottfried Leibniz formaliza el sistema binario (1679, *Explication de l\'Arithmétique Binaire*) y construye la Stepped Reckoner (1675), primera calculadora capaz de las 4 operaciones. "Es indigno que hombres excelentes pierdan horas como esclavos en la labor de cálculos".',
+    rel:'Sin notación binaria no hay álgebra booleana de Boole (1847) ni circuitos digitales de Shannon (1937).'},
   {id:'boole', cat:'LOG', year:1847, label:'Álgebra booleana',
     desc:'Boole formaliza la lógica con operaciones algebraicas (AND/OR/NOT) en *Mathematical Analysis of Logic* (1847) y *Laws of Thought* (1854).',
     rel:'Habilita el siguiente salto: Shannon (1937) la convertirá en circuitos.'},
@@ -1922,6 +1933,12 @@ const NODES = [
   {id:'godel', cat:'LOG', year:1931, label:'Incompletitud · Entscheidungsproblem',
     desc:'Hilbert plantea el Entscheidungsproblem (1928). Gödel publica los teoremas de incompletitud (1931).',
     rel:'Plantea el reto que Turing y Church responden en 1936.'},
+  {id:'church', cat:'LOG', year:1936, label:'Lambda calculus (Church)',
+    desc:'Alonzo Church publica el cálculo lambda (1936): notación formal para funciones puras y aplicación. Demuestra (a la vez que Turing) que el Entscheidungsproblem es indecidible.',
+    rel:'Equivalente al modelo Turing en poder expresivo (tesis Church-Turing). Sustrato matemático de LISP, Haskell, ML y toda la programación funcional.'},
+  {id:'shannon48', cat:'LOG', year:1948, label:'Teoría de la Información',
+    desc:'Claude Shannon publica *A Mathematical Theory of Communication* (jul-oct 1948, Bell Labs). Define el bit, el canal, la entropía. Funda la teoría matemática de la comunicación.',
+    rel:'"Magna Carta de la era de la información" (Scientific American). Más importante que el transistor según Gleick. Sin esto no hay compresión, criptografía moderna, ni canal IA.'},
   {id:'shannon37', cat:'LOG', year:1937, label:'Lógica → circuitos',
     desc:'Shannon, en su tesis de máster (MIT), aplica el álgebra de Boole a circuitos eléctricos de relés.',
     rel:'Fusiona lógica + electrónica → puente directo a Z3, Colossus y ENIAC.'},
@@ -1935,12 +1952,33 @@ const NODES = [
     desc:'DeepMind AlphaProof + AlphaGeometry logran medalla de plata en la IMO 2024 resolviendo problemas formales nivel olimpiada matemática.',
     rel:'Cierra el círculo Boole → Hilbert → Gödel → Turing → IA razonando en lógica formal a nivel élite.'},
   // ARQUITECTURA
+  {id:'pascalina', cat:'ARQ', year:1642, label:'Pascalina',
+    desc:'Blaise Pascal (con 19 años) construye la primera calculadora mecánica de la historia. Suma y resta mediante engranajes. ~50 unidades fabricadas para su padre, recaudador de impuestos.',
+    rel:'Funda la categoría "máquina de calcular". Inspira a Leibniz (Stepped Reckoner 1675) y a Babbage (1837).'},
+  {id:'jacquard', cat:'ARQ', year:1804, label:'Telar de Jacquard',
+    desc:'Joseph Marie Jacquard automatiza el telar mediante tarjetas perforadas. Patrón en cartón controla acción mecánica.',
+    rel:'Primer "programa almacenado" de la historia. Lo cita Babbage como inspiración para la Máquina Analítica. Eslabón directo a Hollerith → IBM.'},
   {id:'analytic', cat:'ARQ', year:1837, label:'Máquina Analítica',
     desc:'Babbage diseña la Máquina Analítica: memoria, control, cálculo y programa en una sola máquina.',
     rel:'Primera arquitectura conceptual general; nunca terminada en vida.'},
   {id:'lovelace', cat:'ARQ', year:1843, label:'Primer programa',
     desc:'Ada Lovelace publica el primer algoritmo destinado a una máquina (notas a Menabrea).',
     rel:'Inaugura la distinción hardware / software.'},
+  {id:'hollerith', cat:'ARQ', year:1890, label:'Hollerith → IBM',
+    desc:'Herman Hollerith inventa la tabuladora con tarjetas perforadas para procesar el censo USA 1890 (de 7 años a 6 semanas). Funda la Tabulating Machine Company → CTR (1911) → renombrada IBM en 1924.',
+    rel:'Origen literal de IBM. Las tarjetas perforadas dominarán el procesamiento de datos durante 70 años hasta los discos magnéticos.'},
+  {id:'harvardMk1', cat:'ARQ', year:1944, label:'Harvard Mark I',
+    desc:'Howard Aiken (Harvard + IBM) entrega el ASCC / Harvard Mark I (ago 1944): electromecánico, 50 toneladas, 765.000 piezas. Primero en EEUU automático de propósito general.',
+    rel:'Donde Grace Hopper aprende a programar. Allí encontraron el famoso "bug" (polilla) en 1947 que da nombre a los errores de software.'},
+  {id:'manchesterBaby', cat:'ARQ', year:1948, label:'Manchester Baby (SSEM)',
+    desc:'Small-Scale Experimental Machine en Manchester (21 jun 1948): primer ordenador del mundo en ejecutar un programa almacenado en memoria electrónica (CRT Williams tube). 32×32 bits.',
+    rel:'Anticipa al EDSAC (1949) por casi un año. Primera prueba real del modelo von Neumann en hardware electrónico.'},
+  {id:'leoI', cat:'ARQ', year:1951, label:'LEO I',
+    desc:'LEO (Lyons Electronic Office) en Reino Unido: primer ordenador del mundo usado en negocio (J. Lyons & Co., cadena de salones de té). Calcula nóminas y gestión de stock.',
+    rel:'Marca el salto de "ordenador como herramienta científica" a "ordenador como herramienta empresarial". 30 años antes de la era PC.'},
+  {id:'manchesterAtlas', cat:'ARQ', year:1962, label:'Manchester Atlas',
+    desc:'Universidad de Manchester + Ferranti: introduce la memoria virtual y el paginado por demanda (concepto fundamental). Considerado el ordenador más potente del mundo en su lanzamiento (1962).',
+    rel:'Inventa el concepto de "ejecutar más programa del que cabe en RAM". Sustrato de TODOS los SO modernos (Multics, Unix, Linux, Windows).'},
   {id:'turing36', cat:'ARQ', year:1936, label:'Máquina universal',
     desc:'Turing formula la máquina universal en *On Computable Numbers*.',
     rel:'Base teórica de todo ordenador de propósito general.'},
@@ -1957,6 +1995,12 @@ const NODES = [
     desc:'Von Neumann formula la teoría de los autómatas autoreplicantes y diseña el constructor universal (publicado póstumamente en 1966 como *Theory of Self-Reproducing Automata*).',
     rel:'Predice la lógica del ADN antes de su descubrimiento (1953); inspira autómatas celulares, vida artificial y algoritmos evolutivos.'},
   // ELECTRÓNICA
+  {id:'z1', cat:'ELE', year:1938, label:'Zuse Z1',
+    desc:'Konrad Zuse construye el Z1 en el salón de su casa en Berlín (1938): primera máquina mecánica programable binaria con coma flotante. Funcionaba… mal. Sin financiación oficial.',
+    rel:'Anticipa el Z3 (1941) por 3 años. Primer ejemplo del paradigma "construir el ordenador" en una vivienda particular, 40 años antes de Wozniak/Apple.'},
+  {id:'abc', cat:'ELE', year:1939, label:'Atanasoff-Berry (ABC)',
+    desc:'John Atanasoff y Clifford Berry (Iowa State) construyen la ABC entre 1939-42: primera computadora electrónica digital. Vacuum tubes + capacitores como memoria.',
+    rel:'En 1973 un tribunal federal USA declara que la ABC fue el primer ordenador electrónico, invalidando la patente de ENIAC. Hito legal y técnico.'},
   {id:'z3', cat:'ELE', year:1941, label:'Z3',
     desc:'Konrad Zuse construye el Z3: primer ordenador programable y automático funcional (relés electromecánicos).',
     rel:'Demuestra viabilidad práctica antes que los aliados.'},
@@ -1985,6 +2029,9 @@ const NODES = [
     desc:'Samsung lanza el primer chip con transistores Gate-All-Around (GAA) a 3nm. Sucesor estructural del FinFET (Intel 2011).',
     rel:'Habilita la continuidad de la ley de Moore más allá de los 5nm: nueva geometría del canal.'},
   // SOFTWARE
+  {id:'plankalkul', cat:'SOF', year:1945, label:'Plankalkül (Zuse)',
+    desc:'Konrad Zuse escribe Plankalkül entre 1942-1945 (publicado 1972): primer lenguaje de programación de alto nivel del mundo. Tipos de datos, estructuras de control, cálculo lógico. Nunca compilado en su tiempo (Alemania post-guerra).',
+    rel:'40 años adelantado a su tiempo. Su existencia se ignora hasta los 70 — los conceptos se reinventan en FORTRAN/ALGOL.'},
   {id:'a0', cat:'SOF', year:1952, label:'Compilador A-0',
     desc:'Grace Hopper desarrolla el compilador A-0 en UNIVAC: primer compilador funcional.',
     rel:'Acerca la programación al lenguaje humano.'},
@@ -2000,9 +2047,15 @@ const NODES = [
   {id:'algol', cat:'SOF', year:1960, label:'ALGOL 60',
     desc:'ALGOL 60 establece sintaxis estructurada (bloques, scopes) y notación BNF.',
     rel:'Padre de Pascal, C, Java y casi todo lo que vino después.'},
+  {id:'ctss', cat:'SOF', year:1961, label:'CTSS · timesharing',
+    desc:'Compatible Time-Sharing System (MIT, Fernando Corbató 1961): primer sistema de tiempo compartido funcional. Múltiples usuarios concurrentes en un mainframe IBM 7090 vía teletipos.',
+    rel:'Funda el paradigma multiusuario. Padre conceptual de Multics (1969) y por tanto de Unix. Primera vez que se inventan los passwords (1962).'},
   {id:'dijkstra', cat:'SOF', year:1968, label:'Programación estructurada',
     desc:'Dijkstra publica *Go To Statement Considered Harmful*; consolida la programación estructurada.',
     rel:'Funda la ingeniería del software moderna.'},
+  {id:'hamilton', cat:'SOF', year:1969, label:'Hamilton · Apollo 11',
+    desc:'Margaret Hamilton dirige el equipo de software de vuelo del Apollo 11 (MIT Instrumentation Lab). Su sistema de prioridades evita el aborto del alunizaje cuando el AGC se satura. Acuña el término "software engineering" para legitimar la disciplina.',
+    rel:'Primer software crítico-misión a escala humana. Funda la ingeniería del software como profesión reconocida (medalla presidencial Obama 2016).'},
   {id:'unix', cat:'SOF', year:1969, label:'Unix',
     desc:'Thompson y Ritchie crean Unix en Bell Labs: filosofía modular, archivos como interfaz universal.',
     rel:'Sustrato de macOS, Linux, Android, iOS y servidores.'},
@@ -2032,8 +2085,8 @@ const NODES = [
     desc:'Dahl y Nygaard (Universidad de Oslo) introducen clases, objetos y herencia con Simula 67.',
     rel:'Primer hito real de la POO; Alan Kay acuñará después el término "object-oriented".'},
   {id:'smalltalk', cat:'POO', year:1980, label:'Smalltalk-80',
-    desc:'Equipo de Alan Kay (Ingalls, Goldberg) en Xerox PARC consolida objetos, clases, paso de mensajes y GUI.',
-    rel:'Inspira Mac, Objective-C y Java.'},
+    desc:'Equipo Xerox PARC: Alan Kay (visión), Dan Ingalls (implementación) y **Adele Goldberg** (lenguaje, libros, evangelización). Goldberg presenta el sistema a Jobs en su famosa visita a PARC (1979). ACM Software System Award (1987).',
+    rel:'Inspira Mac, Objective-C y Java. Pionera de la POO comercial.'},
   {id:'cpp', cat:'POO', year:1985, label:'C++',
     desc:'Stroustrup (Bell Labs) suma POO sobre C; primera edición comercial en 1985.',
     rel:'Lleva los objetos al software de sistemas y alto rendimiento.'},
@@ -2074,6 +2127,15 @@ const NODES = [
   {id:'i8080', cat:'PC', year:1974, label:'Intel 8080',
     desc:'Intel 8080: 8 bits ampliado, 6.000 transistores.',
     rel:'Hace viables los primeros microordenadores útiles (Altair, IMSAI).'},
+  {id:'sketchpad', cat:'PC', year:1963, label:'Sketchpad (Sutherland)',
+    desc:'Ivan Sutherland · tesis MIT (1963): primer sistema gráfico interactivo. Lápiz óptico sobre TX-2. Inventa la GUI, las restricciones gráficas, las jerarquías de objetos visuales, programación visual.',
+    rel:'Padre de la HCI, del CAD, y de toda la computación gráfica. Obtiene el Turing Award 1988. Sin Sketchpad no hay Xerox Alto, ni Mac, ni nada visual.'},
+  {id:'moad', cat:'PC', year:1968, label:'Mother of All Demos',
+    desc:'Douglas Engelbart presenta en SF (9 dic 1968) en 90 minutos: ratón, hipertexto, edición colaborativa, videoconferencia, ventanas, control por voz. Todo de golpe, en una demo legendaria.',
+    rel:'Comprime 30 años de futuro en hora y media. Inspira directamente a Xerox PARC y a todo el ecosistema personal computing.'},
+  {id:'xeroxAlto', cat:'PC', year:1973, label:'Xerox Alto',
+    desc:'Xerox PARC · primer ordenador personal con GUI completa, ethernet, ratón, WYSIWYG, bitmap display. ~2.000 unidades fabricadas pero NO comercializado. Steve Jobs lo visita en 1979.',
+    rel:'Cuna conceptual de Macintosh (1984) y Windows. La metáfora del escritorio nace aquí, no en Apple. Smalltalk-80 corre sobre Alto.'},
   {id:'altair', cat:'PC', year:1975, label:'Altair 8800 + BASIC',
     desc:'MITS lanza el Altair 8800; Microsoft (Gates/Allen) escribe Altair BASIC.',
     rel:'Nace la industria del software para PC.'},
@@ -2216,9 +2278,21 @@ const NODES = [
   {id:'nobel2024', cat:'IA', year:2024, label:'Nobel Hopfield+Hinton',
     desc:'Premio Nobel de Física 2024 a John Hopfield y Geoffrey Hinton "por descubrimientos fundamentales que permiten el aprendizaje automático con redes neuronales artificiales" (oct 2024).',
     rel:'Reconocimiento institucional supremo del paradigma conexionista. Cierre simbólico del arco perceptrón → backprop → deep learning.'},
+  {id:'mistral',   cat:'IA', year:2023, label:'Mistral · open EU',
+    desc:'Mistral AI (París, fundada 2023): Mistral 7B (sep 2023) · Mixtral 8x7B (dic 2023, MoE) · Mistral Large (feb 2024). Open weights europeos competitivos, eficientes.',
+    rel:'Demuestra que Europa puede competir en LLMs. Funda la rama MoE (Mixture of Experts) eficiente. Inspira ola open weights europea.'},
+  {id:'gemini',    cat:'IA', year:2023, label:'Gemini Ultra → 2.5',
+    desc:'Google DeepMind Gemini Ultra (dic 2023) · Pro · Flash · Nano · Gemini 2.5 (2025) con extended thinking. Multimodal nativo (texto + imagen + audio + video desde el pre-training).',
+    rel:'Respuesta de Google a GPT-4. Backbone TPUs propios. Convergencia DeepMind + Google Brain bajo Demis Hassabis.'},
+  {id:'phi',       cat:'IA', year:2024, label:'Phi-3 · small models',
+    desc:'Microsoft Phi-3 (mayo 2024): modelo pequeño (~3.8B params) competitivo con modelos 10× más grandes. Demuestra que la calidad de los datos importa más que la escala.',
+    rel:'Funda la categoría SLM (Small Language Model). Habilita IA on-device y casos donde GPT-4 es overkill.'},
   {id:'deepseek',  cat:'IA', year:2025, label:'DeepSeek-R1',
     desc:'DeepSeek (China) libera R1 (ene 2025): primer reasoning model open-weights competitivo con OpenAI o1. Demuestra que el extended thinking se puede entrenar con presupuesto modesto.',
     rel:'Recalibra la estrategia global: open-weights ya no quedan atrás. Provoca caída del 16% de NVIDIA en un día.'},
+  {id:'gpt5',      cat:'IA', year:2025, label:'GPT-5',
+    desc:'OpenAI lanza GPT-5 (ago 2025): unifica los linajes 4o (multimodal) y o-series (reasoning) en un solo modelo. Razonamiento adaptativo (decide cuándo pensar más).',
+    rel:'Cierre del primer ciclo de la era LLM moderna. Próxima frontera: agentes autónomos persistentes + razonamiento extendido como default.'},
   // GPU
   {id:'geforce', cat:'GPU', year:1999, label:'GeForce 256',
     desc:'NVIDIA GeForce 256: primera GPU comercial con T&L acelerado por hardware.',
@@ -2762,6 +2836,50 @@ const EDGES = [
   {a:'aurora',    b:'tpu7',       t:'parallel'},     // arquitecturas exascale
   {a:'jupiter',   b:'tpu8',       t:'parallel'},     // EU exascale + IA next-gen
   {a:'vibeCoding',b:'opus47',     t:'bridges'},      // vibe coding apoyado por Opus 4.7
+  // ====== P2 + P3 — pre-electrónica ======
+  {a:'pascalina',  b:'leibniz',    t:'continues'},   // Pascal → Leibniz mejora cálculo
+  {a:'leibniz',    b:'boole',      t:'continues'},   // binario → álgebra
+  {a:'jacquard',   b:'analytic',   t:'enables'},     // tarjetas perforadas inspiran Babbage
+  {a:'jacquard',   b:'hollerith',  t:'continues'},   // tarjetas → tabuladora censo
+  {a:'hollerith',  b:'ibm360',     t:'continues'},   // CTR → IBM → S/360
+  {a:'pascalina',  b:'analytic',   t:'continues'},   // mecánica → mecánica programable
+  // P2 — lógica moderna que faltaba
+  {a:'godel',      b:'church',     t:'parallel'},    // 1936 paralelo a Turing
+  {a:'church',     b:'lisp',       t:'enables'},     // lambda → LISP
+  {a:'church',     b:'funcional',  t:'bridges'},     // lambda → renacimiento funcional
+  {a:'turing36',   b:'church',     t:'parallel'},    // tesis Church-Turing
+  {a:'shannon37',  b:'shannon48',  t:'continues'},   // Shannon → Shannon
+  {a:'shannon48',  b:'tcpip',      t:'enables'},     // teoría info → comunicación moderna
+  // P2 — pre-1950 hardware
+  {a:'z1',         b:'z3',         t:'continues'},   // Zuse Z1 → Z3
+  {a:'abc',        b:'eniac',      t:'parallel'},    // ABC paralelo a ENIAC
+  {a:'harvardMk1', b:'a0',         t:'enables'},     // donde Hopper aprende
+  {a:'manchesterBaby',b:'edsac',   t:'parallel'},    // Manchester antes que EDSAC
+  {a:'vonneu',     b:'manchesterBaby',t:'enables'},  // teoría → primera ejecución
+  // P2 — Plankalkül, LEO I
+  {a:'plankalkul', b:'fortran',    t:'parallel'},    // primer lenguaje alto nivel olvidado
+  {a:'leoI',       b:'cobol',      t:'parallel'},    // primer ordenador comercial → COBOL
+  // P2/P3 — años 60s
+  {a:'manchesterAtlas',b:'unix',   t:'enables'},     // memoria virtual habilita Unix
+  {a:'manchesterAtlas',b:'gnu',    t:'bridges'},     // herencia académica → free SO
+  {a:'ctss',       b:'unix',       t:'continues'},   // CTSS → Multics → Unix
+  {a:'sketchpad',  b:'mac',        t:'enables'},     // GUI inicia
+  {a:'sketchpad',  b:'moad',       t:'continues'},   // visión gráfica
+  {a:'moad',       b:'xeroxAlto',  t:'enables'},     // demo inspira PARC
+  {a:'xeroxAlto',  b:'mac',        t:'enables'},     // PARC → Mac
+  {a:'xeroxAlto',  b:'smalltalk',  t:'parallel'},    // mismo equipo PARC
+  {a:'hamilton',   b:'dijkstra',   t:'parallel'},    // ingeniería del software
+  // Tier 2 #14 — IA moderna
+  {a:'gpt4',       b:'gpt5',       t:'continues'},   // OpenAI lineage cerrado
+  {a:'o1',         b:'gpt5',       t:'continues'},   // razonamiento integrado
+  {a:'llama',      b:'mistral',    t:'continues'},   // open weights europa
+  {a:'gpt4',       b:'gemini',     t:'parallel'},    // competidor Google
+  {a:'transformer',b:'gemini',     t:'enables'},
+  {a:'gpt3',       b:'phi',        t:'parallel'},    // small models alternativa
+  {a:'phi',        b:'npuEra',     t:'bridges'},     // small models corren en NPU
+  {a:'mistral',    b:'deepseek',   t:'parallel'},    // open weights llegan a Asia
+  {a:'gemini',     b:'opus47',     t:'parallel'},    // competidores frontier
+  {a:'opus47',     b:'gpt5',       t:'parallel'},    // cierre del ciclo
   // ====== Nuevos hitos correctivos + adiciones ======
   {a:'tpu5',     b:'tpu6',     t:'continues'},
   {a:'tpu6',     b:'tpu7',     t:'continues'},
