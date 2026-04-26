@@ -350,6 +350,79 @@
     background:var(--ibm-yellow);
     color:var(--ink);
   }
+  /* SEARCH + COLUMN FILTERS */
+  .graph-search-bar{
+    background:#1A1A1A;
+    color:var(--bg);
+    padding:8px 14px;
+    border-top:1px solid #444;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.5px;
+  }
+  .graph-search{
+    background:transparent;
+    color:var(--ibm-cyan);
+    border:1px solid var(--ibm-cyan);
+    padding:5px 10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    width:240px;
+    outline:none;
+    transition:border-color .12s;
+  }
+  .graph-search:focus{border-color:var(--ibm-yellow);color:var(--ibm-yellow)}
+  .graph-search::placeholder{color:#666}
+  .graph-search-result{
+    color:var(--ibm-yellow);
+    font-size:10px;
+    letter-spacing:1px;
+    min-width:90px;
+  }
+  .col-filters{display:flex;flex-wrap:wrap;gap:3px;align-items:center}
+  .col-filters .filter-label{color:#999;margin-right:6px;font-size:9.5px;letter-spacing:1px}
+  .col-filter-btn{
+    border:1px solid currentColor;
+    background:transparent;
+    padding:3px 7px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:opacity .12s;
+    opacity:.4;
+  }
+  .col-filter-btn.active{
+    opacity:1;
+    background:currentColor;
+  }
+  .col-filter-btn.active span{color:#1A1A1A;font-weight:700}
+  .col-filter-btn:not(.active) span{color:currentColor}
+  .col-filter-actions button{
+    background:transparent;
+    color:var(--bg);
+    border:1px solid #555;
+    padding:3px 8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px;
+    letter-spacing:1px;
+    cursor:pointer;
+    margin-left:4px;
+  }
+  .col-filter-actions button:hover{background:var(--ibm-cyan);color:var(--ink);border-color:var(--ibm-cyan)}
+  /* search visual states */
+  .search-miss{opacity:.12;transition:opacity .15s}
+  .search-hit .node-rect{filter:drop-shadow(0 0 4px var(--ibm-yellow));stroke-width:2.5}
+  .col-hidden{display:none}
+  @media (max-width:640px){
+    .graph-search{width:100%}
+    .col-filters{font-size:8.5px}
+    .col-filter-btn{padding:2px 5px;font-size:8.5px}
+  }
   @media (max-width:640px){
     .graph-extra{font-size:9px;padding:6px 10px;gap:6px}
     .graph-extra .extra-link{padding:2px 6px}
@@ -437,6 +510,21 @@
     color:#ffe8b3;
   }
   .quantum-callout .metric b{color:var(--ibm-yellow)}
+  /* Variantes temáticas */
+  .quantum-callout.cyan-theme{
+    background:linear-gradient(135deg,#001433 0%,#0a2d5e 50%,#103e7a 100%);
+    border-color:var(--ibm-cyan);
+    border-left-color:var(--ibm-cyan);
+    box-shadow:inset 0 0 30px rgba(51,177,255,.18), 4px 4px 0 rgba(0,0,0,.25);
+  }
+  .quantum-callout.cyan-theme::before{content:"⚡ PUENTE FÍSICO"}
+  .quantum-callout.orange-theme{
+    background:linear-gradient(135deg,#1f1006 0%,#3a1a08 50%,#54260a 100%);
+    border-color:var(--ibm-orange);
+    border-left-color:var(--ibm-orange);
+    box-shadow:inset 0 0 30px rgba(255,131,43,.15), 4px 4px 0 rgba(0,0,0,.25);
+  }
+  .quantum-callout.orange-theme::before{content:"♾ CONVERGENCIA HISTÓRICA"}
   /* DEDICATION */
   .dedication{
     background:#1a1a1a;
@@ -676,6 +764,12 @@
   details.section > summary:hover{background:#2A2A2A}
   details.section > summary:hover::after{color:var(--ibm-cyan)}
   details.section[open] > summary{border-left-color:var(--ibm-cyan)}
+  /* Extra tables (16-23, no en grafo) — borde amarillo para distinguir */
+  details.section[id^="sec-"] > summary{border-left-color:var(--ibm-yellow)}
+  details.section[id^="sec-"] > summary::after{color:var(--ibm-cyan)}
+  details.section[id^="sec-"][open] > summary{border-left-color:var(--ibm-orange)}
+  details.section[id="sec-glosario"] > summary{border-left-color:var(--ibm-pink)}
+  details.section[id="sec-glosario"][open] > summary{border-left-color:var(--ibm-magenta)}
   details.section > *:not(summary){margin-top:14px}
   @media (max-width:640px){
     details.section > summary{font-size:13.5px;padding:8px 12px;letter-spacing:.8px;font-weight:400}
@@ -849,6 +943,18 @@
       <a href="#sec-os" class="extra-link">SO</a>
       <a href="#sec-sysarq" class="extra-link">ARQ. SISTEMA</a>
       <a href="#sec-glosario" class="extra-link extra-glossary">📖 GLOSARIO</a>
+    </div>
+    <div class="graph-search-bar">
+      <input type="text" id="searchInput" class="graph-search" placeholder="🔍 Buscar hito (label, año, descripción)…" autocomplete="off">
+      <span id="searchResult" class="graph-search-result"></span>
+      <div class="col-filters" id="colFilters">
+        <span class="filter-label">▸ COLUMNAS:</span>
+        <!-- generadas por JS -->
+      </div>
+      <div class="col-filter-actions">
+        <button id="colShowAll" type="button" title="Mostrar todas las columnas">▾ TODAS</button>
+        <button id="colHideAll" type="button" title="Ocultar todas las columnas">▴ NINGUNA</button>
+      </div>
     </div>
     <div class="graph-wrap" id="graphWrap">
       <svg id="timeline" class="timeline" xmlns="http://www.w3.org/2000/svg"></svg>
@@ -1030,6 +1136,19 @@
 
   <details class="section">
     <summary>8 · PARALELISMO — De GPUs a TPUs</summary>
+  <div class="quantum-callout cyan-theme">
+    <h4>CUDA (2006) <span class="neq" style="color:var(--ibm-yellow)">+</span> AlexNet (2012) — los dos puntos de inflexión que crearon la era IA</h4>
+    <p>Cuando NVIDIA libera <b>CUDA en noviembre de 2006</b>, las GPUs dejan de ser solo para gráficos: cualquier programador puede ejecutar código C/C++ sobre miles de núcleos paralelos. Pero durante 6 años nadie del mundo IA lo ve.</p>
+    <p>En <b>septiembre de 2012</b>, Krizhevsky, Sutskever y Hinton ganan ImageNet con <b>AlexNet</b> entrenada en <b>2 GPUs GeForce GTX 580</b>. La industria entera entiende de golpe: <b>el cuello de botella ya no es algoritmos, es FLOPS</b>.</p>
+    <div class="metric">
+      <b>▸ EL EFECTO DOMINÓ</b><br>
+      2012: AlexNet · GPUs como motor IA<br>
+      2017: Tensor Cores · NVIDIA diseña silicio específico para IA<br>
+      2024: NVIDIA capitaliza $3T+ · más que Apple, Microsoft y Google juntos<br>
+      ▸ Hoy NVIDIA domina porque adoptó CUDA cuando nadie lo necesitaba.
+    </div>
+    <p style="font-size:11px;opacity:.75;margin-top:12px">CUDA es el ejemplo paradigmático del <b>"adelantarse al mercado vale 20 años de ventaja"</b>. Sin CUDA no hay AlexNet; sin AlexNet no hay deep learning moderno; sin deep learning moderno no hay LLMs ni Anthropic ni esta página.</p>
+  </div>
   <table>
     <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
     <tbody>
@@ -3005,6 +3124,72 @@ window.addEventListener('mouseup', () => {
     setTimeout(() => { dragMoved = false; }, 50);
   }
 });
+
+// ================== SEARCH + COLUMN FILTER ==================
+// Build column filter buttons
+const colFiltersEl = document.getElementById('colFilters');
+const hiddenCols = new Set();
+COLS.forEach(c => {
+  const btn = document.createElement('button');
+  btn.className = 'col-filter-btn active';
+  btn.dataset.col = c.id;
+  btn.style.color = c.color;
+  btn.innerHTML = `<span>${c.name}</span>`;
+  btn.title = `Toggle columna ${c.name}`;
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    if(btn.classList.contains('active')) hiddenCols.delete(c.id);
+    else hiddenCols.add(c.id);
+    applyColFilter();
+  });
+  colFiltersEl.appendChild(btn);
+});
+function applyColFilter(){
+  Object.entries(nodeEls).forEach(([id, g]) => {
+    const node = NIDX[id];
+    g.classList.toggle('col-hidden', hiddenCols.has(node.cat));
+  });
+  edgeEls.forEach(p => {
+    const fromCat = NIDX[p.dataset.from]?.cat;
+    const toCat = NIDX[p.dataset.to]?.cat;
+    p.classList.toggle('col-hidden', hiddenCols.has(fromCat) || hiddenCols.has(toCat));
+  });
+}
+document.getElementById('colShowAll').addEventListener('click', () => {
+  hiddenCols.clear();
+  document.querySelectorAll('.col-filter-btn').forEach(b => b.classList.add('active'));
+  applyColFilter();
+});
+document.getElementById('colHideAll').addEventListener('click', () => {
+  COLS.forEach(c => hiddenCols.add(c.id));
+  document.querySelectorAll('.col-filter-btn').forEach(b => b.classList.remove('active'));
+  applyColFilter();
+});
+
+// Search
+const searchInput = document.getElementById('searchInput');
+const searchResult = document.getElementById('searchResult');
+function applySearch(q){
+  q = q.toLowerCase().trim();
+  if(!q){
+    Object.values(nodeEls).forEach(g => g.classList.remove('search-hit', 'search-miss'));
+    edgeEls.forEach(p => p.classList.remove('search-miss'));
+    searchResult.textContent = '';
+    return;
+  }
+  let hits = 0;
+  Object.entries(nodeEls).forEach(([id, g]) => {
+    const node = NIDX[id];
+    const haystack = [node.label, node.desc||'', node.rel||'', String(node.year)].join(' ').toLowerCase();
+    const match = haystack.includes(q);
+    g.classList.toggle('search-hit', match);
+    g.classList.toggle('search-miss', !match);
+    if(match) hits++;
+  });
+  edgeEls.forEach(p => p.classList.add('search-miss'));
+  searchResult.textContent = hits + ' hito' + (hits===1?'':'s');
+}
+searchInput.addEventListener('input', e => applySearch(e.target.value));
 
 // Atajos teclado: + - 0
 document.addEventListener('keydown', (e) => {
