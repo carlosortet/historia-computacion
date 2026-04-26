@@ -875,9 +875,11 @@
       <tr><td>1976–1977</td><td>Apple I y II</td><td>Wozniak (con Jobs)</td><td>Acerca el PC al gran público</td></tr>
       <tr><td>1981</td><td>IBM PC 5150</td><td>IBM + MS-DOS (Microsoft)</td><td>Estandariza la arquitectura PC; explosión de clones</td></tr>
       <tr><td>1984</td><td>Macintosh</td><td>Apple · GUI heredada de Xerox PARC</td><td>Lleva Smalltalk al mercado</td></tr>
+      <tr><td><b>1980</b></td><td><b>RISC</b></td><td>IBM 801 · Berkeley RISC (Patterson) · Stanford MIPS (Hennessy) · paradigma rival al CISC</td><td>Origen de SPARC, MIPS, PowerPC, ARM, Alpha · hoy ARM domina mobile y desktop con M1</td></tr>
       <tr><td>1985</td><td>Intel 80386</td><td>Primer x86 de 32 bits + memoria protegida</td><td>Funda la era SO multitarea (Windows NT, Linux, OS/2)</td></tr>
       <tr><td>2008</td><td>Android 1.0</td><td>Google · SO móvil open source basado en Linux (HTC Dream)</td><td>Funda el duopolio iOS/Android · 70%+ smartphones del mundo</td></tr>
       <tr><td>2012</td><td>Raspberry Pi</td><td>Eben Upton · SBC Linux a 35 USD para educación</td><td>Democratiza compute embedded · 50M+ unidades vendidas</td></tr>
+      <tr><td><b>2010</b></td><td><b>RISC-V</b></td><td>Berkeley (Asanović + Patterson) · open ISA libre de royalties · ratificado 2014</td><td>Apuesta europea + china por soberanía · adoptado por SiFive, Western Digital, NVIDIA</td></tr>
       <tr><td>1993</td><td>Intel Pentium</td><td>Arquitectura superescalar mainstream</td><td>Carrera del reloj hasta 1 GHz</td></tr>
       <tr><td>2003</td><td>AMD Athlon 64</td><td>Primer x86 de 64 bits comercial · ISA AMD64</td><td>AMD se adelanta a Intel; obliga a la industria a migrar</td></tr>
       <tr><td>2006</td><td>Intel Core 2 Duo</td><td>Multi-core mainstream para consumidores</td><td>Fin de la guerra de GHz; comienza la de núcleos</td></tr>
@@ -1216,6 +1218,119 @@
     </tbody>
   </table>
   <blockquote>Cadena causal: DH/RSA (clave pública) → ECC (eficiente) → PGP (consumer) → SSL (web) → AES (simétrico) → Bitcoin (consenso) → Signal (E2EE) → PQC (post-cuántico). El campo evoluciona en función de las amenazas, especialmente la futura amenaza cuántica.</blockquote>
+  </details>
+
+  <details class="section" id="sec-os">
+    <summary>21 · SISTEMAS OPERATIVOS (tabla extra · no en grafo)</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1964</td><td>OS/360 (IBM)</td><td>Primer SO multitarea para mainframe · familia compatible cross-models</td><td>Inventa el concepto de "sistema operativo" como software separado del hardware. Brooks lo cuenta en *The Mythical Man-Month* (1975)</td></tr>
+      <tr><td>1969</td><td>Unix · también en chart</td><td>Thompson + Ritchie (Bell Labs) · multiusuario, jerarquía de archivos, todo es archivo</td><td>Filosofía y diseño que sobrevive 55 años; ancestro de macOS, Linux, Android, iOS, BSDs</td></tr>
+      <tr><td>1969</td><td>Multics</td><td>MIT + Bell Labs + GE · ringed protection, segmented memory, dynamic linking</td><td>"Fracaso glorioso" del que Unix nace como reacción simplificadora</td></tr>
+      <tr><td>1974</td><td>CP/M (Digital Research)</td><td>Gary Kildall · primer SO popular para microordenadores 8-bit</td><td>Estándar antes del MS-DOS; IBM-DR fail famous (no firma exclusividad → IBM va a Microsoft)</td></tr>
+      <tr><td>1981</td><td>MS-DOS</td><td>Microsoft compra QDOS → vende a IBM como PC-DOS / MS-DOS · monolítico, single-task</td><td>Sustrato del PC durante 14 años hasta Windows 95</td></tr>
+      <tr><td>1984</td><td>Mac OS (System 1)</td><td>Apple · primer SO de consumo con GUI integrada (heredada de Xerox PARC)</td><td>Lleva la metáfora del escritorio al mercado masivo</td></tr>
+      <tr><td>1985</td><td>Windows 1.0</td><td>Microsoft · capa GUI sobre MS-DOS (no SO real hasta NT)</td><td>Inicio de 40 años de hegemonía Windows en el desktop empresarial</td></tr>
+      <tr><td>1987</td><td>OS/2</td><td>Joint IBM + Microsoft · 32-bit, multitarea preventiva</td><td>Técnicamente superior a Windows 3.0 pero pierde la guerra por marketing y costes</td></tr>
+      <tr><td>1991</td><td>Linux · también en chart</td><td>Linus Torvalds · kernel monolítico open source para PCs</td><td>Junto con GNU = SO libre · domina servidores · sustrato de Android · 90% de la nube</td></tr>
+      <tr><td>1993</td><td>Windows NT 3.1</td><td>Microsoft · arquitectura microkernel (Dave Cutler ex-DEC) · 32-bit puro</td><td>Base técnica de Windows 2000/XP/Vista/7/8/10/11 y Server</td></tr>
+      <tr><td>1995</td><td>Windows 95</td><td>Microsoft · cambia el paradigma de UX para siempre (Start menu, taskbar)</td><td>Vende 7M de copias en 5 semanas · cultura pop · "Start me up" Stones campaign</td></tr>
+      <tr><td>2001</td><td>Mac OS X</td><td>Apple · NeXTSTEP-based (Unix BSD por debajo) · Aqua UI</td><td>Apple resucita gracias a este SO. Padre de iOS, iPadOS, watchOS, tvOS</td></tr>
+      <tr><td>2007</td><td>iOS</td><td>Apple · iPhone OS 1.0 · sandboxed apps · multi-touch native</td><td>Funda la era smartphone moderna · paradigma App Store cambia la economía del software</td></tr>
+      <tr><td>2008</td><td>Android · también en chart</td><td>Google · open source basado en Linux kernel · HTC Dream</td><td>Salto al móvil masivo open source · 70%+ smartphones del mundo</td></tr>
+      <tr><td>2009</td><td>Chrome OS</td><td>Google · navegador como SO · Chromebooks</td><td>Pionero del "everything in the browser/cloud"; popular en educación EEUU</td></tr>
+      <tr><td>2024</td><td>SO con LLM integrado</td><td>Apple Intelligence (iOS 18 / macOS 15) · Microsoft Copilot+ PC · Google AI on Pixel</td><td>El LLM se vuelve componente del SO · IA on-device + cloud híbrido como nuevo paradigma UX</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: OS/360 (concepto SO) → Multics (ambición) → Unix (simplificación) → CP/M → MS-DOS → Mac/Windows (GUI consumer) → Windows NT (32-bit pro) → Mac OS X (Unix moderno) → iOS/Android (mobile) → SO con LLM (IA como componente del SO).</blockquote>
+  </details>
+
+  <details class="section" id="sec-sysarq">
+    <summary>22 · ARQUITECTURAS DE SISTEMA (tabla extra · no en grafo)</summary>
+  <table>
+    <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
+    <tbody>
+      <tr><td>1959</td><td>IBM 1401</td><td>Primer mainframe comercial masivo · 12.000 unidades vendidas</td><td>Define el modelo "ordenador como servicio" alquilado · concepto de cuenta por uso de recursos</td></tr>
+      <tr><td>1964</td><td>IBM System/360</td><td>Familia compatible · arquitectura unificada cross-models · ISA estable 60+ años</td><td>Modelo dominante 60 años · funda concepto de "arquitectura" como contrato estable. Hoy IBM Z continúa la línea</td></tr>
+      <tr><td>1965</td><td>Multics · timesharing</td><td>Múltiples usuarios concurrentes en un mainframe · accounting por uso</td><td>Padre conceptual de la nube moderna: virtualización + accounting + multi-tenancy</td></tr>
+      <tr><td>1977</td><td>DEC VAX</td><td>Minicomputer 32-bit · arquitectura VMS · departamento como cliente (no toda la corporación)</td><td>Democratiza el mainframe a nivel departamental · primer "edge" pre-internet</td></tr>
+      <tr><td>1983</td><td>Novell NetWare</td><td>Servidor de archivos + impresoras dedicado · LAN como infraestructura corporativa</td><td>Funda la era cliente-servidor · estándar empresarial 1985-1995</td></tr>
+      <tr><td>1988</td><td>IBM AS/400 (hoy IBM i)</td><td>Mid-range integrado · DB2 nativa · object-based · TIMI virtual machine</td><td>Sigue vivo en 2026 (IBM Power10) · core bancario en miles de empresas</td></tr>
+      <tr><td>1990s</td><td>x86 commodity server era</td><td>Compaq, Dell, HP · Linux/Windows NT · clusters baratos vs. mainframes</td><td>Empuja la migración mainframe → Unix → Linux que define la web 2000s</td></tr>
+      <tr><td>1999</td><td>VMware Workstation</td><td>Diane Greene · primera virtualización x86 viable · binary translation</td><td>Habilita el data center moderno (consolidación servers) · ancestro del cloud</td></tr>
+      <tr><td>2003</td><td>Xen</td><td>Cambridge · paravirtualización open source · uso por Amazon EC2 (2006)</td><td>Sustrato técnico real de la nube pública en su origen</td></tr>
+      <tr><td>2006</td><td>AWS EC2 · IaaS</td><td>Cómputo como servicio · pay-per-use · elastic scaling</td><td>Hereda directamente el modelo accounting de los mainframes (multics 1965 lo predijo)</td></tr>
+      <tr><td>2008</td><td>Hadoop · MapReduce</td><td>Doug Cutting · clusters commodity para procesar datos web-scale</td><td>Funda la era big data · ancestro de Spark, Snowflake, Databricks</td></tr>
+      <tr><td>2010</td><td>OpenStack</td><td>Rackspace + NASA · IaaS open source · alternativa a AWS para clouds privadas</td><td>Sustrato de telcos, gobiernos, soberanía cloud</td></tr>
+      <tr><td>2013</td><td>Docker · contenedores</td><td>Solomon Hykes · LXC + tooling + registry · empaquetado portable</td><td>"Build once, run anywhere" hecho realidad · revolución del despliegue</td></tr>
+      <tr><td>2014</td><td>Kubernetes</td><td>Google libera Borg lite · orquestador de contenedores</td><td>Estándar cloud-native · sustrato de la mayoría de SaaS modernos · multi-cloud portable</td></tr>
+      <tr><td>2014</td><td>Serverless · AWS Lambda</td><td>Función como unidad de despliegue · zero infrastructure mgmt · pay per execution</td><td>Modelo más extremo del "compute as service" · convergencia mainframe accounting</td></tr>
+      <tr><td>2017</td><td>Edge computing</td><td>Cloudflare Workers, Vercel Edge, AWS Lambda@Edge · cómputo cerca del usuario</td><td>Inversión del centralismo cloud · híbrido edge ↔ cloud como nuevo modelo</td></tr>
+      <tr><td>2020s</td><td>5G + IoT mass deployment</td><td>Miles de millones de dispositivos conectados · MQTT, CoAP, edge AI</td><td>Edge se vuelve infraestructura industrial real · vehículos autónomos, smart cities, fábricas conectadas</td></tr>
+      <tr><td>2024</td><td>GPU clusters AI-first</td><td>NVIDIA NVL72, AWS Trn2 UltraServer, Google TPU pods · racks especializados en IA</td><td>Nueva categoría de "supercomputador empresarial" · cambia el data center entero</td></tr>
+      <tr><td>2025+</td><td>Agentic data centers (esp.)</td><td>Convergencia GPU + memoria + storage + red orquestada para agentes IA · AI factories de NVIDIA</td><td>Próxima frontera: la IA no es un workload del data center, ES el data center</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Cadena causal: Mainframe (1959-1964: cómputo centralizado + accounting) → minicomputer + PC (descentralización) → Novell + cliente-servidor → x86 commodity → virtualización → cloud (que <b>recupera el modelo mainframe</b> a escala global) → contenedores + Kubernetes → serverless → edge → AI factories. La historia de las arquitecturas oscila entre centralización y distribución, pero conserva el "accounting" inventado en los mainframes de 1959.</blockquote>
+  </details>
+
+  <details class="section" id="sec-glosario">
+    <summary>23 · GLOSARIO · términos clave</summary>
+  <div style="padding:18px 22px;font-size:12.5px;line-height:1.7;color:var(--ink)">
+    <p style="font-size:11.5px;color:#555;font-style:italic;margin-bottom:18px;border-bottom:1px dashed #aaa;padding-bottom:12px">
+      Definiciones cortas de los términos técnicos más usados en la página · ordenadas por frecuencia y por importancia conceptual. Los <b>conceptos prioritarios</b> aparecen marcados en negrita.
+    </p>
+
+    <h3 style="color:var(--ibm-magenta);margin-top:14px">⚡ Computación cuántica · el malentendido #1</h3>
+    <p><b>Qubit físico</b> — unidad cuántica real implementada en hardware (superconductor, ion atrapado, fotón…). Hoy los chips tienen entre 50 y 1.000 qubits físicos. <b>Son ruidosos</b> (decoheren en microsegundos) e individualmente <b>NO sirven</b> para cómputo útil.</p>
+    <p><b>Qubit lógico</b> — qubit "perfecto" construido a partir de N qubits físicos entrelazados + códigos de corrección de errores (QEC). Por cada qubit lógico hacen falta entre 100 y 10.000 qubits físicos según la calidad del hardware. Es la métrica real del progreso cuántico.</p>
+    <p><b>FTQC</b> (Fault-Tolerant Quantum Computer) — ordenador cuántico con suficientes qubits lógicos para ejecutar algoritmos arbitrariamente largos sin errores acumulados. El "santo grial" del campo.</p>
+    <p><b>Romper RSA-2048</b> — requiere ~1.300 qubits lógicos (Gidney 2024) · ~1 semana · ~20M qubits físicos con tecnología 2024. Hoy estamos a años (probablemente década) de tener esa capacidad. Pero "harvest now, decrypt later" justifica migrar a PQC ya.</p>
+    <p><b>PQC</b> (Post-Quantum Cryptography) — algoritmos clásicos resistentes a Shor. NIST estandarizó CRYSTALS-Kyber, Dilithium, SPHINCS+ en 2024 (FIPS 203/204/205). Apple, Signal, navegadores ya migrando.</p>
+
+    <h3 style="color:var(--ibm-pink);margin-top:18px">🤖 IA · términos esenciales</h3>
+    <p><b>LLM</b> (Large Language Model) — modelo de IA entrenado en billones de tokens de texto. Predice siguiente token. Ej: GPT-4, Claude, Gemini.</p>
+    <p><b>Transformer</b> — arquitectura de red neuronal (Vaswani et al. 2017) basada en attention. Sustrato de TODOS los LLM actuales.</p>
+    <p><b>Attention</b> — mecanismo que permite al modelo "mirar" todas las palabras del contexto a la vez ponderando su importancia.</p>
+    <p><b>Pre-training / fine-tuning / RLHF</b> — fases de entrenamiento. Pre = aprender lenguaje en internet entero. Fine-tune = especializar en tarea. RLHF = alinear con preferencias humanas via reinforcement learning.</p>
+    <p><b>Token</b> — unidad mínima de texto que procesa el LLM (~4 caracteres en inglés). <b>Ventana de contexto</b> = cuántos tokens puede procesar a la vez (Claude 4.7 = 1M, GPT-4 = 128K).</p>
+    <p><b>Embedding</b> — representación numérica de un texto/imagen como vector en espacio de cientos/miles de dimensiones. La base del RAG y las vector DBs.</p>
+    <p><b>RAG</b> (Retrieval Augmented Generation) — patrón: buscar documentos relevantes (en vector DB) + meterlos en el prompt del LLM. Resuelve el problema de "el LLM no sabe X".</p>
+    <p><b>Foundation Model</b> — modelo grande pre-entrenado en datos masivos, adaptable a múltiples tareas. Aplicable a texto (LLM), imagen, video, robótica (VLA).</p>
+    <p><b>VLA</b> (Vision-Language-Action) — foundation model para robótica. Input: video + texto. Output: acciones. Ej: π0 de Physical Intelligence, Google RT-2.</p>
+    <p><b>Agente IA</b> — sistema que combina LLM + memoria + herramientas (tool use) + bucles de razonamiento. Ej: Claude Code, Cursor, Devin.</p>
+
+    <h3 style="color:var(--ibm-cyan);margin-top:18px">🔧 Hardware · siglas críticas</h3>
+    <p><b>CPU / GPU / TPU / NPU / ASIC / FPGA</b> — Central / Graphics / Tensor / Neural / Application-Specific / Field-Programmable. Procesadores de propósito decreciente de generalidad: CPU general → ASIC fijado a una tarea concreta. NPU = subcategoría de ASIC en CPU móviles para IA.</p>
+    <p><b>RISC vs CISC</b> — Reduced vs Complex Instruction Set. RISC: pocas instrucciones simples (ARM, RISC-V, MIPS, PowerPC). CISC: muchas instrucciones complejas (x86). Históricamente x86 ganó por software legacy; hoy ARM gana por eficiencia (Apple Silicon).</p>
+    <p><b>HBM</b> (High Bandwidth Memory) — memoria apilada en 3D al lado del chip GPU/TPU · ancho de banda 5-10× DDR. Sustrato de los aceleradores IA modernos.</p>
+    <p><b>FLOPS / TFLOPS / PFLOPS / EFLOPS</b> — operaciones de coma flotante por segundo · 10⁹ / 10¹² / 10¹⁵ / 10¹⁸. Métrica de supercomputación. Frontier (2022): 1 EF.</p>
+    <p><b>Chiplet</b> — arquitectura modular: en lugar de fabricar un chip monolítico gigante, ensamblar varios "chiplets" más pequeños en el mismo package. AMD Ryzen (2017) lo populariza, hoy estándar industrial.</p>
+
+    <h3 style="color:var(--ibm-blue);margin-top:18px">💾 Datos · taxonomía moderna</h3>
+    <p><b>RDBMS</b> (Relational Database Management System) — Codd 1970. Ej: Oracle, PostgreSQL, MySQL, SQL Server.</p>
+    <p><b>NoSQL</b> — bases no relacionales para escala web: documento (MongoDB), columna (Cassandra), key-value (Redis), grafo (Neo4j).</p>
+    <p><b>Vector DB</b> — base de datos optimizada para búsqueda por similitud sobre embeddings. Ej: Pinecone, Weaviate, Milvus, pgvector.</p>
+    <p><b>Lakehouse</b> — convergencia data warehouse (analítica) + data lake (raw). Apache Iceberg (2018) es el formato de tabla abierto que ganó la guerra. Snowflake, Databricks lo adoptan.</p>
+    <p><b>MCP</b> (Model Context Protocol) — estándar abierto de Anthropic (nov 2024) para conectar agentes IA a fuentes de datos y herramientas. "USB-C para IA".</p>
+
+    <h3 style="color:var(--ibm-orange);margin-top:18px">🏗 Arquitecturas de sistema</h3>
+    <p><b>Mainframe</b> — ordenador central de gran capacidad, multiusuario, alta fiabilidad. IBM Z continúa el linaje desde 1964. Aún corre el 70% de transacciones bancarias mundiales.</p>
+    <p><b>Cloud</b> — IaaS/PaaS/SaaS · cómputo bajo demanda con accounting por uso. Hereda el modelo del mainframe (Multics 1965) a escala global.</p>
+    <p><b>Contenedor</b> — empaquetado portable de aplicación + dependencias compartiendo kernel del host. Docker (2013) populariza · Kubernetes (2014) orquesta.</p>
+    <p><b>Serverless / FaaS</b> — Function as a Service · ejecutas código sin gestionar servidores · pay-per-execution. AWS Lambda (2014).</p>
+    <p><b>Edge computing</b> — cómputo cerca del usuario en lugar del data center central. Cloudflare Workers, Vercel Edge, 5G + IoT.</p>
+
+    <h3 style="color:var(--ibm-green);margin-top:18px">📐 Software & paradigmas</h3>
+    <p><b>POO</b> (Programación Orientada a Objetos) — paradigma con clases, herencia, encapsulación. Simula 67 (raíz), Smalltalk (radical), C++/Java (industrial).</p>
+    <p><b>Functional Programming</b> — paradigma sin estado mutable, funciones como ciudadanos de primera. LISP (1958), Haskell (1990), Clojure (2007), Scala (2004).</p>
+    <p><b>Microservicios</b> — descomposición de monolitos en servicios pequeños desplegables independientemente.</p>
+    <p><b>Vibe Coding</b> — Karpathy (2025): describir intención en lenguaje natural, dejar que un agente IA escriba/itere el código.</p>
+
+    <h3 style="color:#666;margin-top:18px">📊 Otras siglas frecuentes</h3>
+    <p><b>SDK</b> Software Development Kit · <b>API</b> Application Programming Interface · <b>ISA</b> Instruction Set Architecture · <b>SoC</b> System on Chip · <b>NVMe</b> Non-Volatile Memory Express · <b>PCIe</b> Peripheral Component Interconnect Express · <b>CUDA</b> Compute Unified Device Architecture (NVIDIA) · <b>OpenCL</b> Open Computing Language · <b>ASIC</b> Application-Specific IC · <b>FPGA</b> Field-Programmable Gate Array · <b>TPU</b> Tensor Processing Unit · <b>NPU</b> Neural Processing Unit · <b>HBM</b> High Bandwidth Memory · <b>VLA</b> Vision-Language-Action · <b>RAG</b> Retrieval-Augmented Generation · <b>MCP</b> Model Context Protocol · <b>RLHF</b> Reinforcement Learning from Human Feedback · <b>FTQC</b> Fault-Tolerant Quantum Computer · <b>QEC</b> Quantum Error Correction · <b>PQC</b> Post-Quantum Cryptography · <b>PKI</b> Public Key Infrastructure · <b>E2EE</b> End-to-End Encryption · <b>JIT</b> Just-In-Time compilation · <b>GC</b> Garbage Collection · <b>GUI</b> Graphical User Interface · <b>CLI</b> Command-Line Interface · <b>VCS</b> Version Control System · <b>TDD</b> Test-Driven Development · <b>FaaS</b> Function as a Service · <b>IaaS</b> Infrastructure as a Service · <b>PaaS</b> Platform as a Service · <b>SaaS</b> Software as a Service.</p>
+  </div>
   </details>
 
   <h2>Mapa textual de relaciones</h2>
