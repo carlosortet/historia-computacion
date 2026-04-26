@@ -1486,6 +1486,21 @@
 
   <details class="section" id="sec-sysarq">
     <summary>22 · ARQUITECTURAS DE SISTEMA (tabla extra · no en grafo)</summary>
+  <div class="quantum-callout orange-theme">
+    <h4>El cloud es el mainframe que vuelve <span class="neq" style="color:var(--ibm-yellow)">↻</span> 60 años después, con otro nombre</h4>
+    <p>En <b>1965</b>, Multics introduce el concepto de <b>compute as a service con accounting por uso</b>: múltiples usuarios concurrentes en un mainframe, facturados por recursos consumidos. La gran corporación pagaba al departamento de IT por CPU-segundos consumidos.</p>
+    <p>En <b>2006</b>, AWS EC2 reinventa exactamente esto a escala global: <b>compute as a service con accounting por uso</b>. La startup paga a Amazon por CPU-segundos consumidos. Misma idea, otro nombre.</p>
+    <div class="metric">
+      <b>▸ EL PATRÓN OSCILANTE DEL CÓMPUTO</b><br>
+      1960s: centralización mainframe (concentración + accounting)<br>
+      1970-80s: descentralización (minicomputer · PC · cliente-servidor)<br>
+      1990-2000s: re-centralización (data centers · enterprise IT)<br>
+      2006-2014: cloud (centralización extrema · multi-tenant global)<br>
+      2017+: edge (descentralización selectiva · cómputo cerca del usuario)<br>
+      ▸ El péndulo nunca ha parado de oscilar — solo cambia los nombres.
+    </div>
+    <p style="font-size:11px;opacity:.75;margin-top:12px">Lo verdaderamente nuevo del cloud no es la virtualización (Multics ya lo hacía con time-sharing) ni el accounting (mainframes lo facturaban). Es la <b>elasticidad y la escala global con APIs</b>: cualquier desarrollador puede aprovisionar 10.000 vCPUs en 90 segundos desde su navegador. Eso sí es nuevo.</p>
+  </div>
   <table>
     <thead><tr><th>AÑO</th><th>HITO</th><th>APORTACIÓN</th><th>RELACIÓN CLAVE</th></tr></thead>
     <tbody>
@@ -1657,12 +1672,31 @@
 ══════════════════════════════════════════════════════════════════════════════════════</pre>
 
   <h2>Conclusión</h2>
-  <p>La historia es <b>una sola línea</b> con <b>dos ramas finales paralelas</b> (cuántica y exascale clásica), y una <b>ola transversal</b> (la IA) que cruza casi todos los bloques.</p>
+  <p>La historia es <b>una sola línea</b> que arranca en la <b>Pascalina (1642)</b> y atraviesa 380 años hasta los modelos de razonamiento actuales. Tiene <b>dos ramas finales paralelas</b> (cuántica y exascale clásica), una <b>ola transversal</b> (la IA) que cruza casi todos los bloques, y <b>cuatro hilos infraestructurales</b> que la sostienen y conectan.</p>
+
+  <h3 style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;margin-top:18px">Los puentes físicos</h3>
   <ul>
-    <li><b>GPUs</b> son el puente físico que hace viable la IA moderna y la supercomputación actual.</li>
-    <li><b>VRAM</b> es subcomponente práctico: limita lo ejecutable localmente, pero no es un cambio de paradigma.</li>
     <li><b>CUDA (2006)</b> y <b>AlexNet (2012)</b> son los dos puntos de inflexión que conectan hardware paralelo con la IA actual.</li>
+    <li><b>GPUs y TPUs</b> son el sustrato físico de toda la era IA — el silicio masivamente paralelo es el motor.</li>
+    <li><b>VRAM y HBM</b> son subcomponentes prácticos: limitan lo ejecutable localmente, pero no son cambios de paradigma.</li>
   </ul>
+
+  <h3 style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;margin-top:18px">Los cuatro hilos infraestructurales</h3>
+  <ul>
+    <li><b>DATA</b> · de Codd (1970) a la memoria agéntica (2027 esp.). Cada era IA necesita una infraestructura de datos a su altura: vector DBs y MCP son a los LLMs lo que SQL fue a la web.</li>
+    <li><b>INTERNET</b> · de ARPANET (1969) a edge + 5G. Sin la red abierta no existe el cloud, ni el deep learning entrenado en datos masivos, ni los agentes que conectan herramientas globales.</li>
+    <li><b>ROBÓTICA</b> · de Unimate (1961) a Robot Foundation Models (π0, 2024). 60 años de manipulación industrial convergen ahora con LLMs en humanoides comerciales.</li>
+    <li><b>SIMULACIÓN</b> · de Monte Carlo (1947) a World Models (Sora, Cosmos, 2024-2025). El ciclo se cierra: <i>el futuro será simulado antes de ser vivido, lo habitaremos antes de construirlo</i>.</li>
+  </ul>
+
+  <h3 style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;margin-top:18px">Los cierres simbólicos</h3>
+  <ul>
+    <li><b>ALGORITMOS</b> · 100 años después de que von Neumann formulara el <b>minimax (1928)</b>, los <b>algoritmos agénticos (ReAct, ToT, MCTS sobre LLMs)</b> reabrazan la búsqueda algorítmica clásica con LLMs como heurística. La matemática pura del cómputo cierra el círculo.</li>
+    <li><b>LÓGICA</b> · 90 años después de <b>Hilbert/Gödel/Turing</b>, <b>AlphaProof (DeepMind 2024)</b> resuelve problemas IMO en lógica formal a nivel de medalla de plata olímpica. La IA cierra el círculo razonando en el lenguaje en el que nació.</li>
+    <li><b>CUÁNTICA</b> · 40 años después de la propuesta de <b>Feynman (1981)</b>, los chips actuales (Willow, Heron) demuestran qubits lógicos. Faltan ~1.300 qubits lógicos para romper RSA-2048 (Gidney 2024). La amenaza efectiva está a años, pero "harvest now, decrypt later" obliga a migrar a PQC ya.</li>
+  </ul>
+
+  <p style="margin-top:18px">La página tiene 211 hitos verificados y 316 relaciones causales — pero la lección de fondo cabe en una frase: <b>cada generación recibe el regalo de las anteriores y lo extiende un peldaño</b>. De Pascal a GPT-5 no hay un solo salto sin escalón previo.</p>
 
   <h2>Apéndice · La máquina que me cambió la vida y quizás a ti también.</h2>
   <article class="machine-card">
