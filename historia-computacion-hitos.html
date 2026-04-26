@@ -1443,47 +1443,89 @@
   </details>
 
   <h2>Mapa textual de relaciones</h2>
-<pre>LÓGICA  ──►  ARQUITECTURA  ──►  ELECTRÓNICA  ──►  MICRO+PC
-(Boole,        (Turing,            (Zuse,             (Intel 4004 → 386 → Pentium →
-Shannon)       von Neumann,        ENIAC,             Athlon 64 → Core 2 Duo →
-               autómatas auto-     transistor, IC,    iPhone → Ryzen → M1 →
-               replicantes)        Moore →            NPU → M5/18A → M6+Vera)
-                                   FIN MOORE 2019 →
-                                   chiplet + GAA + Silica)
-                                          │
-                                          ▼
-                                    SOFTWARE  ──►  POO/PARADIGMAS  ──►  IA
-                                   (Hopper,         (Simula,            (Dartmouth, perceptrón,
-                                   FORTRAN, C,      Smalltalk,          ELIZA, invierno,
-                                   Unix, GNU,       C++, Java, Python,  expertos, backprop,
-                                   Linux, Git,      microservicios,     DBN, ImageNet, AlexNet,
-                                   Docker,          vibe coding)        GANs, Transformer,
-                                   Copilot,                             BERT, GPT-3, AlphaFold,
-                                   coding agents)                       Diffusion, GPT-4, o1,
-                                                                        Opus 4.7, ...)
-                                                                              │
-                                                                              ▼
-                                              PARALELISMO ──► GPU+CUDA (2006) ──► AlexNet (2012)
-                                              (TPU 2015,                              │
-                                              Cerebras 2019,                          ▼
-                                              hyperscaler                Transformer (2017) ──► LLMs (2022→)
-                                              silicon 2024,                            │
-                                              TPU v7 2025)                             ▼
-                                                                          DATA: vector DBs + MCP + memoria agéntica
-                                                                                       │
-                                                                                       ▼
-                                              ROBÓTICA ──►  Humanoides (2024)  ──►  Robot Foundation Models (2027 esp.)
-                                              (Unimate,                              │
-                                              Shakey,                                ▼
-                                              PUMA, Roomba,             Supercomputación exascale (Frontier 2022 → JUPITER 2025)
-                                              DARPA UC, Spot)
+<pre>══════════════════════════════════════════════════════════════════════════════════════
+        15 COLUMNAS DEL GRAFO · agrupadas por familia conceptual
+══════════════════════════════════════════════════════════════════════════════════════
 
-INTERNET   ──►  ARPANET → TCP/IP → WWW → Mosaic → Google → AWS → Kubernetes → Edge
+  TEORÍA              HARDWARE              SOFTWARE              INTELIGENCIA
+  ──────              ────────              ────────              ────────────
+  LÓGICA              ARQUITECTURA          SOFTWARE              IA
+  ALGORITMOS          ELECTRÓNICA           PARADIGMAS            DATA
+                      MICRO+PC              SIMULACIÓN            ROBÓTICA
+                      PARALELISMO           INTERNET
+                      CUÁNTICA
+                      SUPERCOMPUTACIÓN
 
-CUÁNTICA   ──►  Feynman/Deutsch → Shor/Grover → 2-qubits → Willow → Majorana → IBM Cockatoo (2027 esp.)
+══════════════════════════════════════════════════════════════════════════════════════
+        CADENAS CAUSALES PRINCIPALES
+══════════════════════════════════════════════════════════════════════════════════════
 
-LÓGICA     ──►  [eslabón moderno] Voevodsky HoTT (2013) → Lean 4 (2021) → AlphaProof (2024)
-                cierra el círculo Boole → Hilbert → Gödel → Turing → IA razonando en lógica formal</pre>
+[1] FUNDAMENTOS LÓGICOS
+    Boole (1847) → Frege → Hilbert/Gödel → Shannon (1937) → Turing (1936)
+    └── eslabón moderno: HoTT (2013) → Lean 4 (2021) → AlphaProof (2024)
+        cierra el círculo: la IA razona en lógica formal a nivel élite olímpica
+
+[2] HARDWARE FÍSICO
+    Z3 (1941) → ENIAC → transistor (1947) → IC (1959) → Moore (1965) →
+    FIN MOORE clásico (2019) → respuesta industrial: chiplet + GAA + Silica + cristal
+    ↓
+    Intel 4004 (1971) → x86 → RISC (1980) → ARM/iPhone → RISC-V (2010) → Apple M1/M5/M6
+
+[3] LENGUAJES Y SOFTWARE
+    A-0 (1952) → FORTRAN → COBOL → LISP → ALGOL → Unix+C → GNU/Linux →
+    Git → Docker → Copilot → coding agents
+    └── Paradigmas: Simula → Smalltalk → C++/Java/Python/JS → TDD/Ágil →
+        funcional → Go+Rust → microservicios → vibe coding
+
+[4] IA — EL ARCO LARGO
+    McCulloch-Pitts (1943) → Dartmouth (1956) → perceptrón → ELIZA → invierno →
+    sistemas expertos → backprop (1986) → LeNet → DBN → ImageNet → AlexNet (2012, GPU!)
+    → Word2Vec → GANs → Transformer (2017) → BERT/GPT-3 → AlphaFold → ChatGPT →
+    Diffusion → GPT-4/LLaMA → o1 → DeepSeek-R1 → Claude Opus 4.7 → Nobel 2024
+
+[5] PARALELISMO — el puente físico
+    GeForce 256 (1999) → CUDA (2006) → Tensor Cores (2017) → TPU v1→v8 →
+    Cerebras → hyperscaler silicon → Etched → Rubin → Vera (2027)
+    └── CUDA + AlexNet (2012) son los DOS puntos de inflexión IA-hardware
+
+[6] DATOS
+    Codd (1970) → System R → Oracle → PostgreSQL/MySQL → NoSQL → FAISS →
+    vector DBs → pgvector → MCP (2024) → memoria agéntica (2027 esp.)
+
+[7] INTERNET
+    ARPANET (1969) → TCP/IP (1983) → WWW → Mosaic → Google → AWS →
+    Kubernetes → Edge + Web3
+
+[8] ROBÓTICA
+    Unimate (1961) → Shakey → PUMA → Roomba → DARPA UC → Spot →
+    humanoides (2024) → Robot FM · π0 de Sergey Levine (2024) → cross-embodiment (2027)
+
+[9] SIMULACIÓN
+    Monte Carlo (1947) → SPICE (1973) → CFD → NKS Wolfram → PhysX → Omniverse →
+    World Models · Sora (2024) → Cosmos (2025) → Foundation simulation (2027)
+
+[10] CUÁNTICA — rama paralela
+     Benioff/Feynman → Deutsch → Shor/Grover → QEC qubit lógico (1995-97) →
+     2 qubits NMR → Sycamore → IBM Heron → Willow → MS Majorana → IBM Loon →
+     IBM Cockatoo (2027 esp.) → Starling FTQC (2029)
+     └── Métrica: ~1.300 qubits LÓGICOS para romper RSA-2048 (Gidney 2024)
+
+[11] SUPERCOMPUTACIÓN
+     Cray-1 (1976) → ASCI Red (1 TF) → Roadrunner (1 PF) → Fugaku (ARM) →
+     Frontier (1 EF) → Aurora → El Capitan → JUPITER (EU exascale)
+
+[12] ALGORITMOS — la matemática que atraviesa todo
+     Minimax (1928) → Deep Blue (1997) → AlphaGo (2016) → Algoritmos agénticos (2024)
+     · 100 años de minimax cerrando el círculo en la IA actual
+
+══════════════════════════════════════════════════════════════════════════════════════
+        TABLAS EXTRA · no en grafo · accesibles desde la cabecera
+══════════════════════════════════════════════════════════════════════════════════════
+
+  STORAGE  ·  OPEN SOURCE  ·  CIBERSEGURIDAD  ·  MOBILE  ·  CRIPTOGRAFÍA
+  SISTEMAS OPERATIVOS  ·  ARQUITECTURAS DE SISTEMA  ·  GLOSARIO
+
+══════════════════════════════════════════════════════════════════════════════════════</pre>
 
   <h2>Conclusión</h2>
   <p>La historia es <b>una sola línea</b> con <b>dos ramas finales paralelas</b> (cuántica y exascale clásica), y una <b>ola transversal</b> (la IA) que cruza casi todos los bloques.</p>
@@ -1719,8 +1761,8 @@ LÓGICA     ──►  [eslabón moderno] Voevodsky HoTT (2013) → Lean 4 (2021
         </svg>
         <div class="rule"></div>
         <div class="stack">
-          <div class="name">A D V A N C E</div>
-          <div class="tag">498ADVANCE.COM</div>
+          <div class="name">498 ADVANCE</div>
+          <div class="tag">498advance.com</div>
         </div>
       </div>
     </a>
