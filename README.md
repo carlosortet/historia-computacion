@@ -96,7 +96,10 @@ Contenido bajo **CC BY-SA 4.0** (ver `LICENSE`). El PDF del manual IBM es propie
 
 ## Versiones
 
-- **v0.4.0** (2026-04-26) — Fase 3: zoom in/out · pan con drag · atajos teclado · botones +/−/FIT en cabecera. Mejora la navegabilidad del grafo de 15 columnas × 1900px alto.
+- **v0.6.0** (2026-04-26) — P4 + P5 audit corrections: añadido nodo IBM/360 (1964) · 15 nuevas aristas conexiones que faltaban (shannon→vonneu, boole→frege, alphafold1→transformer, ibm360→cobol, feynman→qbit2/willow, mapreduce→aws, lisp→python, alphago→algAgents) + 5 huérfanos conectados (android, silica, aurora, jupiter, vibeCoding) · separados nodos compuestos `bert` (BERT vs GPT-1) y `gpt4` (GPT-4 vs LLaMA, cerrado vs open) · pageRankAlg→google: parallel→enables (es el algoritmo que define Google).
+- **v0.5.1** (2026-04-26) — 9 audit corrections: 5 inversiones temporales · 1 corrección semántica (dbn→alphafold1 incorrecta) · 1 eliminación tendenciosa (riscv→tpu7) · 1 cambio de tipo · 3 estrenando tipo `causal` · diario personal compactado en 3 párrafos · dedicatoria José Ortet sin redundancia "padre"
+- **v0.5.0** (2026-04-26) — Tier 4 polish + Tier 3 búsqueda y filtro de columnas. Callout cyan en PARALELISMO. Tablas extra con borde amarillo distintivo.
+- **v0.4.0** (2026-04-26) — Fase 3: zoom in/out · pan con drag · atajos teclado · botones +/−/FIT en cabecera.
 - **v0.3.0** (2026-04-26) — Pasos 1-6 Fase 1+2: RISC en chart · QEC + qubit lógico + estim. RSA · COBOL · secciones 21 SO + 22 SISTEMAS + 23 GLOSARIO · callout cuántico · header extendido. Total: 181 nodos · 246 aristas · 23 secciones.
 - **v0.2.0** (2026-04-25) — Auditoría exhaustiva con 6 subagentes, correcciones IBM Heron / Cosmos / iPhone / PhysX / NVMe / PageRank / etc.
 - **v0.1.0** (2026-04-23) — Versión inicial pública. 154 hitos · 197 aristas · 15 columnas.

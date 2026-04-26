@@ -1950,6 +1950,9 @@ const NODES = [
   {id:'edsac', cat:'ARQ', year:1949, label:'EDSAC operativo',
     desc:'Wilkes pone en marcha el EDSAC en Cambridge: primer von Neumann plenamente operativo.',
     rel:'Convierte la teoría de von Neumann en realidad práctica.'},
+  {id:'ibm360', cat:'ARQ', year:1964, label:'IBM System/360',
+    desc:'IBM lanza el System/360 (7 abr 1964): familia de mainframes 100% compatibles entre sí. Inversión de 5.000M USD (más cara que el Apollo). ISA estable que sigue viva 60+ años en IBM Z.',
+    rel:'Define el concepto de "arquitectura" como contrato estable entre hardware y software. Modelo dominante en empresa hasta hoy. Sustrato de COBOL bancario.'},
   {id:'autoreplica', cat:'ARQ', year:1948, label:'Autómatas autoreplicantes',
     desc:'Von Neumann formula la teoría de los autómatas autoreplicantes y diseña el constructor universal (publicado póstumamente en 1966 como *Theory of Self-Reproducing Automata*).',
     rel:'Predice la lógica del ADN antes de su descubrimiento (1953); inspira autómatas celulares, vida artificial y algoritmos evolutivos.'},
@@ -2180,9 +2183,12 @@ const NODES = [
   {id:'gans',      cat:'IA', year:2014, label:'GANs',
     desc:'Ian Goodfellow propone Generative Adversarial Networks: dos redes (generador + discriminador) compitiendo. Demuestra que la IA puede CREAR, no solo clasificar.',
     rel:'Funda la IA generativa moderna. Predecesor conceptual de los modelos de difusión.'},
-  {id:'bert',      cat:'IA', year:2018, label:'BERT + GPT-1',
-    desc:'Google libera BERT (bidireccional pre-trained transformer) · OpenAI lanza GPT-1. Era del pre-training masivo + fine-tuning.',
-    rel:'Convierte el Transformer (2017) en motor mainstream del NLP. Funda la era del transfer learning.'},
+  {id:'gpt1',      cat:'IA', year:2018, label:'GPT-1 (OpenAI)',
+    desc:'OpenAI publica GPT-1 (jun 2018): primer transformer decoder-only entrenado en BookCorpus + datos web. Demuestra que pre-training + fine-tuning escala.',
+    rel:'Funda la rama autoregresiva (decoder-only) que llegará a GPT-3/4 y a todos los LLM modernos.'},
+  {id:'bert',      cat:'IA', year:2018, label:'BERT (Google)',
+    desc:'Google libera BERT (oct 2018): pre-trained transformer bidireccional encoder-only. Primer salto cualitativo en NLP downstream tasks.',
+    rel:'Funda la rama encoder-only · sustrato de búsqueda Google y procesamiento NLP empresarial.'},
   {id:'chatgpt', cat:'IA', year:2022, label:'ChatGPT',
     desc:'OpenAI lanza ChatGPT (30 nov 2022). Producto masivo del primer LLM conversacional. 100M usuarios en 2 meses.',
     rel:'Cambio cultural y económico a escala global. Abre la era IA generativa de consumo.'},
@@ -2198,9 +2204,12 @@ const NODES = [
   {id:'diffusion', cat:'IA', year:2022, label:'Diffusion',
     desc:'Stable Diffusion (Stability AI, ago 2022) + DALL-E 2 (OpenAI, abr 2022) + Midjourney. Difusión latente democratiza la IA generativa visual.',
     rel:'Generación visual masiva. Cambia el mercado del arte digital y la publicidad de la noche a la mañana.'},
-  {id:'gpt4',      cat:'IA', year:2023, label:'GPT-4 + LLaMA',
-    desc:'OpenAI GPT-4 (mar 2023, multimodal) · Meta LLaMA (feb 2023, open weights) · Claude 1/2/3 (Anthropic). El campo se bifurca: cerrado de élite vs open source.',
-    rel:'Madurez técnica + apertura de pesos. Llama → Llama 2/3 → Llama 4 democratiza fundación masiva.'},
+  {id:'llama',     cat:'IA', year:2023, label:'LLaMA (Meta · open)',
+    desc:'Meta libera LLaMA (feb 2023): primer LLM grande con pesos abiertos competitivo con cerrados. Llama 2 (jul 2023), Llama 3 (abr 2024), Llama 4 (2025). Hugging Face explota.',
+    rel:'Bifurca el campo en cerrado-élite vs open weights. Sin LLaMA no hay Mistral, DeepSeek, ni la ola de modelos open actuales.'},
+  {id:'gpt4',      cat:'IA', year:2023, label:'GPT-4 (OpenAI)',
+    desc:'OpenAI GPT-4 (mar 2023): primer modelo multimodal masivo (texto + imagen). Salto cualitativo en razonamiento. Cerrado, vía API.',
+    rel:'Establece el listón de capacidades. Inspira competencia (Claude, Gemini, DeepSeek). Antecesor directo de GPT-4o, GPT-5 (2025).'},
   {id:'o1',        cat:'IA', year:2024, label:'o1 · reasoning',
     desc:'OpenAI o1 (sep 2024) introduce el extended thinking en producción: el modelo "piensa" antes de responder, generando cadenas de razonamiento internas largas.',
     rel:'Transición del paradigma "predicción de siguiente token" al de "razonamiento explícito". Antecede a Claude Opus 4.7.'},
@@ -2694,7 +2703,7 @@ const EDGES = [
   {a:'mapreduce',    b:'nosql',         t:'bridges'},
   {a:'nakamoto',     b:'edge',          t:'bridges'},
   {a:'attentionAlg', b:'transformer',   t:'parallel'},
-  {a:'pageRankAlg',  b:'google',        t:'parallel'},
+  {a:'pageRankAlg',  b:'google',        t:'enables'},
   {a:'algAgents',    b:'opus47',        t:'parallel'},
   {a:'godel',        b:'cookLevin',     t:'continues'},
   {a:'frege',        b:'minimax',       t:'bridges'},
@@ -2736,6 +2745,23 @@ const EDGES = [
   {a:'iphone',       b:'android',       t:'parallel'},
   {a:'apple2',       b:'rpi',           t:'parallel'},
   {a:'rpi',          b:'humanoid',      t:'bridges'},
+  // ====== P4 — Conexiones que faltaban ======
+  {a:'shannon37', b:'vonneu',     t:'enables'},      // lógica → arquitectura
+  {a:'boole',     b:'frege',      t:'continues'},    // cadena LÓGICA cerrada
+  {a:'alphafold1',b:'transformer',t:'parallel'},     // AF1 usa attention
+  {a:'vonneu',    b:'ibm360',     t:'continues'},    // arquitectura → mainframe icónico
+  {a:'ibm360',    b:'cobol',      t:'enables'},      // S/360 sustrato de COBOL bancario
+  {a:'feynman',   b:'qbit2',      t:'bridges'},      // motivación → primera realización
+  {a:'feynman',   b:'willow',     t:'bridges'},      // motivación → realización moderna
+  {a:'mapreduce', b:'aws',        t:'bridges'},      // big data habilita cloud
+  {a:'lisp',      b:'python',     t:'bridges'},      // Python hereda functional de LISP
+  {a:'alphago',   b:'algAgents',  t:'bridges'},      // MCTS+NN inspira ToT/ReAct
+  // ====== P5 — Huérfanos ahora con saliente ======
+  {a:'android',   b:'npuEra',     t:'bridges'},      // Android pioneer en NPU móvil
+  {a:'silica',    b:'agenticMem', t:'bridges'},      // archival memoria a largo plazo
+  {a:'aurora',    b:'tpu7',       t:'parallel'},     // arquitecturas exascale
+  {a:'jupiter',   b:'tpu8',       t:'parallel'},     // EU exascale + IA next-gen
+  {a:'vibeCoding',b:'opus47',     t:'bridges'},      // vibe coding apoyado por Opus 4.7
   // ====== Nuevos hitos correctivos + adiciones ======
   {a:'tpu5',     b:'tpu6',     t:'continues'},
   {a:'tpu6',     b:'tpu7',     t:'continues'},
@@ -2772,13 +2798,18 @@ const EDGES = [
   {a:'dbn',       b:'alexnet',   t:'continues'},
   {a:'imagenet',  b:'alexnet',   t:'enables'},
   {a:'alexnet',   b:'gans',      t:'continues'},
+  {a:'transformer',b:'gpt1',    t:'enables'},
   {a:'transformer',b:'bert',     t:'enables'},
-  {a:'bert',      b:'gpt3',      t:'continues'},
+  {a:'gpt1',      b:'gpt3',      t:'continues'},
+  {a:'bert',      b:'gpt3',      t:'parallel'},
   {a:'gpt3',      b:'chatgpt',   t:'continues'},
   {a:'gpt3',      b:'alphafold', t:'parallel'},
   {a:'gans',      b:'diffusion', t:'continues'},
   {a:'diffusion', b:'gpt4',      t:'parallel'},
   {a:'chatgpt',   b:'gpt4',      t:'continues'},
+  {a:'chatgpt',   b:'llama',     t:'parallel'},
+  {a:'gpt4',      b:'llama',     t:'parallel'},
+  {a:'llama',     b:'deepseek',  t:'continues'},
   {a:'gpt4',      b:'o1',        t:'continues'},
   {a:'o1',        b:'opus47',    t:'continues'}
 ];

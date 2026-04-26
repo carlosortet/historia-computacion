@@ -2,16 +2,16 @@
 titulo: Historia de la Computación — Hitos, Descubrimientos y Relaciones
 fecha_creacion: 2026-04-23
 fecha_actualizacion: 2026-04-26
-version: v0.5.0
+version: v0.6.0
 autor: Carlos Ortet
 tipo: knowledge / línea temporal interactiva
-estado: live deployed · v0.5.0 estable
+estado: live deployed · v0.6.0 estable
 url_publica: https://zoopa.es/files/historia-computacion-hitos-20260423.html
 github: https://github.com/carlosortet/historia-computacion
 companion_html: historia-computacion-hitos-20260423.html
 ---
 
-# Historia de la Computación · v0.5.0
+# Historia de la Computación · v0.6.0
 
 > Línea temporal interactiva con **181 hitos verificados** y **246 relaciones causales** que cubren la historia de la computación desde el álgebra booleana de Boole (1847) hasta los modelos esperados para 2027.
 
