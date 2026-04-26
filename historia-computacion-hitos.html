@@ -1807,7 +1807,7 @@
       </p>
       <blockquote class="machine-personal">Fue la primera máquina que sentí que controlaba como si fuese una extensión de mí en el centro de formación de IBM. Le dediqué tantas horas programando esta máquina que creía adivinar los colores en el fósforo verde de la pantalla. Todavía busco una de estas máquinas para volver a oír el altavoz que emitía un pitido cada vez que pulsabas una tecla. Eran máquinas tan simples que tras algunos cientos de horas podías sentir cómo funcionaban; unos meses después llegaría el PC y el mundo cambió para siempre.</blockquote>
       <div class="dedication">
-        Gracias a mi padre <b>José Ortet</b>, técnico de IBM durante décadas, por ser el único padre que entregaba <b>placas madre inservibles</b> a su hijo en lugar de balones de fútbol. Creo que intuyó que había nacido para explorar erráticamente los nuevos mundos digitales en lugar de meter goles.
+        Gracias a mi padre <b>José Ortet</b>, técnico de IBM durante décadas, que me entregaba <b>placas madre inservibles</b> mientras otros niños recibían balones de fútbol. Intuyó pronto que había nacido para explorar erráticamente los mundos digitales en lugar de meter goles.
       </div>
       <details class="machine-details">
         <summary>FICHA TÉCNICA Y CONTEXTO HISTÓRICO COMPLETO</summary>
@@ -2490,16 +2490,16 @@ const NODES = [
 // types: causal | enables | parallel | continues | bridges
 const EDGES = [
   // LÓGICA chain
-  {a:'boole', b:'shannon37', t:'enables'},
+  {a:'boole', b:'shannon37', t:'causal'},
   {a:'frege', b:'godel',     t:'continues'},
   {a:'godel', b:'turing36',  t:'enables'},
   // ARQ chain
   {a:'analytic',b:'lovelace',t:'continues'},
   {a:'lovelace',b:'turing36',t:'enables'},
-  {a:'turing36',b:'vonneu',  t:'enables'},
+  {a:'turing36',b:'vonneu',  t:'causal'},
   {a:'vonneu',  b:'edsac',   t:'continues'},
   {a:'vonneu',  b:'autoreplica',t:'parallel'},
-  {a:'autoreplica',b:'mcp',  t:'bridges'},
+  {a:'mcp',b:'autoreplica',  t:'bridges'},
   // SHANNON bridges to electronics
   {a:'shannon37',b:'z3',     t:'bridges'},
   {a:'shannon37',b:'colossus',t:'bridges'},
@@ -2512,7 +2512,7 @@ const EDGES = [
   {a:'ic',       b:'moore',  t:'continues'},
   {a:'moore',    b:'mooreDead',t:'continues'},
   {a:'mooreDead',b:'gaa',    t:'continues'},
-  {a:'mooreDead',b:'ryzen',  t:'bridges'},
+  {a:'ryzen',b:'mooreDead',  t:'bridges'},
   {a:'ic',       b:'silica', t:'parallel'},
   {a:'edsac',    b:'eniac',  t:'parallel'},
   // ELE bridges to PC
@@ -2555,7 +2555,7 @@ const EDGES = [
   {a:'cpp',      b:'java',   t:'continues'},
   {a:'cpp',      b:'python', t:'parallel'},
   // IA chain
-  {a:'mcp',        b:'perceptron',t:'enables'},
+  {a:'mcp',        b:'perceptron',t:'causal'},
   {a:'turingTest', b:'dartmouth', t:'enables'},
   {a:'dartmouth',  b:'perceptron',t:'continues'},
   {a:'perceptron', b:'winter',    t:'continues'},
@@ -2563,7 +2563,7 @@ const EDGES = [
   {a:'lisp',       b:'expertSys', t:'enables'},
   {a:'expertSys',  b:'backprop',  t:'parallel'},
   {a:'winter',     b:'backprop',  t:'continues'},
-  {a:'lisp',       b:'dartmouth', t:'bridges'},
+  {a:'dartmouth',  b:'lisp',      t:'bridges'},
   {a:'backprop',   b:'alexnet',   t:'continues'},
   {a:'cuda',       b:'alexnet',   t:'bridges'},
   {a:'alexnet',    b:'alphago',   t:'continues'},
@@ -2659,7 +2659,7 @@ const EDGES = [
   {a:'feynman',     b:'montecarlo',  t:'parallel'},
   {a:'montecarlo',  b:'enWeather',   t:'continues'},
   {a:'enWeather',   b:'cfd',         t:'continues'},
-  {a:'spice',       b:'ic',          t:'bridges'},
+  {a:'ic',          b:'spice',       t:'bridges'},
   {a:'cfd',         b:'physx',       t:'continues'},
   {a:'autoreplica', b:'nks',         t:'continues'},
   {a:'nks',         b:'physx',       t:'parallel'},
@@ -2713,7 +2713,7 @@ const EDGES = [
   {a:'docker',       b:'k8s',           t:'continues'},
   {a:'transformer',  b:'copilot',       t:'bridges'},
   {a:'copilot',      b:'codingAgents',  t:'continues'},
-  {a:'opus47',       b:'codingAgents',  t:'bridges'},
+  {a:'codingAgents', b:'opus47',        t:'bridges'},
   // ====== PARADIGMAS modern ======
   {a:'java',         b:'tdd',           t:'continues'},
   {a:'tdd',          b:'micro',         t:'continues'},
@@ -2725,9 +2725,9 @@ const EDGES = [
   {a:'python',       b:'vibeCoding',    t:'parallel'},
   {a:'codingAgents', b:'vibeCoding',    t:'bridges'},
   // ====== IA: AlphaFold 1 + Nobel + DeepSeek ======
-  {a:'dbn',          b:'alphafold1',    t:'parallel'},
+  {a:'alexnet',      b:'alphafold1',    t:'continues'},
   {a:'alphafold1',   b:'alphafold',     t:'continues'},
-  {a:'backprop',     b:'nobel2024',     t:'continues'},
+  {a:'backprop',     b:'nobel2024',     t:'bridges'},
   {a:'o1',           b:'deepseek',      t:'parallel'},
   {a:'deepseek',     b:'opus47',        t:'parallel'},
   // ====== PC: Android, Raspberry Pi ======
@@ -2763,7 +2763,6 @@ const EDGES = [
   {a:'risc',     b:'riscv',    t:'continues'},
   {a:'risc',     b:'iphone',   t:'bridges'},
   {a:'risc',     b:'m1',       t:'bridges'},
-  {a:'riscv',    b:'tpu7',     t:'bridges'},
   // ====== Nuevos hitos IA y sus relaciones ======
   {a:'dartmouth', b:'eliza',     t:'continues'},
   {a:'eliza',     b:'expertSys', t:'parallel'},
