@@ -10,9 +10,11 @@
 
 ## Qué es esto
 
-Una línea temporal interactiva con **154 hitos verificados** y **197 relaciones causales** que cubren la historia entera de la computación, desde el álgebra booleana de Boole (1847) hasta los modelos esperados para 2027 (NVIDIA Vera Rubin Ultra, IBM Cockatoo cuántico, Robot Foundation Models).
+Una línea temporal interactiva con **181 hitos verificados** y **246 relaciones causales** que cubren la historia entera de la computación, desde el álgebra booleana de Boole (1847) hasta los modelos esperados para 2027 (NVIDIA Vera Rubin Ultra, IBM Cockatoo cuántico, Robot FM cross-embodiment).
 
-Está organizada en **15 columnas temáticas** que se cruzan entre sí:
+Está organizada en **15 columnas temáticas** en el grafo + **8 tablas extra** complementarias (no en grafo) accesibles desde la cabecera.
+
+### 15 columnas del grafo
 
 | # | Columna | Cobertura |
 |---|---|---|
@@ -20,17 +22,30 @@ Está organizada en **15 columnas temáticas** que se cruzan entre sí:
 | 2 | ALGORITMOS | Minimax · Dijkstra · Knuth · RSA · MapReduce · Attention · Agentic |
 | 3 | ARQUITECTURA | Babbage · Turing · von Neumann · autómatas autoreplicantes |
 | 4 | ELECTRÓNICA | Z3 · ENIAC · transistor · IC · Moore · GAA · Project Silica |
-| 5 | SOFTWARE | Hopper · FORTRAN · Unix · C · Dijkstra |
-| 6 | POO | Simula · Smalltalk · C++ · Java · Python |
-| 7 | MICRO+PC | Intel 4004 → 386 → Pentium → Athlon 64 → Ryzen → M1 → M6+Vera |
+| 5 | SOFTWARE | Hopper · FORTRAN · COBOL · Unix · C · GNU · Linux · Git · Docker · Copilot · Coding agents |
+| 6 | PARADIGMAS | Simula · Smalltalk · C++ · Python · Java · JavaScript · TDD/Ágil · Funcional · Go+Rust · Swift+TS · Microservicios · Vibe Coding |
+| 7 | MICRO+PC | Intel 4004 → RISC → 386 → Pentium → Athlon 64 → Ryzen → iPhone → Android → M1 → M6+Vera · RISC-V |
 | 8 | ROBÓTICA | Unimate · Shakey · PUMA · Roomba · DARPA UC · Spot · humanoides → Foundation Models |
-| 9 | INTERNET | ARPANET · TCP/IP · WWW · Mosaic · Google · AWS · Kubernetes |
-| 10 | DATA | Codd · System R · Oracle · NoSQL · FAISS · vector DBs · pgvector · MCP |
-| 11 | IA | McCulloch-Pitts · Dartmouth · perceptrón · backprop · AlexNet · Transformer · GPT-3 · Diffusion · Opus 4.7 |
-| 12 | PARALELISMO | GeForce 256 · CUDA · OpenCL · Tensor Cores · TPU v1→v8 · Cerebras · Etched |
-| 13 | CUÁNTICA | Feynman · Deutsch · Shor · 2 qubits · Sycamore · Willow · Majorana · IBM Cockatoo |
-| 14 | SUPERCOMPUTACIÓN | Cray-1 · ASCI Red · Roadrunner · Frontier · El Capitan · JUPITER |
-| 15 | SIMULACIÓN | Monte Carlo · ENIAC weather · SPICE · CFD · NKS · Omniverse · World Models · Foundation Sim |
+| 9 | INTERNET | ARPANET · TCP/IP · WWW · Mosaic · Google · AWS · Kubernetes · Edge+Web3 |
+| 10 | DATA | Codd · System R · Oracle · NoSQL · FAISS · vector DBs · pgvector · MCP · Agentic memory |
+| 11 | IA | McCulloch-Pitts · Dartmouth · perceptrón · backprop · LeNet-5 · ImageNet · AlexNet · Word2Vec · Transformer · GPT-3 · AlphaFold · Diffusion · GPT-4 · o1 · Nobel Hinton/Hopfield · DeepSeek-R1 · Opus 4.7 |
+| 12 | PARALELISMO | GeForce 256 · CUDA · OpenCL · Tensor Cores · TPU v1→v8 · Cerebras · Etched · Rubin · Vera |
+| 13 | CUÁNTICA | Benioff · Feynman · Deutsch · Shor · QEC · Grover · 2 qubits · Sycamore · Heron · Willow · Majorana · Loon · Estim. ruptura RSA · Cockatoo |
+| 14 | SUPERCOMPUTACIÓN | Cray-1 · ASCI Red · Roadrunner · Fugaku · Frontier · Aurora · El Capitan · JUPITER |
+| 15 | SIMULACIÓN | Monte Carlo · ENIAC weather · SPICE · CFD · NKS · PhysX · Omniverse · World Models · Cosmos · Foundation Sim |
+
+### 8 tablas extra (no en grafo · accesibles desde cabecera)
+
+| # | Tabla | Foco |
+|---|---|---|
+| 16 | STORAGE | RAMAC → floppy → CD → SSD → NVMe → cristal/DNA |
+| 17 | OPEN SOURCE | GNU → Linux → Apache → GitHub → PyTorch → LLaMA |
+| 18 | CIBERSEGURIDAD | Creeper → Morris → Stuxnet → Snowden → ransomware → PQC |
+| 19 | MOBILE | DynaTAC → BlackBerry → iPhone → Android → wearables → AR/VR |
+| 20 | CRIPTOGRAFÍA | DH/RSA → ECC → PGP → SSL → Bitcoin → Signal → PQC |
+| 21 | SISTEMAS OPERATIVOS | OS/360 → Unix → MS-DOS → Mac OS → Windows → iOS → Android → SO con LLM |
+| 22 | ARQUITECTURAS DE SISTEMA | Mainframe → minicomputer → cliente-servidor → virtualización → cloud → contenedores → edge → AI factories |
+| 23 | GLOSARIO | Términos clave (qubit físico vs lógico, LLM, Transformer, RAG, RISC vs CISC, mainframe vs cloud, etc.) |
 
 ---
 
@@ -41,7 +56,7 @@ Diseño inspirado en **IBM (Paul Rand 1972)** y **Silicon Graphics (Joe Stitzlei
 - Paleta cream/paper · IBM blue como acento estructural
 - Wordmark "498A" con stripes carved al estilo IBM
 - Mark de cubo isométrico inspirado en SGI
-- Tablas colapsables · responsive · SEO completo
+- Tablas colapsables · responsive · SEO completo (Open Graph, Twitter Card, JSON-LD)
 
 ## Apéndice especial
 
@@ -52,6 +67,7 @@ La página incluye un apéndice extenso sobre el **IBM System/23 Datamaster (198
 - `historia-computacion-hitos.html` — la página completa, autocontenida (CSS + JS + SVG inline)
 - `historia-computacion-hitos.md` — versión markdown del contenido (línea base verificada)
 - `SY34-0241-1_IBM_5324_Service_Manual.pdf` — manual técnico oficial IBM 5324 System/23 (May 1982, 17 MB · espejo de bitsavers.org)
+- `LICENSE` — CC BY-SA 4.0 (contenido) · el PDF de IBM mantiene su copyright original
 
 ## Manifiesto
 
@@ -66,4 +82,10 @@ Correcciones y aportaciones bienvenidas: **carlos.ortet@zoopa.es**
 
 ## Licencia
 
-Contenido bajo CC BY-SA 4.0. El PDF del manual IBM es propiedad de IBM Corp. (1982); incluido aquí como copia espejo para preservación digital, originalmente disponible en [bitsavers.org](https://bitsavers.org/pdf/ibm/system23/fe/SY34-0241-1_IBM_5324_Computer_Service_Manual_May82.pdf).
+Contenido bajo **CC BY-SA 4.0** (ver `LICENSE`). El PDF del manual IBM es propiedad de IBM Corp. (1982); incluido aquí como copia espejo para preservación digital, originalmente disponible en [bitsavers.org](https://bitsavers.org/pdf/ibm/system23/fe/SY34-0241-1_IBM_5324_Computer_Service_Manual_May82.pdf).
+
+## Versiones
+
+- **v0.3.0** (2026-04-26) — Pasos 1-4 Fase 1: RISC en chart, secciones 21 SO + 22 SISTEMAS + 23 GLOSARIO. Total: 181 nodos · 246 aristas · 23 secciones.
+- **v0.2.0** (2026-04-25) — Auditoría exhaustiva con 6 subagentes, correcciones IBM Heron / Cosmos / iPhone / PhysX / NVMe / PageRank / etc.
+- **v0.1.0** (2026-04-23) — Versión inicial pública. 154 hitos · 197 aristas · 15 columnas.
