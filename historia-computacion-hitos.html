@@ -2423,6 +2423,9 @@ const NODES = [
   {id:'cray1', cat:'SUP', year:1976, label:'Cray-1',
     desc:'Cray-1: referencia fundacional de la supercomputación vectorial moderna.',
     rel:'Define el género.'},
+  {id:'foldingHome', cat:'SUP', year:2000, label:'Folding@home',
+    desc:'Vijay Pande (Stanford) lanza Folding@home (oct 2000): primer proyecto exitoso de cómputo distribuido voluntario para simulación molecular (plegamiento de proteínas). Llegó a ~470 PF durante COVID-19 (mar 2020), brevemente más potente que el #1 del TOP500.',
+    rel:'Antecesor conceptual de SETI@home (1999) a escala masiva. Demuestra que la suma de millones de PCs domésticos puede competir con supercomputadoras. Pre-AlphaFold por 21 años — el problema del plegamiento ya se atacaba con FLOPS antes de IA.'},
   {id:'asci', cat:'SUP', year:1997, label:'ASCI Red · 1 TF',
     desc:'ASCI Red (Sandia/Intel): primer superordenador en superar 1 teraflop.',
     rel:'Demuestra que clusters x86 pueden liderar el TOP500.'},
@@ -2473,6 +2476,9 @@ const NODES = [
   {id:'oracle',     cat:'DATA', year:1979, label:'Oracle V2',
     desc:'Oracle V2 (Larry Ellison): primer RDBMS comercial. Curiosamente, Oracle adelanta a IBM en lanzar comercialmente la idea que IBM había inventado.',
     rel:'Inicia la industria de bases de datos comercial; dominará empresa durante décadas.'},
+  {id:'blast',      cat:'DATA', year:1990, label:'BLAST · bioinformática',
+    desc:'Stephen Altschul + equipo NCBI publican BLAST (Basic Local Alignment Search Tool, 1990): búsqueda heurística de similitud entre secuencias biológicas (DNA, RNA, proteínas) a velocidad práctica. Algoritmo más citado de la biología computacional.',
+    rel:'Funda la bioinformática práctica. Sustrato del Human Genome Project (1990-2003), de toda la genómica moderna, y precursor conceptual de la búsqueda vectorial en biología.'},
   {id:'opensql',    cat:'DATA', year:1996, label:'PostgreSQL · MySQL',
     desc:'MySQL 1.0 (mayo 1995). PostgreSQL — proyecto renombrado de Postgres en 1996; PostgreSQL 6.0 release oficial enero 1997. Democratizan el RDBMS open source.',
     rel:'Bajan la barrera de entrada de las bases relacionales a coste cero. Sustrato de la web 2.0 y prácticamente todo SaaS posterior.'},
@@ -2615,6 +2621,9 @@ const NODES = [
   {id:'attentionAlg',cat:'ALG', year:2017, label:'Attention *2',
     desc:'Vaswani et al. proponen el mecanismo de atención escalado por producto-punto como primitiva algorítmica. Sin esto no hay Transformer.',
     rel:'Algoritmo abstracto que se convierte en la unidad básica de cómputo de toda la IA generativa moderna.'},
+  {id:'adleman',     cat:'ALG', year:1994, label:'DNA computing (Adleman)',
+    desc:'Leonard Adleman (USC) publica el primer algoritmo computacional resuelto con DNA: el problema del camino hamiltoniano para 7 nodos, codificado en cadenas de DNA y resuelto por bioquímica. Tomó días pero demostró el principio.',
+    rel:'Funda el campo del DNA computing. Demuestra que la computación no requiere silicio: cualquier sustrato capaz de procesar información puede computar (DNA, proteínas, sistemas moleculares).'},
   {id:'algAgents',   cat:'ALG', year:2024, label:'Algoritmos agénticos',
     desc:'ReAct (2022) → Tree-of-Thoughts (2023) → MCTS sobre LLMs → tool use estructurado → planning con verificación. Base operativa de los agentes IA.',
     rel:'La inteligencia artificial vuelve a abrazar la búsqueda algorítmica clásica — pero con LLMs como heurística. Cierra el círculo Minimax → MCTS → Tree-of-Thoughts.'}
@@ -2929,6 +2938,13 @@ const EDGES = [
   {a:'mistral',    b:'deepseek',   t:'parallel'},    // open weights llegan a Asia
   {a:'gemini',     b:'opus47',     t:'parallel'},    // competidores frontier
   {a:'opus47',     b:'gpt5',       t:'parallel'},    // cierre del ciclo
+  // ====== Biotech bridges (computación con sustrato biológico) ======
+  {a:'cookLevin',  b:'adleman',    t:'bridges'},     // NP-completitud → Adleman lo resuelve con DNA
+  {a:'adleman',    b:'silica',     t:'parallel'},    // sustratos no-electrónicos
+  {a:'blast',      b:'faiss',      t:'bridges'},     // búsqueda similitud bio → vector DBs
+  {a:'blast',      b:'alphafold1', t:'bridges'},     // bioinformática habilita IA biológica
+  {a:'foldingHome',b:'alphafold',  t:'bridges'},     // F@h pre-AlphaFold por 21 años
+  {a:'foldingHome',b:'frontier',   t:'parallel'},    // distributed vs centralized exascale
   // ====== Nuevos hitos correctivos + adiciones ======
   {a:'tpu5',     b:'tpu6',     t:'continues'},
   {a:'tpu6',     b:'tpu7',     t:'continues'},
