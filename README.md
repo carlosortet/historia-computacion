@@ -4,7 +4,8 @@
 >
 > Por **Carlos Ortet** · [498 Advance — The European Intrepid Lab](https://498advance.com)
 
-**🌐 Página en vivo:** https://zoopa.es/files/historia-computacion-hitos-20260423.html
+**🌐 Página en vivo (oficial):** https://zoopa.es/files/historia-computacion-hitos-20260423.html
+**🪞 Mirror (GitHub Pages):** https://carlosortet.github.io/historia-computacion/
 
 ---
 
@@ -97,6 +98,7 @@ Contenido bajo **CC BY-SA 4.0** (ver `LICENSE`). El PDF del manual IBM es propie
 
 ## Versiones
 
+- **v0.11.0** (2026-04-26) — **GitHub Pages mirror activado**: `https://carlosortet.github.io/historia-computacion/` sirve la última versión del repo automáticamente en cada `git push` (sin esperar TTL Cloudflare). `index.html` con redirección + URL canónica preservada hacia Zoopa para evitar conflicto SEO. Ventajas: backup público permanente · cache invalidation instantánea · URLs versionables por commit hash para citas académicas.
 - **v0.10.0** (2026-04-26) — **Accesibilidad WCAG 2.1 AA del grafo SVG**: cada nodo ahora es focuseable (`tabindex="0"`, `role="button"`, `aria-label` completo con año + hito + descripción + relación) · tooltip declarado como `role="tooltip"` con `aria-live="polite"` y `aria-hidden` sincronizado · navegación por teclado: `Tab` recorre nodos en orden cronológico, `Enter`/`Space` aísla relaciones, `Esc` resetea · tooltip se posiciona automáticamente bajo el nodo cuando se llega por focus · ring visual `:focus-visible` con outline amarillo IBM + glow drop-shadow.
 - **v0.9.0** (2026-04-26) — **Tier A SEO + Tier B OG + Tier C a11y + look 80s**: title 54 chars, description 150 chars, JSON-LD image fix · OG image 1200×630 generada con Nano Banana 2 (estética IBM × SGI) · `<main>`, skip-link, aria-labels, theme-color, favicon SVG inline · emojis modernos eliminados → símbolos 80s (`►`, `▸`, `>`) · cabeceras de tabla en **fósforo verde CRT** (`#33ff66` + glow) con cursor `▮` parpadeante al final.
 - **v0.8.0** (2026-04-26) — **Auditoría externa con 3 subagentes paralelos** (pre-1950 · IA moderna · MOBILE/CIBERSEGURIDAD) verificó ~50 hitos contra Wikipedia/Nobel/IEEE. **Conclusión y Apéndice ahora colapsables** (25 secciones totales). **9 correcciones factuales aplicadas**: Hollerith censo (8 años → 6 meses, no "7 años → 6 semanas") · Harvard Mark I peso (~5t real, no 50t) · Bug 1947 fue en Mark II no Mark I · Leibniz Stepped Reckoner 1673 · Bluetooth 1.0 jul 1999 (no 1998) · IBM Simon 1992-94 · iPod scroll wheel mecánico · Reaper por Tomlinson 1972 · MIDI co-padre Kakehashi/Roland · NES cronología Famicom 1983/NES 1985.
