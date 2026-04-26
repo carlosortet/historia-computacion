@@ -2,20 +2,22 @@
 titulo: Historia de la Computación — Hitos, Descubrimientos y Relaciones
 fecha_creacion: 2026-04-23
 fecha_actualizacion: 2026-04-26
-version: v0.9.0
+version: v0.11.0
 autor: Carlos Ortet
 tipo: knowledge / línea temporal interactiva
-estado: live deployed · v0.9.0 estable
+estado: live deployed · v0.11.0 estable
 url_publica: https://zoopa.es/files/historia-computacion-hitos-20260423.html
+url_mirror: https://carlosortet.github.io/historia-computacion/
 github: https://github.com/carlosortet/historia-computacion
 companion_html: historia-computacion-hitos-20260423.html
 ---
 
-# Historia de la Computación · v0.9.0
+# Historia de la Computación · v0.11.0
 
-> Línea temporal interactiva con **181 hitos verificados** y **246 relaciones causales** que cubren la historia de la computación desde el álgebra booleana de Boole (1847) hasta los modelos esperados para 2027.
+> Línea temporal interactiva con **214 hitos verificados** y **322 relaciones causales** que cubren la historia de la computación desde la Pascalina de Pascal (1642) hasta los modelos esperados para 2027.
 
 > **🌐 Página en vivo (autoritativa):** https://zoopa.es/files/historia-computacion-hitos-20260423.html
+> **🪞 Mirror (GitHub Pages):** https://carlosortet.github.io/historia-computacion/
 > **📦 Repo público:** https://github.com/carlosortet/historia-computacion
 
 > ⚠️ **Este markdown es un índice estructural.** El contenido completo, interactivo (grafo SVG, tooltips, expandibles, callout cuántico, glosario) está en el HTML companion. Para auditar/editar hitos: editar `historia-computacion-hitos-20260423.html` directamente.
@@ -106,19 +108,29 @@ Sección dedicada al "eslabón olvidado" entre el System/3 y el IBM PC. Incluye:
 - **Ctrl + scroll** → zoom in/out con anclaje al cursor
 - **Botones +/− /⊕ FIT** en el header del grafo
 - **Atajos teclado:** `+` `−` `0` (cuando el cursor está sobre el grafo)
+- **Navegación a11y:** `Tab` recorre nodos · `Enter`/`Space` aísla relaciones · `Esc` resetea · tooltip se muestra también en focus (lectores de pantalla compatibles)
 
 ## Versiones · changelog
 
-- **v0.4.0** (2026-04-26) — **Fase 3:** zoom in/out · pan con drag · atajos teclado · botones +/−/FIT en cabecera. Mejora la navegabilidad del grafo de 15 columnas × 1900px alto.
-- **v0.3.0** (2026-04-26) — Fase 1+2: RISC + RISC-V + COBOL en chart · QEC + qubit lógico + estim. RSA en CUÁNTICA · Secciones 21 SO + 22 ARQUITECTURAS DE SISTEMA + 23 GLOSARIO · Callout cuántico educativo · Header con menú extendido (8 tablas extra). Total: 181 nodos · 246 aristas · 23 secciones.
-- **v0.2.0** (2026-04-25) — Auditoría exhaustiva con 6 subagentes paralelos: 15 errores corregidos (Cosmos año, ENIAC weather, PhysX, NVMe, PageRank, IBM Heron 133q, etc.) + 6 hitos críticos (TPU v6, IBM Loon, Fugaku, JavaScript, LeNet-5, Word2Vec).
+- **v0.11.0** (2026-04-26) — **GitHub Pages mirror activado**: `https://carlosortet.github.io/historia-computacion/` sirve la última versión del repo automáticamente en cada `git push` (sin esperar TTL Cloudflare). `index.html` con redirección + URL canónica preservada hacia Zoopa para evitar conflicto SEO. Backup público permanente · cache invalidation instantánea · URLs versionables por commit hash para citas académicas.
+- **v0.10.0** (2026-04-26) — **Accesibilidad WCAG 2.1 AA del grafo SVG**: cada nodo ahora es focuseable (`tabindex="0"`, `role="button"`, `aria-label` completo con año + hito + descripción + relación) · tooltip declarado como `role="tooltip"` con `aria-live="polite"` y `aria-hidden` sincronizado · navegación por teclado: `Tab` recorre nodos en orden cronológico, `Enter`/`Space` aísla relaciones, `Esc` resetea · tooltip se posiciona automáticamente bajo el nodo cuando se llega por focus · ring visual `:focus-visible` con outline amarillo IBM + glow drop-shadow.
+- **v0.9.0** (2026-04-26) — **Tier A SEO + Tier B OG + Tier C a11y + look 80s**: title 54 chars, description 150 chars, JSON-LD image fix · OG image 1200×630 generada con Nano Banana 2 (estética IBM × SGI) · `<main>`, skip-link, aria-labels, theme-color, favicon SVG inline · emojis modernos eliminados → símbolos 80s (`►`, `▸`, `>`) · cabeceras de tabla en **fósforo verde CRT** (`#33ff66` + glow) con cursor `▮` parpadeante al final.
+- **v0.8.x** (2026-04-26) — Auditoría externa con 3 subagentes paralelos (~50 hitos verificados) · 9 correcciones factuales (Hollerith censo 8a→6m, Harvard Mark I ~5t, Bug 1947 era Mark II, Leibniz Stepped Reckoner, Bluetooth 1.0 jul 1999, IBM Simon 1992-94, iPod scroll wheel, Reaper por Tomlinson, MIDI Kakehashi/Roland, NES cronología) · agrupación nested TABLAS PRINCIPALES + EXTRA · biotech bridges como puentes en columnas existentes.
+- **v0.7.x** (2026-04-26) — P2 + P3 + Tier2: 22 hitos nuevos (de Pascalina 1642 a GPT-5 2025) cubriendo periodo pre-1900 (Pascal, Leibniz, Jacquard, Hollerith) + Lambda calculus Church · Shannon 1948 · Manchester Baby · Z1 + Plankalkül · Sketchpad · MoAD · Xerox Alto · Hamilton + Apollo · Mistral/Gemini/Phi/GPT-5 · conclusión expandida en 4 secciones temáticas + callout cloud↔mainframe.
+- **v0.6.0** (2026-04-26) — P4+P5: nodo IBM/360 (1964) · 15 nuevas aristas conexiones que faltaban · 5 huérfanos conectados · separados nodos compuestos (BERT vs GPT-1, GPT-4 vs LLaMA).
+- **v0.5.x** (2026-04-26) — Tier 4 polish · Tier 3 búsqueda y filtro de columnas · 9 audit corrections (5 inversiones temporales, etc.) · callout cyan PARALELISMO · diario personal compactado.
+- **v0.4.0** (2026-04-26) — **Fase 3:** zoom in/out · pan con drag · atajos teclado · botones +/−/FIT en cabecera.
+- **v0.3.0** (2026-04-26) — Fase 1+2: RISC + RISC-V + COBOL en chart · QEC + qubit lógico + estim. RSA en CUÁNTICA · Secciones 21 SO + 22 ARQ. SISTEMA + 23 GLOSARIO · Callout cuántico educativo · Header con menú extendido. Total: 181 nodos · 246 aristas · 23 secciones.
+- **v0.2.0** (2026-04-25) — Auditoría exhaustiva con 6 subagentes paralelos: 15 errores corregidos.
 - **v0.1.0** (2026-04-23) — Versión inicial pública. 154 hitos · 197 aristas · 15 columnas · 13 secciones.
 
 ## Pendientes próximas iteraciones
 
-- Touch gestures (pinch-zoom, two-finger pan) para móviles/tablets
-- Considerar: backup mirror en GitHub Pages (`carlosortet.github.io/historia-computacion/`)
-- Considerar: CHANGELOG.md formal (separado del git log)
+- **v0.12.0 (próxima)** — i18n: estructura bilingüe ES/EN con toggle inline, `hreflang`, JSON-LD multilingual + UI strings traducidas
+- **v0.13.0-v0.14.0** — Traducción contenido (214 nodos + 322 aristas + tablas extra) a EN
+- **v0.15.0** — Touch gestures mobile (pinch-zoom, two-finger pan)
+- **v0.16.0** — Touch targets 44×44 mínimo + role="tooltip" refinements
+- **Backlog** — Cloudflare API token automatizado (purga cache en cada deploy) · CHANGELOG.md formal separado del git log
 
 ## Contribuciones
 
