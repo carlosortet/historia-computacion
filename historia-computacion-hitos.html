@@ -707,6 +707,53 @@
   .footer-brand .brand-498{gap:10px}
   .footer-brand .brand-498 .name{font-size:10px;letter-spacing:5px}
   .footer-brand .brand-498 .tag{font-size:8px;letter-spacing:2px}
+  /* SECTION GROUPS (meta-collapsibles que contienen secciones) */
+  details.section-group{
+    margin:32px 0 14px;
+    border:3px solid var(--ink);
+    background:var(--bg-paper);
+  }
+  details.section-group > summary{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:16px;
+    font-weight:700;
+    background:var(--ink);
+    color:var(--ibm-yellow);
+    padding:14px 18px;
+    cursor:pointer;
+    list-style:none;
+    letter-spacing:2px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    user-select:none;
+    text-transform:uppercase;
+  }
+  details.section-group > summary::-webkit-details-marker{display:none}
+  details.section-group > summary::after{
+    content:"▼ DESPLEGAR";
+    color:var(--ibm-cyan);
+    font-size:11px;
+    margin-left:14px;
+    letter-spacing:1.5px;
+  }
+  details.section-group[open] > summary::after{content:"▲ PLEGAR"}
+  details.section-group > summary:hover{background:#2A2A2A}
+  details.section-group > summary:hover::after{color:var(--ibm-yellow)}
+  details.section-group .group-meta{
+    color:#888;
+    font-size:10px;
+    font-weight:400;
+    margin-left:16px;
+    letter-spacing:1px;
+    text-transform:none;
+  }
+  details.section-group > details.section{margin:8px 14px}
+  details.section-group > details.section:first-of-type{margin-top:14px}
+  details.section-group > details.section:last-of-type{margin-bottom:14px}
+  /* Variante "extras" con borde amarillo */
+  details.section-group.extras{border-color:var(--ibm-yellow)}
+  details.section-group.extras > summary{color:var(--ibm-yellow);border-left:6px solid var(--ibm-yellow)}
   /* COLLAPSIBLE SECTIONS */
   .section-controls{
     display:flex;
@@ -979,6 +1026,9 @@
     <button id="btnExpandAll" type="button">▼ EXPANDIR TODAS</button>
     <button id="btnCollapseAll" type="button">▲ COLAPSAR TODAS</button>
   </div>
+
+  <details class="section-group" id="group-main" open>
+    <summary>📊 TABLAS PRINCIPALES (1–15) <span class="group-meta">15 columnas del grafo · cada hito con su descripción y relaciones</span></summary>
 
   <details class="section">
     <summary>1 · LÓGICA FORMAL — La base matemática</summary>
@@ -1347,6 +1397,11 @@
   </p>
   </details>
 
+  </details><!-- /group-main -->
+
+  <details class="section-group extras" id="group-extras">
+    <summary>📋 TABLAS EXTRA (16–23) <span class="group-meta">conceptos transversales · no en grafo</span></summary>
+
   <details class="section" id="sec-storage">
     <summary>16 · STORAGE (tabla extra · no en grafo)</summary>
   <table>
@@ -1594,6 +1649,8 @@
     <p><b>SDK</b> Software Development Kit · <b>API</b> Application Programming Interface · <b>ISA</b> Instruction Set Architecture · <b>SoC</b> System on Chip · <b>NVMe</b> Non-Volatile Memory Express · <b>PCIe</b> Peripheral Component Interconnect Express · <b>CUDA</b> Compute Unified Device Architecture (NVIDIA) · <b>OpenCL</b> Open Computing Language · <b>ASIC</b> Application-Specific IC · <b>FPGA</b> Field-Programmable Gate Array · <b>TPU</b> Tensor Processing Unit · <b>NPU</b> Neural Processing Unit · <b>HBM</b> High Bandwidth Memory · <b>VLA</b> Vision-Language-Action · <b>RAG</b> Retrieval-Augmented Generation · <b>MCP</b> Model Context Protocol · <b>RLHF</b> Reinforcement Learning from Human Feedback · <b>FTQC</b> Fault-Tolerant Quantum Computer · <b>QEC</b> Quantum Error Correction · <b>PQC</b> Post-Quantum Cryptography · <b>PKI</b> Public Key Infrastructure · <b>E2EE</b> End-to-End Encryption · <b>JIT</b> Just-In-Time compilation · <b>GC</b> Garbage Collection · <b>GUI</b> Graphical User Interface · <b>CLI</b> Command-Line Interface · <b>VCS</b> Version Control System · <b>TDD</b> Test-Driven Development · <b>FaaS</b> Function as a Service · <b>IaaS</b> Infrastructure as a Service · <b>PaaS</b> Platform as a Service · <b>SaaS</b> Software as a Service.</p>
   </div>
   </details>
+
+  </details><!-- /group-extras -->
 
   <details class="section" id="sec-mapa">
     <summary>Cadenas causales principales y mapa textual de relaciones</summary>
@@ -3422,26 +3479,34 @@ document.addEventListener('keydown', (e) => {
   const sections = document.querySelectorAll('details.section');
   if(!expandBtn || !collapseBtn || !sections.length) return;
   function setAll(open){
+    // Abrir/cerrar tanto secciones individuales como sus grupos padres
+    document.querySelectorAll('details.section-group').forEach(d => { d.open = open; });
     sections.forEach(d => { d.open = open; });
     expandBtn.classList.toggle('active', open);
     collapseBtn.classList.toggle('active', !open);
   }
   expandBtn.addEventListener('click', () => setAll(true));
   collapseBtn.addEventListener('click', () => setAll(false));
+  // Helper: abre el details target y todos sus parents details
+  function openWithParents(target){
+    if(!target) return;
+    if(target.tagName.toLowerCase() === 'details') target.open = true;
+    let p = target.parentElement;
+    while(p){
+      if(p.tagName.toLowerCase() === 'details') p.open = true;
+      p = p.parentElement;
+    }
+  }
   // Auto-expand details when navigating from extra-link anchors
   document.querySelectorAll('.graph-extra a[href^="#"]').forEach(a => {
     a.addEventListener('click', (ev) => {
       const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if(target && target.tagName.toLowerCase() === 'details'){
-        target.open = true;
-      }
+      openWithParents(document.getElementById(id));
     });
   });
   // Also handle anchor on initial load (e.g., direct URL with #sec-storage)
   if(window.location.hash){
-    const target = document.getElementById(window.location.hash.slice(1));
-    if(target && target.tagName.toLowerCase() === 'details') target.open = true;
+    openWithParents(document.getElementById(window.location.hash.slice(1)));
   }
   // Keep active state synced when user toggles individually
   sections.forEach(d => d.addEventListener('toggle', () => {
