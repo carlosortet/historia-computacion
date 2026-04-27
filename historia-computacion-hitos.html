@@ -418,6 +418,34 @@
     color:#0a1a0a;
     text-shadow:none;
   }
+  /* CADENA NARRATIVA LINKS — links a narrativas dentro del bloque <pre> de cadenas */
+  pre a.cadena-narr{
+    color:#33ff66;
+    text-decoration:none;
+    background:#0a1a0a;
+    padding:1px 6px;
+    border:1px solid #33ff66;
+    text-shadow:0 0 6px rgba(51,255,102,.45);
+    font-weight:600;
+    letter-spacing:.5px;
+    transition:all .15s;
+    white-space:nowrap;
+  }
+  pre a.cadena-narr:hover{
+    background:#33ff66;
+    color:#0a1a0a;
+    text-shadow:none;
+  }
+  pre a.cadena-narr::after{
+    content:" ▮";
+    color:inherit;
+    margin-left:2px;
+    animation:cursor 1.1s steps(2) infinite;
+  }
+  pre a.cadena-narr:hover::after{
+    color:#0a1a0a;
+    text-shadow:none;
+  }
   /* SEARCH + COLUMN FILTERS */
   .graph-search-bar{
     background:#1A1A1A;
@@ -1783,61 +1811,61 @@
         CADENAS CAUSALES PRINCIPALES
 ══════════════════════════════════════════════════════════════════════════════════════
 
-[1] FUNDAMENTOS LÓGICOS
+[1] FUNDAMENTOS LÓGICOS                                                      <a class="cadena-narr" href="narrativas/01_LOGICA.html">► LEER NARRATIVA</a>
     Boole (1847) → Frege → Hilbert/Gödel → Shannon (1937) → Turing (1936)
     └── eslabón moderno: HoTT (2013) → Lean 4 (2021) → AlphaProof (2024)
         cierra el círculo: la IA razona en lógica formal a nivel élite olímpica
 
-[2] HARDWARE FÍSICO
+[2] HARDWARE FÍSICO                              <a class="cadena-narr" href="narrativas/04_ELECTRONICA.html">► ELECTRÓNICA</a> · <a class="cadena-narr" href="narrativas/07_MICRO_PC.html">► MICRO+PC</a>
     Z3 (1941) → ENIAC → transistor (1947) → IC (1959) → Moore (1965) →
     FIN MOORE clásico (2019) → respuesta industrial: chiplet + GAA + Silica + cristal
     ↓
     Intel 4004 (1971) → x86 → RISC (1980) → ARM/iPhone → RISC-V (2010) → Apple M1/M5/M6
 
-[3] LENGUAJES Y SOFTWARE
+[3] LENGUAJES Y SOFTWARE                            <a class="cadena-narr" href="narrativas/05_SOFTWARE.html">► SOFTWARE</a> · <a class="cadena-narr" href="narrativas/06_PARADIGMAS.html">► PARADIGMAS</a>
     A-0 (1952) → FORTRAN → COBOL → LISP → ALGOL → Unix+C → GNU/Linux →
     Git → Docker → Copilot → coding agents
     └── Paradigmas: Simula → Smalltalk → C++/Java/Python/JS → TDD/Ágil →
         funcional → Go+Rust → microservicios → vibe coding
 
-[4] IA — EL ARCO LARGO
+[4] IA — EL ARCO LARGO                                                       <a class="cadena-narr" href="narrativas/11_IA.html">► LEER NARRATIVA</a>
     McCulloch-Pitts (1943) → Dartmouth (1956) → perceptrón → ELIZA → invierno →
     sistemas expertos → backprop (1986) → LeNet → DBN → ImageNet → AlexNet (2012, GPU!)
     → Word2Vec → GANs → Transformer (2017) → BERT/GPT-3 → AlphaFold → ChatGPT →
     Diffusion → GPT-4/LLaMA → o1 → DeepSeek-R1 → Claude Opus 4.7 → Nobel 2024
 
-[5] PARALELISMO — el puente físico
+[5] PARALELISMO — el puente físico                                           <a class="cadena-narr" href="narrativas/12_PARALELISMO.html">► LEER NARRATIVA</a>
     GeForce 256 (1999) → CUDA (2006) → Tensor Cores (2017) → TPU v1→v8 →
     Cerebras → hyperscaler silicon → Etched → Rubin → Vera (2027)
     └── CUDA + AlexNet (2012) son los DOS puntos de inflexión IA-hardware
 
-[6] DATOS
+[6] DATOS                                                                    <a class="cadena-narr" href="narrativas/10_DATA.html">► LEER NARRATIVA</a>
     Codd (1970) → System R → Oracle → PostgreSQL/MySQL → NoSQL → FAISS →
     vector DBs → pgvector → MCP (2024) → memoria agéntica (2027 esp.)
 
-[7] INTERNET
+[7] INTERNET                                                                 <a class="cadena-narr" href="narrativas/09_INTERNET.html">► LEER NARRATIVA</a>
     ARPANET (1969) → TCP/IP (1983) → WWW → Mosaic → Google → AWS →
     Kubernetes → Edge + Web3
 
-[8] ROBÓTICA
+[8] ROBÓTICA                                                                 <a class="cadena-narr" href="narrativas/08_ROBOTICA.html">► LEER NARRATIVA</a>
     Unimate (1961) → Shakey → PUMA → Roomba → DARPA UC → Spot →
     humanoides (2024) → Robot FM · π0 de Sergey Levine (2024) → cross-embodiment (2027)
 
-[9] SIMULACIÓN
+[9] SIMULACIÓN                                                               <a class="cadena-narr" href="narrativas/15_SIMULACION.html">► LEER NARRATIVA</a>
     Monte Carlo (1947) → SPICE (1973) → CFD → NKS Wolfram → PhysX → Omniverse →
     World Models · Sora (2024) → Cosmos (2025) → Foundation simulation (2027)
 
-[10] CUÁNTICA — rama paralela
+[10] CUÁNTICA — rama paralela                                                <a class="cadena-narr" href="narrativas/13_CUANTICA.html">► LEER NARRATIVA</a>
      Benioff/Feynman → Deutsch → Shor/Grover → QEC qubit lógico (1995-97) →
      2 qubits NMR → Sycamore → IBM Heron → Willow → MS Majorana → IBM Loon →
      IBM Cockatoo (2027 esp.) → Starling FTQC (2029)
      └── Métrica: ~1.300 qubits LÓGICOS para romper RSA-2048 (Gidney 2024)
 
-[11] SUPERCOMPUTACIÓN
+[11] SUPERCOMPUTACIÓN                                                        <a class="cadena-narr" href="narrativas/14_SUPERCOMPUTACION.html">► LEER NARRATIVA</a>
      Cray-1 (1976) → ASCI Red (1 TF) → Roadrunner (1 PF) → Fugaku (ARM) →
      Frontier (1 EF) → Aurora → El Capitan → JUPITER (EU exascale)
 
-[12] ALGORITMOS — la matemática que atraviesa todo
+[12] ALGORITMOS — la matemática que atraviesa todo                           <a class="cadena-narr" href="narrativas/02_ALGORITMOS.html">► LEER NARRATIVA</a>
      Minimax (1928) → Deep Blue (1997) → AlphaGo (2016) → Algoritmos agénticos (2024)
      · 100 años de minimax cerrando el círculo en la IA actual
 
