@@ -117,6 +117,8 @@ body{
   align-items:flex-end;
   margin-bottom:6px;
   font-family:'IBM Plex Sans',sans-serif;
+  gap:12px;
+  flex-wrap:wrap;
 }
 .book-title{
   font-size:11px;
@@ -130,6 +132,39 @@ body{
   font-size:10px;
   color:#666;
   letter-spacing:.5px;
+}
+.header-nav{
+  display:flex;
+  gap:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  letter-spacing:1px;
+}
+.header-nav a{
+  background:#1A1A1A;
+  color:#33ff66;
+  text-decoration:none;
+  padding:3px 8px;
+  border:1px solid #1A1A1A;
+  text-shadow:0 0 6px rgba(51,255,102,.45);
+  text-transform:uppercase;
+  font-weight:500;
+}
+.header-nav a:hover{
+  background:#33ff66;
+  color:#1A1A1A;
+  text-shadow:none;
+}
+.header-nav a.secondary{
+  background:transparent;
+  color:#666;
+  text-shadow:none;
+  border:1px solid #999;
+}
+.header-nav a.secondary:hover{
+  background:var(--tab-color);
+  color:#fff;
+  border-color:var(--tab-color);
 }
 .page-title{
   font-size:28px;
@@ -397,6 +432,10 @@ HTML_WRAPPER = """<!DOCTYPE html>
   <div class="tab" aria-hidden="true">%TAB_LABEL%</div>
   <header class="page-header">
     <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
+    <span class="header-nav">
+      <a href="https://zoopa.es/files/historia-computacion-hitos-20260423.html" title="Volver al grafo interactivo">◄ GRAFO</a>
+      <a href="00_INDICE.html" class="secondary" title="Índice de las 15 narrativas">◄ ÍNDICE</a>
+    </span>
     <span class="doc-num">SX-498A-V02 · %DOC_NUM%</span>
   </header>
   <h1 class="page-title">%TITLE%</h1>
@@ -408,6 +447,7 @@ HTML_WRAPPER = """<!DOCTYPE html>
   <footer class="page-footer">
     <span>SX-498A-V02 · Capítulo %CHAPTER%</span>
     <span class="nav">
+      <a href="https://zoopa.es/files/historia-computacion-hitos-20260423.html" title="Volver al grafo interactivo">◄ GRAFO</a>
       <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
       %PREV_LINK%
       %NEXT_LINK%
