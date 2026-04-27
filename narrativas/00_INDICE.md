@@ -23,8 +23,6 @@ Existe una [línea temporal interactiva](https://zoopa.es/files/historia-computa
 
 Este directorio contiene la versión narrativa: 15 ensayos en markdown, uno por cada columna temática del grafo. Cada ensayo recorre su cadena causal en orden cronológico, conectando personas, fechas, contextos y consecuencias. Pueden leerse independientemente o como un todo.
 
-**Estilo:** Smart Brevity. Frases cortas. Verbos activos. Datos concretos. Cero floritura.
-
 ## Cómo está organizado
 
 ```
