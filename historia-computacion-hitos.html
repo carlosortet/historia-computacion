@@ -467,7 +467,9 @@
     padding:5px 10px;
     font-family:'IBM Plex Mono',monospace;
     font-size:11px;
-    width:240px;
+    flex:1;
+    min-width:280px;
+    max-width:520px;
     outline:none;
     transition:border-color .12s;
   }
@@ -498,16 +500,23 @@
   }
   .col-filter-btn.active span{color:#1A1A1A;font-weight:700}
   .col-filter-btn:not(.active) span{color:currentColor}
+  .col-filter-actions{
+    display:inline-flex;
+    gap:3px;
+    margin-left:8px;
+    padding-left:8px;
+    border-left:1px solid #444;
+    align-items:center;
+  }
   .col-filter-actions button{
     background:transparent;
     color:var(--bg);
     border:1px solid #555;
-    padding:3px 8px;
+    padding:3px 7px;
     font-family:'IBM Plex Mono',monospace;
     font-size:9px;
     letter-spacing:1px;
     cursor:pointer;
-    margin-left:4px;
   }
   .col-filter-actions button:hover{background:var(--ibm-cyan);color:var(--ink);border-color:var(--ibm-cyan)}
   /* search visual states */
@@ -959,14 +968,15 @@
     h1.title{font-size:22px;line-height:1.15}
     h2{font-size:15px;padding:6px 10px;letter-spacing:.3px}
     h3{font-size:13px}
-    .ibm-header{padding:14px 14px}
-    .ibm-meta{font-size:10px}
-    .brand-498{gap:10px}
-    .brand-498 .mark{width:42px;height:42px}
-    .brand-498 .wordmark{width:170px;height:auto}
-    .brand-498 .name{font-size:11px;letter-spacing:3.5px}
-    .brand-498 .tag{font-size:8.5px;letter-spacing:1.5px}
-    .brand-498 .manifesto{font-size:9.5px}
+    .ibm-header{padding:10px 12px}
+    .ibm-meta{font-size:9px;line-height:1.3}
+    .brand-498{gap:8px}
+    .brand-498 .mark{width:34px;height:34px}
+    .brand-498 .wordmark{width:120px;height:auto}
+    .brand-498 .name{font-size:10px;letter-spacing:2.5px}
+    .brand-498 .tag{font-size:8px;letter-spacing:1.2px}
+    .brand-498 .manifesto{font-size:9px;line-height:1.35;margin-top:2px;padding-top:3px}
+    .brand-498 .rule{display:none}
     .graph-frame{margin-bottom:24px}
     .graph-wrap{max-height:65vh}
     .graph-bar{padding:8px 10px;font-size:10px;flex-direction:column;align-items:flex-start;gap:6px}
@@ -1117,10 +1127,10 @@
       <div class="col-filters" id="colFilters">
         <span class="filter-label">▸ COLUMNAS:</span>
         <!-- generadas por JS -->
-      </div>
-      <div class="col-filter-actions">
-        <button id="colShowAll" type="button" aria-label="Mostrar todas las columnas" title="Mostrar todas las columnas">▾ TODAS</button>
-        <button id="colHideAll" type="button" aria-label="Ocultar todas las columnas" title="Ocultar todas las columnas">▴ NINGUNA</button>
+        <span class="col-filter-actions">
+          <button id="colShowAll" type="button" aria-label="Mostrar todas las columnas" title="Mostrar todas las columnas">▾ TODAS</button>
+          <button id="colHideAll" type="button" aria-label="Ocultar todas las columnas" title="Ocultar todas las columnas">▴ NINGUNA</button>
+        </span>
       </div>
     </div>
     <div class="graph-extra">
