@@ -64,9 +64,89 @@ body{
   max-width:840px;
   margin:0 auto 32px;
   position:relative;
-  padding:48px 64px 56px 96px;
+  padding:0 64px 56px 96px;
   min-height:1100px;
   box-shadow:0 1px 3px rgba(0,0,0,.15), 0 8px 24px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+/* BRAND STRIP — banda negra estilo "spine de binder IBM" arriba de cada página */
+.brand-strip{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#1A1A1A;
+  color:#F5F1E8;
+  padding:14px 24px;
+  margin:0 -64px 24px -96px;
+  border-bottom:3px solid var(--tab-color);
+  font-family:'IBM Plex Sans',sans-serif;
+  gap:16px;
+}
+.brand-strip-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:1;
+  min-width:0;
+}
+.brand-strip a.brand-link{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+  transition:transform .12s;
+}
+.brand-strip a.brand-link:hover{
+  transform:translate(-1px,-1px);
+}
+.brand-strip .mark{
+  flex-shrink:0;
+}
+.brand-strip .wordmark{
+  flex-shrink:0;
+}
+.brand-strip .stack{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  min-width:0;
+}
+.brand-strip .name{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:#F5F1E8;
+  text-transform:uppercase;
+}
+.brand-strip .tag{
+  font-size:10px;
+  color:#F1C21B;
+  font-family:'IBM Plex Mono',monospace;
+  letter-spacing:.3px;
+}
+.brand-strip-right{
+  text-align:right;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:#999;
+  letter-spacing:1px;
+  line-height:1.5;
+  flex-shrink:0;
+}
+.brand-strip-right .ref{
+  color:#F1C21B;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+.brand-strip-right .author-attr{
+  color:#33B1FF;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-decoration:none;
+}
+.brand-strip-right .author-attr:hover{
+  color:#fff;
 }
 /* AGUJEROS DE ARCHIVADOR (decorativos, izquierda) */
 .holes{
@@ -398,13 +478,19 @@ a:hover{color:var(--tab-color);text-decoration-color:var(--tab-color)}
 /* RESPONSIVE */
 @media (max-width:900px){
   body{padding:8px 0;background:var(--paper)}
-  .page{padding:24px 18px 56px 18px;max-width:100%;margin:0 0 16px}
+  .page{padding:0 18px 56px 18px;max-width:100%;margin:0 0 16px}
   .holes{display:none}
-  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:80px}
+  .tab{right:-12px;width:32px;height:90px;font-size:10px;top:120px}
   .page-title{font-size:22px}
   .section-title{font-size:16px}
   .chain-body,.chain-rel{padding-left:0}
   .page-footer{left:18px;right:18px;bottom:14px;font-size:9px}
+  .brand-strip{margin:0 -18px 16px -18px;padding:10px 14px;flex-wrap:wrap;gap:8px}
+  .brand-strip .mark{width:28px;height:28px}
+  .brand-strip .wordmark{width:90px;height:auto}
+  .brand-strip .name{font-size:10px}
+  .brand-strip .tag{font-size:9px}
+  .brand-strip-right{font-size:9px}
 }
 """
 
@@ -430,6 +516,51 @@ HTML_WRAPPER = """<!DOCTYPE html>
     <span class="hole"></span><span class="hole"></span><span class="hole"></span>
   </div>
   <div class="tab" aria-hidden="true">%TAB_LABEL%</div>
+  <!-- BRAND STRIP — 498A binder spine estilo IBM 5324 -->
+  <div class="brand-strip" role="banner">
+    <div class="brand-strip-left">
+      <a href="https://498advance.com" target="_blank" rel="noopener" class="brand-link" title="498advance.com">
+        <svg class="mark" viewBox="0 0 60 60" width="36" height="36" aria-hidden="true">
+          <g shape-rendering="geometricPrecision">
+            <polygon points="30,4 54,16 30,28 6,16"  fill="#5BC0EB"/>
+            <polygon points="6,16 30,28 30,56 6,44"  fill="#1F70C1"/>
+            <polygon points="54,16 30,28 30,56 54,44" fill="#0A2E5C"/>
+            <polyline points="6,16 30,4 54,16" fill="none" stroke="#E8DCC4" stroke-width=".6" opacity=".4"/>
+            <line x1="30" y1="28" x2="30" y2="56" stroke="#E8DCC4" stroke-width=".6" opacity=".25"/>
+          </g>
+        </svg>
+        <svg class="wordmark" viewBox="0 0 230 64" width="115" height="32" aria-hidden="true">
+          <defs>
+            <mask id="stripeMaskBS" maskUnits="userSpaceOnUse">
+              <rect width="230" height="64" fill="white"/>
+              <g fill="black">
+                <rect x="0" y="3"  width="230" height="3"/>
+                <rect x="0" y="11" width="230" height="3"/>
+                <rect x="0" y="19" width="230" height="3"/>
+                <rect x="0" y="27" width="230" height="3"/>
+                <rect x="0" y="35" width="230" height="3"/>
+                <rect x="0" y="43" width="230" height="3"/>
+                <rect x="0" y="51" width="230" height="3"/>
+              </g>
+            </mask>
+          </defs>
+          <text x="0" y="56" mask="url(#stripeMaskBS)"
+                font-family="'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif"
+                font-weight="900" font-size="68" letter-spacing="-3"
+                fill="#33B1FF">498A</text>
+        </svg>
+        <div class="stack">
+          <div class="name">498 ADVANCE</div>
+          <div class="tag">The European Intrepid Lab.</div>
+        </div>
+      </a>
+    </div>
+    <div class="brand-strip-right">
+      <span class="ref">TECHNICAL REFERENCE · VOL. 2</span><br>
+      DOC. SX-498A-V02 · CAP. %CHAPTER% · ABR 2026<br>
+      <a href="https://carlosortet.com" target="_blank" rel="noopener" class="author-attr" title="carlosortet.com">CARLOS ORTET</a>
+    </div>
+  </div>
   <header class="page-header">
     <span class="book-title">Narrativas · Historia de la Computación · Vol. 2</span>
     <span class="header-nav">
@@ -445,7 +576,7 @@ HTML_WRAPPER = """<!DOCTYPE html>
 %CONTENT%
 
   <footer class="page-footer">
-    <span>SX-498A-V02 · Capítulo %CHAPTER%</span>
+    <span>Carlos Ortet · 498 Advance · CC BY-SA 4.0</span>
     <span class="nav">
       <a href="https://zoopa.es/files/historia-computacion-hitos-20260423.html" title="Volver al grafo interactivo">◄ GRAFO</a>
       <a href="00_INDICE.html" title="Volver al índice">◄ ÍNDICE</a>
