@@ -395,6 +395,29 @@
     background:var(--ibm-orange);
     color:var(--ink);
   }
+  .graph-extra .extra-narrativas{
+    color:#33ff66;
+    border-color:#33ff66;
+    background:#0a1a0a;
+    text-shadow:0 0 6px rgba(51,255,102,.45);
+    position:relative;
+  }
+  .graph-extra .extra-narrativas::after{
+    content:" ▮";
+    color:#33ff66;
+    animation:cursor 1.1s steps(2) infinite;
+    text-shadow:0 0 6px rgba(51,255,102,.8);
+    margin-left:2px;
+  }
+  .graph-extra .extra-narrativas:hover{
+    background:#33ff66;
+    color:#0a1a0a;
+    text-shadow:none;
+  }
+  .graph-extra .extra-narrativas:hover::after{
+    color:#0a1a0a;
+    text-shadow:none;
+  }
   /* SEARCH + COLUMN FILTERS */
   .graph-search-bar{
     background:#1A1A1A;
@@ -1070,6 +1093,7 @@
       <a href="#sec-sysarq" class="extra-link">ARQ. SISTEMA</a>
       <a href="#sec-mapa" class="extra-link extra-mapa">► MAPA</a>
       <a href="#sec-glosario" class="extra-link extra-glossary">► GLOSARIO</a>
+      <a href="narrativas/00_INDICE.html" class="extra-link extra-narrativas" title="Lee las 15 narrativas largas — una por columna del grafo">► NARRATIVAS</a>
     </div>
     <div class="graph-search-bar">
       <label for="searchInput" class="sr-only">Buscar hito en el grafo</label>
