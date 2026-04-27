@@ -188,15 +188,6 @@ Las "autopistas" cross-column principales:
 | **Steve Wozniak** | MICRO+PC | Apple I + Apple II |
 | **Jeff Dean** | DATA, ALGORITMOS, IA | MapReduce + BigTable + TensorFlow |
 
-## Convenciones del directorio
-
-- **Wikilinks**: `[[03_ARQUITECTURA#1936 · Turing]]` apunta al archivo + sección anchor
-- **Bold**: solo para personas y fechas en su primera mención dentro del documento
-- **Tablas**: una al final de cada archivo con `Personas clave`
-- **Cross-column**: marcadas con `↗ recibe` y `↘ aporta`
-- **Sin emojis**: estilo consistente con la página HTML
-- **Idioma**: español (alineado con la página principal)
-
 ## Versionado
 
 | Versión | Fecha | Cambios |
