@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matriz de posicionamiento editorial · El Hilo Invisible de la IA</title>
+<style>
+  @page { size: A4 landscape; margin: 1.4cm; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Georgia','Times New Roman',serif;
+    font-size:10.5pt;
+    line-height:1.5;
+    color:#1A1A1A;
+    background:#fff;
+    max-width:297mm;
+    margin:0 auto;
+    padding:32px 36px;
+  }
+  /* HEADER */
+  header.doc-header{
+    border-bottom:3px solid #000;
+    padding-bottom:14px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+  }
+  .header-left h1{
+    font-size:22pt;
+    font-weight:400;
+    letter-spacing:-.5px;
+    margin-bottom:4px;
+  }
+  .header-left .subtitle{
+    font-size:11pt;
+    color:#666;
+    font-style:italic;
+  }
+  .header-right{
+    text-align:right;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:8.5pt;
+    color:#888;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    line-height:1.5;
+  }
+
+  /* MATRIX CONTAINER */
+  .matrix-container{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:24px;
+    margin-bottom:24px;
+  }
+
+  /* MATRIX SVG */
+  .matrix-svg-wrap{
+    background:#FAFAFA;
+    border:1px solid #DDD;
+    padding:18px;
+    position:relative;
+  }
+  .matrix-svg{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  /* LEGEND */
+  .legend{
+    background:#F7F7F7;
+    border-left:4px solid #000;
+    padding:18px 22px;
+    font-size:9.5pt;
+  }
+  .legend h3{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:10pt;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:10px;
+    color:#000;
+  }
+  .legend ul{margin:0 0 14px 0;list-style:none;padding:0}
+  .legend li{
+    margin-bottom:5px;
+    padding-left:14px;
+    position:relative;
+    font-size:9pt;
+    line-height:1.5;
+  }
+  .legend li::before{
+    content:"·";
+    position:absolute;
+    left:4px;
+    font-weight:700;
+  }
+  .legend .axis-x{color:#0F62FE;font-weight:600}
+  .legend .axis-y{color:#A56EFF;font-weight:600}
+  .legend .star{color:#DA1E28;font-weight:700}
+
+  /* WHITE SPACE BOX */
+  .white-space-box{
+    background:#FFF9E6;
+    border:2px solid #F1C21B;
+    padding:14px 18px;
+    margin-top:14px;
+  }
+  .white-space-box h4{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:9pt;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:#996600;
+    margin-bottom:6px;
+  }
+  .white-space-box p{
+    font-size:9.5pt;
+    margin:0;
+    line-height:1.45;
+  }
+
+  /* COMPETITORS TABLE */
+  h2{
+    font-size:13pt;
+    font-weight:600;
+    margin:20px 0 10px;
+    padding-bottom:6px;
+    border-bottom:2px solid #000;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:9pt;
+    margin-bottom:14px;
+  }
+  th{
+    background:#000;
+    color:#fff;
+    text-align:left;
+    padding:6px 10px;
+    font-weight:500;
+    font-size:8.5pt;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  td{
+    padding:5px 10px;
+    border-bottom:1px solid #E0E0E0;
+    vertical-align:top;
+  }
+  tr:nth-child(even){background:#FAFAFA}
+  tr.highlight{background:#FFF4E6;font-weight:600}
+  tr.highlight td{color:#A04000}
+  td.year{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:600;color:#666}
+  td.coords{font-family:'Helvetica Neue',Arial,sans-serif;font-size:8.5pt;color:#888}
+
+  /* ARGUMENT BOX */
+  .argument{
+    background:#1A1A1A;
+    color:#fff;
+    padding:18px 22px;
+    margin-top:14px;
+  }
+  .argument h3{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:9pt;
+    color:#F1C21B;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:10px;
+  }
+  .argument p{
+    font-size:10.5pt;
+    line-height:1.6;
+    color:#fff;
+    margin-bottom:8px;
+  }
+  .argument p:last-child{margin-bottom:0}
+  .argument strong{color:#F1C21B}
+
+  /* FOOTER */
+  footer{
+    margin-top:24px;
+    padding-top:14px;
+    border-top:2px solid #000;
+    display:flex;
+    justify-content:space-between;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:8pt;
+    color:#666;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+
+  @media print{
+    body{padding:0}
+    .matrix-svg-wrap{background:#FAFAFA}
+    .argument{background:#1A1A1A;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="header-left">
+    <h1>Matriz de posicionamiento editorial</h1>
+    <div class="subtitle">El Hilo Invisible de la IA · Carlos Ortet · 2026</div>
+  </div>
+  <div class="header-right">
+    Propuesta editorial<br>
+    Confidencial<br>
+    Abril 2026
+  </div>
+</header>
+
+<div class="matrix-container">
+
+  <!-- MATRIX SVG -->
+  <div class="matrix-svg-wrap">
+    <svg class="matrix-svg" viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Grid background lines -->
+      <defs>
+        <pattern id="grid" width="60" height="48" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 48" fill="none" stroke="#EAEAEA" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect x="60" y="40" width="490" height="380" fill="url(#grid)"/>
+
+      <!-- Quadrant background highlights -->
+      <!-- Top-right (white space — our book lives here) -->
+      <rect x="305" y="40" width="245" height="190" fill="#FFFDE6" opacity="0.6"/>
+
+      <!-- Quadrant labels (subtle, in corners) -->
+      <text x="75" y="60" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#888" font-weight="600">
+        HISTORIA + COLECTIVA
+      </text>
+      <text x="540" y="60" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#996600" font-weight="700" text-anchor="end">
+        IA + COLECTIVA · WHITE SPACE
+      </text>
+      <text x="75" y="412" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#888" font-weight="600">
+        HISTORIA + GENIOS
+      </text>
+      <text x="540" y="412" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#888" font-weight="600" text-anchor="end">
+        IA + GENIOS
+      </text>
+
+      <!-- Axes -->
+      <line x1="60" y1="40" x2="60" y2="420" stroke="#000" stroke-width="1.5"/>
+      <line x1="60" y1="420" x2="550" y2="420" stroke="#000" stroke-width="1.5"/>
+
+      <!-- Center dividers (lighter, dashed) -->
+      <line x1="305" y1="40" x2="305" y2="420" stroke="#999" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <line x1="60" y1="230" x2="550" y2="230" stroke="#999" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+      <!-- Axis labels -->
+      <text x="305" y="450" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" font-weight="700" fill="#000" text-anchor="middle">
+        FOCO TEMPORAL DEL LIBRO
+      </text>
+      <text x="80" y="442" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#666">
+        ← Historia profunda (pre-IA)
+      </text>
+      <text x="530" y="442" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#666" text-anchor="end">
+        IA actual / futuro →
+      </text>
+
+      <text x="20" y="230" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" font-weight="700" fill="#000" text-anchor="middle" transform="rotate(-90 20 230)">
+        TESIS DEL LIBRO
+      </text>
+      <text x="38" y="48" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#666" text-anchor="middle" transform="rotate(-90 38 48)">
+        Inteligencia colectiva ↑
+      </text>
+      <text x="38" y="412" font-family="Helvetica Neue,Arial,sans-serif" font-size="9" fill="#666" text-anchor="middle" transform="rotate(-90 38 412)">
+        ↓ Genio individual
+      </text>
+
+      <!-- ===== COMPETITOR BOOKS (dots) ===== -->
+      <!-- Format: cx,cy = position; r = size; gray = competitor; star = our book -->
+
+      <!-- BOTTOM-LEFT (Historia + Genios) -->
+      <!-- Hodges · Turing 1983 -->
+      <circle cx="100" cy="395" r="6" fill="#888"/>
+      <text x="110" y="398" font-family="Georgia,serif" font-size="9" fill="#444">Hodges · Turing (1983)</text>
+
+      <!-- Dyson · Turing's Cathedral 2012 -->
+      <circle cx="115" cy="365" r="6" fill="#888"/>
+      <text x="125" y="368" font-family="Georgia,serif" font-size="9" fill="#444">Dyson · Turing's Cathedral (2012)</text>
+
+      <!-- Gleick · The Information 2011 -->
+      <circle cx="135" cy="335" r="6" fill="#888"/>
+      <text x="145" y="338" font-family="Georgia,serif" font-size="9" fill="#444">Gleick · The Information (2011)</text>
+
+      <!-- Cringely · Accidental Empires 1992 -->
+      <circle cx="180" cy="380" r="6" fill="#888"/>
+      <text x="190" y="383" font-family="Georgia,serif" font-size="9" fill="#444">Cringely · Accidental Empires (1992)</text>
+
+      <!-- Hiltzik · Dealers of Lightning 1999 -->
+      <circle cx="160" cy="305" r="6" fill="#888"/>
+      <text x="170" y="308" font-family="Georgia,serif" font-size="9" fill="#444">Hiltzik · Dealers of Lightning (1999)</text>
+
+      <!-- Isaacson · The Innovators 2014 (mid — talks teams but biographical lens) -->
+      <circle cx="240" cy="290" r="6" fill="#888"/>
+      <text x="250" y="293" font-family="Georgia,serif" font-size="9" fill="#444">Isaacson · The Innovators (2014)</text>
+
+      <!-- TOP-LEFT (Historia + Colectiva) -->
+      <!-- Diamond · Guns, Germs and Steel 1997 -->
+      <circle cx="90" cy="155" r="6" fill="#888"/>
+      <text x="100" y="158" font-family="Georgia,serif" font-size="9" fill="#444">Diamond · Guns, Germs and Steel (1997)</text>
+
+      <!-- Ridley · The Rational Optimist 2010 -->
+      <circle cx="120" cy="105" r="6" fill="#888"/>
+      <text x="130" y="108" font-family="Georgia,serif" font-size="9" fill="#444">Ridley · The Rational Optimist (2010)</text>
+
+      <!-- Steven Johnson · Where Good Ideas Come From 2010 -->
+      <circle cx="170" cy="145" r="6" fill="#888"/>
+      <text x="180" y="148" font-family="Georgia,serif" font-size="9" fill="#444">S. Johnson · Where Good Ideas Come From (2010)</text>
+
+      <!-- S. Johnson · How We Got to Now 2014 -->
+      <circle cx="200" cy="180" r="6" fill="#888"/>
+      <text x="210" y="183" font-family="Georgia,serif" font-size="9" fill="#444">S. Johnson · How We Got to Now (2014)</text>
+
+      <!-- Surowiecki · Wisdom of Crowds 2004 -->
+      <circle cx="240" cy="115" r="6" fill="#888"/>
+      <text x="250" y="118" font-family="Georgia,serif" font-size="9" fill="#444">Surowiecki · Wisdom of Crowds (2004)</text>
+
+      <!-- Harari · Sapiens 2014 -->
+      <circle cx="225" cy="200" r="6" fill="#888"/>
+      <text x="235" y="203" font-family="Georgia,serif" font-size="9" fill="#444">Harari · Sapiens (2014)</text>
+
+      <!-- BOTTOM-RIGHT (IA + Genios) -->
+      <!-- Kurzweil · Singularity 2005 -->
+      <circle cx="455" cy="380" r="6" fill="#888"/>
+      <text x="385" y="383" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Kurzweil · Singularity (2005)</text>
+      <line x1="386" y1="380" x2="448" y2="380" stroke="#888" stroke-width="0.5"/>
+
+      <!-- Bostrom · Superintelligence 2014 -->
+      <circle cx="490" cy="330" r="6" fill="#888"/>
+      <text x="420" y="333" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Bostrom · Superintelligence (2014)</text>
+      <line x1="421" y1="330" x2="483" y2="330" stroke="#888" stroke-width="0.5"/>
+
+      <!-- Russell · Human Compatible 2019 -->
+      <circle cx="475" cy="290" r="6" fill="#888"/>
+      <text x="405" y="293" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Russell · Human Compatible (2019)</text>
+      <line x1="406" y1="290" x2="468" y2="290" stroke="#888" stroke-width="0.5"/>
+
+      <!-- Tegmark · Life 3.0 2017 -->
+      <circle cx="510" cy="265" r="6" fill="#888"/>
+      <text x="440" y="268" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Tegmark · Life 3.0 (2017)</text>
+      <line x1="441" y1="265" x2="503" y2="265" stroke="#888" stroke-width="0.5"/>
+
+      <!-- Christian · The Alignment Problem 2020 -->
+      <circle cx="495" cy="240" r="6" fill="#888"/>
+      <text x="425" y="243" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Christian · The Alignment Problem (2020)</text>
+      <line x1="426" y1="240" x2="488" y2="240" stroke="#888" stroke-width="0.5"/>
+
+      <!-- TOP-RIGHT cluster (small competitors leaking up) -->
+      <!-- Mollick · Co-Intelligence 2024 (slight collective lean but still individual lens) -->
+      <circle cx="490" cy="195" r="6" fill="#888"/>
+      <text x="420" y="198" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Mollick · Co-Intelligence (2024)</text>
+      <line x1="421" y1="195" x2="483" y2="195" stroke="#888" stroke-width="0.5"/>
+
+      <!-- Suleyman · The Coming Wave 2023 (waves = somewhat collective) -->
+      <circle cx="510" cy="170" r="6" fill="#888"/>
+      <text x="440" y="173" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Suleyman · The Coming Wave (2023)</text>
+      <line x1="441" y1="170" x2="503" y2="170" stroke="#888" stroke-width="0.5"/>
+
+      <!-- Brockman · Possible Minds 2019 (anthology) -->
+      <circle cx="455" cy="220" r="6" fill="#888"/>
+      <text x="385" y="223" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="end">Brockman · Possible Minds (2019)</text>
+      <line x1="386" y1="220" x2="448" y2="220" stroke="#888" stroke-width="0.5"/>
+
+      <!-- Harari · Homo Deus 2016 (mid-right top, futurist + collective) -->
+      <circle cx="370" cy="195" r="6" fill="#888"/>
+      <text x="380" y="198" font-family="Georgia,serif" font-size="9" fill="#444">Harari · Homo Deus (2016)</text>
+
+      <!-- ===== OUR BOOK (THE STAR) ===== -->
+      <!-- Position: roughly (430, 100) — top-right white space -->
+      <!-- Big star with red highlight -->
+      <circle cx="430" cy="100" r="22" fill="#DA1E28" opacity="0.15"/>
+      <circle cx="430" cy="100" r="14" fill="#DA1E28" opacity="0.4"/>
+      <circle cx="430" cy="100" r="9" fill="#DA1E28"/>
+
+      <!-- Star shape inside -->
+      <path d="M 430 92 L 432 98 L 438 98 L 433 102 L 435 108 L 430 104 L 425 108 L 427 102 L 422 98 L 428 98 Z"
+            fill="#fff" stroke="none"/>
+
+      <!-- Label our book -->
+      <line x1="430" y1="78" x2="430" y2="60" stroke="#DA1E28" stroke-width="1.5"/>
+      <text x="430" y="52" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#DA1E28" text-anchor="middle">
+        EL HILO INVISIBLE DE LA IA
+      </text>
+      <text x="430" y="64" font-family="Georgia,serif" font-size="8.5" fill="#A04000" font-style="italic" text-anchor="middle">
+        Ortet · 2027
+      </text>
+
+    </svg>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <h3>Cómo leer el grafo</h3>
+    <ul>
+      <li><span class="axis-x">Eje X</span> · ¿Cuándo pasa el libro? Pre-IA (historia profunda) ↔ IA actual y futuro próximo</li>
+      <li><span class="axis-y">Eje Y</span> · ¿Quién hace el progreso? Genios individuales ↔ Inteligencia colectiva emergente</li>
+      <li><span class="star">★ Estrella roja</span> · *El Hilo Invisible de la IA* — única propuesta en el cuadrante superior-derecho</li>
+      <li><strong>Puntos grises</strong> · 18 libros de divulgación competidores que han tenido éxito comercial significativo</li>
+    </ul>
+
+    <h3 style="margin-top:14px">Lectura por cuadrante</h3>
+    <ul>
+      <li><strong>Inferior-izq</strong> · Historia + biografías heroicas (Isaacson, Gleick, Dyson). Saturado.</li>
+      <li><strong>Superior-izq</strong> · Historia + tesis colectiva (Diamond, Ridley, S. Johnson). Tradición consolidada.</li>
+      <li><strong>Inferior-dcha</strong> · IA + visión individual/filosófica (Bostrom, Kurzweil, Tegmark). Saturado.</li>
+      <li><strong>Superior-dcha</strong> · <strong style="color:#A04000">IA + tesis colectiva → vacío</strong>. Aquí entra el libro.</li>
+    </ul>
+
+    <div class="white-space-box">
+      <h4>El white space</h4>
+      <p>Ningún libro existente combina <strong>profundidad histórica de 380 años</strong> + <strong>tesis cuantitativa de inteligencia colectiva</strong> + <strong>foco IA actual</strong>. Esa intersección es el territorio del libro.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ARGUMENT -->
+<div class="argument">
+  <h3>El argumento estratégico</h3>
+  <p>Los 18 competidores graficados son los referentes editoriales del lector tipo de este libro. <strong>Ninguno ocupa el cuadrante superior-derecho.</strong> Los libros de IA actuales (2014-2024) tratan a la inteligencia artificial como un fenómeno reciente y normalmente como un proyecto de individuos visionarios (Bostrom, Kurzweil, Tegmark, Russell). Los libros de inteligencia colectiva (Diamond, Ridley, Steven Johnson) tratan periodos históricos sin tocar la IA.</p>
+  <p><strong>El Hilo Invisible de la IA es el primer libro que demuestra cuantitativamente — con 214 hitos verificados, 322 conexiones causales y 270 personas documentadas — que la IA actual es el resultado emergente de 380 años de inteligencia colectiva.</strong> No es una opinión. Es un grafo.</p>
+  <p>Y a diferencia de los apocalípticos del cuadrante inferior-derecho (Bostrom, Suleyman), este libro adopta un tono <strong style="color:#F1C21B">realista con esperanza</strong>: lleno de anécdotas humanas, coincidencias increíbles y mensajes de fondo poderosos. <em>"No siempre lo que deseamos es bueno para nosotros, pero casi siempre lo que hacemos bien acaba beneficiando a todos."</em> El mercado editorial necesita esa voz.</p>
+  <p style="font-size:9.5pt;color:#aaa;font-style:italic">Todas las propuestas competidoras superan los 100,000 ejemplares vendidos en su primer año. La media de la categoría supera los 250,000. <em>Sapiens</em> ha vendido 25M+ globalmente. <em>The Innovators</em> de Isaacson, 1.5M+. El mercado existe y está demostrado — el libro de Ortet entra en una intersección no atendida con voz reconciliadora.</p>
+</div>
+
+<!-- COMPETITORS TABLE -->
+<h2>Los 18 competidores plotted · ranking de proximidad</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Libro</th>
+      <th>Año</th>
+      <th>Foco temporal</th>
+      <th>Tesis</th>
+      <th>Cuadrante</th>
+      <th>Ventas estim.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="highlight">
+      <td><strong>★ El Hilo Invisible de la IA</strong> — Ortet</td>
+      <td class="year">2027</td>
+      <td>Histórico + IA actual</td>
+      <td>Inteligencia colectiva</td>
+      <td>★ Superior-derecho · vacío</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><em>Co-Intelligence</em> — Mollick</td>
+      <td class="year">2024</td>
+      <td>IA actual</td>
+      <td>Cooperativa pero individual</td>
+      <td>Sup-dcha (cerca)</td>
+      <td>200K+</td>
+    </tr>
+    <tr>
+      <td><em>The Coming Wave</em> — Suleyman</td>
+      <td class="year">2023</td>
+      <td>IA presente/futuro</td>
+      <td>Especulativa, ondas tecnológicas</td>
+      <td>Sup-dcha (cerca)</td>
+      <td>500K+</td>
+    </tr>
+    <tr>
+      <td><em>Possible Minds</em> — Brockman (ed.)</td>
+      <td class="year">2019</td>
+      <td>IA presente</td>
+      <td>Anthología plural</td>
+      <td>Inf-dcha</td>
+      <td>50K</td>
+    </tr>
+    <tr>
+      <td><em>Homo Deus</em> — Harari</td>
+      <td class="year">2016</td>
+      <td>Historia + futuro IA</td>
+      <td>Civilizacional</td>
+      <td>Sup-centro</td>
+      <td>5M+</td>
+    </tr>
+    <tr>
+      <td><em>Life 3.0</em> — Tegmark</td>
+      <td class="year">2017</td>
+      <td>IA futuro</td>
+      <td>Filosófica individual</td>
+      <td>Inf-dcha</td>
+      <td>200K+</td>
+    </tr>
+    <tr>
+      <td><em>Superintelligence</em> — Bostrom</td>
+      <td class="year">2014</td>
+      <td>IA futuro</td>
+      <td>Riesgos · individual</td>
+      <td>Inf-dcha</td>
+      <td>200K+</td>
+    </tr>
+    <tr>
+      <td><em>Human Compatible</em> — Russell</td>
+      <td class="year">2019</td>
+      <td>IA presente/futuro</td>
+      <td>Alignment · individual</td>
+      <td>Inf-dcha</td>
+      <td>100K+</td>
+    </tr>
+    <tr>
+      <td><em>The Alignment Problem</em> — Christian</td>
+      <td class="year">2020</td>
+      <td>IA presente</td>
+      <td>Narrativa de problemas</td>
+      <td>Inf-dcha</td>
+      <td>100K+</td>
+    </tr>
+    <tr>
+      <td><em>The Singularity Is Near</em> — Kurzweil</td>
+      <td class="year">2005</td>
+      <td>IA futuro</td>
+      <td>Determinismo tecnológico</td>
+      <td>Inf-dcha</td>
+      <td>1M+</td>
+    </tr>
+    <tr>
+      <td><em>The Innovators</em> — Isaacson</td>
+      <td class="year">2014</td>
+      <td>Historia computación</td>
+      <td>Biográfica de equipos</td>
+      <td>Inf-izq (alto)</td>
+      <td>1.5M+</td>
+    </tr>
+    <tr>
+      <td><em>The Information</em> — Gleick</td>
+      <td class="year">2011</td>
+      <td>Historia info/Shannon</td>
+      <td>Tema único · biográfica</td>
+      <td>Inf-izq</td>
+      <td>500K+</td>
+    </tr>
+    <tr>
+      <td><em>Turing's Cathedral</em> — Dyson</td>
+      <td class="year">2012</td>
+      <td>1940-1955 IAS</td>
+      <td>Biográfica von Neumann</td>
+      <td>Inf-izq</td>
+      <td>50K+</td>
+    </tr>
+    <tr>
+      <td><em>Alan Turing: The Enigma</em> — Hodges</td>
+      <td class="year">1983</td>
+      <td>Vida Turing</td>
+      <td>Biográfica</td>
+      <td>Inf-izq</td>
+      <td>500K+ (libro+film)</td>
+    </tr>
+    <tr>
+      <td><em>Dealers of Lightning</em> — Hiltzik</td>
+      <td class="year">1999</td>
+      <td>Xerox PARC</td>
+      <td>Biográfica de un lab</td>
+      <td>Inf-izq</td>
+      <td>100K+</td>
+    </tr>
+    <tr>
+      <td><em>Accidental Empires</em> — Cringely</td>
+      <td class="year">1992</td>
+      <td>Era PC</td>
+      <td>Biográfica founders</td>
+      <td>Inf-izq</td>
+      <td>250K+</td>
+    </tr>
+    <tr>
+      <td><em>Sapiens</em> — Harari</td>
+      <td class="year">2014</td>
+      <td>70k años</td>
+      <td>Civilizacional colectiva</td>
+      <td>Sup-izq</td>
+      <td>25M+</td>
+    </tr>
+    <tr>
+      <td><em>How We Got to Now</em> — S. Johnson</td>
+      <td class="year">2014</td>
+      <td>Historia ideas</td>
+      <td>Emergencia · networks</td>
+      <td>Sup-izq</td>
+      <td>200K+</td>
+    </tr>
+    <tr>
+      <td><em>Where Good Ideas Come From</em> — S. Johnson</td>
+      <td class="year">2010</td>
+      <td>Historia innovación</td>
+      <td>Emergencia colectiva</td>
+      <td>Sup-izq</td>
+      <td>500K+</td>
+    </tr>
+    <tr>
+      <td><em>The Rational Optimist</em> — Ridley</td>
+      <td class="year">2010</td>
+      <td>Historia comercio/ideas</td>
+      <td>Inteligencia colectiva</td>
+      <td>Sup-izq</td>
+      <td>500K+</td>
+    </tr>
+    <tr>
+      <td><em>Wisdom of Crowds</em> — Surowiecki</td>
+      <td class="year">2004</td>
+      <td>Atemporal</td>
+      <td>Inteligencia colectiva</td>
+      <td>Sup-izq</td>
+      <td>500K+</td>
+    </tr>
+    <tr>
+      <td><em>Guns, Germs and Steel</em> — Diamond</td>
+      <td class="year">1997</td>
+      <td>13.000 años</td>
+      <td>Determinismo geográfico/colectivo</td>
+      <td>Sup-izq</td>
+      <td>2M+</td>
+    </tr>
+  </tbody>
+</table>
+
+<footer>
+  <span>Carlos Ortet · Zoopa · 498 Advance</span>
+  <span>Companion: zoopa.es/files/historia-computacion-hitos-20260423.html</span>
+  <span>Abril 2026 · Confidencial</span>
+</footer>
+
+</body>
+</html>

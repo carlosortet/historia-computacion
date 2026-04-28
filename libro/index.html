@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Hilo Invisible de la IA · Propuesta editorial · Carlos Ortet</title>
+<meta name="description" content="Propuesta editorial completa del libro 'El Hilo Invisible de la IA' por Carlos Ortet · 18 capítulos · 360 páginas · companion website con 214 hitos verificados">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="El Hilo Invisible de la IA · Propuesta editorial">
+<meta property="og:description" content="Cómo, sin proponérselo, la humanidad ha estado construyendo durante 380 años la inteligencia que hoy nos asombra. Por Carlos Ortet · Zoopa · 498 Advance.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://carlosortet.github.io/historia-computacion/libro/">
+
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Georgia','Times New Roman',serif;
+    background:#F5F1E8;
+    color:#1A1A1A;
+    line-height:1.6;
+    min-height:100vh;
+    padding:48px 24px;
+  }
+  .container{
+    max-width:880px;
+    margin:0 auto;
+    background:#fff;
+    box-shadow:0 4px 24px rgba(0,0,0,.08);
+    padding:56px 64px;
+  }
+  /* Header */
+  .eyebrow{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:10pt;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#999;
+    margin-bottom:16px;
+  }
+  h1{
+    font-size:38pt;
+    font-weight:400;
+    line-height:1.05;
+    letter-spacing:-1px;
+    margin-bottom:18px;
+  }
+  .subtitle{
+    font-size:14pt;
+    font-style:italic;
+    color:#444;
+    line-height:1.4;
+    margin-bottom:30px;
+    border-bottom:3px solid #000;
+    padding-bottom:24px;
+  }
+  /* Lead */
+  .lead{
+    background:#F7F7F7;
+    border-left:5px solid #000;
+    padding:24px 28px;
+    margin:32px 0;
+    font-size:12pt;
+    line-height:1.65;
+  }
+  .lead strong{color:#000}
+  .lead em{color:#444}
+  /* Documents grid */
+  h2{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:13pt;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin:40px 0 16px;
+    padding-bottom:8px;
+    border-bottom:2px solid #000;
+  }
+  .docs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin:24px 0;
+  }
+  @media (max-width:680px){
+    .docs{grid-template-columns:1fr}
+    .container{padding:32px 24px}
+    h1{font-size:28pt}
+  }
+  .doc-card{
+    border:1px solid #DDD;
+    background:#FAFAFA;
+    padding:22px 24px;
+    text-decoration:none;
+    color:#1A1A1A;
+    transition:all .15s ease;
+    display:block;
+  }
+  .doc-card:hover{
+    background:#1A1A1A;
+    color:#F5F1E8;
+    border-color:#1A1A1A;
+    transform:translate(-2px,-2px);
+    box-shadow:4px 4px 0 #999;
+  }
+  .doc-card:hover .doc-meta{color:#999}
+  .doc-card:hover .doc-emoji{color:#F1C21B}
+  .doc-emoji{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:14pt;
+    color:#0F62FE;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .doc-title{
+    font-size:15pt;
+    font-weight:600;
+    margin-bottom:6px;
+    line-height:1.25;
+  }
+  .doc-meta{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:9pt;
+    color:#888;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:10px;
+  }
+  .doc-desc{
+    font-size:10.5pt;
+    color:#444;
+    line-height:1.5;
+  }
+  .doc-card:hover .doc-desc{color:#DDD}
+  /* Companion */
+  .companion-box{
+    background:#1A1A1A;
+    color:#F5F1E8;
+    padding:28px 32px;
+    margin:32px 0;
+    border-left:6px solid #F1C21B;
+  }
+  .companion-box h3{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:10pt;
+    color:#F1C21B;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:12px;
+  }
+  .companion-box p{
+    font-size:11pt;
+    line-height:1.55;
+    margin-bottom:8px;
+  }
+  .companion-box a{
+    color:#33B1FF;
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1px solid #33B1FF;
+  }
+  .companion-box a:hover{color:#F1C21B;border-color:#F1C21B}
+  /* Manifesto */
+  .manifesto{
+    background:#FFFDF5;
+    border:2px solid #F1C21B;
+    padding:24px 28px;
+    margin:32px 0;
+  }
+  .manifesto h3{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:9pt;
+    color:#996600;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:14px;
+  }
+  .manifesto blockquote{
+    font-size:14pt;
+    font-style:italic;
+    line-height:1.4;
+    color:#1A1A1A;
+    border:none;
+    padding:0;
+    margin:0 0 12px 0;
+  }
+  /* Footer */
+  footer{
+    margin-top:48px;
+    padding-top:24px;
+    border-top:2px solid #000;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:10pt;
+    color:#666;
+  }
+  .footer-author{font-size:13pt;font-weight:700;color:#1A1A1A;letter-spacing:.5px}
+  .footer-meta{font-size:9pt;color:#888}
+  footer a{color:#0F62FE;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="eyebrow">Propuesta editorial · 2026</div>
+
+<h1>El Hilo Invisible de la IA</h1>
+
+<p class="subtitle">Cómo, sin proponérselo, la humanidad ha estado construyendo durante 380 años la inteligencia que hoy nos asombra</p>
+
+<p class="lead">
+En 1847, un profesor sin doctorado de la Irlanda rural llamado <strong>George Boole</strong> intenta convertir el pensamiento en álgebra para descubrir las leyes divinas de la mente. Muere a los 49 años sin ver una sola aplicación práctica. <strong>Noventa años después</strong>, en el MIT, un estudiante de máster de 21 años llamado <strong>Claude Shannon</strong> — sin saberlo — se da cuenta de que el álgebra de Boole es exactamente el lenguaje de los relés telefónicos.
+<br><br>
+Sin esa coincidencia imprevisible, sin esa <em>serendipia</em> entre dos vidas que jamás se cruzaron, no habría transistor, ni internet, ni ChatGPT.
+<br><br>
+<strong>El Hilo Invisible de la IA</strong> es la historia, contada por sus conexiones humanas y sus coincidencias increíbles, de cómo 214 hitos y unas 270 mentes brillantes — casi siempre persiguiendo preguntas equivocadas — construyeron juntas, <strong>sin proponérselo y para nuestro bien</strong>, la inteligencia artificial que hoy nos asombra.
+</p>
+
+<div class="manifesto">
+  <h3>El alma del libro</h3>
+  <blockquote>"No siempre lo que deseamos es bueno para nosotros. Pero casi siempre lo que hacemos bien acaba beneficiando a todos."</blockquote>
+  <p style="font-size:10.5pt;color:#666;line-height:1.5">El progreso es nuestra naturaleza, no nuestro pecado. Somos una fuerza geológica que ha tejido inteligencia colectiva durante 380 años. La inteligencia emerge colectivamente para salvarnos — y siempre lo ha hecho.</p>
+</div>
+
+<h2>Documentos del proyecto</h2>
+
+<div class="docs">
+
+  <a class="doc-card" href="onepager-libro-hilo-invisible-ia-20260428.md">
+    <div class="doc-emoji">►</div>
+    <div class="doc-title">One-pager</div>
+    <div class="doc-meta">1 página · cold email · ~6 KB</div>
+    <div class="doc-desc">Pitch frío para primer contacto con editores. Incluye gancho, tesis, autor, activos, ask. Markdown.</div>
+  </a>
+
+  <a class="doc-card" href="positioning-matrix-libro-hilo-invisible-ia-20260428.html">
+    <div class="doc-emoji">★</div>
+    <div class="doc-title">Matriz de posicionamiento</div>
+    <div class="doc-meta">A4 horizontal · gráfico · ~24 KB</div>
+    <div class="doc-desc">Mapa 2x2 con 18 competidores plotted (Isaacson, Gleick, Harari, Bostrom, Suleyman…). El white space superior-derecho — IA + colectiva — está vacío salvo por este libro. HTML.</div>
+  </a>
+
+  <a class="doc-card" href="proposal-libro-hilo-invisible-ia-20260428.html">
+    <div class="doc-emoji">►</div>
+    <div class="doc-title">Propuesta completa · McKinsey</div>
+    <div class="doc-meta">A4 vertical · imprimible · ~42 KB</div>
+    <div class="doc-desc">Propuesta editorial completa estilo McKinsey: cover, sinopsis, tesis, voz/manifiesto, 18 capítulos con sinopsis individual, autor, estrategia, plazos. Lista para imprimir como PDF.</div>
+  </a>
+
+  <a class="doc-card" href="proposal-libro-hilo-invisible-ia-20260428.md">
+    <div class="doc-emoji">►</div>
+    <div class="doc-title">Propuesta canónica · Markdown</div>
+    <div class="doc-meta">Source de verdad · ~30 KB</div>
+    <div class="doc-desc">Documento canónico en Markdown. Mismo contenido que la versión McKinsey pero en MD para edición continua y revisiones futuras.</div>
+  </a>
+
+</div>
+
+<div class="companion-box">
+  <h3>Companion website · ya en vivo</h3>
+  <p>El libro tiene un companion interactivo ya publicado: 214 hitos verificados · 322 conexiones causales · 16 ensayos narrativos (16,000 palabras) · 203 fuentes formales · diseño IBM × Silicon Graphics 80s.</p>
+  <p style="margin-top:14px"><strong style="color:#F1C21B">Página principal:</strong><br><a href="https://zoopa.es/files/historia-computacion-hitos-20260423.html">zoopa.es/files/historia-computacion-hitos-20260423.html</a></p>
+  <p><strong style="color:#F1C21B">Mirror permanente:</strong><br><a href="https://carlosortet.github.io/historia-computacion/">carlosortet.github.io/historia-computacion/</a></p>
+  <p><strong style="color:#F1C21B">Repo público open-source:</strong><br><a href="https://github.com/carlosortet/historia-computacion">github.com/carlosortet/historia-computacion</a> · CC BY-SA 4.0</p>
+</div>
+
+<h2>Datos clave del libro</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0">
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Extensión</div>
+    <div style="font-size:18pt;font-weight:600">~360 pp</div>
+  </div>
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Capítulos</div>
+    <div style="font-size:18pt;font-weight:600">18 · 4 partes</div>
+  </div>
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Hitos cubiertos</div>
+    <div style="font-size:18pt;font-weight:600">214</div>
+  </div>
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Conexiones causales</div>
+    <div style="font-size:18pt;font-weight:600">322</div>
+  </div>
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Personas documentadas</div>
+    <div style="font-size:18pt;font-weight:600">~270</div>
+  </div>
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Fuentes formales</div>
+    <div style="font-size:18pt;font-weight:600">203</div>
+  </div>
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Lanzamiento</div>
+    <div style="font-size:18pt;font-weight:600">Q4 2027</div>
+  </div>
+  <div style="background:#F7F7F7;padding:16px;border-left:4px solid #000">
+    <div style="font-family:Helvetica Neue,Arial,sans-serif;font-size:8.5pt;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:6px">Periodo</div>
+    <div style="font-size:18pt;font-weight:600">1642 → 2027</div>
+  </div>
+</div>
+
+<h2>Cómo enviar la propuesta</h2>
+<ol style="margin:14px 0 0 24px">
+  <li style="margin-bottom:8px"><strong>Email frío al editor</strong> · adjuntar one-pager (PDF) + linkar al companion</li>
+  <li style="margin-bottom:8px"><strong>Si hay interés</strong> · enviar matriz de posicionamiento (PDF) — el "wow" visual que vende el libro de un vistazo</li>
+  <li><strong>Si pide reunión</strong> · enviar propuesta completa McKinsey (PDF, 12-15 pp impresas)</li>
+</ol>
+
+<footer>
+  <div>
+    <div class="footer-author">Carlos Ortet</div>
+    <div class="footer-meta">CEO Zoopa · Director 498 Advance · The European Intrepid Lab</div>
+    <div class="footer-meta" style="margin-top:6px"><a href="mailto:carlos.ortet@zoopa.es">carlos.ortet@zoopa.es</a> · <a href="https://carlosortet.com">carlosortet.com</a></div>
+  </div>
+  <div style="text-align:right">
+    <div class="footer-meta">Abril 2026</div>
+    <div class="footer-meta">CC BY-SA 4.0</div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Hilo Invisible de la IA · Propuesta editorial · Carlos Ortet</title>
+<style>
+  @page { size: A4; margin: 1.6cm; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Georgia','Times New Roman',serif;
+    font-size:11pt;
+    line-height:1.55;
+    color:#1A1A1A;
+    background:#fff;
+    max-width:210mm;
+    margin:0 auto;
+    padding:36px 44px;
+  }
+  /* COVER PAGE */
+  .cover{
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    page-break-after:always;
+    padding:40px 0;
+  }
+  .cover-top{border-bottom:4px solid #000;padding-bottom:16px;margin-bottom:36px}
+  .cover-eyebrow{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:9pt;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#888;
+    margin-bottom:12px;
+  }
+  .cover-title{
+    font-size:42pt;
+    font-weight:400;
+    line-height:1.1;
+    letter-spacing:-1px;
+    margin-bottom:18px;
+  }
+  .cover-subtitle{
+    font-size:16pt;
+    font-style:italic;
+    color:#444;
+    line-height:1.35;
+    max-width:88%;
+  }
+  .cover-meta{
+    border-top:1px solid #ccc;
+    padding-top:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    font-size:10pt;
+  }
+  .cover-meta .author{font-size:14pt;font-weight:600;letter-spacing:.5px}
+  .cover-meta .author-tag{font-size:9pt;color:#666;font-style:italic;margin-top:4px}
+  .cover-meta .right{text-align:right;color:#666;font-size:9pt}
+
+  /* SECTIONS */
+  h1{
+    font-size:22pt;
+    font-weight:400;
+    letter-spacing:-.5px;
+    margin:36px 0 14px;
+    padding-bottom:10px;
+    border-bottom:3px solid #000;
+  }
+  h1.no-page-break{page-break-before:auto}
+  h1.page-break{page-break-before:always}
+  h2{
+    font-size:14pt;
+    font-weight:600;
+    margin:24px 0 10px;
+    color:#1A1A1A;
+  }
+  h3{
+    font-size:11pt;
+    font-weight:700;
+    margin:14px 0 6px;
+    color:#000;
+    text-transform:none;
+  }
+  h4{font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#666;margin:18px 0 8px}
+  p{margin-bottom:10px}
+  ul,ol{margin:10px 0 14px 22px}
+  li{margin-bottom:4px}
+  strong{color:#000}
+  em{color:#444}
+
+  /* EXECUTIVE SUMMARY (Smart Brevity box) */
+  .exec-summary{
+    background:#F7F7F7;
+    padding:22px 26px;
+    margin:24px 0;
+    border-left:5px solid #000;
+  }
+  .exec-summary h4{margin-top:0;color:#000}
+  .exec-summary p{font-size:11.5pt;line-height:1.55}
+
+  /* THESIS BOX */
+  .thesis-box{
+    background:#fff;
+    border:2px solid #000;
+    padding:22px 26px;
+    margin:24px 0;
+    text-align:center;
+  }
+  .thesis-box .label{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:8pt;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#888;
+    margin-bottom:12px;
+  }
+  .thesis-box p{
+    font-size:14pt;
+    font-style:italic;
+    line-height:1.45;
+    margin:0;
+  }
+
+  /* INSIGHT/HIGHLIGHT */
+  .insight-box{
+    background:#FFF9E6;
+    border:1px solid #FFE066;
+    padding:14px 18px;
+    margin:14px 0;
+  }
+  .insight-box::before{
+    content:"INSIGHT · ";
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    color:#996600;
+    font-size:9pt;
+    letter-spacing:1px;
+  }
+
+  .keypoints{
+    background:#F0F4F8;
+    border:1px solid #D0D8E0;
+    padding:18px 22px;
+    margin:18px 0;
+  }
+  .keypoints ul{margin:6px 0 0 22px}
+
+  /* TABLES */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-size:10pt;
+  }
+  th{
+    background:#000;
+    color:#fff;
+    text-align:left;
+    padding:8px 12px;
+    font-weight:500;
+    font-size:9pt;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  td{
+    padding:9px 12px;
+    border-bottom:1px solid #E0E0E0;
+    vertical-align:top;
+  }
+  tr:nth-child(even){background:#FAFAFA}
+
+  /* CHAPTER LIST */
+  .chapter{
+    page-break-inside:avoid;
+    margin-bottom:18px;
+    padding-bottom:14px;
+    border-bottom:1px dotted #CCC;
+  }
+  .chapter:last-child{border-bottom:none}
+  .chapter-header{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:6px;
+  }
+  .chapter-num{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:10pt;
+    font-weight:700;
+    color:#fff;
+    background:#000;
+    padding:3px 9px;
+    flex-shrink:0;
+    letter-spacing:.5px;
+  }
+  .chapter-title{
+    font-size:12pt;
+    font-weight:700;
+    flex:1;
+  }
+  .chapter-synopsis{
+    font-size:10pt;
+    line-height:1.5;
+    margin:0;
+    color:#222;
+  }
+
+  /* PARTS */
+  .part-header{
+    margin:30px 0 18px;
+    padding:18px 22px;
+    background:#1A1A1A;
+    color:#fff;
+  }
+  .part-header .label{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:8.5pt;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#999;
+    margin-bottom:6px;
+  }
+  .part-header .title{
+    font-size:18pt;
+    font-weight:400;
+    color:#fff;
+  }
+  .part-header .meta{
+    font-size:9pt;
+    color:#999;
+    font-style:italic;
+    margin-top:4px;
+  }
+
+  /* TIMELINE */
+  .timeline{
+    margin:18px 0;
+    padding-left:18px;
+    border-left:3px solid #000;
+  }
+  .timeline-item{
+    position:relative;
+    padding:6px 0 6px 18px;
+  }
+  .timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-25px;
+    top:11px;
+    width:10px;
+    height:10px;
+    background:#000;
+    border-radius:50%;
+  }
+  .timeline-date{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:9pt;
+    font-weight:700;
+    color:#000;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .timeline-content{font-size:10pt;margin-top:2px}
+
+  /* GRID */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  .grid-2 > div{padding:14px;border:1px solid #E0E0E0;background:#FAFAFA}
+  .grid-2 h4{margin-top:0;color:#000}
+
+  /* FOOTER */
+  footer{
+    margin-top:50px;
+    padding-top:22px;
+    border-top:3px solid #000;
+    page-break-inside:avoid;
+  }
+  .footer-brand{font-size:13pt;font-weight:700;letter-spacing:1px}
+  .footer-meta{font-size:9pt;color:#666;margin-top:6px}
+  .footer-contact{
+    margin-top:18px;
+    padding:14px 18px;
+    background:#F7F7F7;
+    border-left:4px solid #000;
+    font-size:10pt;
+  }
+
+  /* PRINT */
+  @media print{
+    body{padding:0}
+    .cover{min-height:auto}
+    h1.page-break{page-break-before:always}
+    table{page-break-inside:avoid}
+    .chapter{page-break-inside:avoid}
+    .part-header{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<section class="cover">
+  <div>
+    <div class="cover-top">
+      <div class="cover-eyebrow">Propuesta editorial · Confidencial</div>
+      <h1 class="cover-title" style="border:none;padding:0;margin-bottom:18px">El Hilo Invisible de la IA</h1>
+      <p class="cover-subtitle">Cómo, sin proponérselo, la humanidad ha estado construyendo durante 380 años la inteligencia que hoy nos asombra</p>
+    </div>
+    <div style="margin-top:50px;padding:24px 28px;background:#F7F7F7;border-left:5px solid #000">
+      <p style="font-size:11pt;line-height:1.6;margin:0;color:#333">
+        Una historia colectiva — de Pascal (1642) a Claude (2026) — contada por sus conexiones causales.
+        <br><br>
+        <strong>214 hitos verificados · 322 relaciones causales · ~270 mentes brillantes · 203 fuentes formales.</strong>
+      </p>
+    </div>
+  </div>
+  <div class="cover-meta">
+    <div>
+      <div class="author">Carlos Ortet</div>
+      <div class="author-tag">CEO Zoopa · Director 498 Advance · The European Intrepid Lab</div>
+    </div>
+    <div class="right">
+      Abril 2026<br>
+      ~360 páginas<br>
+      Divulgación científica · Historia de la tecnología
+    </div>
+  </div>
+</section>
+
+<!-- SINOPSIS -->
+<h1>Sinopsis</h1>
+
+<div class="exec-summary">
+  <h4>El gancho · 130 palabras</h4>
+  <p>En 1847, un profesor sin doctorado de la Irlanda rural llamado <strong>George Boole</strong> intenta convertir el pensamiento en álgebra para descubrir las leyes divinas de la mente. <strong>Muere a los 49 años sin ver jamás una aplicación práctica de su trabajo.</strong> Noventa años después, en el MIT, un estudiante de máster de 21 años llamado <strong>Claude Shannon</strong> — sin saberlo — se da cuenta de que el álgebra de Boole es exactamente el lenguaje de los relés telefónicos. Sin esa coincidencia imprevisible, sin esa <em>serendipia</em> entre dos vidas que jamás se cruzaron, no habría transistor, ni internet, ni ChatGPT. <em>El Hilo Invisible de la IA</em> es la historia, contada por sus conexiones humanas y sus coincidencias increíbles, de cómo 214 hitos y unas 270 mentes brillantes — casi siempre persiguiendo preguntas equivocadas — construyeron juntas, <strong>sin proponérselo y para nuestro bien</strong>, la inteligencia artificial que hoy nos asombra.</p>
+</div>
+
+<!-- TESIS -->
+<h1>Tesis central</h1>
+
+<div class="thesis-box">
+  <div class="label">La afirmación de fondo</div>
+  <p>El progreso técnico no es una sucesión de genios solitarios. Es un grafo causal de inteligencia colectiva en el que cada idea espera décadas a su próximo eslabón. La IA actual no la inventó OpenAI ni Google: la construyeron — sin saberlo, sin coordinarse, sin proponérselo — 270 personas durante 380 años.</p>
+</div>
+
+<h3>Cuatro afirmaciones que el libro demuestra con datos</h3>
+<ol>
+  <li><strong>Casi ningún hito tiene un único autor.</strong> Los nombres famosos son las cumbres visibles de redes invisibles.</li>
+  <li><strong>La velocidad real del progreso son décadas, no años.</strong> Boole→Shannon: 90 años. Backprop→AlexNet: 26 años. Feynman→Cockatoo: 47 años. Lo que llamamos "exponencial" es una sucesión de esperas.</li>
+  <li><strong>El cruce de disciplinas es donde nace lo nuevo.</strong> Los avances mayores (Shannon, von Neumann, Berners-Lee, Vaswani) ocurrieron en personas que dominaban dos campos a la vez.</li>
+  <li><strong>Lo que llamamos "inteligencia artificial" es, en realidad, inteligencia colectiva humana ejecutada por máquina.</strong></li>
+</ol>
+
+<div class="insight-box">El libro no demuestra estas tesis con argumento. Las demuestra con <strong>214 hitos verificados, 322 relaciones causales explícitas, ~270 personas documentadas y 203 fuentes primarias citadas</strong> — todos los datos ya están publicados en el companion website.</div>
+
+<!-- VOZ Y MANIFIESTO -->
+<h1 class="page-break">Voz · Tono · Manifiesto</h1>
+
+<div class="thesis-box" style="background:#FFFDF5;border-color:#996600">
+  <div class="label" style="color:#996600">El alma del libro</div>
+  <p>Este libro no es un manual técnico. Es una historia humana llena de coincidencias increíbles, de personas que persiguieron preguntas equivocadas y obtuvieron respuestas correctas, de talentos que murieron jóvenes sin saber que cambiarían el mundo.</p>
+</div>
+
+<h3>El lector encontrará a…</h3>
+<ul>
+  <li><strong>Boole</strong> intentando descubrir las leyes divinas del pensamiento, muriendo a los 49 años sin ver una sola aplicación práctica de su álgebra</li>
+  <li><strong>Shannon</strong>, con 21 años, cosiendo lógica matemática y relés telefónicos en su tiempo libre y escribiendo la tesis que cambió el siglo XX</li>
+  <li><strong>Walter Pitts</strong> (matemático autodidacta, 18 años, vagabundo) y <strong>Warren McCulloch</strong> (neurocientífico que lo acogió en su casa) publicando juntos en 1943 — colaborando desde la cocina de McCulloch — el primer modelo matemático de neurona artificial. <em>Sin ese paper, escrito por un científico y un sin techo en una mesa de cocina, no existe ChatGPT.</em></li>
+  <li><strong>Hopper</strong> literalmente sacando una polilla del relé del Mark II en 1947 — ese día se acuñó el término <em>"bug"</em></li>
+  <li><strong>Hollerith</strong> mirando a los revisores de tren ponchando billetes y entendiendo que así se podía procesar el censo de EEUU</li>
+  <li><strong>Lovelace</strong> muriendo de cáncer a los 36 años sin ver nunca una máquina programable</li>
+  <li><strong>Pascal</strong> construyendo a los 19 años una calculadora para ayudar a su padre, recaudador de impuestos</li>
+  <li><strong>Leibniz</strong> inventando el binario para glorificar a Dios — 1 = existencia, 0 = la nada</li>
+  <li><strong>Berners-Lee</strong> rechazando patentar la web para que el conocimiento no tuviera precio</li>
+  <li><strong>Eich</strong> escribiendo JavaScript en 10 días — hoy el lenguaje más usado del mundo</li>
+  <li><strong>Hinton</strong> recibiendo el Nobel 2024 por el algoritmo (backpropagation) que la industria ignoró durante 30 años</li>
+  <li><strong>Larry Page</strong> intentando vender PageRank a Yahoo por 1M$ — Yahoo lo rechazó, así nació Google</li>
+  <li><strong>Vaswani</strong> titulando el paper que inventó el Transformer "<em>Attention Is All You Need</em>" — homenaje a los Beatles</li>
+  <li><strong>John Carmack</strong> abriendo el código de Quake en 2005 — diez años después es la base sobre la que se simulan los robots actuales</li>
+</ul>
+
+<h3>El libro celebra la serendipia del progreso</h3>
+
+<div class="insight-box">Decisiones tomadas por razones equivocadas — Boole por teología, Carmack por juegos, Pascal por amor filial — acabaron salvándonos. <strong>No siempre lo que deseamos es bueno para nosotros. Pero casi siempre lo que hacemos bien acaba beneficiando a todos.</strong></div>
+
+<h3>Cuatro convicciones · sin sermón, con datos</h3>
+
+<table>
+  <tbody>
+    <tr><td style="width:30%"><strong>Naturaleza, no pecado</strong></td><td>El progreso es nuestra naturaleza. Somos una fuerza geológica que ha tejido inteligencia colectiva durante 380 años — al mismo nivel que la fotosíntesis o la deriva continental. Despreciarlo es despreciarnos.</td></tr>
+    <tr><td><strong>Educar, no contener</strong></td><td>No podemos rechazar el progreso. Podemos educarlo. Igual que la naturaleza, hay que dirigirlo: no contenerlo, sino orientarlo. La diferencia entre Hiroshima y la fotosíntesis es la dirección, no la fuerza.</td></tr>
+    <tr><td><strong>La inteligencia salva</strong></td><td>La inteligencia emerge colectivamente para salvarnos. Cada vez que una crisis nos ha amenazado — la Guerra Fría, las pandemias, los inviernos de IA — la respuesta vino de redes invisibles trabajando para problemas distintos. <strong>Y siempre lo ha hecho.</strong> Tenemos 380 años de evidencia.</td></tr>
+    <tr><td><strong>Fe legítima, no ingenua</strong></td><td>Hay fe legítima en el progreso humano. No ingenuidad — lectura honesta del grafo causal. Cada generación recibe el regalo de las anteriores y lo extiende un peldaño. <strong>La nuestra recibe el más grande.</strong></td></tr>
+  </tbody>
+</table>
+
+<h3>Por qué importa este tono</h3>
+<p>El mercado editorial actual de IA es <strong>dominantemente apocalíptico</strong> (Suleyman <em>Coming Wave</em>, Bostrom <em>Superintelligence</em>, Tegmark <em>Life 3.0</em>). Falta una voz que reconcilie al lector general con su propia tecnología. Este libro no es ni utópico ni distópico: es <strong>realista con esperanza</strong>, porque los datos justifican la esperanza.</p>
+
+<!-- DELTA -->
+<h1>El delta · por qué este libro y no otro</h1>
+
+<table>
+  <thead>
+    <tr><th style="width:22%">Comp title</th><th style="width:8%">Año</th><th style="width:30%">Foco</th><th>Lo que le falta</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Walter Isaacson</strong> · <em>The Innovators</em></td><td>2014</td><td>Biográfico, USA-céntrico</td><td>Pre-IA · biografías encadenadas, sin grafo causal estructural</td></tr>
+    <tr><td><strong>James Gleick</strong> · <em>The Information</em></td><td>2011</td><td>Shannon-céntrico, teoría info</td><td>Una sola disciplina · sin IA</td></tr>
+    <tr><td><strong>George Dyson</strong> · <em>Turing's Cathedral</em></td><td>2012</td><td>Manhattan / IAS Princeton</td><td>Solo 1940-1955</td></tr>
+    <tr><td><strong>Yuval N. Harari</strong> · <em>Homo Deus</em></td><td>2016</td><td>Especulación filosófica</td><td>Poca técnica · sin demostración cuantitativa</td></tr>
+    <tr><td><strong>Ethan Mollick</strong> · <em>Co-Intelligence</em></td><td>2024</td><td>Uso pragmático de IA</td><td>Sin profundidad histórica</td></tr>
+    <tr><td><strong>Mustafa Suleyman</strong> · <em>The Coming Wave</em></td><td>2023</td><td>IA como amenaza</td><td>Especulativo · sin grafo causal</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Ningún libro existente</strong> demuestra cuantitativamente la tesis de la inteligencia colectiva en computación con un mapa causal explícito. Este lo hace.</p>
+<p>Los competidores cuentan biografías (Isaacson) o ideas (Gleick). Este libro cuenta <strong>conexiones</strong>. Y demuestra — con 322 aristas — que la conexión es la unidad básica del progreso, no el inventor.</p>
+
+<!-- ESTRUCTURA -->
+<h1 class="page-break">Estructura · 4 partes · 18 capítulos</h1>
+
+<div class="keypoints">
+  <ul>
+    <li><strong>Parte I · El método</strong> — 3 capítulos · 60 páginas · cómo leer el grafo causal</li>
+    <li><strong>Parte II · Los puentes</strong> — 8 capítulos · 160 páginas · conexiones cross-disciplina</li>
+    <li><strong>Parte III · Los círculos que se cierran</strong> — 5 capítulos · 100 páginas · arcos largos completados</li>
+    <li><strong>Parte IV · La inteligencia emergente</strong> — 2 capítulos · 30 páginas · el patrón en datos</li>
+    <li><strong>Epílogo</strong> · 10 páginas · una nota personal sobre José Ortet y el IBM 5324</li>
+  </ul>
+</div>
+
+<!-- PARTE I -->
+<div class="part-header">
+  <div class="label">Parte I</div>
+  <div class="title">El método</div>
+  <div class="meta">3 capítulos · 60 páginas · cómo leer el grafo causal</div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">01</span><div class="chapter-title">Por qué la historia de la computación se cuenta mal</div></div>
+  <p class="chapter-synopsis">La narrativa popular empieza en 1946 con ENIAC. Es falsa. Empieza en 1642 con la Pascalina y atraviesa Irlanda, Viena, Polonia, Rusia, Japón, Brasil y Holanda antes de llegar a Silicon Valley. Este capítulo deconstruye la narrativa heroica americana y propone leer la historia como un grafo, no como una lista de inventores. <em>Datos contra anécdota.</em></p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">02</span><div class="chapter-title">El grafo invisible: cómo realmente sucede el progreso</div></div>
+  <p class="chapter-synopsis">Presenta el método del libro. 214 hitos, 322 conexiones, 15 columnas temáticas. El progreso no es lineal — es un tejido. El lector aprende a "leer" el grafo y los 5 tipos de relación causal (causal · habilita · continúa · paralelo · puente). Doble página con el grafo entero desplegado.</p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">03</span><div class="chapter-title">Cinco patrones de inteligencia emergente</div></div>
+  <p class="chapter-synopsis">Identifica los cinco patrones que se repiten 380 años: <strong>(1) Descubrimiento simultáneo</strong> (Cook + Levin para NP, Kilby + Noyce para el chip). <strong>(2) El eslabón dormido</strong> (algoritmos esperando hardware: backprop 26 años). <strong>(3) El cruce de disciplinas</strong> (Shannon: lógica + electricidad). <strong>(4) La deuda heredada</strong> (Lean 4 vive de Church 1936). <strong>(5) El accidente útil</strong> (CUDA nació para Quake, sirvió para GPT).</p>
+</div>
+
+<!-- PARTE II -->
+<div class="part-header">
+  <div class="label">Parte II</div>
+  <div class="title">Los puentes</div>
+  <div class="meta">8 capítulos · 160 páginas · conexiones cross-disciplina</div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">04</span><div class="chapter-title">Boole en Shannon — 90 años de espera</div></div>
+  <p class="chapter-synopsis"><strong>George Boole publicó en 1847 buscando "las leyes del pensamiento" para entender la mente divina; murió a los 49 años, pobre y autodidacta, sin ver una sola aplicación práctica.</strong> Noventa años después, en el MIT, <strong>Claude Shannon</strong> — 21 años, estudiante de máster — escribió en su tiempo libre una tesis de 60 páginas que fundió la lógica de Boole con los relés telefónicos. Esa tesis es la cosa más influyente jamás escrita por un estudiante. <em>Dos vidas que jamás se cruzaron — separadas por un siglo y un océano — escribieron juntas el plano del mundo digital sin saberlo.</em></p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">05</span><div class="chapter-title">Las cuatro vidas de John von Neumann</div></div>
+  <p class="chapter-synopsis">Un solo cerebro escribió la arquitectura de los ordenadores actuales (1945), inventó el método Monte Carlo en Los Alamos (1947), formalizó el minimax que vence al ajedrez (1928) y diseñó autómatas autoreplicantes 70 años antes de los virus de software (1948). Cómo un emigrado húngaro definió cuatro disciplinas distintas — y por qué su biografía es la prueba viva de la tesis cross-disciplinar.</p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">06</span><div class="chapter-title">Turing y los confines · cuando la lógica forzó el hardware</div></div>
+  <p class="chapter-synopsis">Turing intentó responder al <em>Entscheidungsproblem</em> de Hilbert (1928). Para hacerlo tuvo que inventar la máquina universal — el ordenador. La respuesta a "qué NO puede hacer la lógica" forzó la existencia de la máquina que calcula. Y Church (independientemente, simultáneamente, en el mismo edificio de Princeton) llegó al mismo resultado por otro camino.</p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">07</span><div class="chapter-title">La obstinación de Grace Hopper · contra el binario</div></div>
+  <p class="chapter-synopsis">1952. Una matemática de la Marina decide que es absurdo escribir código en binario. Inventa el primer compilador (A-0). La industria la ignora durante 7 años. Sigue. En 1959 lidera CODASYL → COBOL. <strong>El 70% de las transacciones bancarias actuales corren en su lenguaje.</strong> (También fue Hopper quien sacó literalmente una polilla del relé del Mark II en 1947 y pegó el insecto en el cuaderno de log con la nota "<em>first actual case of bug being found</em>" — desde entonces, los errores de programa se llaman <em>bugs</em>.)</p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">08</span><div class="chapter-title">UNIX como contagio cultural</div></div>
+  <p class="chapter-synopsis">Bell Labs, 1969. Dos ingenieros que querían jugar a Space Travel construyen un sistema operativo en una semana. Cincuenta años después, ese sistema corre en el 100% de los servidores web, en tu Mac, en tu Android, en tu iPhone, y en cada centro de datos que entrena IA. Cómo una decisión técnica (modular, en C, simple) se convirtió en infraestructura civilizatoria sin que nadie lo planeara.</p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">09</span><div class="chapter-title">ARPANET · la red diseñada por miedo a la bomba</div></div>
+  <p class="chapter-synopsis">La cosa más colaborativa que ha construido la humanidad — internet — nació de la paranoia militar de la Guerra Fría. <strong>El primer mensaje de la historia de internet fue "LO" — pretendían enviar "LOGIN" pero el sistema cayó tras dos caracteres.</strong> Veinte años después, <strong>Tim Berners-Lee</strong> añade hipertexto en CERN para que los físicos compartan papers — y rechaza patentarlo: el conocimiento no debe tener precio. <em>Cómo una infraestructura militar se convirtió en la mayor herramienta de cooperación pacífica de la historia: por la decisión moral de un físico inglés.</em></p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">10</span><div class="chapter-title">Codd, las filas y las columnas · datos como abstracción</div></div>
+  <p class="chapter-synopsis">1970. Edgar Codd, ingeniero de IBM, publica un paper de 11 páginas. Inventa la idea de "tabla". Cincuenta años después, esa abstracción sostiene la economía mundial: cada banco, cada Amazon, cada Netflix. Y entonces, en 2024, Anthropic publica MCP — los datos vuelven a cambiar de forma para servir a los LLMs. Cómo la forma de los datos define lo que el cómputo puede hacer.</p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">11</span><div class="chapter-title">CUDA antes de la IA · por qué Nvidia ganó la lotería</div></div>
+  <p class="chapter-synopsis">1999, GeForce 256. 2006, CUDA. 2012, AlexNet entrena en dos GPUs gamer y gana ImageNet. 2024, Nvidia vale 3 billones de dólares. <strong>John Carmack escribió en 1999 una función de raíz cuadrada inversa con una constante mágica — <code>0x5f3759df</code> — que nadie entiende del todo, para que Quake 3 corriera en tarjetas baratas. Veinte años después, esa misma matemática vectorial ejecuta GPT-5.</strong> El boom actual de IA está literalmente financiado por décadas de adolescentes comprando juegos de disparos. <em>Una de las pruebas más bellas de la tesis del libro: la salvación viene de donde menos la esperas.</em></p>
+</div>
+
+<!-- PARTE III -->
+<div class="part-header">
+  <div class="label">Parte III</div>
+  <div class="title">Los círculos que se cierran</div>
+  <div class="meta">5 capítulos · 100 páginas · arcos largos completados</div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">12</span><div class="chapter-title">Backprop dormido 30 años (1986 → 2012)</div></div>
+  <p class="chapter-synopsis"><strong>La IA actual nace en una cocina de Chicago en 1943.</strong> Allí, <strong>Warren McCulloch</strong> (neurocientífico) y <strong>Walter Pitts</strong> (matemático autodidacta de 18 años, vagabundo al que McCulloch acogió en su casa) escriben "<em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em>". Proponen el primer modelo matemático de neurona artificial. <strong>Sin ese paper — escrito por un científico y un sin techo en una mesa de cocina — no existe ChatGPT.</strong> 43 años después, Rumelhart, Hinton y Williams publican backpropagation en <em>Nature</em>. Queda en el cajón 26 años porque no había hardware. En 2012 dos GPUs gamer enchufadas a Caffe arrancan AlexNet — y todo. <strong>En 2024 Hinton recibe el Nobel</strong> — 70 años después de McCulloch y Pitts. <em>El progreso requiere que convergan ideas, materia, tiempo. Y, a veces, la generosidad de un científico que abre su cocina a un vagabundo.</em></p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">13</span><div class="chapter-title">AlphaProof · la IA cierra el círculo de Hilbert</div></div>
+  <p class="chapter-synopsis">1928, Hilbert plantea el <em>Entscheidungsproblem</em>. 1931, Gödel responde: hay verdades indemostrables. 1936, Turing y Church inventan el ordenador para responder. 2024, DeepMind lanza AlphaProof: un LLM combinado con Lean 4 resuelve 4 de 6 problemas IMO 2024 — medalla de plata olímpica. <strong>El círculo de 96 años se cierra: la lógica que dio nacimiento al ordenador hoy se demuestra por el ordenador.</strong></p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">14</span><div class="chapter-title">Robot Foundation Models · el cuerpo encuentra al cerebro</div></div>
+  <p class="chapter-synopsis">1961: Unimate suelda coches en GM. 60 años de robots con brazos atornillados haciendo una sola cosa. 2024: Sergey Levine publica π0 — la primera red neuronal que generaliza entre brazos, gripers, manos humanoides. La cadena: 60 años de mecánica + 70 años de IA + 25 años de simulación → convergencia. <strong>Hoy un robot puede aprender una tarea nueva mirando un vídeo.</strong></p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">15</span><div class="chapter-title">Cuántica · 40 años de promesa (Feynman → Cockatoo)</div></div>
+  <p class="chapter-synopsis">1981: Feynman propone construir un ordenador cuántico. 1985: Deutsch lo formaliza. 1994: Shor demuestra que un cuántico podría romper RSA. 2019: Google reclama supremacía con Sycamore. 2024: Willow demuestra qubits lógicos. 2027 (esperado): IBM Cockatoo — primer ordenador cuántico tolerante a fallos. <em>40 años de progreso lentísimo seguidos por una posible inflexión inminente.</em></p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">16</span><div class="chapter-title">Cuántica vs clásica · dos formas distintas de pensar el mundo</div></div>
+  <p class="chapter-synopsis">No son "más rápido" y "más lento". Son <strong>distintos</strong>. El clásico procesa 0s y 1s. El cuántico procesa superposiciones que colapsan en medición. Por qué este libro dedica una parte entera a cuántica aunque hoy no use ningún producto cuántico: porque entender los DOS paradigmas es entender el siglo XXI.</p>
+</div>
+
+<!-- PARTE IV -->
+<div class="part-header">
+  <div class="label">Parte IV</div>
+  <div class="title">La inteligencia emergente</div>
+  <div class="meta">2 capítulos · 30 páginas · el patrón en datos</div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">17</span><div class="chapter-title">214 hitos · 322 conexiones · ~270 personas</div></div>
+  <p class="chapter-synopsis">Capítulo de síntesis: visualización del grafo completo, página doble. El lector ve por primera vez la geografía del progreso. Y los datos: el <strong>73% de los hitos tienen entre 2 y 5 personas implicadas</strong>. Solo el 8% son verdaderamente uniautoría. La media de tiempo entre idea y aplicación masiva es de <strong>22 años</strong>.</p>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num">18</span><div class="chapter-title">La pregunta de Newton · ¿quiénes son los gigantes hoy?</div></div>
+  <p class="chapter-synopsis">Newton dijo "estoy sobre los hombros de gigantes" — y citaba a Hooke, Galileo, Kepler. Hoy, ¿sobre quiénes están los hombros de OpenAI, Anthropic, DeepMind? La respuesta tiene 214 nombres y la mitad llevan muertos décadas. Muchos murieron jóvenes (Boole 49, Turing 41, Lovelace 36, Galois 20). <strong>Si la inteligencia colectiva es el verdadero motor del progreso, ¿qué le debemos colectivamente a quienes la construyen?</strong></p>
+</div>
+
+<!-- EPÍLOGO -->
+<div class="part-header" style="background:#444">
+  <div class="label">Epílogo</div>
+  <div class="title">Una nota personal</div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header"><span class="chapter-num" style="background:#444">·</span><div class="chapter-title">El abuelo IBM y la promesa cumplida</div></div>
+  <p class="chapter-synopsis">1981. Mi padre, José Ortet, técnico de IBM, llega a casa con cajas de tarjetas perforadas. Yo tengo 8 años y juego con ellas como si fueran cartas. 45 años después, la primera versión de este libro la escribió un modelo de lenguaje entrenado en 10 trillones de tokens. La cadena que conecta esas dos escenas es exactamente la que cuenta este libro. <strong>Cada generación recibe el regalo de las anteriores. La nuestra recibe el más grande.</strong></p>
+</div>
+
+<!-- ACTIVOS -->
+<h1 class="page-break">Activos ya construidos · diferenciador clave</h1>
+
+<p>A diferencia de la mayoría de propuestas, <strong>el material está hecho</strong>. La página companion está en vivo desde abril 2026:</p>
+
+<div class="grid-2">
+  <div>
+    <h4>Página interactiva</h4>
+    <p style="font-size:10pt;margin-bottom:6px"><strong>zoopa.es/files/historia-computacion-hitos-20260423.html</strong></p>
+    <ul style="font-size:9.5pt;line-height:1.5;margin:6px 0 0 16px">
+      <li>214 hitos verificados</li>
+      <li>322 relaciones causales</li>
+      <li>16 ensayos narrativos (16,000 palabras)</li>
+      <li>203 fuentes formales citadas</li>
+      <li>Diseño IBM × Silicon Graphics 80s</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Repo público GitHub</h4>
+    <p style="font-size:10pt;margin-bottom:6px"><strong>github.com/carlosortet/historia-computacion</strong></p>
+    <ul style="font-size:9.5pt;line-height:1.5;margin:6px 0 0 16px">
+      <li>Open-source CC BY-SA 4.0</li>
+      <li>Adoptable por universidades</li>
+      <li>Mirror Pages permanente</li>
+      <li>Mobile + iPad responsive · pinch zoom</li>
+      <li>Accesibilidad WCAG 2.1 AA</li>
+    </ul>
+  </div>
+</div>
+
+<div class="insight-box">El 60% del manuscrito ya tiene material base en las narrativas existentes. Esto reduce el riesgo de incumplimiento de plazos para el editor — el autor entrega el manuscrito Q1 2027 con un colchón cómodo.</div>
+
+<h3>Funnel ya operativo</h3>
+<p>El website actúa como puerta de entrada para el libro:</p>
+<ul>
+  <li>Lectores curiosos llegan por SEO/GEO orgánico</li>
+  <li>Quedan suscritos a la newsletter de pre-lanzamiento</li>
+  <li>El libro convierte a comprador a una audiencia ya alineada</li>
+</ul>
+
+<!-- AUTOR -->
+<h1 class="page-break">El autor</h1>
+
+<h2>Carlos Ortet</h2>
+<p style="font-style:italic;color:#666;margin-bottom:14px">CEO Zoopa · Director 498 Advance · The European Intrepid Lab</p>
+
+<p><strong>Carlos Ortet</strong> es CEO de <strong>Zoopa</strong>, agencia de innovación con sede en Barcelona y Madrid. Clientes: CaixaBank, Banco Sabadell, Danone, Ford, Inter Miami, LIDL Europe.</p>
+
+<p>Director de <strong>498 Advance (498A)</strong>, división de I+D en IA que pioneró la disciplina del <strong>GEO — Generative Engine Optimization</strong> (la SEO de la era LLM). Inventor de:</p>
+<ul>
+  <li><strong>GEOradar</strong> — análisis de visibilidad de marca en LLMs (georadar.app)</li>
+  <li><strong>SAM — Semantic Alignment Machine</strong> (sam.georadar.app)</li>
+  <li><strong>Prompt Atlas</strong> — datasets estratégicos de prompts</li>
+  <li><strong>InsightDesk</strong> — plataforma de análisis NPS (insightdesk.ai)</li>
+</ul>
+
+<h3>Credenciales únicas para este libro</h3>
+<table>
+  <tbody>
+    <tr><td style="width:30%"><strong>Insider de la IA actual</strong></td><td>Trabaja diariamente con LLMs · conoce el estado del arte sin teorizar</td></tr>
+    <tr><td><strong>Pedigree histórico</strong></td><td>Su padre, José Ortet, fue técnico IBM 30+ años · creció con tarjetas perforadas y manuales SY-codes</td></tr>
+    <tr><td><strong>Comunicador profesional</strong></td><td>Clientes le contratan para traducir IA al lenguaje del C-suite</td></tr>
+    <tr><td><strong>Network europeo</strong></td><td>Conexiones LIDL Europe (Berlín), CERN (Ginebra), Inter Miami (USA)</td></tr>
+    <tr><td><strong>Audiencia preexistente</strong></td><td>Tráfico orgánico ya generándose en el companion del libro</td></tr>
+    <tr><td><strong>Speaking circuit activo</strong></td><td>€3-5k por charla actualmente · el libro multiplicaría</td></tr>
+  </tbody>
+</table>
+
+<!-- ESTRATEGIA COMERCIAL -->
+<h1 class="page-break">Estrategia comercial</h1>
+
+<h3>Adopción educativa</h3>
+<ul>
+  <li>Universidades con programas History of Science (UAB, UPM, MIT, ETH, EPFL)</li>
+  <li>Programas de Ingeniería Informática que usan textos contextuales</li>
+  <li>Cursos MBA tecnológicos (IESE, ESADE, IE) con demanda creciente de perspectiva histórica</li>
+  <li>Bibliotecas universitarias y municipales — formato hardcover regalable</li>
+</ul>
+
+<h3>Adopción corporativa</h3>
+<ul>
+  <li>Onboarding de empresas tech (regalable a nuevos engineers): "léelo en tu primera semana"</li>
+  <li>Programas de innovación (Telefónica, BBVA, Santander, CaixaBank — clientes existentes del autor)</li>
+  <li>Consulting + speaking engagements derivados</li>
+</ul>
+
+<h3>Mercado lector general</h3>
+<ul>
+  <li>Lector tipo <em>Sapiens</em> / <em>Co-Intelligence</em> / <em>How We Got to Now</em></li>
+  <li>Curiosos de IA que quieren contexto sin requerir base técnica</li>
+  <li>Profesores no-tech que quieren explicar a sus alumnos "cómo hemos llegado aquí"</li>
+  <li>Pre-orders impulsados por LinkedIn — el autor tiene perfil establecido</li>
+</ul>
+
+<!-- PORQUE VENDERA -->
+<h1>Por qué venderá</h1>
+
+<table>
+  <thead>
+    <tr><th style="width:30%">Factor</th><th>Razón</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Narrativa única</strong></td><td>Primer libro que cuenta la historia como <strong>grafo causal demostrado</strong>, no como sucesión</td></tr>
+    <tr><td><strong>Tesis políticamente resonante</strong></td><td>"Los gigantes son comunidades" alinea con momento cultural anti-individualista</td></tr>
+    <tr><td><strong>Tesis económicamente útil</strong></td><td>Empresas necesitan entender el patrón para invertir en colectivos, no en estrellas</td></tr>
+    <tr><td><strong>Visualidad ya probada</strong></td><td>El website demuestra que la información se puede hacer hermosa; trasladable a libro</td></tr>
+    <tr><td><strong>Tono Smart Brevity</strong></td><td>Frases cortas, sin floritura — ritmo lector moderno (no Penrose, no Hofstadter)</td></tr>
+    <tr><td><strong>Referencias verificadas</strong></td><td>203 fuentes formales · prevención total de fact-checking malo</td></tr>
+    <tr><td><strong>Edad de autor</strong></td><td>50s, mid-career — credibilidad ejecutiva sin pomposidad académica</td></tr>
+    <tr><td><strong>Hook IA en título</strong></td><td>Discoverability Amazon · alineado con vocabulario del lector general 2026-2030</td></tr>
+  </tbody>
+</table>
+
+<!-- TIMELINE -->
+<h1 class="page-break">Calendario propuesto</h1>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-date">Q3 2026</div>
+    <div class="timeline-content">Firma de contrato editorial</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">Q4 2026 — Q1 2027</div>
+    <div class="timeline-content">Escritura del manuscrito (60% material base ya disponible en narrativas)</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">Q1 2027</div>
+    <div class="timeline-content">Entrega del manuscrito completo</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">Q2 — Q3 2027</div>
+    <div class="timeline-content">Edición · ilustración · fact-checking · revisión profesional</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">Q4 2027 · Lanzamiento</div>
+    <div class="timeline-content"><strong>Campaña Navidad</strong> — coincide con inflexión cuántica esperada (IBM Cockatoo) y robots foundation models comerciales</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">Q1 2028</div>
+    <div class="timeline-content">Tour autor: Madrid · Barcelona · Lisboa · México DF · Buenos Aires</div>
+  </div>
+</div>
+
+<!-- COMPROMISO -->
+<h1>Compromiso del autor</h1>
+
+<div class="grid-2">
+  <div>
+    <h4>Promoción</h4>
+    <p style="font-size:10pt">80 horas anuales post-lanzamiento dedicadas a press tour, podcasts, programas de radio, conferencias.</p>
+  </div>
+  <div>
+    <h4>Sostenimiento de la conversación</h4>
+    <p style="font-size:10pt">Newsletter mensual desde el website companion · actualización continua del website como activo perenne (cada año se añaden hitos del año anterior).</p>
+  </div>
+  <div>
+    <h4>Co-financiación</h4>
+    <p style="font-size:10pt">El autor co-financia las ilustraciones si el editor lo requiere.</p>
+  </div>
+  <div>
+    <h4>Network corporativo</h4>
+    <p style="font-size:10pt">Acceso a CaixaBank, Banco Sabadell, Danone, LIDL Europe, Inter Miami para corporate gifting batches.</p>
+  </div>
+</div>
+
+<!-- CIERRE -->
+<h1>Cierre</h1>
+
+<div class="exec-summary">
+  <p>El libro existe ya, en parte, en formato website. Lo que pedimos al editor es: <strong>dignificarlo en libro, distribuirlo a lectores que no saben aún que lo necesitan, y monetizar conjuntamente una conversación que va a durar décadas</strong>.</p>
+  <p style="margin-top:12px">La historia que cuenta no envejecerá. La conexión Boole→Shannon seguirá siendo cierta dentro de un siglo. La tesis de la inteligencia colectiva irá ganando relevancia conforme la IA generativa nos obligue a redefinir qué significa "autor".</p>
+  <p style="margin-top:12px;font-weight:600">Este es el libro de fondo de las próximas dos décadas de divulgación tech.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">CARLOS ORTET</div>
+  <div class="footer-meta">Zoopa · 498 Advance · The European Intrepid Lab · Abril 2026</div>
+
+  <div class="footer-contact">
+    <strong>Contacto editorial</strong><br>
+    Email: <a href="mailto:carlos.ortet@zoopa.es">carlos.ortet@zoopa.es</a><br>
+    Web: <a href="https://carlosortet.com">carlosortet.com</a><br>
+    LinkedIn: <a href="https://linkedin.com/in/carlosortet">linkedin.com/in/carlosortet</a><br>
+    <br>
+    Companion del libro (en vivo):<br>
+    <a href="https://zoopa.es/files/historia-computacion-hitos-20260423.html">zoopa.es/files/historia-computacion-hitos-20260423.html</a><br>
+    Repo público GitHub: <a href="https://github.com/carlosortet/historia-computacion">github.com/carlosortet/historia-computacion</a>
+  </div>
+</footer>
+
+</body>
+</html>
