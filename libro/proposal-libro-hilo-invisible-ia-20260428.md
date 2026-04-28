@@ -244,7 +244,7 @@ Newton dijo "estoy sobre los hombros de gigantes" — y citaba a Hooke, Galileo,
 | **Categoría** | Divulgación científica · Historia de la tecnología · Ensayo |
 | **Lectores meta** | Profesionales tech · estudiantes universitarios STEM y humanidades · lector ilustrado de divulgación tipo Sapiens / The Information / The Innovators |
 | **Tono** | Smart Brevity — frases cortas, datos concretos, cero floritura |
-| **Lanzamiento sugerido** | Q4 2027 (campaña Navidad, coincide con inflexión cuántica esperada) |
+| **Lanzamiento sugerido** | Q4 2026 (campaña Navidad, momento ChatGPT/Claude/Gemini en pleno hype IA) |
 
 ## El momento
 
@@ -324,13 +324,13 @@ Antes de la salida del libro, el website ya actúa como funnel:
 
 | Hito | Fecha estimada |
 |---|---|
-| Firma de contrato | Q3 2026 |
-| Manuscrito completo | Q1 2027 (PARTE I-II ya tienen 60% material en narrativas existentes) |
-| Edición + ilustración | Q2-Q3 2027 |
-| **Lanzamiento** | **Q4 2027 — campaña Navidad** |
-| Tour autor (Madrid · Barcelona · Lisboa · México DF · BA) | 2028 Q1 |
+| Firma de contrato | Q2 2026 (inmediato — material en companion ya disponible) |
+| Manuscrito completo | Q3 2026 (60% material base ya en narrativas · ensamblaje + capítulos nuevos en 4 meses) |
+| Edición + ilustración | Q3 2026 (paralelo) |
+| **Lanzamiento** | **Q4 2026 — campaña Navidad** |
+| Tour autor (Madrid · Barcelona · Lisboa · México DF · BA) | Q1 2027 |
 
-Este timing coincide con la inflexión esperada del cómputo cuántico (IBM Cockatoo) y los robots foundation models comerciales — momentos donde la conversación pública demandará un libro como este.
+Este timing aprovecha el **pico actual de la conversación IA** (ChatGPT, Claude, Gemini, AlphaProof, π0 todos en titulares) y se anticipa a la saturación editorial 2027-2028 cuando el mercado se inundará de libros sobre IA. Carlos llega primero con la única tesis cuantitativa de inteligencia colectiva.
 
 ## Compromiso del autor
 

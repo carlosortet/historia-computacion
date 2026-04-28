@@ -53,7 +53,7 @@ En 1847, un profesor irlandés sin doctorado intentó convertir el pensamiento e
 - **Momento IA**: ChatGPT, Claude, AlphaProof, π0 — el público demanda contexto histórico
 - **Vacío editorial**: los grandes libros (Isaacson 2014, Gleick 2011) son pre-IA. Los libros sobre IA (Mollick, Suleyman) carecen de profundidad histórica
 - **Tesis políticamente resonante**: anti-individualista en momento cultural anti-individualista
-- **Lanzamiento Q4 2027**: coincide con inflexión cuántica esperada (IBM Cockatoo)
+- **Lanzamiento Q4 2026 (Navidad)**: aprovecha el pico actual de conversación pública sobre IA (ChatGPT, Claude, AlphaProof, π0) · primero en el mercado antes de la saturación editorial esperada 2027-2028
 
 ## El delta vs competencia
 
@@ -92,11 +92,11 @@ En 1847, un profesor irlandés sin doctorado intentó convertir el pensamiento e
 
 | | |
 |---|---|
-| Firma contrato | Q3 2026 |
-| Manuscrito completo | Q1 2027 |
-| Edición + ilustración | Q2-Q3 2027 |
-| **Lanzamiento** | **Q4 2027 (Navidad)** |
-| Tour autor | Q1 2028 (Madrid · Barcelona · Lisboa · México DF · Buenos Aires) |
+| Firma contrato | Q2 2026 (inmediato) |
+| Manuscrito completo | Q3 2026 |
+| Edición + ilustración | Q3 2026 (paralelo) |
+| **Lanzamiento** | **Q4 2026 (Navidad)** |
+| Tour autor | Q1 2027 (Madrid · Barcelona · Lisboa · México DF · Buenos Aires) |
 
 ## Lo que pedimos
 
