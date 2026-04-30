@@ -15,7 +15,7 @@ tags:
 
 # El Hilo Invisible de la IA
 
-> **Cómo, sin proponérselo, la humanidad ha estado construyendo durante 380 años la inteligencia que hoy nos asombra**
+> **Cómo cuatro siglos de encuentros improbables y mentes brillantes crearon, contra todo pronóstico, la inteligencia artificial**
 
 ---
 

@@ -20,7 +20,7 @@ tags:
 
 # El Hilo Invisible de la IA
 
-> **Cómo, sin proponérselo, la humanidad ha estado construyendo durante 380 años la inteligencia que hoy nos asombra**
+> **Cómo cuatro siglos de encuentros improbables y mentes brillantes crearon, contra todo pronóstico, la inteligencia artificial**
 
 *Una historia colectiva — de Pascal (1642) a Claude (2026) — contada por sus conexiones causales*
 
@@ -237,7 +237,7 @@ Newton dijo "estoy sobre los hombros de gigantes" — y citaba a Hooke, Galileo,
 | Campo | Valor |
 |---|---|
 | **Título** | El Hilo Invisible de la IA |
-| **Subtítulo** | Cómo, sin proponérselo, la humanidad ha estado construyendo durante 380 años la inteligencia que hoy nos asombra |
+| **Subtítulo** | Cómo cuatro siglos de encuentros improbables y mentes brillantes crearon, contra todo pronóstico, la inteligencia artificial |
 | **Autor** | Carlos Ortet — Zoopa · 498 Advance · The European Intrepid Lab |
 | **Idioma original** | Español (derechos EN/PT/IT/FR negociables tras lanzamiento ES) |
 | **Extensión** | ~360 páginas + lámina desplegable + 24 ilustraciones |
