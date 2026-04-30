@@ -29,14 +29,17 @@ En 1847, un profesor irlandés sin doctorado intentó convertir el pensamiento e
 
 > El progreso técnico es un grafo de inteligencia colectiva. Lo que llamamos "IA" es inteligencia humana acumulada y ejecutada por máquina. **Y casi siempre lo construyeron personas que perseguían preguntas equivocadas y obtuvieron, sin proponérselo, respuestas que nos salvaron.**
 
-## El alma del libro · cuatro convicciones
+## El alma del libro
 
-> *No siempre lo que deseamos es bueno para nosotros. Pero casi siempre lo que hacemos bien acaba beneficiando a todos.*
+> ***"Nadie supo nunca lo que estábamos construyendo. Y aun así, lo construimos."***
 
-1. **El progreso es nuestra naturaleza, no nuestro pecado.** Somos una fuerza geológica que ha tejido inteligencia colectiva durante 380 años.
-2. **No podemos rechazar el progreso. Podemos educarlo.** Igual que la naturaleza: no contenerlo, orientarlo.
-3. **La inteligencia emerge colectivamente para salvarnos — y siempre lo ha hecho.** Tenemos 380 años de evidencia.
-4. **Hay fe legítima en el progreso humano.** No ingenuidad — lectura honesta del grafo causal.
+Mentes separadas por siglos, océanos y disciplinas, persiguiendo preguntas casi siempre equivocadas, terminaron tejiendo —sin saberlo— la inteligencia artificial que hoy transforma el mundo.
+
+Si Boole no hubiera intentado leer la mente de Dios, no habría transistor. Si Pitts no hubiera huido de casa a los 15 años, no habría redes neuronales. Si Shannon no hubiera leído a Boole noventa años después, todo se habría detenido ahí.
+
+El Hilo Invisible no es una tesis, es una observación: cada vez que la humanidad ha avanzado de verdad, ha sido **por accidente, colectivamente, persiguiendo otra cosa**.
+
+Un hilo que no se teje en los nombres, sino entre ellos: una única conversación de la especie, sostenida durante casi cuatro siglos sin saberlo. **Reconocerla puede cambiar lo que viene.**
 
 ## Anécdotas que vertebran el libro
 

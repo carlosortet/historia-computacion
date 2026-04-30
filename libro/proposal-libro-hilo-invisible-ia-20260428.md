@@ -68,23 +68,17 @@ El lector encontrará a:
 - **Vaswani** titulando el paper que inventó el Transformer "*Attention Is All You Need*" — homenaje a los Beatles
 - **John Carmack** abriendo el código de Quake en 2005 — diez años después es la base sobre la que se simulan los robots actuales
 
-### El libro celebra la serendipia del progreso
+### El alma del libro
 
-Decisiones tomadas por razones equivocadas — Boole por teología, Carmack por juegos, Pascal por amor filial — acabaron salvándonos.
+> **"Nadie supo nunca lo que estábamos construyendo. Y aun así, lo construimos."**
 
-> **No siempre lo que deseamos es bueno para nosotros. Pero casi siempre lo que hacemos bien acaba beneficiando a todos.**
+Mentes separadas por siglos, océanos y disciplinas, persiguiendo preguntas casi siempre equivocadas, terminaron tejiendo —sin saberlo— la inteligencia artificial que hoy transforma el mundo.
 
-### Mensaje de fondo
+Si Boole no hubiera intentado leer la mente de Dios, no habría transistor. Si Pitts no hubiera huido de casa a los 15 años, no habría redes neuronales. Si Shannon no hubiera leído a Boole noventa años después, todo se habría detenido ahí. Los grandes avances no suelen ser lineales, sino acumulaciones accidentales de intentos dispersos.
 
-Cuatro convicciones que el libro demuestra con datos, no con sermón:
+El Hilo Invisible no es una tesis, es una observación: cada vez que la humanidad ha avanzado de verdad, ha sido por accidente, colectivamente, persiguiendo otra cosa.
 
-1. **El progreso es nuestra naturaleza, no nuestro pecado.** Somos una fuerza geológica que ha tejido inteligencia colectiva durante 380 años — al mismo nivel que la fotosíntesis o la deriva continental. Despreciarlo es despreciarnos.
-
-2. **No podemos rechazar el progreso. Podemos educarlo.** Igual que la naturaleza, hay que dirigirlo: no contenerlo, sino orientarlo. La diferencia entre Hiroshima y la fotosíntesis es la dirección, no la fuerza.
-
-3. **La inteligencia emerge colectivamente para salvarnos.** Cada vez que una crisis nos ha amenazado — la Guerra Fría, las pandemias, los inviernos de IA — la respuesta vino de redes invisibles de personas trabajando para problemas distintos. **Y siempre lo ha hecho.** Tenemos 380 años de evidencia.
-
-4. **Hay fe legítima en el progreso humano.** No ingenuidad — lectura honesta del grafo causal. Cada generación recibe el regalo de las anteriores y lo extiende un peldaño. La nuestra recibe el más grande.
+Un hilo que no se teje en los nombres, sino entre ellos: una única conversación de la especie, sostenida durante casi cuatro siglos sin saberlo. **Reconocerla puede cambiar lo que viene.**
 
 ### Por qué importa este tono
 
